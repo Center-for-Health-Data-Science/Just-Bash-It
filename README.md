@@ -6,4 +6,5 @@ The repo is maintained by Center for Health Data Science (HeaDS), Faculty of Hea
 
 Contact:
 Henrike Zschach, Data Scienctist, HeaDS, henrike.zschach@sund.ku.dk
+
 Thilde Terkelsen, Data Scienctist, HeaDS, thilde.terkelsen@sund.ku.dk 
