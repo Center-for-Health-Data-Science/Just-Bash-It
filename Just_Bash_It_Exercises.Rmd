@@ -20,10 +20,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Introduction
 
-This markdown document contains of exercises for the introductory workshop on  command line use, entitled `Just Bash It`, developed and hosted by Center for Health Data Science (HeaDS) at the Faculty of Health and Medical Sciences ([HeaDS](https://heads.ku.dk/)), in collaboration with the University Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.   
-This one day workshop is intended for biomedical and health researchers at the University of Copenhagen with no prior experience in bash command line use.   
+This markdown document contains of exercises for the introductory workshop on command line use, entitled `Just Bash It`, developed and hosted by Center for Health Data Science (HeaDS) at the Faculty of Health and Medical Sciences ([HeaDS](https://heads.ku.dk/)), in collaboration with the University Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.   
+This one day workshop is targeted at biomedical and health researchers at the University of Copenhagen with no prior experience in bash command line use.   
 
-The workshop consists of a slideshow with slides to each section, in addition to hands-on presentations & exercises written in the markdown language.
+The workshop consists of a slideshow with slides to each section, in addition to hands-on presentations (code-along) and accompanying exercises. 
 
 
 ## Exercise 1: Navigating Files and Directories
@@ -35,6 +35,7 @@ pwd
 
 ## Exercise 2: Project Organization & Backup
 
+In this exercise we will set up out working directory 
 
 ## Exercise 3: Working with Files and Directories
 
