@@ -28,14 +28,23 @@ The workshop consists of a slideshow with slides to each section, in addition to
 
 ## Exercise 1: Navigating Files and Directories
 
-```{bash}
-pwd
-```
 
+## Exercise 2: Project Organization
 
-## Exercise 2: Project Organization & Backup
+Let's get structured!   
 
-In this exercise we will set up out working directory 
+1. Make a `projects` directory at `/home/user/Desktop` on your computer with all the sub-folders shown on **slide 15** in the slideshow. You are free to name the project within the  `projects` folder whatever you would like, e.g. `Just_Bash_It, Intro_to_command_line, First_Project, ...`. **Cheat Sheet 1** in the slideshow will have the commands you need. 
+
+You should have downloaded the course materials including the raw data files to you computer somewhere, maybe it is in your downloads folder or maybe you moved it somewhere else. 
+
+2. Using the command-line, navigate to where you downloaded the course materials and copy or move the files in the new directory you have made and place it in the correct sub-folder.
+
+3. Make a file called `readme` in your project.
+
+4. How large are the data files you copied from the course materials?
+
+5. Check the permissions of the data files you copied from the course materials. Do you have permission to `read`, `write` and `execute` them? If you are not allowed to execute the, what is the reason for this?
+
 
 ## Exercise 3: Working with Files and Directories
 

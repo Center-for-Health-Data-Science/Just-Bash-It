@@ -25,29 +25,32 @@ pwd
 ```
 
 
-## Presentation 2: Project Organization & Backup
+## Presentation 2: Project Organization
 
 In this section we show participants how to set up a good directory structure.
 
-Commands shown in this sections are:
-
+At the root under home/user the show the directory `projects` which contains the project at hand, it should be named `Just_Bash_It`. Reiterate commands `cd`, `pwd` and `ls`.
 
 ```{bash, eval=FALSE, engine="sh"}
+cd
 pwd
 ls
 ```
 
+Move around the directories in the directory `Just_Bash_It`. Make a folder which is missing, show `mkdir` and add a `Readme` files to the dir using `touch`. Also reiterate `rm` if you make a mistake.
+
 ```{bash, eval=FALSE, engine="sh"}
-mv
 mkdir
 touch
-cp
 rm
 ```
+
+Go to the raw data folder and use `ls` and `du` options to show file sizes and file permission settings. 
 
 ```{bash, eval=FALSE, engine="sh"}
 ls -l *
 ls -al *
+ls -lh *
 
 ls -l filename 
 ls -al dir
@@ -56,6 +59,7 @@ du -sh
 du -sh filename
 du -sh dir
 ```
+
 
 ## Presentation 3: Working with Files and Directories
 
