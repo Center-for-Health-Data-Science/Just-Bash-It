@@ -2,21 +2,30 @@
 ================
 Center for Health Data Science, July 2022
 
--   [Introduction](#introduction)
--   [Exercise 1: Navigating Files and
-    Directories](#exercise-1-navigating-files-and-directories)
--   [Exercise 2: Project Organization](#exercise-2-project-organization)
--   [Exercise 3: Working with Files and
-    Directories](#exercise-3-working-with-files-and-directories)
--   [Exercise 4: Commands, Redirection &
-    Pipes](#exercise-4-commands-redirection--pipes)
--   [Exercise 5: Advanced Commands](#exercise-5-advanced-commands)
--   [Exercise 6: Editors and Shell
-    scripts](#exercise-6-editors-and-shell-scripts)
--   [Exercise 7: Loops and Workflow
-    Language](#exercise-7-loops-and-workflow-language)
--   [Exercise 8: Software Installation, Upkeep &
-    More](#exercise-8-software-installation-upkeep--more)
+-   <a href="#introduction" id="toc-introduction">Introduction</a>
+-   <a href="#exercise-1-navigating-files-and-directories"
+    id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
+    Navigating Files and Directories</a>
+-   <a href="#exercise-2-project-organization"
+    id="toc-exercise-2-project-organization">Exercise 2: Project
+    Organization</a>
+-   <a href="#exercise-3-working-with-files-and-directories"
+    id="toc-exercise-3-working-with-files-and-directories">Exercise 3:
+    Working with Files and Directories</a>
+-   <a href="#exercise-4-commands-redirection--pipes"
+    id="toc-exercise-4-commands-redirection--pipes">Exercise 4: Commands,
+    Redirection &amp; Pipes</a>
+-   <a href="#exercise-5-advanced-commands"
+    id="toc-exercise-5-advanced-commands">Exercise 5: Advanced Commands</a>
+-   <a href="#exercise-6-editors-and-shell-scripts"
+    id="toc-exercise-6-editors-and-shell-scripts">Exercise 6: Editors and
+    Shell scripts</a>
+-   <a href="#exercise-7-loops-and-workflow-language"
+    id="toc-exercise-7-loops-and-workflow-language">Exercise 7: Loops and
+    Workflow Language</a>
+-   <a href="#exercise-8-software-installation-upkeep--more"
+    id="toc-exercise-8-software-installation-upkeep--more">Exercise 8:
+    Software Installation, Upkeep &amp; More</a>
 
 ------------------------------------------------------------------------
 
@@ -42,26 +51,57 @@ exercises.
 
 Let’s get structured!
 
-1.  Set up a `projects` folder at the root/home/user on your computer
-    with all the sub-folders shown on **slides 15**, in the slideshow.
-    You are free to name the project within the `projects` folder
-    whatever you would like,
-    e.g. `Just_Bash_It, Intro_to_commandline, First_Project, etc`.
+1.  Make a `projects` directory at `/home/user/Desktop` on your computer
+    with all the sub-folders shown on **slide 15** in the slideshow. You
+    are free to name the project within the `projects` folder whatever
+    you would like,
+    e.g. `Just_Bash_It, Intro_to_command_line, First_Project, ...`.  
     **Cheat Sheet 1** in the slideshow will have the commands you need.
 
 You should have downloaded the course materials including the raw data
-files to you computer somewhere, maybe it is in your downloads folder or
-maybe you moved it somewhere else.
+files to you computer, maybe it is in your downloads folder or perhaps
+you moved it somewhere else.
 
-2.  Using the commandline, navigate to where you downloaded the course
-    materials and copy or move the files in the `data` directory to the
-    correct sub-folder in you new project.
+2.  Using the command-line, navigate to where you downloaded the course
+    materials an go to the directory named `Data`, here you should see
+    three files, all with the extension `.gz`. Move these three files to
+    the project directory you have made and place them in the correct
+    sub-folder.
 
-3.  Add a `readme` file to your project in which you write a couple of
-    lines to yourself about what the content of this directory contains
-    and its purpose.
+3.  How large are the data files you moved from the course materials?
+
+4.  Check the permissions of the data files from the course materials.
+    Do you have permission to `read`, `write` and `execute` them? If you
+    are not allowed to execute the, what is the reason for this?
+
+5.  Make a new file called `readme` within your project directory.
 
 ## Exercise 3: Working with Files and Directories
+
+1.  Go to your project directory and edit the `readme` file you made in
+    *Exercise 2* using the `nano` editor. A `readme` file should contain
+    information about what a certain directory contains, its purpose and
+    who owns it/is the editor.
+
+2.  Move to the sub-directory `Data/Raw` here you should have the three
+    data files you moved from the course material directory.
+
+Two of these files are `fastq` files, they contain RNAseq reads from a
+bulk-RNA sequencing experiment using Arabidopsis thaliana (thale cress).
+The extension `_1` and `_2` denote that reads are paired-end (e.g. read
+1 and read 2). The third file, `gff`, contains annotations of genes and
+other genomic feature from the organism of study, Arabidopsis thaliana.
+
+3.  Expand the `.gff.gz` annotation file and make sure you keep the
+    compressed version.  
+    **HINT:** look into what flags/arguments need to be specified when
+    decompressing).
+
+4.  Try out the commands `less, cat, head, tail` on the expanded `.gff`
+    file. Note what it contains.
+
+5.  Look at the content of one of the two `fq.gz` files with RNA
+    sequencing read, **N.B.** this time without expanding the file!
 
 ## Exercise 4: Commands, Redirection & Pipes
 

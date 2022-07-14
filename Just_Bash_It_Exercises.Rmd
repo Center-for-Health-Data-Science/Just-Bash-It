@@ -33,20 +33,34 @@ The workshop consists of a slideshow with slides to each section, in addition to
 
 Let's get structured!   
 
-1. Make a `projects` directory at `/home/user/Desktop` on your computer with all the sub-folders shown on **slide 15** in the slideshow. You are free to name the project within the  `projects` folder whatever you would like, e.g. `Just_Bash_It, Intro_to_command_line, First_Project, ...`. **Cheat Sheet 1** in the slideshow will have the commands you need. 
+1. Make a `projects` directory at `/home/user/Desktop` on your computer with all the sub-folders shown on **slide 15** in the slideshow. You are free to name the project within the  `projects` folder whatever you would like, e.g. `Just_Bash_It, Intro_to_command_line, First_Project, ...`.   
+**Cheat Sheet 1** in the slideshow will have the commands you need. 
 
-You should have downloaded the course materials including the raw data files to you computer somewhere, maybe it is in your downloads folder or maybe you moved it somewhere else. 
+You should have downloaded the course materials including the raw data files to you computer, maybe it is in your downloads folder or perhaps you moved it somewhere else. 
 
-2. Using the command-line, navigate to where you downloaded the course materials and copy or move the files in the new directory you have made and place it in the correct sub-folder.
+2. Using the command-line, navigate to where you downloaded the course materials an go to the directory named `Data`, here you should see three files, all with the extension `.gz`. Move these three files to the project directory you have made and place them in the correct sub-folder.
 
-3. Make a file called `readme` in your project.
+3. How large are the data files you moved from the course materials?
 
-4. How large are the data files you copied from the course materials?
+4. Check the permissions of the data files from the course materials. Do you have permission to `read`, `write` and `execute` them? If you are not allowed to execute the, what is the reason for this?
 
-5. Check the permissions of the data files you copied from the course materials. Do you have permission to `read`, `write` and `execute` them? If you are not allowed to execute the, what is the reason for this?
+5. Make a new file called `readme` within your project directory.
 
 
 ## Exercise 3: Working with Files and Directories
+
+1. Go to your project directory and edit the `readme` file you made in _Exercise 2_ using the `nano` editor. A `readme` file should contain information about what a certain directory contains, its purpose and who owns it/is the editor.
+
+2. Move to the sub-directory `Data/Raw` here you should have the three data files you moved from the course material directory.
+
+Two of these files are `fastq` files, they contain RNAseq reads from a bulk-RNA sequencing experiment using Arabidopsis thaliana (thale cress). The extension `_1` and `_2` denote that reads are paired-end (e.g. read 1 and read 2). The third file, `gff`, contains annotations of genes and other genomic feature from the organism of study, Arabidopsis thaliana.
+
+3. Expand the `.gff.gz` annotation file and make sure you keep the compressed version.   
+**HINT:** look into what flags/arguments need to be specified when decompressing). 
+
+4. Try out the commands `less, cat, head, tail` on the expanded `.gff` file. Note what it contains. 
+
+5. Look at the content of one of the two `fq.gz` files with RNA sequencing read, **N.B.** this time without expanding the file!
 
 
 ## Exercise 4: Commands, Redirection & Pipes

@@ -11,8 +11,8 @@ author: "Center for Health Data Science, July 2022"
 
 ## Introduction
 
-This document contains the hands-on `presentations` for the introductory workshop on command line use, entitled `Just Bash It`. It is meant to aid workshop teachers to recall what to show course participants in the code along session. 
-Each section in the slides-show is followed by a 'cheat sheet' containing the commands used in each of the sections below. The 'cheat sheet' is intended for participants to look at and recall bash commands used in a given session.
+This document contains the hands-on `presentations` for the introductory workshop on command line use, entitled `Just Bash It`. It is meant to aid workshop teachers to recall what to show course participants in the code along session.   
+Each section in the slides-show is followed by a **cheat sheet** containing the commands used in each of the sections below. The **cheat sheet** is intended for participants to look at and recall bash commands used in a given session.
 
 The `Just Bash It` workshop is developed and hosted by Center for Health Data Science (HeaDS) at the Faculty of Health and Medical Sciences ([HeaDS](https://heads.ku.dk/)), in collaboration with the University Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.   
 
@@ -27,9 +27,9 @@ pwd
 
 ## Presentation 2: Project Organization
 
-In this section we show participants how to set up a good directory structure.
+In this section we show participants how to set up a good directory structure. TWorkshop teachers should have setup a directory structure like the one shown on slide 15.
 
-At the root under home/user the show the directory `projects` which contains the project at hand, it should be named `Just_Bash_It`. Reiterate commands `cd`, `pwd` and `ls`.
+1. Under home/user/(Desktop | Documents) show the directory `projects` which contains the project at hand. Reiterate commands `cd`, `pwd` and `ls`.
 
 ```{bash, eval=FALSE, engine="sh"}
 cd
@@ -37,7 +37,7 @@ pwd
 ls
 ```
 
-Move around the directories in the directory `Just_Bash_It`. Make a folder which is missing, show `mkdir` and add a `Readme` files to the dir using `touch`. Also reiterate `rm` if you make a mistake.
+2. Move around the subdirectories in the directory `Just_Bash_It`. Make a folder which is missing, show `mkdir` and add a `readme` file to the dir using `touch`. Also make a mistake and reiterate `rm`.
 
 ```{bash, eval=FALSE, engine="sh"}
 mkdir
@@ -45,7 +45,7 @@ touch
 rm
 ```
 
-Go to the raw data folder and use `ls` and `du` options to show file sizes and file permission settings. 
+3. Go to the raw data folder and use `ls` and `du` options to show file sizes and file permission settings. 
 
 ```{bash, eval=FALSE, engine="sh"}
 ls -l *
@@ -62,6 +62,17 @@ du -sh dir
 
 
 ## Presentation 3: Working with Files and Directories
+
+1. View the content of a file with different commands. Use a readme file from a github repo as an example. 
+
+```{bash, eval=FALSE, engine="sh"}
+cat 
+less
+head -n
+tail -n
+```
+
+2. Show editors: `nano, vim and emacs`. Edit a `readme` file made under the project structure. Add a line of text with each editor and show and option or two. Save the changes quit and use less to view it.
 
 
 ## Presentation 4: Commands, Redirection & Pipes
