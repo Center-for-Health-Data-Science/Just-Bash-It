@@ -15,8 +15,8 @@ Center for Health Data Science, July 2022
 -   <a href="#presentation-4-commands-redirection--pipes"
     id="toc-presentation-4-commands-redirection--pipes">Presentation 4:
     Commands, Redirection &amp; Pipes</a>
--   <a href="#presentation-5-advanced-commands"
-    id="toc-presentation-5-advanced-commands">Presentation 5: Advanced
+-   <a href="#presentation-5-more-bash-commands"
+    id="toc-presentation-5-more-bash-commands">Presentation 5: More Bash
     Commands</a>
 -   <a href="#presentation-6-editors-and-shell-scripts"
     id="toc-presentation-6-editors-and-shell-scripts">Presentation 6:
@@ -112,7 +112,7 @@ tail -n
 
 ## Presentation 4: Commands, Redirection & Pipes
 
-## Presentation 5: Advanced Commands
+## Presentation 5: More Bash Commands
 
 ## Presentation 6: Editors and Shell scripts
 

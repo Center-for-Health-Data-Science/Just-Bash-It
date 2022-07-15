@@ -78,7 +78,7 @@ tail -n
 ## Presentation 4: Commands, Redirection & Pipes
 
 
-## Presentation 5: Advanced Commands
+## Presentation 5: More Bash Commands
 
 
 ## Presentation 6: Editors and Shell scripts 

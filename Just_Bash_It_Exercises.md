@@ -15,8 +15,9 @@ Center for Health Data Science, July 2022
 -   <a href="#exercise-4-commands-redirection--pipes"
     id="toc-exercise-4-commands-redirection--pipes">Exercise 4: Commands,
     Redirection &amp; Pipes</a>
--   <a href="#exercise-5-advanced-commands"
-    id="toc-exercise-5-advanced-commands">Exercise 5: Advanced Commands</a>
+-   <a href="#exercise-5-more-bash-commands"
+    id="toc-exercise-5-more-bash-commands">Exercise 5: More Bash
+    Commands</a>
 -   <a href="#exercise-6-editors-and-shell-scripts"
     id="toc-exercise-6-editors-and-shell-scripts">Exercise 6: Editors and
     Shell scripts</a>
@@ -105,7 +106,7 @@ other genomic feature from the organism of study, Arabidopsis thaliana.
 
 ## Exercise 4: Commands, Redirection & Pipes
 
-## Exercise 5: Advanced Commands
+## Exercise 5: More Bash Commands
 
 ## Exercise 6: Editors and Shell scripts
 
