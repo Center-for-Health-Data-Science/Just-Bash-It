@@ -2,31 +2,23 @@
 ================
 Center for Health Data Science, July 2022
 
--   <a href="#introduction" id="toc-introduction">Introduction</a>
--   <a href="#presentation-1-navigating-files-and-directories"
-    id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
-    Navigating Files and Directories</a>
--   <a href="#presentation-2-project-organization"
-    id="toc-presentation-2-project-organization">Presentation 2: Project
-    Organization</a>
--   <a href="#presentation-3-working-with-files-and-directories"
-    id="toc-presentation-3-working-with-files-and-directories">Presentation
-    3: Working with Files and Directories</a>
--   <a href="#presentation-4-commands-redirection--pipes"
-    id="toc-presentation-4-commands-redirection--pipes">Presentation 4:
-    Commands, Redirection &amp; Pipes</a>
--   <a href="#presentation-5-more-bash-commands"
-    id="toc-presentation-5-more-bash-commands">Presentation 5: More Bash
-    Commands</a>
--   <a href="#presentation-6-editors-and-shell-scripts"
-    id="toc-presentation-6-editors-and-shell-scripts">Presentation 6:
-    Editors and Shell scripts</a>
--   <a href="#presentation-7-loops-and-workflow-language"
-    id="toc-presentation-7-loops-and-workflow-language">Presentation 7:
-    Loops and Workflow Language</a>
--   <a href="#presentation-8-software-installation-upkeep--more"
-    id="toc-presentation-8-software-installation-upkeep--more">Presentation
-    8: Software Installation, Upkeep &amp; More</a>
+-   [Introduction](#introduction)
+-   [Presentation 1: Navigating Files and
+    Directories](#presentation-1-navigating-files-and-directories)
+-   [Presentation 2: Project
+    Organization](#presentation-2-project-organization)
+-   [Presentation 3: Working with Files and
+    Directories](#presentation-3-working-with-files-and-directories)
+-   [Presentation 4: Commands, Redirection &
+    Pipes](#presentation-4-commands-redirection--pipes)
+-   [Presentation 5: More Bash
+    Commands](#presentation-5-more-bash-commands)
+-   [Presentation 6: Editors and Shell
+    scripts](#presentation-6-editors-and-shell-scripts)
+-   [Presentation 7: Loops and Workflow
+    Language](#presentation-7-loops-and-workflow-language)
+-   [Presentation 8: Software Installation, Upkeep &
+    More](#presentation-8-software-installation-upkeep--more)
 
 ## Introduction
 
@@ -46,16 +38,38 @@ Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.
 
 ## Presentation 1: Navigating Files and Directories
 
+In this section we introduce the directory tree and show how to move
+around, list files and directories and what paths are.
+
+Generally, whenever a command is written on a slide, you should
+demonstrate it.
+
 ``` bash
 pwd
 ```
 
-    ## /Users/kgx936/Desktop/HeaDS/GitHub_repos/Just-Bash-It
+``` bash
+ls 
+
+ls -F
+
+ls -lht
+```
+
+``` bash
+cd
+```
+
+``` bash
+man ls
+
+ls --help
+```
 
 ## Presentation 2: Project Organization
 
 In this section we show participants how to set up a good directory
-structure. TWorkshop teachers should have setup a directory structure
+structure. Workshop teachers should have setup a directory structure
 like the one shown on slide 15.
 
 1.  Under home/user/(Desktop \| Documents) show the directory `projects`

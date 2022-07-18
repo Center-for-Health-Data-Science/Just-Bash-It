@@ -20,14 +20,42 @@ The `Just Bash It` workshop is developed and hosted by Center for Health Data Sc
 
 ## Presentation 1: Navigating Files and Directories
 
-```{bash, engine="sh"}
+In this section we introduce the directory tree and show how to move around, list files and directories and what paths are.
+
+Generally, whenever a command is written on a slide, you should demonstrate it. 
+
+```{bash, eval=FALSE, engine="sh"}
 pwd
+```
+
+```{bash, eval=FALSE, engine="sh"}
+
+ls 
+
+ls -F
+
+ls -lht
+
+```
+
+```{bash,  eval=FALSE, engine="sh"}
+
+cd
+
+```
+
+```{bash,  eval=FALSE, engine="sh"}
+
+man ls
+
+ls --help
+
 ```
 
 
 ## Presentation 2: Project Organization
 
-In this section we show participants how to set up a good directory structure. TWorkshop teachers should have setup a directory structure like the one shown on slide 15.
+In this section we show participants how to set up a good directory structure. Workshop teachers should have setup a directory structure like the one shown on slide 15.
 
 1. Under home/user/(Desktop | Documents) show the directory `projects` which contains the project at hand. Reiterate commands `cd`, `pwd` and `ls`.
 
