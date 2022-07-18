@@ -36,6 +36,8 @@ ls -F
 
 ls -lht
 
+ls *
+
 ```
 
 ```{bash,  eval=FALSE, engine="sh"}

@@ -2,31 +2,21 @@
 ================
 Center for Health Data Science, July 2022
 
--   <a href="#introduction" id="toc-introduction">Introduction</a>
--   <a href="#exercise-1-navigating-files-and-directories"
-    id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
-    Navigating Files and Directories</a>
--   <a href="#exercise-2-project-organization"
-    id="toc-exercise-2-project-organization">Exercise 2: Project
-    Organization</a>
--   <a href="#exercise-3-working-with-files-and-directories"
-    id="toc-exercise-3-working-with-files-and-directories">Exercise 3:
-    Working with Files and Directories</a>
--   <a href="#exercise-4-commands-redirection--pipes"
-    id="toc-exercise-4-commands-redirection--pipes">Exercise 4: Commands,
-    Redirection &amp; Pipes</a>
--   <a href="#exercise-5-more-bash-commands"
-    id="toc-exercise-5-more-bash-commands">Exercise 5: More Bash
-    Commands</a>
--   <a href="#exercise-6-editors-and-shell-scripts"
-    id="toc-exercise-6-editors-and-shell-scripts">Exercise 6: Editors and
-    Shell scripts</a>
--   <a href="#exercise-7-loops-and-workflow-language"
-    id="toc-exercise-7-loops-and-workflow-language">Exercise 7: Loops and
-    Workflow Language</a>
--   <a href="#exercise-8-software-installation-upkeep--more"
-    id="toc-exercise-8-software-installation-upkeep--more">Exercise 8:
-    Software Installation, Upkeep &amp; More</a>
+-   [Introduction](#introduction)
+-   [Exercise 1: Navigating Files and
+    Directories](#exercise-1-navigating-files-and-directories)
+-   [Exercise 2: Project Organization](#exercise-2-project-organization)
+-   [Exercise 3: Working with Files and
+    Directories](#exercise-3-working-with-files-and-directories)
+-   [Exercise 4: Commands, Redirection &
+    Pipes](#exercise-4-commands-redirection--pipes)
+-   [Exercise 5: More Bash Commands](#exercise-5-more-bash-commands)
+-   [Exercise 6: Editors and Shell
+    scripts](#exercise-6-editors-and-shell-scripts)
+-   [Exercise 7: Loops and Workflow
+    Language](#exercise-7-loops-and-workflow-language)
+-   [Exercise 8: Software Installation, Upkeep &
+    More](#exercise-8-software-installation-upkeep--more)
 
 ------------------------------------------------------------------------
 
@@ -47,6 +37,24 @@ addition to hands-on presentations (code-along) and accompanying
 exercises.
 
 ## Exercise 1: Navigating Files and Directories
+
+On your command line, go to where you have downloaded the course
+materials. If the folder is zipped, unzip it. (This might be easier to
+do with the graphical user interface).
+
+1.  List the files and directories in the top directory `Just-Bash-It`.
+    Which file was last updated? Which file is the largest?
+
+2.  Go into the `Examples` folder and list its contents.
+
+3.  Move the text file from the `images` folder to the `docs` folder.
+    Confirm that is is in the right place.
+
+4.  Make a copy of the text file.
+
+5.  Rename the copy.
+
+6.  Remove the copy.
 
 ## Exercise 2: Project Organization
 

@@ -54,6 +54,8 @@ ls
 ls -F
 
 ls -lht
+
+ls *
 ```
 
 ``` bash
