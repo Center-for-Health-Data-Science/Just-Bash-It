@@ -9,10 +9,10 @@ Center for Health Data Science, July 2022
     Organization](#presentation-2-project-organization)
 -   [Presentation 3: Working with Files and
     Directories](#presentation-3-working-with-files-and-directories)
--   [Presentation 4: Commands, Redirection &
-    Pipes](#presentation-4-commands-redirection--pipes)
--   [Presentation 5: More Bash
-    Commands](#presentation-5-more-bash-commands)
+-   [Presentation 4: More Bash
+    Commands](#presentation-4-more-bash-commands)
+-   [Presentation 5: Redirection &
+    Pipes](#presentation-5-redirection--pipes)
 -   [Presentation 6: Editors and Shell
     scripts](#presentation-6-editors-and-shell-scripts)
 -   [Presentation 7: Loops and Workflow
@@ -126,9 +126,9 @@ tail -n
     the project structure. Add a line of text with each editor and show
     and option or two. Save the changes quit and use less to view it.
 
-## Presentation 4: Commands, Redirection & Pipes
+## Presentation 4: More Bash Commands
 
-## Presentation 5: More Bash Commands
+## Presentation 5: Redirection & Pipes
 
 ## Presentation 6: Editors and Shell scripts
 

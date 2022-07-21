@@ -8,9 +8,8 @@ Center for Health Data Science, July 2022
 -   [Exercise 2: Project Organization](#exercise-2-project-organization)
 -   [Exercise 3: Working with Files and
     Directories](#exercise-3-working-with-files-and-directories)
--   [Exercise 4: Commands, Redirection &
-    Pipes](#exercise-4-commands-redirection--pipes)
--   [Exercise 5: More Bash Commands](#exercise-5-more-bash-commands)
+-   [Exercise 4: More Bash Commands](#exercise-4-more-bash-commands)
+-   [Exercise 5: Redirection & Pipes](#exercise-5-redirection--pipes)
 -   [Exercise 6: Editors and Shell
     scripts](#exercise-6-editors-and-shell-scripts)
 -   [Exercise 7: Loops and Workflow
@@ -112,9 +111,39 @@ other genomic feature from the organism of study, Arabidopsis thaliana.
 5.  Look at the content of one of the two `fq.gz` files with RNA
     sequencing read, **N.B.** this time without expanding the file!
 
-## Exercise 4: Commands, Redirection & Pipes
+## Exercise 4: More Bash Commands
 
-## Exercise 5: More Bash Commands
+Suggestion for Exercise:
+
+1.  In the course material, find the file ‘patients.dat’ and navigate to
+    the folder where it is.
+
+2.  Have a look at the content of the file.
+
+3.  How many lines does the file contain?
+
+4.  Cut out the first column of the file.
+
+5.  Cut out the first and third column.
+
+6.  Sort the file by the age column from lowest to highest. Then,
+    reverse the sort so you have the oldest patients in top.
+
+7.  Grep only rows containing patients at ‘Rigshospitalet’.
+
+## Exercise 5: Redirection & Pipes
+
+Again, using patients.dat do the following:
+
+1.  Sort the file by the age column and redirect the output into a new
+    file. View the new file and confirm that it is sorted correctly.
+
+2.  Cut out the column that describes the hospital, sort and count the
+    number of uniq elements (using `uniq`, as shown in the slides).
+    Build this up step by step if you have trouble.
+
+3.  Grep only rows containing patients at ‘Rigshospitalet’ and sort them
+    by their satisfaction from lowest to highest.
 
 ## Exercise 6: Editors and Shell scripts
 
