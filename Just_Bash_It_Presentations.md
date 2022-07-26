@@ -130,8 +130,26 @@ tail -n
 
 ## Presentation 5: Redirection & Pipes
 
+1.  Show how to use the pipe to combine `wc` and `sort`.
+
+2.  Show some other chained commands as illustrated on slide ‘chaining
+    commands’.
+
 ## Presentation 6: Editors and Shell scripts
 
+1.  Open a simple text editor (I use gedit. On windows perhaps use
+    notepad?) and write a script. Save it. Show it has appeared with ls.
+    View it with less or head. Check permissions. Change permissions to
+    make it executable if necessary. Run it.
+
 ## Presentation 7: Loops and Workflow Language
+
+1.  In the script you have made during presentation 6 or a new one,
+    write a bash loop. Print something like the file name in each
+    iteration of the loop so you can demonstrate that it works when you
+    run it. Perhaps we can run the loop on the RNAseq data. I guess one
+    thing we could do in the loop would be to run `gunzip -c` and stream
+    the first 12 lines to the display to check that they are all okay
+    fastq files.
 
 ## Presentation 8: Software Installation, Upkeep & More

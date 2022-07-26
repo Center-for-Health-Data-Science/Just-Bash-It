@@ -120,16 +120,20 @@ Suggestion for Exercise:
 
 2.  Have a look at the content of the file.
 
-3.  How many lines does the file contain?
+3.  Move the file into your directory structure into the `data/raw`
+    subfolder and navigate there. Confirm that the file is in this
+    folder with i.e. `ls`.
 
-4.  Cut out the first column of the file.
+4.  How many lines does the file contain?
 
-5.  Cut out the first and third column.
+5.  Cut out the first column of the file.
 
-6.  Sort the file by the age column from lowest to highest. Then,
-    reverse the sort so you have the oldest patients in top.
+6.  Cut out the first and third column.
 
-7.  Grep only rows containing patients at ‘Rigshospitalet’.
+7.  Sort the file by the age column from lowest to highest. Then,
+    reverse the sort so you have the oldest patients on top.
+
+8.  Grep only rows containing patients at ‘Rigshospitalet’.
 
 ## Exercise 5: Redirection & Pipes
 
@@ -138,15 +142,26 @@ Again, using patients.dat do the following:
 1.  Sort the file by the age column and redirect the output into a new
     file. View the new file and confirm that it is sorted correctly.
 
-2.  Cut out the column that describes the hospital, sort and count the
-    number of uniq elements (using `uniq`, as shown in the slides).
-    Build this up step by step if you have trouble.
+2.  Redo 1 but this time redirect the output to a file in the
+    `data/generated` directory. The original file `patients.dat` should
+    be in `data/raw`.
 
-3.  Grep only rows containing patients at ‘Rigshospitalet’ and sort them
+3.  Cut out the column that describes the hospital, sort the output and
+    count the number of unique elements (using `uniq`, as shown in the
+    slides). Build this up step by step if you have trouble. Do you
+    notice a problem with the data in the file?
+
+4.  Grep only rows containing patients at ‘Rigshospitalet’ and sort them
     by their satisfaction from lowest to highest.
 
 ## Exercise 6: Editors and Shell scripts
 
+Write a short script that implements the tasks 5, 6 and 7 from exercise
+4 on a file supplied by the user (given as a command line argument).
+Test it and confirm that it works.
+
 ## Exercise 7: Loops and Workflow Language
+
+Do we do something on the files in data???
 
 ## Exercise 8: Software Installation, Upkeep & More
