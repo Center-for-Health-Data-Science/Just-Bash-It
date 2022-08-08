@@ -113,9 +113,10 @@ Again, using patients.dat do the following:
 
 Write a short script that implements the tasks 5, 6 and 7 from exercise 4 on a file supplied by the user (given as a command line argument). Test it and confirm that it works. 
 
-## Exercise 7: Loops and Workflow Language 
+## Exercise 7: Software Installation, Upkeep & More  
+
+We install something light-weight and useful.
+
+## Exercise 8: Loops and Workflow Language
 
 Do we do something on the files in data???
-
-## Exercise 8: Software Installation, Upkeep & More
-

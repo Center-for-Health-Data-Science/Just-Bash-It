@@ -15,10 +15,10 @@ Center for Health Data Science, July 2022
     Pipes](#presentation-5-redirection--pipes)
 -   [Presentation 6: Editors and Shell
     scripts](#presentation-6-editors-and-shell-scripts)
--   [Presentation 7: Loops and Workflow
-    Language](#presentation-7-loops-and-workflow-language)
--   [Presentation 8: Software Installation, Upkeep &
-    More](#presentation-8-software-installation-upkeep--more)
+-   [Presentation 7: Software Installation, Upkeep &
+    More](#presentation-7-software-installation-upkeep--more)
+-   [Presentation 8: Loops and Workflow
+    Language](#presentation-8-loops-and-workflow-language)
 
 ## Introduction
 
@@ -142,7 +142,9 @@ tail -n
     View it with less or head. Check permissions. Change permissions to
     make it executable if necessary. Run it.
 
-## Presentation 7: Loops and Workflow Language
+## Presentation 7: Software Installation, Upkeep & More
+
+## Presentation 8: Loops and Workflow Language
 
 1.  In the script you have made during presentation 6 or a new one,
     write a bash loop. Print something like the file name in each
@@ -151,5 +153,3 @@ tail -n
     thing we could do in the loop would be to run `gunzip -c` and stream
     the first 12 lines to the display to check that they are all okay
     fastq files.
-
-## Presentation 8: Software Installation, Upkeep & More

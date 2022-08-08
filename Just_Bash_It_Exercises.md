@@ -12,10 +12,10 @@ Center for Health Data Science, July 2022
 -   [Exercise 5: Redirection & Pipes](#exercise-5-redirection--pipes)
 -   [Exercise 6: Editors and Shell
     scripts](#exercise-6-editors-and-shell-scripts)
--   [Exercise 7: Loops and Workflow
-    Language](#exercise-7-loops-and-workflow-language)
--   [Exercise 8: Software Installation, Upkeep &
-    More](#exercise-8-software-installation-upkeep--more)
+-   [Exercise 7: Software Installation, Upkeep &
+    More](#exercise-7-software-installation-upkeep--more)
+-   [Exercise 8: Loops and Workflow
+    Language](#exercise-8-loops-and-workflow-language)
 
 ------------------------------------------------------------------------
 
@@ -160,8 +160,10 @@ Write a short script that implements the tasks 5, 6 and 7 from exercise
 4 on a file supplied by the user (given as a command line argument).
 Test it and confirm that it works.
 
-## Exercise 7: Loops and Workflow Language
+## Exercise 7: Software Installation, Upkeep & More
+
+We install something light-weight and useful.
+
+## Exercise 8: Loops and Workflow Language
 
 Do we do something on the files in data???
-
-## Exercise 8: Software Installation, Upkeep & More
