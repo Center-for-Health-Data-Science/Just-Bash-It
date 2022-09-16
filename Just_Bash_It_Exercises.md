@@ -2,20 +2,31 @@
 ================
 Center for Health Data Science, July 2022
 
--   [Introduction](#introduction)
--   [Exercise 1: Navigating Files and
-    Directories](#exercise-1-navigating-files-and-directories)
--   [Exercise 2: Project Organization](#exercise-2-project-organization)
--   [Exercise 3: Working with Files and
-    Directories](#exercise-3-working-with-files-and-directories)
--   [Exercise 4: More Bash Commands](#exercise-4-more-bash-commands)
--   [Exercise 5: Redirection & Pipes](#exercise-5-redirection--pipes)
--   [Exercise 6: Editors and Shell
-    scripts](#exercise-6-editors-and-shell-scripts)
--   [Exercise 7: Software Installation, Upkeep &
-    More](#exercise-7-software-installation-upkeep--more)
--   [Exercise 8: Loops and Workflow
-    Language](#exercise-8-loops-and-workflow-language)
+-   <a href="#introduction" id="toc-introduction">Introduction</a>
+-   <a href="#exercise-1-navigating-files-and-directories"
+    id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
+    Navigating Files and Directories</a>
+-   <a href="#exercise-2-project-organization"
+    id="toc-exercise-2-project-organization">Exercise 2: Project
+    Organization</a>
+-   <a href="#exercise-3-working-with-files-and-directories"
+    id="toc-exercise-3-working-with-files-and-directories">Exercise 3:
+    Working with Files and Directories</a>
+-   <a href="#exercise-4-more-bash-commands"
+    id="toc-exercise-4-more-bash-commands">Exercise 4: More Bash
+    Commands</a>
+-   <a href="#exercise-5-redirection--pipes"
+    id="toc-exercise-5-redirection--pipes">Exercise 5: Redirection &amp;
+    Pipes</a>
+-   <a href="#exercise-6-editors-and-shell-scripts"
+    id="toc-exercise-6-editors-and-shell-scripts">Exercise 6: Editors and
+    Shell scripts</a>
+-   <a href="#exercise-7-software-installation-upkeep--more"
+    id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
+    Software Installation, Upkeep &amp; More</a>
+-   <a href="#exercise-8-loops-and-workflow-language"
+    id="toc-exercise-8-loops-and-workflow-language">Exercise 8: Loops and
+    Workflow Language</a>
 
 ------------------------------------------------------------------------
 
@@ -115,7 +126,7 @@ other genomic feature from the organism of study, Arabidopsis thaliana.
 
 Suggestion for Exercise:
 
-1.  In the course material, find the file ‘patients.dat’ and navigate to
+1.  In the course material, find the file ‘patients.txt’ and navigate to
     the folder where it is.
 
 2.  Have a look at the content of the file.
@@ -137,13 +148,13 @@ Suggestion for Exercise:
 
 ## Exercise 5: Redirection & Pipes
 
-Again, using patients.dat do the following:
+Again, using patients.txt do the following:
 
 1.  Sort the file by the age column and redirect the output into a new
     file. View the new file and confirm that it is sorted correctly.
 
 2.  Redo 1 but this time redirect the output to a file in the
-    `data/generated` directory. The original file `patients.dat` should
+    `data/generated` directory. The original file `patients.txt` should
     be in `data/raw`.
 
 3.  Cut out the column that describes the hospital, sort the output and

@@ -80,7 +80,7 @@ Two of these files are `fastq` files, they contain RNAseq reads from a bulk-RNA 
 
 Suggestion for Exercise:
 
-1. In the course material, find the file 'patients.dat' and navigate to the folder where it is.
+1. In the course material, find the file 'patients.txt' and navigate to the folder where it is.
 
 2. Have a look at the content of the file. 
 
@@ -98,11 +98,11 @@ Suggestion for Exercise:
 
 ## Exercise 5: Redirection & Pipes
 
-Again, using patients.dat do the following:
+Again, using patients.txt do the following:
 
 1. Sort the file by the age column and redirect the output into a new file. View the new file and confirm that it is sorted correctly.
 
-2. Redo 1 but this time redirect the output to a file in the `data/generated` directory. The original file `patients.dat` should be in `data/raw`.
+2. Redo 1 but this time redirect the output to a file in the `data/generated` directory. The original file `patients.txt` should be in `data/raw`.
 
 3. Cut out the column that describes the hospital, sort the output and count the number of unique elements (using `uniq`, as shown in the slides). Build this up step by step if you have trouble. Do you notice a problem with the data in the file?
 
