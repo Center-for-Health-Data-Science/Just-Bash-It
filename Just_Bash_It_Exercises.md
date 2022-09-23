@@ -9,18 +9,20 @@ Center for Health Data Science, July 2022
 -   <a href="#exercise-2-project-organization"
     id="toc-exercise-2-project-organization">Exercise 2: Project
     Organization</a>
--   <a href="#exercise-3-working-with-files-and-directories"
-    id="toc-exercise-3-working-with-files-and-directories">Exercise 3:
-    Working with Files and Directories</a>
--   <a href="#exercise-4-more-bash-commands"
-    id="toc-exercise-4-more-bash-commands">Exercise 4: More Bash
-    Commands</a>
+-   <a href="#exercise-3-working-with-files"
+    id="toc-exercise-3-working-with-files">Exercise 3: Working with
+    Files</a>
+-   <a href="#exercise-4-more-bash-commands---part-1-wc-sed--cut"
+    id="toc-exercise-4-more-bash-commands---part-1-wc-sed--cut">Exercise 4:
+    More Bash Commands - Part 1: wc, sed &amp; cut</a>
+-   <a href="#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep"
+    id="toc-exercise-4-more-bash-commands---part-2-sort-paste-awk--grep">Exercise
+    4: More Bash Commands - Part 2: sort, paste, awk &amp; grep</a>
 -   <a href="#exercise-5-redirection--pipes"
     id="toc-exercise-5-redirection--pipes">Exercise 5: Redirection &amp;
     Pipes</a>
--   <a href="#exercise-6-editors-and-shell-scripts"
-    id="toc-exercise-6-editors-and-shell-scripts">Exercise 6: Editors and
-    Shell scripts</a>
+-   <a href="#exercise-6-shell-scripts"
+    id="toc-exercise-6-shell-scripts">Exercise 6: Shell scripts</a>
 -   <a href="#exercise-7-software-installation-upkeep--more"
     id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
     Software Installation, Upkeep &amp; More</a>
@@ -46,25 +48,30 @@ The workshop consists of a slideshow with slides to each section, in
 addition to hands-on presentations (code-along) and accompanying
 exercises.
 
+ 
+
 ## Exercise 1: Navigating Files and Directories
 
 On your command line, go to where you have downloaded the course
 materials. If the folder is zipped, unzip it. (This might be easier to
 do with the graphical user interface).
 
-1.  List the files and directories in the top directory `Just-Bash-It`.
-    Which file was last updated? Which file is the largest?
+1.  List the files and directories in the top directory
+    **Just-Bash-It**. Which file was last updated? Which file is the
+    largest?
 
-2.  Go into the `Examples` folder and list its contents.
+2.  Go into the **Examples** folder and list its contents.
 
-3.  Move the text file from the `images` folder to the `docs` folder.
-    Confirm that is is in the right place.
+3.  Move the text file from the **images ** folder to the **docs **
+    folder. Confirm that is is in the right place.
 
 4.  Make a copy of the text file.
 
 5.  Rename the copy.
 
 6.  Remove the copy.
+
+ 
 
 ## Exercise 2: Project Organization
 
@@ -73,8 +80,8 @@ Let’s get structured!
 1.  Make a `projects` directory at `/home/user/Desktop` on your computer
     with all the sub-folders shown on **slide 15** in the slideshow. You
     are free to name the project within the `projects` folder whatever
-    you would like,
-    e.g. `Just_Bash_It, Intro_to_command_line, First_Project, ...`.  
+    you would like, e.g. **Just_Bash_It, Intro_to_command_line,
+    First_Project, … **.  
     **Cheat Sheet 1** in the slideshow will have the commands you need.
 
 You should have downloaded the course materials including the raw data
@@ -95,56 +102,187 @@ you moved it somewhere else.
 
 5.  Make a new file called `readme` within your project directory.
 
-## Exercise 3: Working with Files and Directories
+ 
+
+## Exercise 3: Working with Files
 
 1.  Go to your project directory and edit the `readme` file you made in
-    *Exercise 2* using the `nano` editor. A `readme` file should contain
-    information about what a certain directory contains, its purpose and
-    who owns it/is the editor.
+    **Exercise 2** using the `nano` editor. A `readme` file should
+    contain information about what a certain directory contains, its
+    purpose and who owns it/is the editor.
 
 2.  Move to the sub-directory `Data/Raw` here you should have the three
     data files you moved from the course material directory.
 
-Two of these files are `fastq` files, they contain RNAseq reads from a
+Two of these files are`fastq` files, they contain RNAseq reads from a
 bulk-RNA sequencing experiment using Arabidopsis thaliana (thale cress).
-The extension `_1` and `_2` denote that reads are paired-end (e.g. read
-1 and read 2). The third file, `gff`, contains annotations of genes and
-other genomic feature from the organism of study, Arabidopsis thaliana.
+The extension `_R1` and `_R2` denote that reads are paired-end
+(e.g. read 1 and read 2). The third file with the extension `.gff`,
+contains annotations of genes and other genomic feature from the
+organism of study, Arabidopsis Thaliana.
 
-3.  Expand the `.gff.gz` annotation file and make sure you keep the
-    compressed version.  
+3.  Expand the `GCF_genomicAnnotation.gff.gz` annotation file and make
+    sure you keep the compressed version.  
     **HINT:** look into what flags/arguments need to be specified when
     decompressing).
 
 4.  Try out the commands `less, cat, head, tail` on the expanded `.gff`
-    file. Note what it contains.
+    file.
 
-5.  Look at the content of one of the two `fq.gz` files with RNA
-    sequencing read, **N.B.** this time without expanding the file!
+The file contains the fields (columns) shown below, and includes
+information on; annotation source, region, sequence start and end
+position, stand, as well as a column containing various information on
+the sequences, i.e. entry id, gene name, locus, ids, tags etc.
 
-## Exercise 4: More Bash Commands
+| NC ID       | Source | Region | Start | End  | Strand | Gene transcript etc. |
+|-------------|:------:|:------:|:-----:|:----:|:------:|---------------------:|
+| NC_003070.9 | RefSeq |  exon  | 4706  | 5095 |   \+   |  gene=ARV1;locus_tag |
 
-Suggestion for Exercise:
+Note how that the file header (first part of the file) is denoted by
+hastags.
 
-1.  In the course material, find the file ‘patients.txt’ and navigate to
-    the folder where it is.
+5.  Read the content of the `.gff` file into a new file, name this file
+    `Annotation.gff`. Move the `Annotation.gff` to your `scratch`
+    directory.
 
-2.  Have a look at the content of the file.
+6.  Look at the content of one of the two `fq.gz` files with RNA
+    sequencing read, **N.B.** this time without expanding the file! How
+    many lines are annotated for each read?
 
-3.  Move the file into your directory structure into the `data/raw`
-    subfolder and navigate there. Confirm that the file is in this
-    folder with i.e. `ls`.
+ 
 
-4.  How many lines does the file contain?
+## Exercise 4: More Bash Commands - Part 1: wc, sed & cut
 
-5.  Cut out the first column of the file.
+You will now test out some of the new commands introduced in the slide
+show and the command line presentation.
 
-6.  Cut out the first and third column.
+Go to your folder `scratch` where you should have a copy of the unzipped
+`GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`, which you
+made in exercise 3.5 above. For inspiration on how to solve the
+questions below have a look at **slide 46**.  
+**N.B** Remember if you are not sure what arguments (flags) a given
+command has you can always use `man [name_of_command]`to see what flags
+(arguments) a command takes.
 
-7.  Sort the file by the age column from lowest to highest. Then,
-    reverse the sort so you have the oldest patients on top.
+1.  Figure out how many, lines, words and characters the
+    `Annotation.gff` file contains using `wc`.
 
-8.  Grep only rows containing patients at ‘Rigshospitalet’.
+2.  As we are not interested in the header lines, denoted by hastages,
+    remove these from the `Annotation.gff`and name the new file
+    `Annotation_tmp.gff`. You can employ the command `sed`, see pseudo
+    code below. You will need to figure what `l1` (start line) and `l2`
+    (end line) should be. What do you think the `d` refers to?
+
+``` bash
+sed 'l1,l2d' Annotation.gff > Annotation_tmp.gff
+```
+
+Have a look at the `Annotation_tmp.gff`. Does it look correct now,
+i.e. no headers with hastags? And does it have number of lines you
+expect it to have?
+
+3.  Use the command `cut` to make a new file which contains only
+    `fields 3,4,5` (i.e. columns with region, start and end) from the
+    `Annotation_tmp.gff` (name it whatever you’d like). Check that the
+    file looks correct.
+
+As you will have noticed `field 9` in the annotation file has multiple
+information per entry (ids, gene name, locus, tags etc.) separated by a
+`;`. We refer to such separating characters as `delimiters`.  
+You are only interested in one information from `field 9`, and that is
+the **gene name**. To extract this information we will use two commands,
+first `cut` to cut the field out and then `grep` to grep the pattern we
+want in the sub-field (between two `;`).
+
+4.  Use `cut` to make a new file which contains only the information on
+    **gene key** in the `Annotation_tmp.gff`. The code is provided
+    below, remember to change the name of the output file to something
+    more informative.  
+
+-   What do the flags `-d` and `-f` do?
+-   Why are we setting the -f flag to 5 not 9 (*HINT: field vs
+    sub-field*)?
+
+``` bash
+cut -d ';' -f 5 Annotation_tmp.gff > output.gff
+```
+
+Check that the file looks correct after extraction, i.e. does it seem to
+the the field you are interested in?
+
+5.  We would like to remove the repetitive `gene=` in each line to just
+    obtain the clean **gene name**. One way to get this is to do a
+    search and replace with the once again using `sed`. The `sed`
+    command requires you to specify what pattern to match `[pMatch]` and
+    what pattern to replace it with `[pReplace]`, these should be
+    separated by slashes.
+
+For the pseudo code chunk figure out:  
+\* What the input file should be?  
+\* Change `[pMatch]` to the pattern you want to match and `[pReplace]`
+to what you want to replace with (*HINT: replace with empty/nothing*).  
+\* What does the `s` and `g` denote?  
+\* Run the command and save the output to whatever file name you’d like.
+
+``` bash
+sed 's/[pMatch]/[pReplace]/g' input.gff > output.gff
+```
+
+ 
+
+## Exercise 4: More Bash Commands - Part 2: sort, paste, awk & grep
+
+6.  You should now have one file containing only field 3, 4 & 5
+    (question 2.) and one containing only the sub-field with gene names
+    from field 9 (question 5.).  
+    Paste these two files together into a single file using the command
+    `paste`, name this file `Annotation_Gene.gff`. You will need to use
+    the flag `-d` to specify what kind of delimiter should be used to
+    paste the fields together, you should use a tab-delimiter, denoted
+    `'\t'`.
+
+7.  Run and decipher the command below.
+
+``` bash
+awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
+```
+
+-   What is the output of the command?  
+-   What does the flag `-F` specify?
+-   What does `OFS="\t"` mean? *HINT: Google this!*
+-   What is going on inside the curly brackets?
+
+8.  Let’s have a look at the content of your final file.
+
+-   Are there any gene seuqence with length 0 in the annotation file? -
+    Try the command `sort` with flags `-f 5`
+-   What is the name of the gene with the longest sequence, annotated in
+    your file? - Try the command `sort` with flags `-f 5 -nr`  
+-   Does our organism of study, Arabidopsis Thaliana, have the `TERT`
+    gene? - Try the command `grep`.
+-   All living organisms have polymerase genes, including Arabidopsis
+    Thaliana. How many types of `POL` genes are annotated?
+-   How many gene annotation lines in the file pertain to transfer RNA
+    (`tRNA`)? - Try the command `grep` with flag `-c`.
+
+9.  Your new file `Annotation_Gene_Len.gff` does not have any headers on
+    each field. Make a new file called `header.gff`, use nano for this,
+    copy the content below into the file and close/save it.
+
+``` bash
+Region    Start   End   GeneName    Length
+```
+
+Now, use the command `cat` to bind `header.gff` and
+`Annotation_Gene_Len.gff` together. Name the output
+`Annotation_[TodaysDate].gff`
+
+When you have checked at the file looks correct, move the file to your
+**Results** directory - **N.B** go to the sub-directory and check that
+you have moved it correctly!. You can now remove (delete) all the
+temporary files in your scratch directory. WELL DONE!
+
+ 
 
 ## Exercise 5: Redirection & Pipes
 
@@ -165,7 +303,9 @@ Again, using patients.txt do the following:
 4.  Grep only rows containing patients at ‘Rigshospitalet’ and sort them
     by their satisfaction from lowest to highest.
 
-## Exercise 6: Editors and Shell scripts
+ 
+
+## Exercise 6: Shell scripts
 
 Write a short script that implements the tasks 5, 6 and 7 from exercise
 4 on a file supplied by the user (given as a command line argument).
