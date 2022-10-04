@@ -96,35 +96,221 @@ du -sh dir
 1. View the content of a file with different commands. Use a readme file from a github repo as an example. 
 
 ```{bash, eval=FALSE, engine="sh"}
-cat 
+cat patients.txt
+
 less
 head -n
 tail -n
 ```
 
-2. Show editors: `nano, vim and emacs`. Edit a `readme` file made under the project structure. Add a line of text with each editor and show and option or two. Save the changes quit and use less to view it.
+2. Show how commands above can be used to copy content or part of it to a new file.
+
+```{bash, eval=FALSE, engine="sh"}
+head -10 patients.txt > patients_small.txt
+```
+
+3. Show editors: `nano, vim and emacs`. Edit a `readme` file made under the project structure. Add a line of text with each editor and show and option or two. Save the changes quit and use less to view it.
+
+4. Show different command for compressing and decompressing a file, i.e:
+
+```{bash, eval=FALSE, engine="sh"}
+# zip 
 
 
-## Presentation 4: More Bash Commands
+gzip -k patients.txt
+tar -cf patients.tar patients.txt
+zip patients.zip patients.txt
 
 
+# unzip
+gunzip patients.txt
+unzip patients.zip
+zless patients.gz
+```
+
+
+
+
+
+
+## Presentation 4:  More Bash Commands - Part 1: wc, sed & cut 
+
+1. Show word count (`wc`), lines and characters:
+```{bash, eval=FALSE, engine="sh"}
+wc -l patients.txt
+wc -c patients.txt
+wc -w patients.txt
+```
+
+Why does `wc -l patients.txt` and `wc -w patients.txt` result in the same output?   
+
+
+2. Show some options for `cut`:   
+
+Cut bytes and characters
+```{bash, eval=FALSE, engine="sh"}
+cut -b 1,2,3,4 patients.txt
+cut -b 1-4 patients.txt
+cut -c 1-4 patients.txt
+```
+
+Cut field (f) with specified delimiter (d):
+```{bash, eval=FALSE, engine="sh"}
+cut -d ',' -f 1 patients.txt
+cut -d ',' -f 3 patients.txt
+cut -d ',' -f 2-3,5 patients.txt
+```
+
+
+3. Show some options for `sed`:   
+
+Print lines 12,18 or print everything except lines 12,18:
+```{bash, eval=FALSE, engine="sh"}
+sed -n '12,18p' patients.txt
+sed '12,18d' patients.txt
+```
+
+Search replace with `sed`:
+```{bash, eval=FALSE, engine="sh"}
+sed 's/herlev/Herlev/g' patients.txt
+sed 's/A/X/g' patients.txt
+
+# Only if nothing follows a, regex
+sed's/a$/X/g' patients.txt
+
+# Except in line 4
+sed '4!s/A/C/g' patients.txt
+
+# Only print lines containing Herlev
+sed -n '/Herlev/p' patients.txt
+
+# only replace A with C for lines containing Herlev
+sed '/Herlev/s/A/C/g' patients.txt
+```
+
+
+
+
+## Presentation 4:  More Bash Commands - Part 1: sort, grep & awk 
+
+4. Show some options for `sort`:   
+```{bash, eval=FALSE, engine="sh"}
+sort patients.txt
+
+# Sort on field 4
+sort -t ',' -k4 patients.txt
+
+# Sort by field 2, than 3
+sort -t ',' -k2,3 patients.txt
+
+# Sort numerical 
+sort -t ',' -n -k4 patients.txt
+sort -t ',' -n -k2 patients.txt
+```
+
+5. Show some options for `grep`
+
+```{bash, eval=FALSE, engine="sh"}
+# grep pattern, print the line,  i.e. all fields
+grep 'Rigshospitalet' patients.txt
+grep 'Rigs' patients.txt
+
+# grep count
+grep -c 'Rigs' patients.txt
+
+# grep return pattern only
+grep -o 'Rigs' patients.txt
+
+# case sensitive
+grep 'her' patients.txt
+grep -i 'her' patients.txt
+
+
+# regular expression
+grep '40' patients.txt
+grep '^40' patients.txt
+
+
+# more complex regular expression
+grep '[0-9]*,[0-9]*,5' patients.txt
+
+# more complex regular expression
+grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
+
+```
+
+
+6. Show some options for `awk`
+```{bash, eval=FALSE, engine="sh"}
+# awk pattern, print the line,  i.e. all fields
+awk '/Rigs/ {print}' patients.txt
+awk '/[0-9]*,[0-9]*,5/ {print}' patients.txt
+
+# Print by field
+awk '/Rigs/ {print}' patients.txt
+awk -F ',' '{print $2,$3}' patients.txt
+
+# Print by field more complex
+awk -F ',' '/Rigs/ {print $2,$3}' patients.txt
+# With delimiter
+awk -F ',' '/Rigs/ {print $3 ";" $5}' patients.txt
+
+# With delimiter for all columns
+awk -F "," 'OFS=";" {print $3, $4, $2}' patients.txt
+
+# Conditional statement with awk
+awk  -F "," '{if ($4 >15) {print $4}}' patients.txt
+awk  -F "," '{if ($4 >15) {print}}' patients.txt
+```
 
 
 
 
 ## Presentation 5: Redirection & Pipes
 
-1. Show how to use the pipe to combine `wc` and `sort`. 
 
-2. Show some other chained commands as illustrated on slide 'chaining commands'.
+1. Chain the commands `sed` and `wc`. `sed` is used to remove the header line: 
 
-## Presentation 6: Editors and Shell scripts 
+```{bash, eval=FALSE, engine="sh"}
+sed '1d' patients.txt | wc -l
+```
+
+
+2. Chain the commands `cut`, `sort` and `uniq` to obtain unique values from the hospital column.
+
+```{bash, eval=FALSE, engine="sh"}
+cut -d ',' -f 3 patients.txt | sort | uniq
+```
+
+Same command but remove the header row first with `sed`.
+```{bash, eval=FALSE, engine="sh"}
+sed '1d' patients.txt | cut -d ',' -f 3 | sort | uniq 
+```
+
+3. Chain the commands `awk` and `sort`.
+
+```{bash, eval=FALSE, engine="sh"}
+awk -F ',' 'OFS="\t" {print $4, $2, $3}' patients.txt | sort  -k1n -k3
+```
+
+4. Chain the commands `awk` and `cat` and show how the dash `-` is used to specify input file again.
+```{bash, eval=FALSE, engine="sh"}
+awk -F ',' '{print $5, $2, $3}' patients.txt | cat file1.txt -
+awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
+```
+
+
+
+
+## Presentation 6: Shell Scripts and Loops
 
 1. Open a simple text editor (I use gedit. On windows perhaps use notepad?) and write a script. Save it. Show it has appeared with ls. View it with less or head. Check permissions. Change permissions to make it executable if necessary. Run it. 
 
+
 ## Presentation 7: Software Installation, Upkeep & More
 
-## Presentation 8: Loops and Workflow Language 
+
+## Presentation 8: Workflow Language & Compute Power
 
 1. In the script you have made during presentation 6 or a new one, write a bash loop. Print something like the file name in each iteration of the loop so you can demonstrate that it works when you run it. Perhaps we can run the loop on the RNAseq data. I guess one thing we could do in the loop would be to run `gunzip -c` and stream the first 12 lines to the display to check that they are all okay fastq files.
 

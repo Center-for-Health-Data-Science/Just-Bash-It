@@ -2,23 +2,34 @@
 ================
 Center for Health Data Science, July 2022
 
--   [Introduction](#introduction)
--   [Presentation 1: Navigating Files and
-    Directories](#presentation-1-navigating-files-and-directories)
--   [Presentation 2: Project
-    Organization](#presentation-2-project-organization)
--   [Presentation 3: Working with Files and
-    Directories](#presentation-3-working-with-files-and-directories)
--   [Presentation 4: More Bash
-    Commands](#presentation-4-more-bash-commands)
--   [Presentation 5: Redirection &
-    Pipes](#presentation-5-redirection--pipes)
--   [Presentation 6: Editors and Shell
-    scripts](#presentation-6-editors-and-shell-scripts)
--   [Presentation 7: Software Installation, Upkeep &
-    More](#presentation-7-software-installation-upkeep--more)
--   [Presentation 8: Loops and Workflow
-    Language](#presentation-8-loops-and-workflow-language)
+- <a href="#introduction" id="toc-introduction">Introduction</a>
+- <a href="#presentation-1-navigating-files-and-directories"
+  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
+  Navigating Files and Directories</a>
+- <a href="#presentation-2-project-organization"
+  id="toc-presentation-2-project-organization">Presentation 2: Project
+  Organization</a>
+- <a href="#presentation-3-working-with-files-and-directories"
+  id="toc-presentation-3-working-with-files-and-directories">Presentation
+  3: Working with Files and Directories</a>
+- <a href="#presentation-4-more-bash-commands---part-1-wc-sed--cut"
+  id="toc-presentation-4-more-bash-commands---part-1-wc-sed--cut">Presentation
+  4: More Bash Commands - Part 1: wc, sed &amp; cut</a>
+- <a href="#presentation-4-more-bash-commands---part-1-sort-grep--awk"
+  id="toc-presentation-4-more-bash-commands---part-1-sort-grep--awk">Presentation
+  4: More Bash Commands - Part 1: sort, grep &amp; awk</a>
+- <a href="#presentation-5-redirection--pipes"
+  id="toc-presentation-5-redirection--pipes">Presentation 5: Redirection
+  &amp; Pipes</a>
+- <a href="#presentation-6-shell-scripts-and-loops"
+  id="toc-presentation-6-shell-scripts-and-loops">Presentation 6: Shell
+  Scripts and Loops</a>
+- <a href="#presentation-7-software-installation-upkeep--more"
+  id="toc-presentation-7-software-installation-upkeep--more">Presentation
+  7: Software Installation, Upkeep &amp; More</a>
+- <a href="#presentation-8-workflow-language--compute-power"
+  id="toc-presentation-8-workflow-language--compute-power">Presentation 8:
+  Workflow Language &amp; Compute Power</a>
 
 ## Introduction
 
@@ -49,6 +60,7 @@ pwd
 ```
 
 ``` bash
+
 ls 
 
 ls -F
@@ -59,10 +71,12 @@ ls *
 ```
 
 ``` bash
+
 cd
 ```
 
 ``` bash
+
 man ls
 
 ls --help
@@ -116,26 +130,210 @@ du -sh dir
     file from a github repo as an example.
 
 ``` bash
-cat 
+cat patients.txt
+
 less
 head -n
 tail -n
 ```
 
-2.  Show editors: `nano, vim and emacs`. Edit a `readme` file made under
+2.  Show how commands above can be used to copy content or part of it to
+    a new file.
+
+``` bash
+head -10 patients.txt > patients_small.txt
+```
+
+3.  Show editors: `nano, vim and emacs`. Edit a `readme` file made under
     the project structure. Add a line of text with each editor and show
     and option or two. Save the changes quit and use less to view it.
 
-## Presentation 4: More Bash Commands
+4.  Show different command for compressing and decompressing a file,
+    i.e:
+
+``` bash
+# zip 
+
+
+gzip -k patients.txt
+tar -cf patients.tar patients.txt
+zip patients.zip patients.txt
+
+
+# unzip
+gunzip patients.txt
+unzip patients.zip
+zless patients.gz
+```
+
+## Presentation 4: More Bash Commands - Part 1: wc, sed & cut
+
+1.  Show word count (`wc`), lines and characters:
+
+``` bash
+wc -l patients.txt
+wc -c patients.txt
+wc -w patients.txt
+```
+
+Why does `wc -l patients.txt` and `wc -w patients.txt` result in the
+same output?
+
+2.  Show some options for `cut`:
+
+Cut bytes and characters
+
+``` bash
+cut -b 1,2,3,4 patients.txt
+cut -b 1-4 patients.txt
+cut -c 1-4 patients.txt
+```
+
+Cut field (f) with specified delimiter (d):
+
+``` bash
+cut -d ',' -f 1 patients.txt
+cut -d ',' -f 3 patients.txt
+cut -d ',' -f 2-3,5 patients.txt
+```
+
+3.  Show some options for `sed`:
+
+Print lines 12,18 or print everything except lines 12,18:
+
+``` bash
+sed -n '12,18p' patients.txt
+sed '12,18d' patients.txt
+```
+
+Search replace with `sed`:
+
+``` bash
+sed 's/herlev/Herlev/g' patients.txt
+sed 's/A/X/g' patients.txt
+
+# Only if nothing follows a, regex
+sed's/a$/X/g' patients.txt
+
+# Except in line 4
+sed '4!s/A/C/g' patients.txt
+
+# Only print lines containing Herlev
+sed -n '/Herlev/p' patients.txt
+
+# only replace A with C for lines containing Herlev
+sed '/Herlev/s/A/C/g' patients.txt
+```
+
+## Presentation 4: More Bash Commands - Part 1: sort, grep & awk
+
+4.  Show some options for `sort`:
+
+``` bash
+sort patients.txt
+
+# Sort on field 4
+sort -t ',' -k4 patients.txt
+
+# Sort by field 2, than 3
+sort -t ',' -k2,3 patients.txt
+
+# Sort numerical 
+sort -t ',' -n -k4 patients.txt
+sort -t ',' -n -k2 patients.txt
+```
+
+5.  Show some options for `grep`
+
+``` bash
+# grep pattern, print the line,  i.e. all fields
+grep 'Rigshospitalet' patients.txt
+grep 'Rigs' patients.txt
+
+# grep count
+grep -c 'Rigs' patients.txt
+
+# grep return pattern only
+grep -o 'Rigs' patients.txt
+
+# case sensitive
+grep 'her' patients.txt
+grep -i 'her' patients.txt
+
+
+# regular expression
+grep '40' patients.txt
+grep '^40' patients.txt
+
+
+# more complex regular expression
+grep '[0-9]*,[0-9]*,5' patients.txt
+
+# more complex regular expression
+grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
+```
+
+6.  Show some options for `awk`
+
+``` bash
+# awk pattern, print the line,  i.e. all fields
+awk '/Rigs/ {print}' patients.txt
+awk '/[0-9]*,[0-9]*,5/ {print}' patients.txt
+
+# Print by field
+awk '/Rigs/ {print}' patients.txt
+awk -F ',' '{print $2,$3}' patients.txt
+
+# Print by field more complex
+awk -F ',' '/Rigs/ {print $2,$3}' patients.txt
+# With delimiter
+awk -F ',' '/Rigs/ {print $3 ";" $5}' patients.txt
+
+# With delimiter for all columns
+awk -F "," 'OFS=";" {print $3, $4, $2}' patients.txt
+
+# Conditional statement with awk
+awk  -F "," '{if ($4 >15) {print $4}}' patients.txt
+awk  -F "," '{if ($4 >15) {print}}' patients.txt
+```
 
 ## Presentation 5: Redirection & Pipes
 
-1.  Show how to use the pipe to combine `wc` and `sort`.
+1.  Chain the commands `sed` and `wc`. `sed` is used to remove the
+    header line:
 
-2.  Show some other chained commands as illustrated on slide ‘chaining
-    commands’.
+``` bash
+sed '1d' patients.txt | wc -l
+```
 
-## Presentation 6: Editors and Shell scripts
+2.  Chain the commands `cut`, `sort` and `uniq` to obtain unique values
+    from the hospital column.
+
+``` bash
+cut -d ',' -f 3 patients.txt | sort | uniq
+```
+
+Same command but remove the header row first with `sed`.
+
+``` bash
+sed '1d' patients.txt | cut -d ',' -f 3 | sort | uniq 
+```
+
+3.  Chain the commands `awk` and `sort`.
+
+``` bash
+awk -F ',' 'OFS="\t" {print $4, $2, $3}' patients.txt | sort  -k1n -k3
+```
+
+4.  Chain the commands `awk` and `cat` and show how the dash `-` is used
+    to specify input file again.
+
+``` bash
+awk -F ',' '{print $5, $2, $3}' patients.txt | cat file1.txt -
+awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
+```
+
+## Presentation 6: Shell Scripts and Loops
 
 1.  Open a simple text editor (I use gedit. On windows perhaps use
     notepad?) and write a script. Save it. Show it has appeared with ls.
@@ -144,7 +342,7 @@ tail -n
 
 ## Presentation 7: Software Installation, Upkeep & More
 
-## Presentation 8: Loops and Workflow Language
+## Presentation 8: Workflow Language & Compute Power
 
 1.  In the script you have made during presentation 6 or a new one,
     write a bash loop. Print something like the file name in each

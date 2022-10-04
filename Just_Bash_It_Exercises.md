@@ -2,33 +2,34 @@
 ================
 Center for Health Data Science, July 2022
 
--   <a href="#introduction" id="toc-introduction">Introduction</a>
--   <a href="#exercise-1-navigating-files-and-directories"
-    id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
-    Navigating Files and Directories</a>
--   <a href="#exercise-2-project-organization"
-    id="toc-exercise-2-project-organization">Exercise 2: Project
-    Organization</a>
--   <a href="#exercise-3-working-with-files"
-    id="toc-exercise-3-working-with-files">Exercise 3: Working with
-    Files</a>
--   <a href="#exercise-4-more-bash-commands---part-1-wc-sed--cut"
-    id="toc-exercise-4-more-bash-commands---part-1-wc-sed--cut">Exercise 4:
-    More Bash Commands - Part 1: wc, sed &amp; cut</a>
--   <a href="#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep"
-    id="toc-exercise-4-more-bash-commands---part-2-sort-paste-awk--grep">Exercise
-    4: More Bash Commands - Part 2: sort, paste, awk &amp; grep</a>
--   <a href="#exercise-5-redirection--pipes"
-    id="toc-exercise-5-redirection--pipes">Exercise 5: Redirection &amp;
-    Pipes</a>
--   <a href="#exercise-6-shell-scripts"
-    id="toc-exercise-6-shell-scripts">Exercise 6: Shell scripts</a>
--   <a href="#exercise-7-software-installation-upkeep--more"
-    id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
-    Software Installation, Upkeep &amp; More</a>
--   <a href="#exercise-8-loops-and-workflow-language"
-    id="toc-exercise-8-loops-and-workflow-language">Exercise 8: Loops and
-    Workflow Language</a>
+- <a href="#introduction" id="toc-introduction">Introduction</a>
+- <a href="#exercise-1-navigating-files-and-directories"
+  id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
+  Navigating Files and Directories</a>
+- <a href="#exercise-2-project-organization"
+  id="toc-exercise-2-project-organization">Exercise 2: Project
+  Organization</a>
+- <a href="#exercise-3-working-with-files"
+  id="toc-exercise-3-working-with-files">Exercise 3: Working with
+  Files</a>
+- <a href="#exercise-4-more-bash-commands---part-1-wc-sed--cut"
+  id="toc-exercise-4-more-bash-commands---part-1-wc-sed--cut">Exercise 4:
+  More Bash Commands - Part 1: wc, sed &amp; cut</a>
+- <a href="#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep"
+  id="toc-exercise-4-more-bash-commands---part-2-sort-paste-awk--grep">Exercise
+  4: More Bash Commands - Part 2: sort, paste, awk &amp; grep</a>
+- <a href="#exercise-5-redirection--pipes"
+  id="toc-exercise-5-redirection--pipes">Exercise 5: Redirection &amp;
+  Pipes</a>
+- <a href="#exercise-6-shell-scripts--loops"
+  id="toc-exercise-6-shell-scripts--loops">Exercise 6: Shell Scripts &amp;
+  Loops</a>
+- <a href="#exercise-7-software-installation-upkeep--more"
+  id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
+  Software Installation, Upkeep &amp; More</a>
+- <a href="#exercise-8-workflow-languages--compute-power"
+  id="toc-exercise-8-workflow-languages--compute-power">Exercise 8:
+  Workflow Languages &amp; Compute Power</a>
 
 ------------------------------------------------------------------------
 
@@ -53,23 +54,28 @@ exercises.
 ## Exercise 1: Navigating Files and Directories
 
 On your command line, go to where you have downloaded the course
-materials. If the folder is zipped, unzip it. (This might be easier to
-do with the graphical user interface).
+materials. If the directory is zipped, unzip it. (This might be easier
+to do with the graphical user interface).
 
-1.  List the files and directories in the top directory
-    **Just-Bash-It**. Which file was last updated? Which file is the
-    largest?
+1.  List the files and directories in the top directory `Just-Bash-It`.
+    Which file was last updated? Which file is the largest?
 
-2.  Go into the **Examples** folder and list its contents.
+2.  Go to the `Examples` directory and list its contents.
 
-3.  Move the text file from the **images ** folder to the **docs **
-    folder. Confirm that is is in the right place.
+3.  Move the text file `mytextfile.txt` from the `images` folder to the
+    `docs` folder. Confirm that is is in the right place.
 
-4.  Make a copy of the text file.
+4.  Make a copy of the `mytextfile.txt` file (now in `docs`) and rename
+    the copy to whatever you’d like.
 
-5.  Rename the copy.
+5.  Move to the `Examples` directory and make a new folder here called
+    `TEMP`. Now move your copied file from point 4. above to the `TEMP`
+    folder.
 
-6.  Remove the copy.
+6.  Remove the whole `TEMP` directory including the file within it. Do
+    you run into any problems with trying to do this?  
+    You need a flag to remove a whole folder, try the manual help for
+    the remove command `man rm` to figure out what flag this is.
 
  
 
@@ -78,21 +84,21 @@ do with the graphical user interface).
 Let’s get structured!
 
 1.  Make a `projects` directory at `/home/user/Desktop` on your computer
-    with all the sub-folders shown on **slide 15** in the slideshow. You
-    are free to name the project within the `projects` folder whatever
-    you would like, e.g. **Just_Bash_It, Intro_to_command_line,
-    First_Project, … **.  
+    with all the sub-directories shown on **slide 15** in the slideshow.
+    You are free to name the project within the `projects` directory
+    whatever you would like, e.g. **Just_Bash_It, Intro_to_command_line,
+    First_Project, etc.**.  
     **Cheat Sheet 1** in the slideshow will have the commands you need.
 
 You should have downloaded the course materials including the raw data
-files to you computer, maybe it is in your downloads folder or perhaps
-you moved it somewhere else.
+files to you computer, maybe it is in your downloads directory or
+perhaps you moved it somewhere else.
 
 2.  Using the command-line, navigate to where you downloaded the course
     materials an go to the directory named `Data`, here you should see
     three files, all with the extension `.gz`. Move these three files to
     the project directory you have made and place them in the correct
-    sub-folder.
+    sub-directory.
 
 3.  How large are the data files you moved from the course materials?
 
@@ -156,10 +162,10 @@ hastags.
 You will now test out some of the new commands introduced in the slide
 show and the command line presentation.
 
-Go to your folder `scratch` where you should have a copy of the unzipped
-`GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`, which you
-made in exercise 3.5 above. For inspiration on how to solve the
-questions below have a look at **slide 46**.  
+Go to your directory `scratch` where you should have a copy of the
+unzipped `GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`,
+which you made in exercise 3.5 above. For inspiration on how to solve
+the questions below have a look at **slide 46**.  
 **N.B** Remember if you are not sure what arguments (flags) a given
 command has you can always use `man [name_of_command]`to see what flags
 (arguments) a command takes.
@@ -186,10 +192,10 @@ expect it to have?
     `Annotation_tmp.gff` (name it whatever you’d like). Check that the
     file looks correct.
 
-As you will have noticed `field 9` in the annotation file has multiple
+As you will have noticed `field 7` in the annotation file has multiple
 information per entry (ids, gene name, locus, tags etc.) separated by a
 `;`. We refer to such separating characters as `delimiters`.  
-You are only interested in one information from `field 9`, and that is
+You are only interested in one information from `field 7`, and that is
 the **gene name**. To extract this information we will use two commands,
 first `cut` to cut the field out and then `grep` to grep the pattern we
 want in the sub-field (between two `;`).
@@ -199,9 +205,9 @@ want in the sub-field (between two `;`).
     below, remember to change the name of the output file to something
     more informative.  
 
--   What do the flags `-d` and `-f` do?
--   Why are we setting the -f flag to 5 not 9 (*HINT: field vs
-    sub-field*)?
+- What do the flags `-d` and `-f` do?
+- Why are we setting the -f flag to 5 not 7 (*HINT: field vs
+  sub-field*)?
 
 ``` bash
 cut -d ';' -f 5 Annotation_tmp.gff > output.gff
@@ -217,6 +223,10 @@ the the field you are interested in?
     what pattern to replace it with `[pReplace]`, these should be
     separated by slashes.
 
+``` bash
+sed 's/[pMatch]/[pReplace]/g' input.gff > output.gff
+```
+
 For the pseudo code chunk figure out:  
 \* What the input file should be?  
 \* Change `[pMatch]` to the pattern you want to match and `[pReplace]`
@@ -224,17 +234,13 @@ to what you want to replace with (*HINT: replace with empty/nothing*).
 \* What does the `s` and `g` denote?  
 \* Run the command and save the output to whatever file name you’d like.
 
-``` bash
-sed 's/[pMatch]/[pReplace]/g' input.gff > output.gff
-```
-
  
 
 ## Exercise 4: More Bash Commands - Part 2: sort, paste, awk & grep
 
 6.  You should now have one file containing only field 3, 4 & 5
     (question 2.) and one containing only the sub-field with gene names
-    from field 9 (question 5.).  
+    from field 7 (question 5.).  
     Paste these two files together into a single file using the command
     `paste`, name this file `Annotation_Gene.gff`. You will need to use
     the flag `-d` to specify what kind of delimiter should be used to
@@ -247,23 +253,23 @@ sed 's/[pMatch]/[pReplace]/g' input.gff > output.gff
 awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
 ```
 
--   What is the output of the command?  
--   What does the flag `-F` specify?
--   What does `OFS="\t"` mean? *HINT: Google this!*
--   What is going on inside the curly brackets?
+- What is the output of the command?  
+- What does the flag `-F` specify?
+- What does `OFS="\t"` mean? *HINT: Google this!*
+- What is going on inside the curly brackets?
 
 8.  Let’s have a look at the content of your final file.
 
--   Are there any gene seuqence with length 0 in the annotation file? -
-    Try the command `sort` with flags `-f 5`
--   What is the name of the gene with the longest sequence, annotated in
-    your file? - Try the command `sort` with flags `-f 5 -nr`  
--   Does our organism of study, Arabidopsis Thaliana, have the `TERT`
-    gene? - Try the command `grep`.
--   All living organisms have polymerase genes, including Arabidopsis
-    Thaliana. How many types of `POL` genes are annotated?
--   How many gene annotation lines in the file pertain to transfer RNA
-    (`tRNA`)? - Try the command `grep` with flag `-c`.
+- Are there any gene sequences with length 0 in the annotation file? -
+  Try the command `sort` with flags `-f 5`
+- What is the name of the gene with the longest sequence, annotated in
+  your file? - Try the command `sort` with flags `-f 5 -nr`  
+- Does our organism of study, Arabidopsis Thaliana, have the `TERT`
+  gene? - Try the command `grep`.
+- All living organisms have polymerase genes, including Arabidopsis
+  Thaliana. How many types of `POL` genes are annotated?
+- How many gene annotation lines in the file pertain to transfer RNA
+  (`tRNA`)? - Try the command `grep` with flag `-c`.
 
 9.  Your new file `Annotation_Gene_Len.gff` does not have any headers on
     each field. Make a new file called `header.gff`, use nano for this,
@@ -286,26 +292,46 @@ temporary files in your scratch directory. WELL DONE!
 
 ## Exercise 5: Redirection & Pipes
 
-Again, using patients.txt do the following:
+1.  Copy (`cp`) the `GCF_genomicAnnotation.gff` from your `data/raw` dir
+    to the `scratch` dir. This is done by specifying the path to where
+    the copy should go. Move to the `scratch` directory.
 
-1.  Sort the file by the age column and redirect the output into a new
-    file. View the new file and confirm that it is sorted correctly.
+Lets try some piping (chaining) of commands.
 
-2.  Redo 1 but this time redirect the output to a file in the
-    `data/generated` directory. The original file `patients.txt` should
-    be in `data/raw`.
+2.  You will chain four commands with pipes (`|`), step by step:  
 
-3.  Cut out the column that describes the hospital, sort the output and
-    count the number of unique elements (using `uniq`, as shown in the
-    slides). Build this up step by step if you have trouble. Do you
-    notice a problem with the data in the file?
+- Remove the header rows (those beginning with hastages) in the file,
+  like you did in point 2, Exercise 4, above  
+- Extract (`cut`) the column that contains the annotation **Region**
+  (exon, CDS, etc.).  
+- Sort the extracted column with `sort`  
+- Get the unique elements from this column with the command `uniq`
 
-4.  Grep only rows containing patients at ‘Rigshospitalet’ and sort them
-    by their satisfaction from lowest to highest.
+3.  Re-run the command line you used above, but this time redirect the
+    output directly to the `data/generated` directory by specifying the
+    path and the name you would like the output file to have. Check the
+    `data/generated` directory to check that you have correctly made the
+    file.
+
+4.  Using a single command line, figure out the name of the microRNA
+    (miRNA) gene which has the smallest genomic starting coordinate. You
+    will need to combine commands `cut`, `sort` and `grep` to archive
+    this. **HINT**: miRNA gene names begin with `MIR`.
+
+5.  You will now redo **points 2-6 from Exercise 4 (parts 1 & 2)
+    above**. You should end up with a file containing the 4 columns:
+    `Region, Start, End and GeneName (only)`. To archive this, chain
+    together commands from points 2-6.  
+    **N.B:** You do NOT need to do everything in one command line, but
+    try to reduce the number of intermediate files to as few as
+    possible. It is possible to get the output file in two command lines
+    (i.e. only one intermediate file). **HINT:** the commands do not
+    need to be combined in the same order as in Exercise 4, in fact,
+    they shouldn’t be.
 
  
 
-## Exercise 6: Shell scripts
+## Exercise 6: Shell Scripts & Loops
 
 Write a short script that implements the tasks 5, 6 and 7 from exercise
 4 on a file supplied by the user (given as a command line argument).
@@ -315,6 +341,6 @@ Test it and confirm that it works.
 
 We install something light-weight and useful.
 
-## Exercise 8: Loops and Workflow Language
+## Exercise 8: Workflow Languages & Compute Power
 
 Do we do something on the files in data???
