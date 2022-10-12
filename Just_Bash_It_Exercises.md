@@ -113,9 +113,10 @@ perhaps you moved it somewhere else.
 ## Exercise 3: Working with Files
 
 1.  Go to your project directory and edit the `readme` file you made in
-    **Exercise 2** using the `nano` editor. A `readme` file should
-    contain information about what a certain directory contains, its
-    purpose and who owns it/is the editor.
+    **Exercise 2** using the one of the editors `nano`, `vim or vi`,
+    `emacs`. **N.B** you might only have one of them installed!  
+    A `readme` file should contain information about what a certain
+    directory contains, its purpose and who owns it/is the editor.
 
 2.  Move to the sub-directory `Data/Raw` here you should have the three
     data files you moved from the course material directory.
@@ -333,13 +334,19 @@ Lets try some piping (chaining) of commands.
 
 ## Exercise 6: Shell Scripts & Loops
 
-Write a short script that implements the tasks 5, 6 and 7 from exercise
-4 on a file supplied by the user (given as a command line argument).
-Test it and confirm that it works.
-
 ## Exercise 7: Software Installation, Upkeep & More
 
-We install something light-weight and useful.
+In this exercise we will install first a package manger and then use
+this package manager to install a software.
+
+**For OS X systems:**  
+1. Install `Homebrew`, figure out how to do it here (is is one-liner in
+the command line): <https://brew.sh/> 2.
+
+**For Ubuntu and Linux systems:** 1. You most likely already have
+`apt-get`, figure out what version you have?
+
+**For Windows systems with MobaXterm:** 1.
 
 ## Exercise 8: Workflow Languages & Compute Power
 

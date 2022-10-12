@@ -304,11 +304,10 @@ awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
 
 ## Presentation 6: Shell Scripts and Loops
 
-1. Open a simple text editor (I use gedit. On windows perhaps use notepad?) and write a script. Save it. Show it has appeared with ls. View it with less or head. Check permissions. Change permissions to make it executable if necessary. Run it. 
-
 
 ## Presentation 7: Software Installation, Upkeep & More
 
+NO PRESENTATION
 
 ## Presentation 8: Workflow Language & Compute Power
 
