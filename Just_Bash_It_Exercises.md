@@ -27,9 +27,6 @@ Center for Health Data Science, July 2022
 - <a href="#exercise-7-software-installation-upkeep--more"
   id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
   Software Installation, Upkeep &amp; More</a>
-- <a href="#exercise-8-workflow-languages--compute-power"
-  id="toc-exercise-8-workflow-languages--compute-power">Exercise 8:
-  Workflow Languages &amp; Compute Power</a>
 
 ------------------------------------------------------------------------
 
@@ -106,7 +103,7 @@ perhaps you moved it somewhere else.
     Do you have permission to `read`, `write` and `execute` them? If you
     are not allowed to execute the, what is the reason for this?
 
-5.  Make a new file called `readme` within your project directory.
+5.  Make a new file called `Readme` within your project directory.
 
  
 
@@ -121,7 +118,7 @@ perhaps you moved it somewhere else.
 2.  Move to the sub-directory `Data/Raw` here you should have the three
     data files you moved from the course material directory.
 
-Two of these files are`fastq` files, they contain RNAseq reads from a
+Two of these files are `fastq` files, they contain RNAseq reads from a
 bulk-RNA sequencing experiment using Arabidopsis thaliana (thale cress).
 The extension `_R1` and `_R2` denote that reads are paired-end
 (e.g. read 1 and read 2). The third file with the extension `.gff`,
@@ -149,7 +146,7 @@ Note how that the file header (first part of the file) is denoted by
 hastags.
 
 5.  Read the content of the `.gff` file into a new file, name this file
-    `Annotation.gff`. Move the `Annotation.gff` to your `scratch`
+    `Annotation.gff`. Move the `Annotation.gff` to your `Scratch`
     directory.
 
 6.  Look at the content of one of the two `fq.gz` files with RNA
@@ -163,7 +160,7 @@ hastags.
 You will now test out some of the new commands introduced in the slide
 show and the command line presentation.
 
-Go to your directory `scratch` where you should have a copy of the
+Go to your directory `Scratch` where you should have a copy of the
 unzipped `GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`,
 which you made in exercise 3.5 above. For inspiration on how to solve
 the questions below have a look at **slide 46**.  
@@ -287,15 +284,15 @@ Now, use the command `cat` to bind `header.gff` and
 When you have checked at the file looks correct, move the file to your
 **Results** directory - **N.B** go to the sub-directory and check that
 you have moved it correctly!. You can now remove (delete) all the
-temporary files in your scratch directory. WELL DONE!
+temporary files in your `Scratch` directory. WELL DONE!
 
  
 
 ## Exercise 5: Redirection & Pipes
 
-1.  Copy (`cp`) the `GCF_genomicAnnotation.gff` from your `data/raw` dir
-    to the `scratch` dir. This is done by specifying the path to where
-    the copy should go. Move to the `scratch` directory.
+1.  Copy (`cp`) the `GCF_genomicAnnotation.gff` from your `Data/Raw` dir
+    to the `Scratch` dir. This is done by specifying the path to where
+    the copy should go. Move to the `Scratch` directory.
 
 Lets try some piping (chaining) of commands.
 
@@ -309,9 +306,9 @@ Lets try some piping (chaining) of commands.
 - Get the unique elements from this column with the command `uniq`
 
 3.  Re-run the command line you used above, but this time redirect the
-    output directly to the `data/generated` directory by specifying the
+    output directly to the `Data/Generated` directory by specifying the
     path and the name you would like the output file to have. Check the
-    `data/generated` directory to check that you have correctly made the
+    `Data/Generated` directory to check that you have correctly made the
     file.
 
 4.  Using a single command line, figure out the name of the microRNA
@@ -348,6 +345,26 @@ the command line): <https://brew.sh/> 2.
 
 **For Windows systems with MobaXterm:** 1.
 
-## Exercise 8: Workflow Languages & Compute Power
+Now that you have installed a package manager you will use it to install
+a command line tool on your laptop. We will install **FastQC**
+(<https://www.bioinformatics.babraham.ac.uk/projects/fastqc/>) which is
+a tool for quality control of DNA and RNA sequencing reads.
 
-Do we do something on the files in data???
+2.  First check is you have this software installed already and if so,
+    which version do do you have? HINT: `--version`
+
+3.  If you already have `fastqc` installed, then update it, otherwise
+    install using the appropriate install command for your system.
+
+We will check that `fastqc` is correctly installed and works by running
+the tool on our two files (`_R1.fastq` and `_R2.fastq`) containing
+sequencing reads.
+
+4.  Move to the `Data/Raw/`. Modify and use the command below to run
+    `fastqc`. You should specify the path to the directory you want the
+    output to go to, in this case `Data/Generated/`.
+
+Have a look at your output.
+
+Extra: Try using `open` to open a file (xlsx, docx, etc.) and an app
+(browser, Rstudio, etc.) via the command line.

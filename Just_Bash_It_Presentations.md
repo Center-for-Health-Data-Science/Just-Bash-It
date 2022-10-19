@@ -27,9 +27,6 @@ Center for Health Data Science, July 2022
 - <a href="#presentation-7-software-installation-upkeep--more"
   id="toc-presentation-7-software-installation-upkeep--more">Presentation
   7: Software Installation, Upkeep &amp; More</a>
-- <a href="#presentation-8-workflow-language--compute-power"
-  id="toc-presentation-8-workflow-language--compute-power">Presentation 8:
-  Workflow Language &amp; Compute Power</a>
 
 ## Introduction
 
@@ -337,14 +334,16 @@ awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
 
 ## Presentation 7: Software Installation, Upkeep & More
 
-NO PRESENTATION
+1.  Show how to use either `brew` or `apt-get` to update a software,
+    could be python or similar. N.B something that does not take
+    forever.
 
-## Presentation 8: Workflow Language & Compute Power
+2.  Use open to open a file (docx or similar) and an application
+    (Browser)
 
-1.  In the script you have made during presentation 6 or a new one,
-    write a bash loop. Print something like the file name in each
-    iteration of the loop so you can demonstrate that it works when you
-    run it. Perhaps we can run the loop on the RNAseq data. I guess one
-    thing we could do in the loop would be to run `gunzip -c` and stream
-    the first 12 lines to the display to check that they are all okay
-    fastq files.
+3.  Show hidden configuration files, both those which should not /
+    cannot be edited without sudo rights and those which are local and
+    can be edited.
+
+4.  Change the command line prompt by editing the approprite
+    configuration file (either the .bashrc or the .zshrc).
