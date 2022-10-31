@@ -242,13 +242,13 @@ We will use the `history` command to easily get a record of what we have done so
 
 First, let's see how much is in your history:
 
-```{bash, engine="sh", eval=FALSE, echo=FALSE}
+```{bash, engine="sh", eval=FALSE}
 history | wc 
 ```
 
 If you have a lot of commands saved in your history you might only want to see the last 20 or so. This command will show you the last 20:
 
-```{bash, engine="sh", eval=FALSE, echo=FALSE}
+```{bash, engine="sh", eval=FALSE}
 history | tail -n 20
 ```
 
@@ -258,7 +258,7 @@ history | tail -n 20
 
 3. Run `ex4.sh` by calling `bash`. Does it run without error? If not, correct what is wrong until it does. Check that it creates the correct files, i.e. they should look the same as when you manually executed the commands. 
 
-```{bash, engine="sh", eval=FALSE, echo=FALSE}
+```{bash, engine="sh", eval=FALSE}
 bash ex4.sh
 ```
 

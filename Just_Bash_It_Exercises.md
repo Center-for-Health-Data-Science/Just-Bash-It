@@ -330,8 +330,16 @@ done so far.
 
 First, let’s see how much is in your history:
 
+``` bash
+history | wc 
+```
+
 If you have a lot of commands saved in your history you might only want
 to see the last 20 or so. This command will show you the last 20:
+
+``` bash
+history | tail -n 20
+```
 
 1.  Create a new file, either with the command line or the editor of
     your choice, and name it `ex4.sh`. This is the file which will
@@ -345,6 +353,10 @@ to see the last 20 or so. This command will show you the last 20:
     correct what is wrong until it does. Check that it creates the
     correct files, i.e. they should look the same as when you manually
     executed the commands.
+
+``` bash
+bash ex4.sh
+```
 
 4.  Add lines to your script `ex4.sh` that will remove the temporary
     files created. Check that the files are indeed removed, and no other
