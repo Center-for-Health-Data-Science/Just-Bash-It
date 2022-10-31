@@ -3,6 +3,7 @@
 Center for Health Data Science, July 2022
 
 -   [Introduction](#introduction)
+-   [A note on pseudo code](#a-note-on-pseudo-code)
 -   [Exercise 1: Navigating Files and
     Directories](#exercise-1-navigating-files-and-directories)
 -   [Exercise 2: Project Organization](#exercise-2-project-organization)
@@ -38,6 +39,31 @@ exercises.
 
  
 
+## A note on pseudo code
+
+Some exercises and explanations in this document contain what is called
+‘pseudo code’. Pseudo code is an abstracted way to write an idea of
+code. It will not necessarily run when executed, so **do not copy**
+pseudo code straight into the command line. Rather it explains the idea
+of how your code should be structured. We will explicitly let you know
+when a snippet is ***pseudo code***.
+
+Pseudo code can look like this:
+
+``` bash
+wc [your file]
+```
+
+In the above example square bracets mean you need to **replace** what is
+between them with the actual file, expresssion, ect you want to use. The
+square bracets themselves are not part of the code. For example, if you
+wanted to word count the readme file, you would replace `[your file]`
+with `README.md`:
+
+``` bash
+wc README.md
+```
+
 ## Exercise 1: Navigating Files and Directories
 
 On your command line, go to where you have downloaded the course
@@ -71,7 +97,7 @@ to do with the graphical user interface).
 Let’s get structured!
 
 1.  Make a `projects` directory at `/home/user/Desktop` on your computer
-    with all the sub-directories shown on **slide 15** in the slideshow.
+    with all the sub-directories shown on **slide 30** in the slideshow.
     You are free to name the project within the `projects` directory
     whatever you would like, e.g. **Just_Bash_It, Intro_to_command_line,
     First_Project, etc.**.  
@@ -115,8 +141,8 @@ The extension `_R1` and `_R2` denote that reads are paired-end
 contains annotations of genes and other genomic feature from the
 organism of study, Arabidopsis Thaliana.
 
-3.  Expand the `GCF_genomicAnnotation.gff.gz` annotation file and make
-    sure you keep the compressed version.  
+3.  Expand the `GCF_genomicAnnotation.gff.gz` annotation file while
+    making sure you keep a copy of the compressed version.  
     **HINT:** look into what flags/arguments need to be specified when
     decompressing).
 
@@ -135,9 +161,8 @@ the sequences, i.e. entry id, gene name, locus, ids, tags etc.
 Note how that the file header (first part of the file) is denoted by
 hastags.
 
-5.  Read the content of the `.gff` file into a new file, name this file
-    `Annotation.gff`. Move the `Annotation.gff` to your `Scratch`
-    directory.
+5.  Rename the expanded `.gff` to `Annotation.gff`. Move the
+    `Annotation.gff` to your `Scratch` directory.
 
 6.  Look at the content of one of the two `fq.gz` files with RNA
     sequencing read, **N.B.** this time without expanding the file! How
@@ -163,12 +188,13 @@ command has you can always use `man [name_of_command]`to see what flags
 
 2.  As we are not interested in the header lines, denoted by hastages,
     remove these from the `Annotation.gff`and name the new file
-    `Annotation_tmp.gff`. You can employ the command `sed`, see pseudo
-    code below. You will need to figure what `l1` (start line) and `l2`
-    (end line) should be. What do you think the `d` refers to?
+    `Annotation_tmp.gff`. To do this you can employ the command `sed`,
+    see ***pseudo code*** below. You will need to figure out the line
+    numbers of the first line and last line to remove. What do you think
+    the `d` refers to?
 
 ``` bash
-sed 'l1,l2d' Annotation.gff > Annotation_tmp.gff
+sed '[number first line],[number last line]d' Annotation.gff > Annotation_tmp.gff
 ```
 
 Have a look at the `Annotation_tmp.gff`. Does it look correct now,
@@ -206,19 +232,21 @@ the the field you are interested in?
 
 5.  We would like to remove the repetitive `gene=` in each line to just
     obtain the clean **gene name**. One way to get this is to do a
-    search and replace with the once again using `sed`. The `sed`
-    command requires you to specify what pattern to match `[pMatch]` and
-    what pattern to replace it with `[pReplace]`, these should be
-    separated by slashes.
+    search and replace with `sed`. The syntax is shown as ***pseudo
+    code*** below. The `sed` command requires you to specify what
+    pattern to match `[pattern to match]` and what pattern to replace it
+    with `[Replace with]`. The patterns are separated by slashes and the
+    whole expression is encased in quotes `'`.
 
 ``` bash
-sed 's/[pMatch]/[pReplace]/g' input.gff > output.gff
+sed 's/[pattern to match]/[Replace with]/g' input.gff > output.gff
 ```
 
 For the pseudo code chunk figure out:  
 \* What the input file should be?  
-\* Change `[pMatch]` to the pattern you want to match and `[pReplace]`
-to what you want to replace with (*HINT: replace with empty/nothing*).  
+\* Change `[pattern to match]` to the pattern you want to match and
+`[Replace with]` to what you want to replace with (*HINT: replace with
+empty/nothing*).  
 \* What does the `s` and `g` denote?  
 \* Run the command and save the output to whatever file name you’d like.
 
