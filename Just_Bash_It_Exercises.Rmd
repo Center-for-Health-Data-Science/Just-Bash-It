@@ -194,8 +194,8 @@ awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_L
   * What is going on inside the curly brackets?
 
 8. Let's have a look at the content of your final file.
-  * Are there any gene sequences with length 0 in the annotation file? - Try the command `sort` with flags  `-f 5`
-  * What is the name of the gene with the longest sequence, annotated in your file? - Try the command `sort` with flags  `-f 5 -nr`   
+  * Are there any gene sequences with length 0 in the annotation file? - Try the command `sort` with flags  `-k 5`
+  * What is the name of the gene with the longest sequence, annotated in your file? - Try the command `sort` with flags  `-k 5 -nr`   
   * Does our organism of study, Arabidopsis Thaliana, have the `TERT` gene? - Try the command `grep`.
   * All living organisms have polymerase genes, including Arabidopsis Thaliana. How many types of `POL` genes are annotated?
   * How many gene annotation lines in the file pertain to transfer RNA (`tRNA`)? - Try the command `grep` with flag `-c`.

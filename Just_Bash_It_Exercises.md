@@ -277,9 +277,9 @@ awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_L
 8.  Let’s have a look at the content of your final file.
 
 -   Are there any gene sequences with length 0 in the annotation file? -
-    Try the command `sort` with flags `-f 5`
+    Try the command `sort` with flags `-k 5`
 -   What is the name of the gene with the longest sequence, annotated in
-    your file? - Try the command `sort` with flags `-f 5 -nr`  
+    your file? - Try the command `sort` with flags `-k 5 -nr`  
 -   Does our organism of study, Arabidopsis Thaliana, have the `TERT`
     gene? - Try the command `grep`.
 -   All living organisms have polymerase genes, including Arabidopsis
