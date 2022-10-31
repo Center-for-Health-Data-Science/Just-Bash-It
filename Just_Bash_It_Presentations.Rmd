@@ -304,6 +304,39 @@ awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
 
 ## Presentation 6: Shell Scripts and Loops
 
+0. Tell that file names are a convention that tells the system and user what kind of format to expect, but they do not carry supernatural wisdom. Whether a file with data is named .txt, .dat or .csv does not change the way we interact with it via the command line. 
+
+1. Show the commands on slide 58 one by one. Ask participants what each of them does.
+
+```{bash, eval=FALSE, engine="sh"}
+cut -f 3 -d ',' patients.dat | sort | uniq -c
+head -n 1 patients.dat > herlev.dat
+grep 'Herlev' patients.dat | sort -n -k 5 -t ',' >> herlev.dat
+```
+
+2. Fix the spelling mistake where 'herlev' is written with a small H.
+
+3. Re-run the string of commands and display the resulting file `herlev.dat`.
+
+```{bash, eval=FALSE, engine="sh"}
+cut -f 3 -d ',' patients.dat | sort | uniq -c
+head -n 1 patients.dat > herlev.dat
+grep 'Herlev' patients.dat | sort -n -k 5 -t ',' >> herlev.dat
+```
+
+4. Slide 60: Create the `sort_this.sh` script and show how it works. Pass some different files to it. 
+
+5. Slide 60: Create `cut_col.sh` and show how it works.
+
+6. Create a short script that implements the loop shown in slide 61:
+
+```{bash, eval=FALSE, engine="sh"}
+for file in *.txt
+do
+  echo $file
+  wc $file
+done  
+```
 
 
 ## Presentation 7: Software Installation, Upkeep & More

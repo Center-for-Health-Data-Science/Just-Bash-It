@@ -2,31 +2,23 @@
 ================
 Center for Health Data Science, July 2022
 
-- <a href="#introduction" id="toc-introduction">Introduction</a>
-- <a href="#presentation-1-navigating-files-and-directories"
-  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
-  Navigating Files and Directories</a>
-- <a href="#presentation-2-project-organization"
-  id="toc-presentation-2-project-organization">Presentation 2: Project
-  Organization</a>
-- <a href="#presentation-3-working-with-files-and-directories"
-  id="toc-presentation-3-working-with-files-and-directories">Presentation
-  3: Working with Files and Directories</a>
-- <a href="#presentation-4-more-bash-commands---part-1-wc-sed--cut"
-  id="toc-presentation-4-more-bash-commands---part-1-wc-sed--cut">Presentation
-  4: More Bash Commands - Part 1: wc, sed &amp; cut</a>
-- <a href="#presentation-4-more-bash-commands---part-1-sort-grep--awk"
-  id="toc-presentation-4-more-bash-commands---part-1-sort-grep--awk">Presentation
-  4: More Bash Commands - Part 1: sort, grep &amp; awk</a>
-- <a href="#presentation-5-redirection--pipes"
-  id="toc-presentation-5-redirection--pipes">Presentation 5: Redirection
-  &amp; Pipes</a>
-- <a href="#presentation-6-shell-scripts-and-loops"
-  id="toc-presentation-6-shell-scripts-and-loops">Presentation 6: Shell
-  Scripts and Loops</a>
-- <a href="#presentation-7-software-installation-upkeep--more"
-  id="toc-presentation-7-software-installation-upkeep--more">Presentation
-  7: Software Installation, Upkeep &amp; More</a>
+-   [Introduction](#introduction)
+-   [Presentation 1: Navigating Files and
+    Directories](#presentation-1-navigating-files-and-directories)
+-   [Presentation 2: Project
+    Organization](#presentation-2-project-organization)
+-   [Presentation 3: Working with Files and
+    Directories](#presentation-3-working-with-files-and-directories)
+-   [Presentation 4: More Bash Commands - Part 1: wc, sed &
+    cut](#presentation-4-more-bash-commands---part-1-wc-sed--cut)
+-   [Presentation 4: More Bash Commands - Part 1: sort, grep &
+    awk](#presentation-4-more-bash-commands---part-1-sort-grep--awk)
+-   [Presentation 5: Redirection &
+    Pipes](#presentation-5-redirection--pipes)
+-   [Presentation 6: Shell Scripts and
+    Loops](#presentation-6-shell-scripts-and-loops)
+-   [Presentation 7: Software Installation, Upkeep &
+    More](#presentation-7-software-installation-upkeep--more)
 
 ## Introduction
 
@@ -57,7 +49,6 @@ pwd
 ```
 
 ``` bash
-
 ls 
 
 ls -F
@@ -68,12 +59,10 @@ ls *
 ```
 
 ``` bash
-
 cd
 ```
 
 ``` bash
-
 man ls
 
 ls --help
@@ -331,6 +320,46 @@ awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
 ```
 
 ## Presentation 6: Shell Scripts and Loops
+
+0.  Tell that file names are a convention that tells the system and user
+    what kind of format to expect, but they do not carry supernatural
+    wisdom. Whether a file with data is named .txt, .dat or .csv does
+    not change the way we interact with it via the command line.
+
+1.  Show the commands on slide 58 one by one. Ask participants what each
+    of them does.
+
+``` bash
+cut -f 3 -d ',' patients.dat | sort | uniq -c
+head -n 1 patients.dat > herlev.dat
+grep 'Herlev' patients.dat | sort -n -k 5 -t ',' >> herlev.dat
+```
+
+2.  Fix the spelling mistake where ‘herlev’ is written with a small H.
+
+3.  Re-run the string of commands and display the resulting file
+    `herlev.dat`.
+
+``` bash
+cut -f 3 -d ',' patients.dat | sort | uniq -c
+head -n 1 patients.dat > herlev.dat
+grep 'Herlev' patients.dat | sort -n -k 5 -t ',' >> herlev.dat
+```
+
+4.  Slide 60: Create the `sort_this.sh` script and show how it works.
+    Pass some different files to it.
+
+5.  Slide 60: Create `cut_col.sh` and show how it works.
+
+6.  Create a short script that implements the loop shown in slide 61:
+
+``` bash
+for file in *.txt
+do
+  echo $file
+  wc $file
+done  
+```
 
 ## Presentation 7: Software Installation, Upkeep & More
 

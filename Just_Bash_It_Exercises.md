@@ -2,31 +2,21 @@
 ================
 Center for Health Data Science, July 2022
 
-- <a href="#introduction" id="toc-introduction">Introduction</a>
-- <a href="#exercise-1-navigating-files-and-directories"
-  id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
-  Navigating Files and Directories</a>
-- <a href="#exercise-2-project-organization"
-  id="toc-exercise-2-project-organization">Exercise 2: Project
-  Organization</a>
-- <a href="#exercise-3-working-with-files"
-  id="toc-exercise-3-working-with-files">Exercise 3: Working with
-  Files</a>
-- <a href="#exercise-4-more-bash-commands---part-1-wc-sed--cut"
-  id="toc-exercise-4-more-bash-commands---part-1-wc-sed--cut">Exercise 4:
-  More Bash Commands - Part 1: wc, sed &amp; cut</a>
-- <a href="#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep"
-  id="toc-exercise-4-more-bash-commands---part-2-sort-paste-awk--grep">Exercise
-  4: More Bash Commands - Part 2: sort, paste, awk &amp; grep</a>
-- <a href="#exercise-5-redirection--pipes"
-  id="toc-exercise-5-redirection--pipes">Exercise 5: Redirection &amp;
-  Pipes</a>
-- <a href="#exercise-6-shell-scripts--loops"
-  id="toc-exercise-6-shell-scripts--loops">Exercise 6: Shell Scripts &amp;
-  Loops</a>
-- <a href="#exercise-7-software-installation-upkeep--more"
-  id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
-  Software Installation, Upkeep &amp; More</a>
+-   [Introduction](#introduction)
+-   [Exercise 1: Navigating Files and
+    Directories](#exercise-1-navigating-files-and-directories)
+-   [Exercise 2: Project Organization](#exercise-2-project-organization)
+-   [Exercise 3: Working with Files](#exercise-3-working-with-files)
+-   [Exercise 4: More Bash Commands - Part 1: wc, sed &
+    cut](#exercise-4-more-bash-commands---part-1-wc-sed--cut)
+-   [Exercise 4: More Bash Commands - Part 2: sort, paste, awk &
+    grep](#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep)
+-   [Exercise 5: Redirection & Pipes](#exercise-5-redirection--pipes)
+-   [Exercise 6: Part 1: Shell
+    Scripts](#exercise-6-part-1-shell-scripts)
+-   [Exercise 6: Part 2: Loops](#exercise-6-part-2-loops)
+-   [Exercise 7: Software Installation, Upkeep &
+    More](#exercise-7-software-installation-upkeep--more)
 
 ------------------------------------------------------------------------
 
@@ -203,9 +193,9 @@ want in the sub-field (between two `;`).
     below, remember to change the name of the output file to something
     more informative.  
 
-- What do the flags `-d` and `-f` do?
-- Why are we setting the -f flag to 5 not 7 (*HINT: field vs
-  sub-field*)?
+-   What do the flags `-d` and `-f` do?
+-   Why are we setting the -f flag to 5 not 7 (*HINT: field vs
+    sub-field*)?
 
 ``` bash
 cut -d ';' -f 5 Annotation_tmp.gff > output.gff
@@ -251,23 +241,23 @@ to what you want to replace with (*HINT: replace with empty/nothing*).
 awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
 ```
 
-- What is the output of the command?  
-- What does the flag `-F` specify?
-- What does `OFS="\t"` mean? *HINT: Google this!*
-- What is going on inside the curly brackets?
+-   What is the output of the command?  
+-   What does the flag `-F` specify?
+-   What does `OFS="\t"` mean? *HINT: Google this!*
+-   What is going on inside the curly brackets?
 
 8.  Let’s have a look at the content of your final file.
 
-- Are there any gene sequences with length 0 in the annotation file? -
-  Try the command `sort` with flags `-f 5`
-- What is the name of the gene with the longest sequence, annotated in
-  your file? - Try the command `sort` with flags `-f 5 -nr`  
-- Does our organism of study, Arabidopsis Thaliana, have the `TERT`
-  gene? - Try the command `grep`.
-- All living organisms have polymerase genes, including Arabidopsis
-  Thaliana. How many types of `POL` genes are annotated?
-- How many gene annotation lines in the file pertain to transfer RNA
-  (`tRNA`)? - Try the command `grep` with flag `-c`.
+-   Are there any gene sequences with length 0 in the annotation file? -
+    Try the command `sort` with flags `-f 5`
+-   What is the name of the gene with the longest sequence, annotated in
+    your file? - Try the command `sort` with flags `-f 5 -nr`  
+-   Does our organism of study, Arabidopsis Thaliana, have the `TERT`
+    gene? - Try the command `grep`.
+-   All living organisms have polymerase genes, including Arabidopsis
+    Thaliana. How many types of `POL` genes are annotated?
+-   How many gene annotation lines in the file pertain to transfer RNA
+    (`tRNA`)? - Try the command `grep` with flag `-c`.
 
 9.  Your new file `Annotation_Gene_Len.gff` does not have any headers on
     each field. Make a new file called `header.gff`, use nano for this,
@@ -298,12 +288,12 @@ Lets try some piping (chaining) of commands.
 
 2.  You will chain four commands with pipes (`|`), step by step:  
 
-- Remove the header rows (those beginning with hastages) in the file,
-  like you did in point 2, Exercise 4, above  
-- Extract (`cut`) the column that contains the annotation **Region**
-  (exon, CDS, etc.).  
-- Sort the extracted column with `sort`  
-- Get the unique elements from this column with the command `uniq`
+-   Remove the header rows (those beginning with hastages) in the file,
+    like you did in point 2, Exercise 4, above  
+-   Extract (`cut`) the column that contains the annotation **Region**
+    (exon, CDS, etc.).  
+-   Sort the extracted column with `sort`  
+-   Get the unique elements from this column with the command `uniq`
 
 3.  Re-run the command line you used above, but this time redirect the
     output directly to the `Data/Generated` directory by specifying the
@@ -329,7 +319,54 @@ Lets try some piping (chaining) of commands.
 
  
 
-## Exercise 6: Shell Scripts & Loops
+## Exercise 6: Part 1: Shell Scripts
+
+We will now save the commands from exercises 4 and 5 in a script so we
+don’t lose them and can easily re-run our analysis with a different gff
+file.
+
+We will use the `history` command to easily get a record of what we have
+done so far.
+
+First, let’s see how much is in your history:
+
+If you have a lot of commands saved in your history you might only want
+to see the last 20 or so. This command will show you the last 20:
+
+1.  Create a new file, either with the command line or the editor of
+    your choice, and name it `ex4.sh`. This is the file which will
+    contain your script. A script is just a collection of commands that
+    are executed one after another.
+
+2.  Using your `history`, copy the commands you used to solve exercise 4
+    into `ex4.sh`. Save it.
+
+3.  Run `ex4.sh` by calling `bash`. Does it run without error? If not,
+    correct what is wrong until it does. Check that it creates the
+    correct files, i.e. they should look the same as when you manually
+    executed the commands.
+
+4.  Add lines to your script `ex4.sh` that will remove the temporary
+    files created. Check that the files are indeed removed, and no other
+    files have been deleted by accident. If you did delete something you
+    can just re-download the respective file from github.
+
+5.  Now replace the name of the input file,
+    `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run
+    your script on different input files. Test that this works.
+
+6.  Run your script on `ecoli.gff.gz` by passing the file name as an
+    argument.
+
+## Exercise 6: Part 2: Loops
+
+1.  Make a short script with a for loop that does the following:
+
+-   go to the data folder
+-   for each zipped file, i.e. each file ending with .gz:
+-   display the file name
+-   display the first 10 lines without unzipping the entire file like
+    you did in Exercise 3, question 6.
 
 ## Exercise 7: Software Installation, Upkeep & More
 
