@@ -218,9 +218,11 @@ cut out column 7 from `Annotation_tmp.gff` and name that temporary file
 something. Then, we cut the temporary file to get field 5
 
 The code is provided below. Try to understand what happens in each line.
-Particularly:  
-\* What do the flags `-d` and `-f` do? \* Why are we setting the -f flag
-to 5 not 7 (*HINT: field vs sub-field*)?
+Particularly:
+
+-   What do the flags `-d` and `-f` do?
+-   Why are we setting the -f flag to 5 not 7 (*HINT: field vs
+    sub-field*)?
 
 ``` bash
 cut -f 7 Annotation_tmp.gff > col7.tmp
@@ -242,13 +244,15 @@ the the field you are interested in?
 sed 's/[pattern to match]/[Replace with]/g' [input file] > [output file]
 ```
 
-For the pseudo code chunk figure out:  
-\* What the input file should be?  
-\* Change `[pattern to match]` to the pattern you want to match and
-`[Replace with]` to what you want to replace with (*HINT: replace with
-empty/nothing*).  
-\* What does the `s` and `g` denote?  
-\* Run the command and save the output to whatever file name you’d like.
+For the pseudo code chunk figure out:
+
+-   What the input file should be?  
+-   Change `[pattern to match]` to the pattern you want to match and
+    `[Replace with]` to what you want to replace with (*HINT: replace
+    with empty/nothing*).  
+-   What does the `s` and `g` denote?  
+-   Run the command and save the output to whatever file name you’d
+    like.
 
  
 
