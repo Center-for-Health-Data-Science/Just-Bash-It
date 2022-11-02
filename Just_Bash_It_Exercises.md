@@ -203,28 +203,28 @@ expect it to have?
 
 3.  Use the command `cut` to make a new file which contains only
     `fields 3,4,5` (i.e. columns with region, start and end) from the
-    `Annotation_tmp.gff` (name it whatever you’d like). Check that the
+    `Annotation_tmp.gff` and name it whatever you’d like. Check that the
     file looks correct.
 
-As you will have noticed `field 7` in the annotation file has multiple
-information per entry (ids, gene name, locus, tags etc.) separated by a
-`;`. We refer to such separating characters as `delimiters`.  
-You are only interested in one information from `field 7`, and that is
-the **gene name**. To extract this information we will use two commands,
-first `cut` to cut the field out and then `grep` to grep the pattern we
-want in the sub-field (between two `;`).
+We also would like to have the gene names. They are in field 7 in the
+`Annotation_tmp.gff`, but field 7 contains itself several entries ids,
+gene name, locus, tags etc. separated by a `;`. We refer to such
+separating characters as `delimiters`. One could say that field 7
+contains sub-fields delimited by `;`.
 
-4.  Use `cut` to make a new file which contains only the information on
-    **gene key** in the `Annotation_tmp.gff`. The code is provided
-    below, remember to change the name of the output file to something
-    more informative.  
+We want to get the sub field starting with `gene=`, this is the gene
+name.To extract this information we will use cut twice. First, we will
+cut out column 7 from `Annotation_tmp.gff` and name that temporary file
+something. Then, we cut the temporary file to get field 5
 
--   What do the flags `-d` and `-f` do?
--   Why are we setting the -f flag to 5 not 7 (*HINT: field vs
-    sub-field*)?
+The code is provided below. Try to understand what happens in each line.
+Particularly:  
+\* What do the flags `-d` and `-f` do? \* Why are we setting the -f flag
+to 5 not 7 (*HINT: field vs sub-field*)?
 
 ``` bash
-cut -d ';' -f 5 Annotation_tmp.gff > output.gff
+cut -f 7 Annotation_tmp.gff > col7.tmp
+cut -d ';' -f 5 col7.tmp > gene_names
 ```
 
 Check that the file looks correct after extraction, i.e. does it seem to
@@ -239,7 +239,7 @@ the the field you are interested in?
     whole expression is encased in quotes `'`.
 
 ``` bash
-sed 's/[pattern to match]/[Replace with]/g' input.gff > output.gff
+sed 's/[pattern to match]/[Replace with]/g' [input file] > [output file]
 ```
 
 For the pseudo code chunk figure out:  
