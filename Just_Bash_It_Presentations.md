@@ -148,9 +148,9 @@ zip patients.zip patients.txt
 
 
 # unzip
-gunzip patients.txt
+gunzip patients.gz
 unzip patients.zip
-zless patients.gz
+
 ```
 
 ## Presentation 4: More Bash Commands - Part 1: wc, sed & cut
