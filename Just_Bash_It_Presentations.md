@@ -117,9 +117,11 @@ du -sh dir
 ``` bash
 cat patients.txt
 
-less
-head -n
-tail -n
+less patients.
+
+head -n 5 patients.txt
+
+tail -n 3 patients.txt
 ```
 
 2.  Show how commands above can be used to copy content or part of it to
