@@ -143,13 +143,24 @@ head -10 patients.txt > patients_small.txt
 
 
 gzip -k patients.txt
-tar -cf patients.tar patients.txt
 zip patients.zip patients.txt
 
 
 # unzip
 gunzip patients.gz
 unzip patients.zip
+
+```
+
+5. creating a tar archive
+
+``` bash
+cd Examples
+tar -cvf docs.tar docs
+ls #show the tar ball has appeared
+mv docs.tar ../ #move it one up
+tar -xvf docs.tar #untar
+ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 
 ```
 
