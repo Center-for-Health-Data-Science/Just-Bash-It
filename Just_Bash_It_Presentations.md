@@ -112,8 +112,7 @@ du -sh dir
 
 ## Presentation 3: Working with Files and Directories
 
-1.  View the content of a file with different commands. Use a readme
-    file from a github repo as an example.
+1.  View the content of a file with different commands. Use the file Examples/docs/patients.txt from the github repo as an example.
 
 ``` bash
 cat patients.txt
