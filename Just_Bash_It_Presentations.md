@@ -68,6 +68,30 @@ man ls
 ls --help
 ```
 
+Working with files: mv 
+
+``` bash
+cd Just-Bash-It/Examples
+ls *
+cd images
+pwd
+mv mytextfile.txt ../docs 
+ls
+cd ../
+ls *
+cd docs/
+mv mytextfile.txt my_text_file.tx
+ls
+```
+
+Working with files: cp and rm
+
+``` bash
+cp my_text_file.txt text_copy.txt
+ls
+rm text_copy.txt
+```
+
 ## Presentation 2: Project Organization
 
 In this section we show participants how to set up a good directory
@@ -159,7 +183,8 @@ cd Examples
 tar -cvf docs.tar docs
 ls #show the tar ball has appeared
 mv docs.tar ../ #move it one up
-tar -xvf docs.tar #untar
+tar -tf docs.tar #show content of the archive but don't untar it
+tar -xvf docs.tar #now untar
 ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 
 ```
