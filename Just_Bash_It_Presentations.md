@@ -92,6 +92,15 @@ ls
 rm text_copy.txt
 ```
 
+Anatomy of a command:
+
+``` bash
+ls -lh
+ls -l h #doesn't work! Because it interprets 'h' as the file or directory to work on
+ls -l -h #this works again
+```
+
+
 ## Presentation 2: Project Organization
 
 In this section we show participants how to set up a good directory
