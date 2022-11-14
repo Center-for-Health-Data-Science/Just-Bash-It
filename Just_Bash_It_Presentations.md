@@ -2,23 +2,31 @@
 ================
 Center for Health Data Science, July 2022
 
--   [Introduction](#introduction)
--   [Presentation 1: Navigating Files and
-    Directories](#presentation-1-navigating-files-and-directories)
--   [Presentation 2: Project
-    Organization](#presentation-2-project-organization)
--   [Presentation 3: Working with Files and
-    Directories](#presentation-3-working-with-files-and-directories)
--   [Presentation 4: More Bash Commands - Part 1: wc, sed &
-    cut](#presentation-4-more-bash-commands---part-1-wc-sed--cut)
--   [Presentation 4: More Bash Commands - Part 1: sort, grep &
-    awk](#presentation-4-more-bash-commands---part-1-sort-grep--awk)
--   [Presentation 5: Redirection &
-    Pipes](#presentation-5-redirection--pipes)
--   [Presentation 6: Shell Scripts and
-    Loops](#presentation-6-shell-scripts-and-loops)
--   [Presentation 7: Software Installation, Upkeep &
-    More](#presentation-7-software-installation-upkeep--more)
+- <a href="#introduction" id="toc-introduction">Introduction</a>
+- <a href="#presentation-1-navigating-files-and-directories"
+  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
+  Navigating Files and Directories</a>
+- <a href="#presentation-2-project-organization"
+  id="toc-presentation-2-project-organization">Presentation 2: Project
+  Organization</a>
+- <a href="#presentation-3-working-with-files-and-directories"
+  id="toc-presentation-3-working-with-files-and-directories">Presentation
+  3: Working with Files and Directories</a>
+- <a href="#presentation-4-more-bash-commands---part-1-wc-sed--cut"
+  id="toc-presentation-4-more-bash-commands---part-1-wc-sed--cut">Presentation
+  4: More Bash Commands - Part 1: wc, sed &amp; cut</a>
+- <a href="#presentation-4-more-bash-commands---part-1-sort-grep--awk"
+  id="toc-presentation-4-more-bash-commands---part-1-sort-grep--awk">Presentation
+  4: More Bash Commands - Part 1: sort, grep &amp; awk</a>
+- <a href="#presentation-5-redirection--pipes"
+  id="toc-presentation-5-redirection--pipes">Presentation 5: Redirection
+  &amp; Pipes</a>
+- <a href="#presentation-6-shell-scripts-and-loops"
+  id="toc-presentation-6-shell-scripts-and-loops">Presentation 6: Shell
+  Scripts and Loops</a>
+- <a href="#presentation-7-software-installation-upkeep--more"
+  id="toc-presentation-7-software-installation-upkeep--more">Presentation
+  7: Software Installation, Upkeep &amp; More</a>
 
 ## Introduction
 
@@ -48,21 +56,36 @@ demonstrate it.
 pwd
 ```
 
+List files
+
 ``` bash
 ls 
-
 ls -F
 
+ls -l
+ls -lh
 ls -lht
 
-ls *
+
+ls -l patients.txt 
 ```
+
+List hidden files
+
+``` bash
+ls -al
+```
+
+Move directories
 
 ``` bash
 cd
 ```
 
+Help page for command
+
 ``` bash
+
 man ls
 
 ls --help
@@ -79,14 +102,13 @@ like the one shown on slide 15.
     and `ls`.
 
 ``` bash
-cd
 pwd
 ls
 ```
 
-2.  Move around the subdirectories in the directory `Just_Bash_It`. Make
-    a folder which is missing, show `mkdir` and add a `readme` file to
-    the dir using `touch`. Also make a mistake and reiterate `rm`.
+2.  Move around the sub-directories in the directory `Just_Bash_It`.
+    Make a folder which is missing, show `mkdir` and add a `readme` file
+    to the dir using `touch`. Also make a mistake and reiterate `rm`.
 
 ``` bash
 mkdir
@@ -98,16 +120,23 @@ rm
     sizes and file permission settings.
 
 ``` bash
-ls -l *
+du -sh  *
+du -sh patients.txt
+
+du -sh dir *
+```
+
+``` bash
+ls -al
 ls -al *
-ls -lh *
+```
 
-ls -l filename 
-ls -al dir
+Change permission settings:
 
-du -sh
-du -sh filename
-du -sh dir
+``` bash
+chmod u+rwx patients.txt
+chmod g+w patients.txt
+chmod g-w patients.txt
 ```
 
 ## Presentation 3: Working with Files and Directories
@@ -363,16 +392,24 @@ done
 
 ## Presentation 7: Software Installation, Upkeep & More
 
-1.  Show how to use either `brew` or `apt-get` to update a software,
+1.  Show activity monitor, task manager & top/htop/ps aux command.
+
+``` bash
+man top
+# man htop
+ps aux
+```
+
+2.  Show how to use either `brew` or `apt-get` to update a software,
     could be python or similar. N.B something that does not take
     forever.
 
-2.  Use open to open a file (docx or similar) and an application
+3.  Use open to open a file (docx or similar) and an application
     (Browser)
 
-3.  Show hidden configuration files, both those which should not /
+4.  Show hidden configuration files, both those which should not /
     cannot be edited without sudo rights and those which are local and
     can be edited.
 
-4.  Change the command line prompt by editing the approprite
+5.  Change the command line prompt by editing the approprite
     configuration file (either the .bashrc or the .zshrc).
