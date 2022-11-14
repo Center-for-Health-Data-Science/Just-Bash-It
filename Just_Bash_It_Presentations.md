@@ -91,6 +91,39 @@ man ls
 ls --help
 ```
 
+Working with files: mv 
+
+``` bash
+cd Just-Bash-It/Examples
+ls *
+cd images
+pwd
+mv mytextfile.txt ../docs 
+ls
+cd ../
+ls *
+cd docs/
+mv mytextfile.txt my_text_file.tx
+ls
+```
+
+Working with files: cp and rm
+
+``` bash
+cp my_text_file.txt text_copy.txt
+ls
+rm text_copy.txt
+```
+
+Anatomy of a command:
+
+``` bash
+ls -lh
+ls -l h #doesn't work! Because it interprets 'h' as the file or directory to work on
+ls -l -h #this works again
+```
+
+
 ## Presentation 2: Project Organization
 
 In this section we show participants how to set up a good directory
@@ -141,15 +174,16 @@ chmod g-w patients.txt
 
 ## Presentation 3: Working with Files and Directories
 
-1.  View the content of a file with different commands. Use a readme
-    file from a github repo as an example.
+1.  View the content of a file with different commands. Use the file Examples/docs/patients.txt from the github repo as an example.
 
 ``` bash
 cat patients.txt
 
-less
-head -n
-tail -n
+less patients.
+
+head -n 5 patients.txt
+
+tail -n 3 patients.txt
 ```
 
 2.  Show how commands above can be used to copy content or part of it to
@@ -171,14 +205,26 @@ head -10 patients.txt > patients_small.txt
 
 
 gzip -k patients.txt
-tar -cf patients.tar patients.txt
 zip patients.zip patients.txt
 
 
 # unzip
-gunzip patients.txt
+gunzip patients.gz
 unzip patients.zip
-zless patients.gz
+
+```
+
+5. creating a tar archive
+
+``` bash
+cd Examples
+tar -cvf docs.tar docs
+ls #show the tar ball has appeared
+mv docs.tar ../ #move it one up
+tar -tf docs.tar #show content of the archive but don't untar it
+tar -xvf docs.tar #now untar
+ls #show the docs dir and its files have appeared in the Just-Bash-It dir
+
 ```
 
 ## Presentation 4: More Bash Commands - Part 1: wc, sed & cut
