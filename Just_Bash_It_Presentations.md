@@ -2,31 +2,23 @@
 ================
 Center for Health Data Science, July 2022
 
-- <a href="#introduction" id="toc-introduction">Introduction</a>
-- <a href="#presentation-1-navigating-files-and-directories"
-  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
-  Navigating Files and Directories</a>
-- <a href="#presentation-2-project-organization"
-  id="toc-presentation-2-project-organization">Presentation 2: Project
-  Organization</a>
-- <a href="#presentation-3-working-with-files-and-directories"
-  id="toc-presentation-3-working-with-files-and-directories">Presentation
-  3: Working with Files and Directories</a>
-- <a href="#presentation-4-more-bash-commands---part-1-wc-sed--cut"
-  id="toc-presentation-4-more-bash-commands---part-1-wc-sed--cut">Presentation
-  4: More Bash Commands - Part 1: wc, sed &amp; cut</a>
-- <a href="#presentation-4-more-bash-commands---part-1-sort-grep--awk"
-  id="toc-presentation-4-more-bash-commands---part-1-sort-grep--awk">Presentation
-  4: More Bash Commands - Part 1: sort, grep &amp; awk</a>
-- <a href="#presentation-5-redirection--pipes"
-  id="toc-presentation-5-redirection--pipes">Presentation 5: Redirection
-  &amp; Pipes</a>
-- <a href="#presentation-6-shell-scripts-and-loops"
-  id="toc-presentation-6-shell-scripts-and-loops">Presentation 6: Shell
-  Scripts and Loops</a>
-- <a href="#presentation-7-software-installation-upkeep--more"
-  id="toc-presentation-7-software-installation-upkeep--more">Presentation
-  7: Software Installation, Upkeep &amp; More</a>
+-   [Introduction](#introduction)
+-   [Presentation 1: Navigating Files and
+    Directories](#presentation-1-navigating-files-and-directories)
+-   [Presentation 2: Project
+    Organization](#presentation-2-project-organization)
+-   [Presentation 3: Working with Files and
+    Directories](#presentation-3-working-with-files-and-directories)
+-   [Presentation 4: More Bash Commands - Part 1: wc, sed &
+    cut](#presentation-4-more-bash-commands---part-1-wc-sed--cut)
+-   [Presentation 4: More Bash Commands - Part 1: sort, grep &
+    awk](#presentation-4-more-bash-commands---part-1-sort-grep--awk)
+-   [Presentation 5: Redirection &
+    Pipes](#presentation-5-redirection--pipes)
+-   [Presentation 6: Shell Scripts and
+    Loops](#presentation-6-shell-scripts-and-loops)
+-   [Presentation 7: Software Installation, Upkeep &
+    More](#presentation-7-software-installation-upkeep--more)
 
 ## Introduction
 
@@ -85,13 +77,12 @@ cd
 Help page for command
 
 ``` bash
-
 man ls
 
 ls --help
 ```
 
-Working with files: mv 
+Working with files: mv
 
 ``` bash
 cd Just-Bash-It/Examples
@@ -122,7 +113,6 @@ ls -lh
 ls -l h #doesn't work! Because it interprets 'h' as the file or directory to work on
 ls -l -h #this works again
 ```
-
 
 ## Presentation 2: Project Organization
 
@@ -174,16 +164,15 @@ chmod g-w patients.txt
 
 ## Presentation 3: Working with Files and Directories
 
-1.  View the content of a file with different commands. Use the file Examples/docs/patients.txt from the github repo as an example.
+1.  View the content of a file with different commands. Use a readme
+    file from a github repo as an example.
 
 ``` bash
 cat patients.txt
 
-less patients.
-
-head -n 5 patients.txt
-
-tail -n 3 patients.txt
+less
+head -n
+tail -n
 ```
 
 2.  Show how commands above can be used to copy content or part of it to
@@ -202,8 +191,6 @@ head -10 patients.txt > patients_small.txt
 
 ``` bash
 # zip 
-
-
 gzip -k patients.txt
 zip patients.zip patients.txt
 
@@ -211,10 +198,9 @@ zip patients.zip patients.txt
 # unzip
 gunzip patients.gz
 unzip patients.zip
-
 ```
 
-5. creating a tar archive
+5.  creating a tar archive
 
 ``` bash
 cd Examples
@@ -224,7 +210,6 @@ mv docs.tar ../ #move it one up
 tar -tf docs.tar #show content of the archive but don't untar it
 tar -xvf docs.tar #now untar
 ls #show the docs dir and its files have appeared in the Just-Bash-It dir
-
 ```
 
 ## Presentation 4: More Bash Commands - Part 1: wc, sed & cut

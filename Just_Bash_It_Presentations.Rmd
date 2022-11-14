@@ -60,6 +60,38 @@ ls --help
 
 ```
 
+Working with files: mv 
+
+```{bash,  eval=FALSE, engine="sh"}
+cd Just-Bash-It/Examples
+ls *
+cd images
+pwd
+mv mytextfile.txt ../docs 
+ls
+cd ../
+ls *
+cd docs/
+mv mytextfile.txt my_text_file.tx
+ls
+```
+
+Working with files: cp and rm
+
+```{bash,  eval=FALSE, engine="sh"}
+cp my_text_file.txt text_copy.txt
+ls
+rm text_copy.txt
+```
+
+Anatomy of a command:
+
+```{bash,  eval=FALSE, engine="sh"}
+ls -lh
+ls -l h #doesn't work! Because it interprets 'h' as the file or directory to work on
+ls -l -h #this works again
+```
+
 
 ## Presentation 2: Project Organization
 
@@ -130,21 +162,27 @@ head -10 patients.txt > patients_small.txt
 
 ```{bash, eval=FALSE, engine="sh"}
 # zip 
-
-
 gzip -k patients.txt
-tar -cf patients.tar patients.txt
 zip patients.zip patients.txt
 
 
 # unzip
-gunzip patients.txt
+gunzip patients.gz
 unzip patients.zip
-zless patients.gz
 ```
 
+5. creating a tar archive
 
+```{bash, eval=FALSE, engine="sh"}
+cd Examples
+tar -cvf docs.tar docs
+ls #show the tar ball has appeared
+mv docs.tar ../ #move it one up
+tar -tf docs.tar #show content of the archive but don't untar it
+tar -xvf docs.tar #now untar
+ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 
+```
 
 
 
