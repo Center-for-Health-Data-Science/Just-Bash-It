@@ -28,24 +28,30 @@ Generally, whenever a command is written on a slide, you should demonstrate it.
 pwd
 ```
 
+List files
 ```{bash, eval=FALSE, engine="sh"}
-
 ls 
-
 ls -F
 
+ls -l
+ls -lh
 ls -lht
 
-ls *
 
+ls -l patients.txt 
 ```
 
+List hidden files
+```{bash, eval=FALSE, engine="sh"}
+ls -al
+```
+
+Move directories
 ```{bash,  eval=FALSE, engine="sh"}
-
 cd
-
 ```
 
+Help page for command
 ```{bash,  eval=FALSE, engine="sh"}
 
 man ls
@@ -62,12 +68,11 @@ In this section we show participants how to set up a good directory structure. W
 1. Under home/user/(Desktop | Documents) show the directory `projects` which contains the project at hand. Reiterate commands `cd`, `pwd` and `ls`.
 
 ```{bash, eval=FALSE, engine="sh"}
-cd
 pwd
 ls
 ```
 
-2. Move around the subdirectories in the directory `Just_Bash_It`. Make a folder which is missing, show `mkdir` and add a `readme` file to the dir using `touch`. Also make a mistake and reiterate `rm`.
+2. Move around the sub-directories in the directory `Just_Bash_It`. Make a folder which is missing, show `mkdir` and add a `readme` file to the dir using `touch`. Also make a mistake and reiterate `rm`.
 
 ```{bash, eval=FALSE, engine="sh"}
 mkdir
@@ -78,17 +83,27 @@ rm
 3. Go to the raw data folder and use `ls` and `du` options to show file sizes and file permission settings. 
 
 ```{bash, eval=FALSE, engine="sh"}
-ls -l *
-ls -al *
-ls -lh *
+du -sh  *
+du -sh patients.txt
 
-ls -l filename 
-ls -al dir
-
-du -sh
-du -sh filename
-du -sh dir
+du -sh dir *
 ```
+
+
+```{bash, eval=FALSE, engine="sh"}
+ls -al
+ls -al *
+```
+
+
+Change permission settings:
+```{bash, eval=FALSE, engine="sh"}
+chmod u+rwx patients.txt
+chmod g+w patients.txt
+chmod g-w patients.txt
+```
+
+
 
 
 ## Presentation 3: Working with Files and Directories
@@ -341,11 +356,19 @@ done
 
 ## Presentation 7: Software Installation, Upkeep & More
 
-1. Show how to use either `brew` or `apt-get` to update a software, could be python or similar. N.B something that does not take forever.
 
-2. Use open to open a file (docx or similar) and an application (Browser)
+1. Show activity monitor, task manager & top/htop/ps aux command.
+```{bash, eval=FALSE, engine="sh"}
+man top
+# man htop
+ps aux
+```
 
-3. Show hidden configuration files, both those which should not / cannot be edited without sudo rights and those which are local and can be edited.
+2. Show how to use either `brew` or `apt-get` to update a software, could be python or similar. N.B something that does not take forever.
 
-4. Change the command line prompt by editing the approprite configuration file (either the .bashrc or the .zshrc).
+3. Use open to open a file (docx or similar) and an application (Browser)
+
+4. Show hidden configuration files, both those which should not / cannot be edited without sudo rights and those which are local and can be edited.
+
+5. Change the command line prompt by editing the approprite configuration file (either the .bashrc or the .zshrc).
 

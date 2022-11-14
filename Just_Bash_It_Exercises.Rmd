@@ -40,7 +40,7 @@ Pseudo code can look like this:
 wc [your file]
 ```
 
-In the above example square bracets mean you need to **replace** what is between them with the actual file, expresssion, ect you want to use. The square bracets themselves are not part of the code. For example, if you wanted to word count the readme file, you would replace `[your file]` with `README.md`:
+In the above example square bracets mean you need to **replace** what is between them with the actual file, expression, ect you want to use. The square bracets themselves are not part of the code. For example, if you wanted to word count the readme file, you would replace `[your file]` with `README.md`:
 
 
 ```{bash, engine="sh", eval=FALSE}
@@ -85,7 +85,7 @@ You should have downloaded the course materials including the raw data files to 
 
 4. Check the permissions of the data files from the course materials. Do you have permission to `read`, `write` and `execute` them? If you are not allowed to execute the, what is the reason for this?
 
-5. Make a new file called `Readme` within your project directory.
+5. Make a new file called `Readme` within your project directory. heck the permissions of the file you just made and modify the permission of this file so the 'group' can write to the file (HINT:`chmod`).
 
 
 &nbsp;
@@ -289,6 +289,8 @@ bash ex4.sh
 
 6. Run your script on `ecoli.gff.gz` by passing the file name as an argument.
 
+
+
 ## Exercise 6: Part 2: Loops
 
 1. Make a short script with a for loop that does the following: 
@@ -299,13 +301,14 @@ bash ex4.sh
 * display the first 10 lines without unzipping the entire file like you did in Exercise 3, question 6.
 
 
+
+
 ## Exercise 7: Software Installation, Upkeep & More  
 
 In this exercise we will install first a package manger and then use this package manager to install a software.
 
 **For OS X systems:**  
 1. Install `Homebrew`, figure out how to do it here (is is one-liner in the command line): https://brew.sh/
-2. 
 
 **For Ubuntu and Linux systems:**
 1. You most likely already have `apt-get`, figure out what version you have?
