@@ -314,7 +314,7 @@ In this exercise we will install first a package manger and then use this packag
 1. You most likely already have `apt-get`, figure out what version you have?
 
 **For Windows systems with MobaXterm:**
-1.    
+1.     
 
 
 Now that you have installed a package manager you will use it to install a command line tool on your laptop. We will install **FastQC** (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) which is a tool for quality control of DNA and RNA sequencing reads. 

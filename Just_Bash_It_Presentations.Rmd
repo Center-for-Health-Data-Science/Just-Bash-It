@@ -400,6 +400,12 @@ done
 man top
 # man htop
 ps aux
+
+
+ps aux | grep rstudio
+
+kill 'pid'
+
 ```
 
 2. Show how to use either `brew` or `apt-get` to update a software, could be python or similar. N.B something that does not take forever.
@@ -408,5 +414,5 @@ ps aux
 
 4. Show hidden configuration files, both those which should not / cannot be edited without sudo rights and those which are local and can be edited.
 
-5. Change the command line prompt by editing the approprite configuration file (either the .bashrc or the .zshrc).
+5. Change the command line prompt by editing the appropriate configuration file (either the .bashrc or the .zshrc).
 
