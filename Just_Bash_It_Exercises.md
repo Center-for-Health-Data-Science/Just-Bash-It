@@ -431,31 +431,40 @@ bash ex4.sh
 In this exercise we will install first a package manger and then use
 this package manager to install a software.
 
-**For OS X systems:**  
-1. Install `Homebrew`, figure out how to do it here (is is one-liner in
-the command line): <https://brew.sh/>
+1.  Installer:
 
-**For Ubuntu and Linux systems:** 1. You most likely already have
-`apt-get`, figure out what version you have?
-
-**For Windows systems with MobaXterm:** 1.
+- **For OS X systems:**  
+  Install `Homebrew` (N.B this may take some time), figure out how to do
+  it here (is is one-liner in the command line): <https://brew.sh/>
+- **For Ubuntu and Linux systems, Windows (WSL) systems & MobaXterm
+  users**: You most likely already have `apt-get` installed. Figure out
+  what version you have? HINT: `--version`.
 
 Now that you have installed a package manager you will use it to install
 a command line tool on your laptop. We will install **FastQC**
 (<https://www.bioinformatics.babraham.ac.uk/projects/fastqc/>) which is
 a tool for quality control of DNA and RNA sequencing reads.
 
-2.  First check is you have this software installed already and if so,
-    which version do do you have? HINT: `--version`
+2.  FastQC:
 
-3.  If you already have `fastqc` installed, then update it, otherwise
-    install using the appropriate install command for your system.
+- **For OS X systems, Ubuntu/Linux systems & Windows (WSL) systems:**  
+  If you already have `fastqc` installed, then update it, otherwise
+  install using the appropriate install command for your system.  
+- **MobaXterm users**:  
+  You will need to install `perl` before you can use `fastqc`:
+  - Click this link to install `perl` for `MobaXterm`:
+    <https://mobaxterm.mobatek.net/plugins/Perl.mxt3>. Put the the
+    `perl` plug-in in the same directory as the MobaXterm executable.
+  - Download `fastqc` here:
+    <https://sourceforge.net/projects/fastqc.mirror/files/latest/download>.
+    Put the the `fastQC` executable in the same directory as the
+    MobaXterm executable.
 
 We will check that `fastqc` is correctly installed and works by running
 the tool on our two files (`_R1.fastq` and `_R2.fastq`) containing
 sequencing reads.
 
-4.  Move to the `Data/Raw/`. Modify and use the command below to run
+3.  Move to the `Data/Raw/`. Modify and use the command below to run
     `fastqc`. You should specify the path to the directory you want the
     output to go to, in this case `Data/Generated/`.
 
