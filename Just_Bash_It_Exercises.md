@@ -428,7 +428,7 @@ bash ex4.sh
 
 ## Exercise 7: Software Installation, Upkeep & More
 
-In this exercise we will install first a package manger and then use
+In this exercise we will install first a package manager and then use
 this package manager to install a software.
 
 1.  Installer:
@@ -457,8 +457,8 @@ a tool for quality control of DNA and RNA sequencing reads.
     `perl` plug-in in the same directory as the MobaXterm executable.
   - Download `fastqc` here:
     <https://sourceforge.net/projects/fastqc.mirror/files/latest/download>.
-    Put the the `fastQC` executable in the same directory as the
-    MobaXterm executable.
+    Put the `fastQC` executable in the same directory as the MobaXterm
+    executable.
 
 We will check that `fastqc` is correctly installed and works by running
 the tool on our two files (`_R1.fastq` and `_R2.fastq`) containing
