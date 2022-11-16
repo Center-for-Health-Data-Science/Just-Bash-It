@@ -2,23 +2,31 @@
 ================
 Center for Health Data Science, July 2022
 
--   [Introduction](#introduction)
--   [Presentation 1: Navigating Files and
-    Directories](#presentation-1-navigating-files-and-directories)
--   [Presentation 2: Project
-    Organization](#presentation-2-project-organization)
--   [Presentation 3: Working with Files and
-    Directories](#presentation-3-working-with-files-and-directories)
--   [Presentation 4: More Bash Commands - Part 1: wc, sed &
-    cut](#presentation-4-more-bash-commands---part-1-wc-sed--cut)
--   [Presentation 4: More Bash Commands - Part 1: sort, grep &
-    awk](#presentation-4-more-bash-commands---part-1-sort-grep--awk)
--   [Presentation 5: Redirection &
-    Pipes](#presentation-5-redirection--pipes)
--   [Presentation 6: Shell Scripts and
-    Loops](#presentation-6-shell-scripts-and-loops)
--   [Presentation 7: Software Installation, Upkeep &
-    More](#presentation-7-software-installation-upkeep--more)
+- <a href="#introduction" id="toc-introduction">Introduction</a>
+- <a href="#presentation-1-navigating-files-and-directories"
+  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
+  Navigating Files and Directories</a>
+- <a href="#presentation-2-project-organization"
+  id="toc-presentation-2-project-organization">Presentation 2: Project
+  Organization</a>
+- <a href="#presentation-3-working-with-files-and-directories"
+  id="toc-presentation-3-working-with-files-and-directories">Presentation
+  3: Working with Files and Directories</a>
+- <a href="#presentation-4-more-bash-commands---part-1-wc-sed--cut"
+  id="toc-presentation-4-more-bash-commands---part-1-wc-sed--cut">Presentation
+  4: More Bash Commands - Part 1: wc, sed &amp; cut</a>
+- <a href="#presentation-4-more-bash-commands---part-1-sort-grep--awk"
+  id="toc-presentation-4-more-bash-commands---part-1-sort-grep--awk">Presentation
+  4: More Bash Commands - Part 1: sort, grep &amp; awk</a>
+- <a href="#presentation-5-redirection--pipes"
+  id="toc-presentation-5-redirection--pipes">Presentation 5: Redirection
+  &amp; Pipes</a>
+- <a href="#presentation-6-shell-scripts-and-loops"
+  id="toc-presentation-6-shell-scripts-and-loops">Presentation 6: Shell
+  Scripts and Loops</a>
+- <a href="#presentation-7-software-installation-upkeep--more"
+  id="toc-presentation-7-software-installation-upkeep--more">Presentation
+  7: Software Installation, Upkeep &amp; More</a>
 
 ## Introduction
 
@@ -77,6 +85,7 @@ cd
 Help page for command
 
 ``` bash
+
 man ls
 
 ls --help
@@ -129,25 +138,15 @@ pwd
 ls
 ```
 
-2.  Move around the sub-directories in the directory `Just_Bash_It`.
-    Make a folder which is missing, show `mkdir` and add a `readme` file
-    to the dir using `touch`. Also make a mistake and reiterate `rm`.
+2.  Go to the `Examples` folder and use `ls` and `du` options to show
+    file sizes.
 
 ``` bash
-mkdir
-touch
-rm
+du -hA (apparent disk size)
+du -hAa (apparent disk size)
 ```
 
-3.  Go to the raw data folder and use `ls` and `du` options to show file
-    sizes and file permission settings.
-
-``` bash
-du -sh  *
-du -sh patients.txt
-
-du -sh dir *
-```
+3.  Check & change permissions
 
 ``` bash
 ls -al
@@ -160,6 +159,15 @@ Change permission settings:
 chmod u+rwx patients.txt
 chmod g+w patients.txt
 chmod g-w patients.txt
+```
+
+4.  Make a folder and a file, show `mkdir` and`touch`. Also make a
+    mistake and reiterate `rm -r`.
+
+``` bash
+mkdir
+touch
+rm
 ```
 
 ## Presentation 3: Working with Files and Directories
@@ -227,12 +235,12 @@ same output?
 
 2.  Show some options for `cut`:
 
-Cut bytes and characters
+Cut Characters
 
 ``` bash
-cut -b 1,2,3,4 patients.txt
-cut -b 1-4 patients.txt
+cut -c 1,2,3,4 patients.txt
 cut -c 1-4 patients.txt
+cut -c 1,4,8 patients.txt
 ```
 
 Cut field (f) with specified delimiter (d):
@@ -257,12 +265,14 @@ Search replace with `sed`:
 ``` bash
 sed 's/herlev/Herlev/g' patients.txt
 sed 's/A/X/g' patients.txt
+sed 's/a/X/g' patients.txt
 
 # Only if nothing follows a, regex
-sed's/a$/X/g' patients.txt
+sed 's/a$/X/g' patients.txt
+sed 's/a../X/g' patients.txt
 
-# Except in line 4
-sed '4!s/A/C/g' patients.txt
+# a followed by two characters/numbers, regex
+sed 's/a../X/g' patients.txt
 
 # Only print lines containing Herlev
 sed -n '/Herlev/p' patients.txt
@@ -287,6 +297,8 @@ sort -t ',' -k2,3 patients.txt
 # Sort numerical 
 sort -t ',' -n -k4 patients.txt
 sort -t ',' -n -k2 patients.txt
+
+sort -t ',' -nr -k4 patients.txt
 ```
 
 5.  Show some options for `grep`
@@ -296,11 +308,11 @@ sort -t ',' -n -k2 patients.txt
 grep 'Rigshospitalet' patients.txt
 grep 'Rigs' patients.txt
 
-# grep count
-grep -c 'Rigs' patients.txt
-
 # grep return pattern only
 grep -o 'Rigs' patients.txt
+
+# grep count
+grep -c 'Rigs' patients.txt
 
 # case sensitive
 grep 'her' patients.txt
@@ -312,10 +324,11 @@ grep '40' patients.txt
 grep '^40' patients.txt
 
 
-# more complex regular expression
-grep '[0-9]*,[0-9]*,5' patients.txt
+# all rows that end on 5
+grep ',3$' patients.txt
+grep '[0-9]*,[0-9]*,3' patients.txt
 
-# more complex regular expression
+# more complex regular expression gets entries with A in second field and 5 in the last,
 grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
 ```
 
@@ -324,10 +337,9 @@ grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
 ``` bash
 # awk pattern, print the line,  i.e. all fields
 awk '/Rigs/ {print}' patients.txt
-awk '/[0-9]*,[0-9]*,5/ {print}' patients.txt
+awk '/,5$/ {print}' patients.txt
 
 # Print by field
-awk '/Rigs/ {print}' patients.txt
 awk -F ',' '{print $2,$3}' patients.txt
 
 # Print by field more complex
@@ -336,11 +348,10 @@ awk -F ',' '/Rigs/ {print $2,$3}' patients.txt
 awk -F ',' '/Rigs/ {print $3 ";" $5}' patients.txt
 
 # With delimiter for all columns
-awk -F "," 'OFS=";" {print $3, $4, $2}' patients.txt
+awk -F ',' 'OFS=";" {print $3, $4, $2}' patients.txt
 
 # Conditional statement with awk
-awk  -F "," '{if ($4 >15) {print $4}}' patients.txt
-awk  -F "," '{if ($4 >15) {print}}' patients.txt
+awk  -F ',' '{if ($4 >15) {print}}' patients.txt
 ```
 
 ## Presentation 5: Redirection & Pipes
@@ -429,6 +440,11 @@ done
 man top
 # man htop
 ps aux
+
+
+ps aux | grep rstudio
+
+kill 'pid'
 ```
 
 2.  Show how to use either `brew` or `apt-get` to update a software,
@@ -442,5 +458,5 @@ ps aux
     cannot be edited without sudo rights and those which are local and
     can be edited.
 
-5.  Change the command line prompt by editing the approprite
+5.  Change the command line prompt by editing the appropriate
     configuration file (either the .bashrc or the .zshrc).

@@ -104,24 +104,15 @@ pwd
 ls
 ```
 
-2. Move around the sub-directories in the directory `Just_Bash_It`. Make a folder which is missing, show `mkdir` and add a `readme` file to the dir using `touch`. Also make a mistake and reiterate `rm`.
+2. Go to the `Examples` folder and use `ls` and `du` options to show file sizes. 
 
 ```{bash, eval=FALSE, engine="sh"}
-mkdir
-touch
-rm
+du -hA (apparent disk size)
+du -hAa (apparent disk size)
+
 ```
 
-3. Go to the raw data folder and use `ls` and `du` options to show file sizes and file permission settings. 
-
-```{bash, eval=FALSE, engine="sh"}
-du -sh  *
-du -sh patients.txt
-
-du -sh dir *
-```
-
-
+3. Check & change permissions
 ```{bash, eval=FALSE, engine="sh"}
 ls -al
 ls -al *
@@ -135,6 +126,15 @@ chmod g+w patients.txt
 chmod g-w patients.txt
 ```
 
+
+
+4. Make a folder and a file, show `mkdir` and`touch`. Also make a mistake and reiterate `rm -r`.
+
+```{bash, eval=FALSE, engine="sh"}
+mkdir
+touch
+rm
+```
 
 
 
@@ -200,11 +200,11 @@ Why does `wc -l patients.txt` and `wc -w patients.txt` result in the same output
 
 2. Show some options for `cut`:   
 
-Cut bytes and characters
+Cut Characters
 ```{bash, eval=FALSE, engine="sh"}
-cut -b 1,2,3,4 patients.txt
-cut -b 1-4 patients.txt
+cut -c 1,2,3,4 patients.txt
 cut -c 1-4 patients.txt
+cut -c 1,4,8 patients.txt
 ```
 
 Cut field (f) with specified delimiter (d):
@@ -227,12 +227,14 @@ Search replace with `sed`:
 ```{bash, eval=FALSE, engine="sh"}
 sed 's/herlev/Herlev/g' patients.txt
 sed 's/A/X/g' patients.txt
+sed 's/a/X/g' patients.txt
 
 # Only if nothing follows a, regex
-sed's/a$/X/g' patients.txt
+sed 's/a$/X/g' patients.txt
+sed 's/a../X/g' patients.txt
 
-# Except in line 4
-sed '4!s/A/C/g' patients.txt
+# a followed by two characters/numbers, regex
+sed 's/a../X/g' patients.txt
 
 # Only print lines containing Herlev
 sed -n '/Herlev/p' patients.txt
@@ -259,6 +261,8 @@ sort -t ',' -k2,3 patients.txt
 # Sort numerical 
 sort -t ',' -n -k4 patients.txt
 sort -t ',' -n -k2 patients.txt
+
+sort -t ',' -nr -k4 patients.txt
 ```
 
 5. Show some options for `grep`
@@ -268,11 +272,11 @@ sort -t ',' -n -k2 patients.txt
 grep 'Rigshospitalet' patients.txt
 grep 'Rigs' patients.txt
 
-# grep count
-grep -c 'Rigs' patients.txt
-
 # grep return pattern only
 grep -o 'Rigs' patients.txt
+
+# grep count
+grep -c 'Rigs' patients.txt
 
 # case sensitive
 grep 'her' patients.txt
@@ -284,10 +288,11 @@ grep '40' patients.txt
 grep '^40' patients.txt
 
 
-# more complex regular expression
-grep '[0-9]*,[0-9]*,5' patients.txt
+# all rows that end on 5
+grep ',3$' patients.txt
+grep '[0-9]*,[0-9]*,3' patients.txt
 
-# more complex regular expression
+# more complex regular expression gets entries with A in second field and 5 in the last,
 grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
 
 ```
@@ -297,10 +302,9 @@ grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
 ```{bash, eval=FALSE, engine="sh"}
 # awk pattern, print the line,  i.e. all fields
 awk '/Rigs/ {print}' patients.txt
-awk '/[0-9]*,[0-9]*,5/ {print}' patients.txt
+awk '/,5$/ {print}' patients.txt
 
 # Print by field
-awk '/Rigs/ {print}' patients.txt
 awk -F ',' '{print $2,$3}' patients.txt
 
 # Print by field more complex
@@ -309,11 +313,10 @@ awk -F ',' '/Rigs/ {print $2,$3}' patients.txt
 awk -F ',' '/Rigs/ {print $3 ";" $5}' patients.txt
 
 # With delimiter for all columns
-awk -F "," 'OFS=";" {print $3, $4, $2}' patients.txt
+awk -F ',' 'OFS=";" {print $3, $4, $2}' patients.txt
 
 # Conditional statement with awk
-awk  -F "," '{if ($4 >15) {print $4}}' patients.txt
-awk  -F "," '{if ($4 >15) {print}}' patients.txt
+awk  -F ',' '{if ($4 >15) {print}}' patients.txt
 ```
 
 

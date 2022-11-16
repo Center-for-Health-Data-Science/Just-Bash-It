@@ -126,13 +126,14 @@ perhaps you moved it somewhere else.
     the project directory you have made and place them in the correct
     sub-directory.
 
-3.  How large are the data files you moved from the course materials?
+3.  How large (in bytes and disk space) are the data files you moved
+    from the course materials?
 
 4.  Check the permissions of the data files from the course materials.
     Do you have permission to `read`, `write` and `execute` them? If you
     are not allowed to execute the, what is the reason for this?
 
-5.  Make a new file called `Readme` within your project directory. heck
+5.  Make a new file called `Readme` within your project directory. Check
     the permissions of the file you just made and modify the permission
     of this file so the ‘group’ can write to the file (HINT:`chmod`).
 
