@@ -1,6 +1,7 @@
 ---
 title: "![](BashFigure1.jpeg)"
 output:
+  #html_document
   github_document:
     toc: true
     toc_depth: 2

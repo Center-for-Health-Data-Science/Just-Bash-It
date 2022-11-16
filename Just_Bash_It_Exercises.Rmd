@@ -1,6 +1,7 @@
 ---
 title: "![](BashFigure1.jpeg)"
 output:
+  ~#html_document
   github_document:
     toc: true
     toc_depth: 2
@@ -148,9 +149,9 @@ Have a look at the `Annotation_tmp.gff`. Does it look correct now, i.e. no heade
 
 We also would like to have the gene names. They are in field 7  in the `Annotation_tmp.gff`, but field 7 contains itself several entries ids, gene name, locus, tags etc. separated by a `;`. We refer to such separating characters as `delimiters`. One could say that field 7 contains sub-fields delimited by `;`. 
 
-We want to get the sub field starting with `gene=`, this is the gene name.To extract this information we will use cut twice. First, we will cut out column 7 from `Annotation_tmp.gff` and name that temporary file something. Then, we cut the temporary file to get field 5
+4. We want to get the sub field starting with `gene=`, this is the gene name. To extract this information we will use cut twice. First, we will cut out column 7 from `Annotation_tmp.gff` and name that temporary file something. Then, we cut the temporary file to get field 5
 
-The code is provided below. Try to understand what happens in each line. Particularly:   
+Run the code provided below. Try to understand what happens in each line. Particularly:   
 
   * What do the flags `-d` and `-f` do?
   * Why are we setting the -f flag to 5 not 7 (*HINT: field vs sub-field*)?   
@@ -302,7 +303,6 @@ bash ex4.sh
 
 
 
-
 ## Exercise 7: Software Installation, Upkeep & More  
 
 In this exercise we will install first a package manager and then use this package manager to install a software.
@@ -324,7 +324,6 @@ If you already have `fastqc` installed, then update it, otherwise install using 
 You will need to install `perl` before you can use `fastqc`:   
   * Click this link to install `perl` for `MobaXterm`: https://mobaxterm.mobatek.net/plugins/Perl.mxt3. Put the the `perl` plug-in in the same directory as the MobaXterm executable.
   * Download `fastqc` here: https://sourceforge.net/projects/fastqc.mirror/files/latest/download. Put the `fastQC` executable in the same directory as the MobaXterm executable.
-
 
 We will check that `fastqc` is correctly installed and works by running the tool on our two files (`_R1.fastq` and `_R2.fastq`) containing sequencing reads.
 

@@ -228,13 +228,14 @@ gene name, locus, tags etc. separated by a `;`. We refer to such
 separating characters as `delimiters`. One could say that field 7
 contains sub-fields delimited by `;`.
 
-We want to get the sub field starting with `gene=`, this is the gene
-name.To extract this information we will use cut twice. First, we will
-cut out column 7 from `Annotation_tmp.gff` and name that temporary file
-something. Then, we cut the temporary file to get field 5
+4.  We want to get the sub field starting with `gene=`, this is the gene
+    name. To extract this information we will use cut twice. First, we
+    will cut out column 7 from `Annotation_tmp.gff` and name that
+    temporary file something. Then, we cut the temporary file to get
+    field 5
 
-The code is provided below. Try to understand what happens in each line.
-Particularly:
+Run the code provided below. Try to understand what happens in each
+line. Particularly:
 
 - What do the flags `-d` and `-f` do?
 - Why are we setting the -f flag to 5 not 7 (*HINT: field vs
