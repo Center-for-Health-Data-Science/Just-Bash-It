@@ -454,13 +454,11 @@ a tool for quality control of DNA and RNA sequencing reads.
   install using the appropriate install command for your system.  
 - **MobaXterm users**:  
   You will need to install `perl` before you can use `fastqc`:
-  - Click this link to install `perl` for `MobaXterm`:
-    <https://mobaxterm.mobatek.net/plugins/Perl.mxt3>. Put the the
-    `perl` plug-in in the same directory as the MobaXterm executable.
-  - Download `fastqc` here:
-    <https://sourceforge.net/projects/fastqc.mirror/files/latest/download>.
-    Put the `fastQC` executable in the same directory as the MobaXterm
-    executable.
+  - Use `apt-get` to install `perl`. Check it is installed with
+    `--version`.
+  - Unfortunately `fastqc` is not available for mobaXterm with
+    `apt-get`, so download `fastqc` here:
+    <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip>.
 
 We will check that `fastqc` is correctly installed and works by running
 the tool on our two files (`_R1.fastq` and `_R2.fastq`) containing
