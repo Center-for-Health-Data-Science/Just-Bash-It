@@ -232,7 +232,6 @@ sed 's/a/X/g' patients.txt
 
 # Only if nothing follows a, regex
 sed 's/a$/X/g' patients.txt
-sed 's/a../X/g' patients.txt
 
 # a followed by two characters/numbers, regex
 sed 's/a../X/g' patients.txt
@@ -402,13 +401,13 @@ done
 1. Show activity monitor, task manager & top/htop/ps aux command.
 ```{bash, eval=FALSE, engine="sh"}
 man top
-# man htop
+# man top
 ps aux
 
 
 ps aux | grep rstudio
 
-kill 'pid'
+kill -9 'pid'
 
 ```
 
@@ -420,3 +419,6 @@ kill 'pid'
 
 5. Change the command line prompt by editing the appropriate configuration file (either the .bashrc or the .zshrc).
 
+```{bash, eval=FALSE, engine="sh"}
+PS1='%n~$ '
+```

@@ -533,7 +533,6 @@ sed &#39;s/a/X/g&#39; patients.txt
 
 # Only if nothing follows a, regex
 sed &#39;s/a$/X/g&#39; patients.txt
-sed &#39;s/a../X/g&#39; patients.txt
 
 # a followed by two characters/numbers, regex
 sed &#39;s/a../X/g&#39; patients.txt
@@ -683,13 +682,13 @@ done  </code></pre>
 command.</li>
 </ol>
 <pre class="bash"><code>man top
-# man htop
+# man top
 ps aux
 
 
 ps aux | grep rstudio
 
-kill &#39;pid&#39;
+kill -9 &#39;pid&#39;
 </code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li><p>Show how to use either <code>brew</code> or <code>apt-get</code>
@@ -703,6 +702,7 @@ be edited.</p></li>
 <li><p>Change the command line prompt by editing the appropriate
 configuration file (either the .bashrc or the .zshrc).</p></li>
 </ol>
+<pre class="bash"><code>PS1=&#39;%n~$ &#39;</code></pre>
 </div>
 
 

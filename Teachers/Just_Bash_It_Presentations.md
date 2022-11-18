@@ -269,7 +269,6 @@ sed 's/a/X/g' patients.txt
 
 # Only if nothing follows a, regex
 sed 's/a$/X/g' patients.txt
-sed 's/a../X/g' patients.txt
 
 # a followed by two characters/numbers, regex
 sed 's/a../X/g' patients.txt
@@ -438,13 +437,13 @@ done
 
 ``` bash
 man top
-# man htop
+# man top
 ps aux
 
 
 ps aux | grep rstudio
 
-kill 'pid'
+kill -9 'pid'
 ```
 
 2.  Show how to use either `brew` or `apt-get` to update a software,
@@ -460,3 +459,7 @@ kill 'pid'
 
 5.  Change the command line prompt by editing the appropriate
     configuration file (either the .bashrc or the .zshrc).
+
+``` bash
+PS1='%n~$ '
+```
