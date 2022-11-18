@@ -110,7 +110,7 @@ to do with the graphical user interface).
 Let’s get structured!
 
 1.  Make a `projects` directory at `/home/user/Desktop` on your computer
-    with all the sub-directories shown on **slide 30** in the slideshow.
+    with all the sub-directories shown on **slide 32** in the slideshow.
     You are free to name the project within the `projects` directory
     whatever you would like, e.g. **Just_Bash_It, Intro_to_command_line,
     First_Project, etc.**.  
