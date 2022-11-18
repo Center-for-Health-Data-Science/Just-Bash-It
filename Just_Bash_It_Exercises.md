@@ -2,35 +2,23 @@
 ================
 Center for Health Data Science, July 2022
 
-- <a href="#introduction" id="toc-introduction">Introduction</a>
-- <a href="#a-note-on-pseudo-code" id="toc-a-note-on-pseudo-code">A note
-  on pseudo code</a>
-- <a href="#exercise-1-navigating-files-and-directories"
-  id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
-  Navigating Files and Directories</a>
-- <a href="#exercise-2-project-organization"
-  id="toc-exercise-2-project-organization">Exercise 2: Project
-  Organization</a>
-- <a href="#exercise-3-working-with-files"
-  id="toc-exercise-3-working-with-files">Exercise 3: Working with
-  Files</a>
-- <a href="#exercise-4-more-bash-commands---part-1-wc-sed--cut"
-  id="toc-exercise-4-more-bash-commands---part-1-wc-sed--cut">Exercise 4:
-  More Bash Commands - Part 1: wc, sed &amp; cut</a>
-- <a href="#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep"
-  id="toc-exercise-4-more-bash-commands---part-2-sort-paste-awk--grep">Exercise
-  4: More Bash Commands - Part 2: sort, paste, awk &amp; grep</a>
-- <a href="#exercise-5-redirection--pipes"
-  id="toc-exercise-5-redirection--pipes">Exercise 5: Redirection &amp;
-  Pipes</a>
-- <a href="#exercise-6-part-1-shell-scripts"
-  id="toc-exercise-6-part-1-shell-scripts">Exercise 6: Part 1: Shell
-  Scripts</a>
-- <a href="#exercise-6-part-2-loops"
-  id="toc-exercise-6-part-2-loops">Exercise 6: Part 2: Loops</a>
-- <a href="#exercise-7-software-installation-upkeep--more"
-  id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
-  Software Installation, Upkeep &amp; More</a>
+-   [Introduction](#introduction)
+-   [A note on pseudo code](#a-note-on-pseudo-code)
+-   [Getting help](#getting-help)
+-   [Exercise 1: Navigating Files and
+    Directories](#exercise-1-navigating-files-and-directories)
+-   [Exercise 2: Project Organization](#exercise-2-project-organization)
+-   [Exercise 3: Working with Files](#exercise-3-working-with-files)
+-   [Exercise 4: More Bash Commands - Part 1: wc, sed &
+    cut](#exercise-4-more-bash-commands---part-1-wc-sed--cut)
+-   [Exercise 4: More Bash Commands - Part 2: sort, paste, awk &
+    grep](#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep)
+-   [Exercise 5: Redirection & Pipes](#exercise-5-redirection--pipes)
+-   [Exercise 6: Part 1: Shell
+    Scripts](#exercise-6-part-1-shell-scripts)
+-   [Exercise 6: Part 2: Loops](#exercise-6-part-2-loops)
+-   [Exercise 7: Software Installation, Upkeep &
+    More](#exercise-7-software-installation-upkeep--more)
 
 ------------------------------------------------------------------------
 
@@ -77,6 +65,24 @@ with `README.md`:
 wc README.md
 ```
 
+## Getting help
+
+Remember if you are not sure what a command does or what arguments
+(flags) a given command has, you can always use `man [name_of_command]`
+to see a manual of the command. If you are on mobaxterm, `man` returns
+the general help (called BusyBox) and here it might be more useful to
+try `[command] --help`, `[command] -h` or just `[command]` and press
+enter. You can also always google `man [command]` or `help [command]`.
+You can also ask us during the exercise session, we are here to help you
+:).
+
+There will be many error messages because things always go wrong and
+nobody knows or remembers how to do everything (including us!). It is
+very important that you apply step 1 of the error resolution procedure:
+Don’t panic (we might need a citation here :P). The computer will
+generally tell you if you’re doing something it doesn’t understand or
+that is wrong.
+
 ## Exercise 1: Navigating Files and Directories
 
 On your command line, go to where you have downloaded the course
@@ -88,17 +94,21 @@ to do with the graphical user interface).
 
 2.  Go to the `Examples` directory and list its contents.
 
-3.  Move the text file `mytextfile.txt` from the `images` folder to the
-    `docs` folder. Confirm that is is in the right place.
+3.  Now, also list the content of its sub directories.
 
-4.  Make a copy of the `mytextfile.txt` file (now in `docs`) and rename
+4.  There is a file named `.txt` in the `images` folder. Those files are
+    usually text files. It should not be there since it is not an image.
+    Move the text file from the `images` folder to the `docs` folder.
+    Confirm that it is in the right place.
+
+5.  Make a copy of the `mytextfile.txt` file (now in `docs`) and rename
     the copy to whatever you’d like.
 
-5.  Move to the `Examples` directory and make a new folder here called
+6.  Move to the `Examples` directory and make a new folder here called
     `TEMP`. Now move your copied file from point 4. above to the `TEMP`
     folder.
 
-6.  Remove the whole `TEMP` directory including the file within it. Do
+7.  Remove the whole `TEMP` directory including the file within it. Do
     you run into any problems with trying to do this?  
     You need a flag to remove a whole folder, try the manual help for
     the remove command `man rm` to figure out what flag this is.
@@ -109,11 +119,13 @@ to do with the graphical user interface).
 
 Let’s get structured!
 
-1.  Make a `projects` directory at `/home/user/Desktop` on your computer
-    with all the sub-directories shown on **slide 32** in the slideshow.
-    You are free to name the project within the `projects` directory
-    whatever you would like, e.g. **Just_Bash_It, Intro_to_command_line,
-    First_Project, etc.**.  
+1.  Make a `projects` directory on your desktop. Depending on your
+    operating system this might be at `/Users/[you]/Desktop` (Mac),
+    `/home/you/Desktop` (linux), `/home/mobaxterm/Desktop`. Inside the
+    `projects` directory, create all the sub-directories shown on
+    **slide 32** in the slideshow. You are free to name the project
+    within the `projects` directory whatever you would like,
+    e.g. **Just_Bash_It, Intro_to_command_line, First_Project, etc.**.  
     **Cheat Sheet 1** in the slideshow will have the commands you need.
 
 You should have downloaded the course materials including the raw data
@@ -121,9 +133,9 @@ files to you computer, maybe it is in your downloads directory or
 perhaps you moved it somewhere else.
 
 2.  Using the command-line, navigate to where you downloaded the course
-    materials an go to the directory named `Data`, here you should see
-    three files, all with the extension `.gz`. Move these three files to
-    the project directory you have made and place them in the correct
+    materials and go to the directory named `Data`, here you should see
+    four files, all with the extension `.gz`. Move these files to the
+    project directory you have made and place them in the correct
     sub-directory.
 
 3.  How large (in bytes and disk space) are the data files you moved
@@ -131,11 +143,14 @@ perhaps you moved it somewhere else.
 
 4.  Check the permissions of the data files from the course materials.
     Do you have permission to `read`, `write` and `execute` them? If you
-    are not allowed to execute the, what is the reason for this?
+    are not allowed to execute, what is the reason for this?
 
 5.  Make a new file called `Readme` within your project directory. Check
     the permissions of the file you just made and modify the permission
-    of this file so the ‘group’ can write to the file (HINT:`chmod`).
+    of this file so the ‘group’ can write to the file by using `chmod`.
+    Have a look at slide 38 and think about: Which group (user, group,
+    others) currently has which permissions? Which group do you want to
+    remove permission from and what permissions?
 
  
 
@@ -147,15 +162,16 @@ perhaps you moved it somewhere else.
     A `readme` file should contain information about what a certain
     directory contains, its purpose and who owns it/is the editor.
 
-2.  Move to the sub-directory `Data/Raw` here you should have the three
+2.  Move to the sub-directory `Data/Raw` here you should have the four
     data files you moved from the course material directory.
 
 Two of these files are `fastq` files, they contain RNAseq reads from a
 bulk-RNA sequencing experiment using Arabidopsis thaliana (thale cress).
 The extension `_R1` and `_R2` denote that reads are paired-end
-(e.g. read 1 and read 2). The third file with the extension `.gff`,
-contains annotations of genes and other genomic feature from the
-organism of study, Arabidopsis Thaliana.
+(e.g. read 1 and read 2). The other two are `gff` files that contain
+gene annotations and other genomic features. We will first work with the
+file `GCF_genomicAnnotation.gff.gz` which contains info on the model
+organism Arabidopsis Thaliana.
 
 3.  Expand the `GCF_genomicAnnotation.gff.gz` annotation file while
     making sure you keep a copy of the compressed version.  
@@ -194,10 +210,7 @@ show and the command line presentation.
 Go to your directory `Scratch` where you should have a copy of the
 unzipped `GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`,
 which you made in exercise 3.5 above. For inspiration on how to solve
-the questions below have a look at **slide 46**.  
-**N.B** Remember if you are not sure what arguments (flags) a given
-command has you can always use `man [name_of_command]`to see what flags
-(arguments) a command takes.
+the questions below have a look at **slide 48**.
 
 1.  Figure out how many, lines, words and characters the
     `Annotation.gff` file contains using `wc`.
@@ -237,9 +250,9 @@ contains sub-fields delimited by `;`.
 Run the code provided below. Try to understand what happens in each
 line. Particularly:
 
-- What do the flags `-d` and `-f` do?
-- Why are we setting the -f flag to 5 not 7 (*HINT: field vs
-  sub-field*)?
+-   What do the flags `-d` and `-f` do?
+-   Why are we setting the -f flag to 5 not 7 (*HINT: field vs
+    sub-field*)?
 
 ``` bash
 cut -f 7 Annotation_tmp.gff > col7.tmp
@@ -263,12 +276,13 @@ sed 's/[pattern to match]/[Replace with]/g' [input file] > [output file]
 
 For the pseudo code chunk figure out:
 
-- What the input file should be?  
-- Change `[pattern to match]` to the pattern you want to match and
-  `[Replace with]` to what you want to replace with (*HINT: replace with
-  empty/nothing*).  
-- What does the `s` and `g` denote?  
-- Run the command and save the output to whatever file name you’d like.
+-   What the input file should be?  
+-   Change `[pattern to match]` to the pattern you want to match and
+    `[Replace with]` to what you want to replace with (*HINT: replace
+    with empty/nothing*).  
+-   What does the `s` and `g` denote?  
+-   Run the command and save the output to whatever file name you’d
+    like.
 
  
 
@@ -289,23 +303,23 @@ For the pseudo code chunk figure out:
 awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
 ```
 
-- What is the output of the command?  
-- What does the flag `-F` specify?
-- What does `OFS="\t"` mean? *HINT: Google this!*
-- What is going on inside the curly brackets?
+-   What is the output of the command?  
+-   What does the flag `-F` specify?
+-   What does `OFS="\t"` mean? *HINT: Google this!*
+-   What is going on inside the curly brackets?
 
 8.  Let’s have a look at the content of your final file.
 
-- Are there any gene sequences with length 0 in the annotation file? -
-  Try the command `sort` with flags `-k 5`
-- What is the name of the gene with the longest sequence, annotated in
-  your file? - Try the command `sort` with flags `-k 5 -nr`  
-- Does our organism of study, Arabidopsis Thaliana, have the `TERT`
-  gene? - Try the command `grep`.
-- All living organisms have polymerase genes, including Arabidopsis
-  Thaliana. How many types of `POL` genes are annotated?
-- How many gene annotation lines in the file pertain to transfer RNA
-  (`tRNA`)? - Try the command `grep` with flag `-c`.
+-   Are there any gene sequences with length 0 in the annotation file? -
+    Try the command `sort` with flags `-k 5`
+-   What is the name of the gene with the longest sequence, annotated in
+    your file? - Try the command `sort` with flags `-k 5 -nr`  
+-   Does our organism of study, Arabidopsis Thaliana, have the `TERT`
+    gene? - Try the command `grep`.
+-   All living organisms have polymerase genes, including Arabidopsis
+    Thaliana. How many types of `POL` genes are annotated?
+-   How many gene annotation lines in the file pertain to transfer RNA
+    (`tRNA`)? - Try the command `grep` with flag `-c`.
 
 9.  Your new file `Annotation_Gene_Len.gff` does not have any headers on
     each field. Make a new file called `header.gff`, use nano for this,
@@ -336,12 +350,12 @@ Lets try some piping (chaining) of commands.
 
 2.  You will chain four commands with pipes (`|`), step by step:  
 
-- Remove the header rows (those beginning with hastages) in the file,
-  like you did in point 2, Exercise 4, above  
-- Extract (`cut`) the column that contains the annotation **Region**
-  (exon, CDS, etc.).  
-- Sort the extracted column with `sort`  
-- Get the unique elements from this column with the command `uniq`
+-   Remove the header rows (those beginning with hastages) in the file,
+    like you did in point 2, Exercise 4, above  
+-   Extract (`cut`) the column that contains the annotation **Region**
+    (exon, CDS, etc.).  
+-   Sort the extracted column with `sort`  
+-   Get the unique elements from this column with the command `uniq`
 
 3.  Re-run the command line you used above, but this time redirect the
     output directly to the `Data/Generated` directory by specifying the
@@ -422,11 +436,11 @@ bash ex4.sh
 
 1.  Make a short script with a for loop that does the following:
 
-- go to the data folder
-- for each zipped file, i.e. each file ending with .gz:
-- display the file name
-- display the first 10 lines without unzipping the entire file like you
-  did in Exercise 3, question 6.
+-   go to the data folder
+-   for each zipped file, i.e. each file ending with .gz:
+-   display the file name
+-   display the first 10 lines without unzipping the entire file like
+    you did in Exercise 3, question 6.
 
 ## Exercise 7: Software Installation, Upkeep & More
 
@@ -435,12 +449,12 @@ this package manager to install a software.
 
 1.  Installer:
 
-- **For OS X systems:**  
-  Install `Homebrew` (N.B this may take some time), figure out how to do
-  it here (is is one-liner in the command line): <https://brew.sh/>
-- **For Ubuntu and Linux systems, Windows (WSL) systems & MobaXterm
-  users**: You most likely already have `apt-get` installed. Figure out
-  what version you have? HINT: `--version`.
+-   **For OS X systems:**  
+    Install `Homebrew` (N.B this may take some time), figure out how to
+    do it here (is is one-liner in the command line): <https://brew.sh/>
+-   **For Ubuntu and Linux systems, Windows (WSL) systems & MobaXterm
+    users**: You most likely already have `apt-get` installed. Figure
+    out what version you have? HINT: `--version`.
 
 Now that you have installed a package manager you will use it to install
 a command line tool on your laptop. We will install **FastQC**
@@ -449,16 +463,17 @@ a tool for quality control of DNA and RNA sequencing reads.
 
 2.  FastQC:
 
-- **For OS X systems, Ubuntu/Linux systems & Windows (WSL) systems:**  
-  If you already have `fastqc` installed, then update it, otherwise
-  install using the appropriate install command for your system.  
-- **MobaXterm users**:  
-  You will need to install `perl` before you can use `fastqc`:
-  - Use `apt-get` to install `perl`. Check it is installed with
-    `--version`.
-  - Unfortunately `fastqc` is not available for mobaXterm with
-    `apt-get`, so download `fastqc` here:
-    <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip>.
+-   **For OS X systems, Ubuntu/Linux systems & Windows (WSL)
+    systems:**  
+    If you already have `fastqc` installed, then update it, otherwise
+    install using the appropriate install command for your system.  
+-   **MobaXterm users**:  
+    You will need to install `perl` before you can use `fastqc`:
+    -   Use `apt-get` to install `perl`. Check it is installed with
+        `--version`.
+    -   Unfortunately `fastqc` is not available for mobaXterm with
+        `apt-get`, so download `fastqc` here:
+        <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip>.
 
 We will check that `fastqc` is correctly installed and works by running
 the tool on our two files (`_R1.fastq` and `_R2.fastq`) containing
