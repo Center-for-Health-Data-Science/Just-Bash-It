@@ -364,8 +364,8 @@ Lets try some piping (chaining) of commands.
 
 - Remove the header rows (those beginning with hastages) in the file,
   like you did in point 2, Exercise 4, above  
-- Extract (`cut`) the column that contains the annotation **Region**
-  (exon, CDS, etc.).  
+- Extract (`cut`) the column that contains the **genomic feature**
+  (exon, CDS, etc.).
 - Sort the extracted column with `sort`  
 - Get the unique elements from this column with the command `uniq`
 
