@@ -4,7 +4,7 @@ This GitHub repository countains course materials for an introductory workshop t
 
 The repo is maintained by Center for Health Data Science (HeaDS), Faculty of Health and Medical Sciences, University of Copenhagen.
 
-Please help us to improve the course by filling out our [feedback form](https://forms.office.com/r/nCsvsRFsAU)
+Please help us to improve the course by filling out our [feedback form](https://forms.office.com/r/nCsvsRFsAU)!
 
 Contact:   
 Henrike Zschach, Data Scienctist, HeaDS, henrike.zschach@sund.ku.dk   
