@@ -1,11 +1,11 @@
 ---
 title: "![](BashFigure1.jpeg)"
 output:
-  html_document
-  #github_document:
-  #  toc: true
-  #  toc_depth: 2
-#always_allow_html: TRUE
+  #html_document
+  github_document:
+    toc: true
+    toc_depth: 2
+always_allow_html: TRUE
 author: "Center for Health Data Science, July 2022"
 ---
 
@@ -126,7 +126,7 @@ Note how that the file header (first part of the file) is denoted by hastags.
 
 5. Rename the expanded `.gff` to `Annotation.gff`. Move the `Annotation.gff` to your `Scratch` directory.
 
-6. Look at the content of one of the two `fq.gz` files with RNA sequencing read, **N.B.** this time without expanding the file! How many lines are annotated for each read?  
+6. Look at the content of one of the two `fq.gz` files with RNA sequencing read, **N.B.** this time without expanding the file!  
 
 &nbsp;
 
@@ -149,7 +149,8 @@ sed '[number first line],[number last line]d' Annotation.gff > Annotation_tmp.gf
 Have a look at the `Annotation_tmp.gff`. Does it look correct now, i.e. no headers with hastags? And does it have number of lines you expect it to have?   
 
 
-3. Use the command `cut` to make a new file which contains only `fields 3,4,5` (i.e. columns with region, start and end) from the `Annotation_tmp.gff` and name it whatever you'd like. Check that the file looks correct.
+3. Use the command `cut` to make a new file which contains only `fields 3,4,5` (i.e. columns with region, start and end) from the `Annotation_tmp.gff` and name it whatever you'd like. To do this you need to set the *tab* delimiter `'$\t'`.   
+Check that the file looks correct. 
 
 We also would like to have the gene names. They are in field 7  in the `Annotation_tmp.gff`, but field 7 contains itself several entries ids, gene name, locus, tags etc. separated by a `;`. We refer to such separating characters as `delimiters`. One could say that field 7 contains sub-fields delimited by `;`. 
 
@@ -252,7 +253,7 @@ Lets try some piping (chaining) of commands.
 
 ```{bash, engine="sh", eval=FALSE, echo=FALSE}
 cut -d ';' -f 5 gAtemp.gff | sed 's/gene=/''/g' > geneName.gff 
-cut -f 3-5 GCF_genomicAnnotation.gff |  paste -d '\t' - geneName.gff | sed '1,8d' >  output.gff  
+cut -f 3-5 GCF_genomicAnnotation.gff | paste -d '\t' - geneName.gff | sed '1,8d' >  output.gff  
 ```
 
 

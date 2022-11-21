@@ -12,9 +12,9 @@ Center for Health Data Science, July 2022
 - <a href="#presentation-3-working-with-files-and-directories"
   id="toc-presentation-3-working-with-files-and-directories">Presentation
   3: Working with Files and Directories</a>
-- <a href="#presentation-4-more-bash-commands---part-1-wc-sed--cut"
-  id="toc-presentation-4-more-bash-commands---part-1-wc-sed--cut">Presentation
-  4: More Bash Commands - Part 1: wc, sed &amp; cut</a>
+- <a href="#presentation-4-more-bash-commands---part-1-wc-cut-paste--sed"
+  id="toc-presentation-4-more-bash-commands---part-1-wc-cut-paste--sed">Presentation
+  4: More Bash Commands - Part 1: wc, cut, paste &amp; sed</a>
 - <a href="#presentation-4-more-bash-commands---part-1-sort-grep--awk"
   id="toc-presentation-4-more-bash-commands---part-1-sort-grep--awk">Presentation
   4: More Bash Commands - Part 1: sort, grep &amp; awk</a>
@@ -220,7 +220,7 @@ tar -xvf docs.tar #now untar
 ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 ```
 
-## Presentation 4: More Bash Commands - Part 1: wc, sed & cut
+## Presentation 4: More Bash Commands - Part 1: wc, cut, paste & sed
 
 1.  Show word count (`wc`), lines and characters:
 
@@ -251,7 +251,17 @@ cut -d ',' -f 3 patients.txt
 cut -d ',' -f 2-3,5 patients.txt
 ```
 
-3.  Show some options for `sed`:
+3.  Show options for `paste`:
+
+``` bash
+cut -d ',' -f 1 patients.txt > ID.txt
+cut -d ',' -f 3 patients.txt > Hospital.txt
+
+paste ID.txt Hospital.txt > ID_Hospital.txt
+paste -d '\t' ID.txt Hospital.txt > ID_Hospital.txt
+```
+
+4.  Show some options for `sed`:
 
 Print lines 12,18 or print everything except lines 12,18:
 
@@ -329,6 +339,7 @@ grep '[0-9]*,[0-9]*,3' patients.txt
 
 # more complex regular expression gets entries with A in second field and 5 in the last,
 grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
+grep 'A,.*,5' patients.txt
 ```
 
 6.  Show some options for `awk`

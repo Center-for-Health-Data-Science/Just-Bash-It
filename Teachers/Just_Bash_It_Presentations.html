@@ -499,8 +499,9 @@ tar -xvf docs.tar #now untar
 ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 </code></pre>
 </div>
-<div id="presentation-4-more-bash-commands---part-1-wc-sed-cut" class="section level2">
-<h2>Presentation 4: More Bash Commands - Part 1: wc, sed &amp; cut</h2>
+<div id="presentation-4-more-bash-commands---part-1-wc-cut-paste-sed" class="section level2">
+<h2>Presentation 4: More Bash Commands - Part 1: wc, cut, paste &amp;
+sed</h2>
 <ol style="list-style-type: decimal">
 <li>Show word count (<code>wc</code>), lines and characters:</li>
 </ol>
@@ -521,6 +522,14 @@ cut -c 1,4,8 patients.txt</code></pre>
 cut -d &#39;,&#39; -f 3 patients.txt
 cut -d &#39;,&#39; -f 2-3,5 patients.txt</code></pre>
 <ol start="3" style="list-style-type: decimal">
+<li>Show options for <code>paste</code>:</li>
+</ol>
+<pre class="bash"><code>cut -d &#39;,&#39; -f 1 patients.txt &gt; ID.txt
+cut -d &#39;,&#39; -f 3 patients.txt &gt; Hospital.txt
+
+paste ID.txt Hospital.txt &gt; ID_Hospital.txt
+paste -d &#39;\t&#39; ID.txt Hospital.txt &gt; ID_Hospital.txt</code></pre>
+<ol start="4" style="list-style-type: decimal">
 <li>Show some options for <code>sed</code>:</li>
 </ol>
 <p>Print lines 12,18 or print everything except lines 12,18:</p>
@@ -591,7 +600,7 @@ grep &#39;[0-9]*,[0-9]*,3&#39; patients.txt
 
 # more complex regular expression gets entries with A in second field and 5 in the last,
 grep &#39;A,[A-Za-z]*,[0-9]*,[0-9]*,5&#39; patients.txt
-</code></pre>
+grep &#39;A,.*,5&#39; patients.txt</code></pre>
 <ol start="6" style="list-style-type: decimal">
 <li>Show some options for <code>awk</code></li>
 </ol>

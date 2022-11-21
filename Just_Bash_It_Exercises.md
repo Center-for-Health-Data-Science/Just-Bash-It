@@ -2,23 +2,36 @@
 ================
 Center for Health Data Science, July 2022
 
--   [Introduction](#introduction)
--   [A note on pseudo code](#a-note-on-pseudo-code)
--   [Getting help](#getting-help)
--   [Exercise 1: Navigating Files and
-    Directories](#exercise-1-navigating-files-and-directories)
--   [Exercise 2: Project Organization](#exercise-2-project-organization)
--   [Exercise 3: Working with Files](#exercise-3-working-with-files)
--   [Exercise 4: More Bash Commands - Part 1: wc, sed &
-    cut](#exercise-4-more-bash-commands---part-1-wc-sed--cut)
--   [Exercise 4: More Bash Commands - Part 2: sort, paste, awk &
-    grep](#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep)
--   [Exercise 5: Redirection & Pipes](#exercise-5-redirection--pipes)
--   [Exercise 6: Part 1: Shell
-    Scripts](#exercise-6-part-1-shell-scripts)
--   [Exercise 6: Part 2: Loops](#exercise-6-part-2-loops)
--   [Exercise 7: Software Installation, Upkeep &
-    More](#exercise-7-software-installation-upkeep--more)
+- <a href="#introduction" id="toc-introduction">Introduction</a>
+- <a href="#a-note-on-pseudo-code" id="toc-a-note-on-pseudo-code">A note
+  on pseudo code</a>
+- <a href="#getting-help" id="toc-getting-help">Getting help</a>
+- <a href="#exercise-1-navigating-files-and-directories"
+  id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
+  Navigating Files and Directories</a>
+- <a href="#exercise-2-project-organization"
+  id="toc-exercise-2-project-organization">Exercise 2: Project
+  Organization</a>
+- <a href="#exercise-3-working-with-files"
+  id="toc-exercise-3-working-with-files">Exercise 3: Working with
+  Files</a>
+- <a href="#exercise-4-more-bash-commands---part-1-wc-sed--cut"
+  id="toc-exercise-4-more-bash-commands---part-1-wc-sed--cut">Exercise 4:
+  More Bash Commands - Part 1: wc, sed &amp; cut</a>
+- <a href="#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep"
+  id="toc-exercise-4-more-bash-commands---part-2-sort-paste-awk--grep">Exercise
+  4: More Bash Commands - Part 2: sort, paste, awk &amp; grep</a>
+- <a href="#exercise-5-redirection--pipes"
+  id="toc-exercise-5-redirection--pipes">Exercise 5: Redirection &amp;
+  Pipes</a>
+- <a href="#exercise-6-part-1-shell-scripts"
+  id="toc-exercise-6-part-1-shell-scripts">Exercise 6: Part 1: Shell
+  Scripts</a>
+- <a href="#exercise-6-part-2-loops"
+  id="toc-exercise-6-part-2-loops">Exercise 6: Part 2: Loops</a>
+- <a href="#exercise-7-software-installation-upkeep--more"
+  id="toc-exercise-7-software-installation-upkeep--more">Exercise 7:
+  Software Installation, Upkeep &amp; More</a>
 
 ------------------------------------------------------------------------
 
@@ -197,8 +210,7 @@ hastags.
     `Annotation.gff` to your `Scratch` directory.
 
 6.  Look at the content of one of the two `fq.gz` files with RNA
-    sequencing read, **N.B.** this time without expanding the file! How
-    many lines are annotated for each read?
+    sequencing read, **N.B.** this time without expanding the file!
 
  
 
@@ -232,8 +244,9 @@ expect it to have?
 
 3.  Use the command `cut` to make a new file which contains only
     `fields 3,4,5` (i.e. columns with region, start and end) from the
-    `Annotation_tmp.gff` and name it whatever you’d like. Check that the
-    file looks correct.
+    `Annotation_tmp.gff` and name it whatever you’d like. To do this you
+    need to set the *tab* delimiter `'$\t'`.  
+    Check that the file looks correct.
 
 We also would like to have the gene names. They are in field 7 in the
 `Annotation_tmp.gff`, but field 7 contains itself several entries ids,
@@ -250,9 +263,9 @@ contains sub-fields delimited by `;`.
 Run the code provided below. Try to understand what happens in each
 line. Particularly:
 
--   What do the flags `-d` and `-f` do?
--   Why are we setting the -f flag to 5 not 7 (*HINT: field vs
-    sub-field*)?
+- What do the flags `-d` and `-f` do?
+- Why are we setting the -f flag to 5 not 7 (*HINT: field vs
+  sub-field*)?
 
 ``` bash
 cut -f 7 Annotation_tmp.gff > col7.tmp
@@ -276,13 +289,12 @@ sed 's/[pattern to match]/[Replace with]/g' [input file] > [output file]
 
 For the pseudo code chunk figure out:
 
--   What the input file should be?  
--   Change `[pattern to match]` to the pattern you want to match and
-    `[Replace with]` to what you want to replace with (*HINT: replace
-    with empty/nothing*).  
--   What does the `s` and `g` denote?  
--   Run the command and save the output to whatever file name you’d
-    like.
+- What the input file should be?  
+- Change `[pattern to match]` to the pattern you want to match and
+  `[Replace with]` to what you want to replace with (*HINT: replace with
+  empty/nothing*).  
+- What does the `s` and `g` denote?  
+- Run the command and save the output to whatever file name you’d like.
 
  
 
@@ -303,23 +315,23 @@ For the pseudo code chunk figure out:
 awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
 ```
 
--   What is the output of the command?  
--   What does the flag `-F` specify?
--   What does `OFS="\t"` mean? *HINT: Google this!*
--   What is going on inside the curly brackets?
+- What is the output of the command?  
+- What does the flag `-F` specify?
+- What does `OFS="\t"` mean? *HINT: Google this!*
+- What is going on inside the curly brackets?
 
 8.  Let’s have a look at the content of your final file.
 
--   Are there any gene sequences with length 0 in the annotation file? -
-    Try the command `sort` with flags `-k 5`
--   What is the name of the gene with the longest sequence, annotated in
-    your file? - Try the command `sort` with flags `-k 5 -nr`  
--   Does our organism of study, Arabidopsis Thaliana, have the `TERT`
-    gene? - Try the command `grep`.
--   All living organisms have polymerase genes, including Arabidopsis
-    Thaliana. How many types of `POL` genes are annotated?
--   How many gene annotation lines in the file pertain to transfer RNA
-    (`tRNA`)? - Try the command `grep` with flag `-c`.
+- Are there any gene sequences with length 0 in the annotation file? -
+  Try the command `sort` with flags `-k 5`
+- What is the name of the gene with the longest sequence, annotated in
+  your file? - Try the command `sort` with flags `-k 5 -nr`  
+- Does our organism of study, Arabidopsis Thaliana, have the `TERT`
+  gene? - Try the command `grep`.
+- All living organisms have polymerase genes, including Arabidopsis
+  Thaliana. How many types of `POL` genes are annotated?
+- How many gene annotation lines in the file pertain to transfer RNA
+  (`tRNA`)? - Try the command `grep` with flag `-c`.
 
 9.  Your new file `Annotation_Gene_Len.gff` does not have any headers on
     each field. Make a new file called `header.gff`, use nano for this,
@@ -350,12 +362,12 @@ Lets try some piping (chaining) of commands.
 
 2.  You will chain four commands with pipes (`|`), step by step:  
 
--   Remove the header rows (those beginning with hastages) in the file,
-    like you did in point 2, Exercise 4, above  
--   Extract (`cut`) the column that contains the annotation **Region**
-    (exon, CDS, etc.).  
--   Sort the extracted column with `sort`  
--   Get the unique elements from this column with the command `uniq`
+- Remove the header rows (those beginning with hastages) in the file,
+  like you did in point 2, Exercise 4, above  
+- Extract (`cut`) the column that contains the annotation **Region**
+  (exon, CDS, etc.).  
+- Sort the extracted column with `sort`  
+- Get the unique elements from this column with the command `uniq`
 
 3.  Re-run the command line you used above, but this time redirect the
     output directly to the `Data/Generated` directory by specifying the
@@ -436,11 +448,11 @@ bash ex4.sh
 
 1.  Make a short script with a for loop that does the following:
 
--   go to the data folder
--   for each zipped file, i.e. each file ending with .gz:
--   display the file name
--   display the first 10 lines without unzipping the entire file like
-    you did in Exercise 3, question 6.
+- go to the data folder
+- for each zipped file, i.e. each file ending with .gz:
+- display the file name
+- display the first 10 lines without unzipping the entire file like you
+  did in Exercise 3, question 6.
 
 ## Exercise 7: Software Installation, Upkeep & More
 
@@ -449,12 +461,12 @@ this package manager to install a software.
 
 1.  Installer:
 
--   **For OS X systems:**  
-    Install `Homebrew` (N.B this may take some time), figure out how to
-    do it here (is is one-liner in the command line): <https://brew.sh/>
--   **For Ubuntu and Linux systems, Windows (WSL) systems & MobaXterm
-    users**: You most likely already have `apt-get` installed. Figure
-    out what version you have? HINT: `--version`.
+- **For OS X systems:**  
+  Install `Homebrew` (N.B this may take some time), figure out how to do
+  it here (is is one-liner in the command line): <https://brew.sh/>
+- **For Ubuntu and Linux systems, Windows (WSL) systems & MobaXterm
+  users**: You most likely already have `apt-get` installed. Figure out
+  what version you have? HINT: `--version`.
 
 Now that you have installed a package manager you will use it to install
 a command line tool on your laptop. We will install **FastQC**
@@ -463,17 +475,16 @@ a tool for quality control of DNA and RNA sequencing reads.
 
 2.  FastQC:
 
--   **For OS X systems, Ubuntu/Linux systems & Windows (WSL)
-    systems:**  
-    If you already have `fastqc` installed, then update it, otherwise
-    install using the appropriate install command for your system.  
--   **MobaXterm users**:  
-    You will need to install `perl` before you can use `fastqc`:
-    -   Use `apt-get` to install `perl`. Check it is installed with
-        `--version`.
-    -   Unfortunately `fastqc` is not available for mobaXterm with
-        `apt-get`, so download `fastqc` here:
-        <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip>.
+- **For OS X systems, Ubuntu/Linux systems & Windows (WSL) systems:**  
+  If you already have `fastqc` installed, then update it, otherwise
+  install using the appropriate install command for your system.  
+- **MobaXterm users**:  
+  You will need to install `perl` before you can use `fastqc`:
+  - Use `apt-get` to install `perl`. Check it is installed with
+    `--version`.
+  - Unfortunately `fastqc` is not available for mobaXterm with
+    `apt-get`, so download `fastqc` here:
+    <https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip>.
 
 We will check that `fastqc` is correctly installed and works by running
 the tool on our two files (`_R1.fastq` and `_R2.fastq`) containing

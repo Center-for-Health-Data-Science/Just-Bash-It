@@ -187,7 +187,7 @@ ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 
 
 
-## Presentation 4:  More Bash Commands - Part 1: wc, sed & cut 
+## Presentation 4:  More Bash Commands - Part 1: wc, cut, paste & sed
 
 1. Show word count (`wc`), lines and characters:
 ```{bash, eval=FALSE, engine="sh"}
@@ -216,7 +216,18 @@ cut -d ',' -f 2-3,5 patients.txt
 ```
 
 
-3. Show some options for `sed`:   
+3. Show options for `paste`:  
+```{bash, eval=FALSE, engine="sh"}
+cut -d ',' -f 1 patients.txt > ID.txt
+cut -d ',' -f 3 patients.txt > Hospital.txt
+
+paste ID.txt Hospital.txt > ID_Hospital.txt
+paste -d '\t' ID.txt Hospital.txt > ID_Hospital.txt
+```
+
+
+
+4. Show some options for `sed`:   
 
 Print lines 12,18 or print everything except lines 12,18:
 ```{bash, eval=FALSE, engine="sh"}
@@ -294,7 +305,7 @@ grep '[0-9]*,[0-9]*,3' patients.txt
 
 # more complex regular expression gets entries with A in second field and 5 in the last,
 grep 'A,[A-Za-z]*,[0-9]*,[0-9]*,5' patients.txt
-
+grep 'A,.*,5' patients.txt
 ```
 
 
