@@ -12,7 +12,7 @@
 <meta name="author" content="Center for Health Data Science, July 2022" />
 
 
-<title>Just_Bash_It_Exercises.knit</title>
+<title>Just_Bash_It_Exercises_solutions.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -369,243 +369,131 @@ pre code {
 
 
 <hr />
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>This markdown document contains of exercises for the introductory
-workshop on command line use, entitled <code>Just Bash It</code>,
-developed and hosted by Center for Health Data Science (HeaDS) at the
-Faculty of Health and Medical Sciences (<a href="https://heads.ku.dk/">HeaDS</a>), in collaboration with the
-University Library (<a href="https://kub.kb.dk/datalab">KUB</a>) Data
-Lab.<br />
-This one day workshop is targeted at biomedical and health researchers
-at the University of Copenhagen with no prior experience in bash command
-line use.</p>
-<p>The workshop consists of a slideshow with slides to each section, in
-addition to hands-on presentations (code-along) and accompanying
-exercises.</p>
+<div id="what-is-this-document" class="section level2">
+<h2>What is this document?</h2>
+<p>We show here partial solutions to the exercises. We have omitted to
+show solutions for viewing, moving and creating files as this depends on
+what your current working directory is, as well as the folder structure
+you build in the second exercise.</p>
+<p>Also consult the presentations markdown to see the commands we have
+shown during the course.</p>
 <p> </p>
-</div>
-<div id="a-note-on-pseudo-code" class="section level2">
-<h2>A note on pseudo code</h2>
-<p>Some exercises and explanations in this document contain what is
-called ‘pseudo code’. Pseudo code is an abstracted way to write an idea
-of code. It will not necessarily run when executed, so <strong>do not
-copy</strong> pseudo code straight into the command line. Rather it
-explains the idea of how your code should be structured. We will
-explicitly let you know when a snippet is <strong><em>pseudo
-code</em></strong>.</p>
-<p>Pseudo code can look like this:</p>
-<pre class="bash"><code>wc [your file]</code></pre>
-<p>In the above example square bracets mean you need to
-<strong>replace</strong> what is between them with the actual file,
-expression, ect you want to use. The square bracets themselves are not
-part of the code. For example, if you wanted to word count the readme
-file, you would replace <code>[your file]</code> with
-<code>README.md</code>:</p>
-<pre class="bash"><code>wc README.md</code></pre>
-</div>
-<div id="getting-help" class="section level2">
-<h2>Getting help</h2>
-<p>Remember if you are not sure what a command does or what arguments
-(flags) a given command has, you can always use
-<code>man [name_of_command]</code> to see a manual of the command. If
-you are on mobaxterm, <code>man</code> returns the general help (called
-BusyBox) and here it might be more useful to try
-<code>[command] --help</code>, <code>[command] -h</code> or just
-<code>[command]</code> and press enter. You can also always google
-<code>man [command]</code> or <code>help [command]</code>. You can also
-ask us during the exercise session, we are here to help you :).</p>
-<p>There will be many error messages because things always go wrong and
-nobody knows or remembers how to do everything (including us!). It is
-very important that you apply step 1 of the error resolution procedure:
-Don’t panic (we might need a citation here :P). The computer will
-generally tell you if you’re doing something it doesn’t understand or
-that is wrong.</p>
 </div>
 <div id="exercise-1-navigating-files-and-directories" class="section level2">
 <h2>Exercise 1: Navigating Files and Directories</h2>
-<p>On your command line, go to where you have downloaded the course
-materials. If the directory is zipped, unzip it. (This might be easier
-to do with the graphical user interface).</p>
 <ol style="list-style-type: decimal">
-<li><p>List the files and directories in the top directory
-<code>Just-Bash-It</code>. Which file was last updated? Which file is
-the largest?</p></li>
-<li><p>Go to the <code>Examples</code> directory and list its
-contents.</p></li>
-<li><p>Now, also list the content of its sub directories.</p></li>
-<li><p>There is a file named <code>.txt</code> in the
-<code>images</code> folder. Those files are usually text files. It
-should not be there since it is not an image. Move the text file from
-the <code>images</code> folder to the <code>docs</code> folder. Confirm
-that it is in the right place.</p></li>
-<li><p>Make a copy of the <code>mytextfile.txt</code> file (now in
-<code>docs</code>) and rename the copy to whatever you’d like.</p></li>
-<li><p>Move to the <code>Examples</code> directory and make a new folder
-here called <code>TEMP</code>. Now move your copied file from point 4.
-above to the <code>TEMP</code> folder.</p></li>
-<li><p>Remove the whole <code>TEMP</code> directory including the file
-within it. Do you run into any problems with trying to do this?<br />
-You need a flag to remove a whole folder, try the manual help for the
-remove command <code>man rm</code> to figure out what flag this
-is.</p></li>
+<li>List the files and directories in the top directory
+<code>Just-Bash-It</code>. List with latest updated file shown on
+top:</li>
 </ol>
+<pre class="bash"><code>ls -t</code></pre>
+<p>List with largest file shown on top:</p>
+<pre class="bash"><code>ls -S</code></pre>
+<p>Also consult the presentations markdown for more options to
+<code>ls</code>.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Go to the <code>Examples</code> directory and list its
+contents.</li>
+</ol>
+<pre class="bash"><code>cd Examples
+ls</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>Now, also list the content of its sub directories.</li>
+</ol>
+<pre class="bash"><code>ls *</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Move the <code>mytextfile.txt</code> file Depends on which your
+current working directory is. If you are in Examples/images it would
+be:</li>
+</ol>
+<pre class="bash"><code>mv mytextfile.txt ../docs</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>Make a copy of <code>mytextfile.txt</code></li>
+</ol>
+<pre class="bash"><code>cp mytextfile.txt new_file.txt</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Make a new folder called <code>TEMP</code>.</li>
+</ol>
+<pre class="bash"><code>mkdir TEMP</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Remove the whole <code>TEMP</code> directory including the file
+within it.</li>
+</ol>
+<pre class="bash"><code>rm -r TEMP</code></pre>
 <p> </p>
 </div>
 <div id="exercise-2-project-organization" class="section level2">
 <h2>Exercise 2: Project Organization</h2>
-<p>Let’s get structured!</p>
 <ol style="list-style-type: decimal">
-<li>Make a <code>projects</code> directory on your desktop. Depending on
-your operating system this might be at <code>/Users/[you]/Desktop</code>
-(Mac), <code>/home/you/Desktop</code> (linux),
-<code>/home/mobaxterm/Desktop</code>. Inside the <code>projects</code>
-directory, create all the sub-directories shown on <strong>slide
-32</strong> in the slideshow. You are free to name the project within
-the <code>projects</code> directory whatever you would like,
-e.g. <strong>Just_Bash_It, Intro_to_command_line, First_Project,
-etc.</strong>.<br />
-<strong>Cheat Sheet 1</strong> in the slideshow will have the commands
-you need.</li>
-</ol>
-<p>You should have downloaded the course materials including the raw
-data files to you computer, maybe it is in your downloads directory or
-perhaps you moved it somewhere else.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><p>Using the command-line, navigate to where you downloaded the
-course materials and go to the directory named <code>Data</code>, here
-you should see four files, all with the extension <code>.gz</code>. Move
-these files to the project directory you have made and place them in the
-correct sub-directory.</p></li>
+<li><p>Make a structured <code>projects</code> directory. Really depends
+on your setup but will involve a lot of <code>mkdir</code> and possible
+<code>mkdir -p</code> if you want to create top and sub directories in
+one go.</p></li>
 <li><p>How large (in bytes and disk space) are the data files you moved
-from the course materials?</p></li>
-<li><p>Check the permissions of the data files from the course
-materials. Do you have permission to <code>read</code>,
-<code>write</code> and <code>execute</code> them? If you are not allowed
-to execute, what is the reason for this?</p></li>
-<li><p>Make a new file called <code>Readme</code> within your project
-directory. Check the permissions of the file you just made and modify
-the permission of this file so the ‘group’ can write to the file by
-using <code>chmod</code>. Have a look at slide 38 and think about: Which
-group (user, group, others) currently has which permissions? Which group
-do you want to remove permission from and what permissions?</p></li>
+from the course materials? Size in bytes:</p></li>
 </ol>
+<pre class="bash"><code>ls -lh</code></pre>
+<p>Size in disk space:</p>
+<pre class="bash"><code>du -h *</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Check the permissions</li>
+</ol>
+<pre class="bash"><code>ls -l</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><code>Readme</code> file and change permissions</li>
+</ol>
+<pre class="bash"><code>touch Readme.txt
+chmod g+w Readme.txt</code></pre>
 <p> </p>
 </div>
 <div id="exercise-3-working-with-files" class="section level2">
 <h2>Exercise 3: Working with Files</h2>
-<ol style="list-style-type: decimal">
-<li><p>Go to your project directory and edit the <code>readme</code>
-file you made in <strong>Exercise 2</strong> using the one of the
-editors <code>nano</code>, <code>vim or vi</code>, <code>emacs</code>.
-<strong>N.B</strong> you might only have one of them installed!<br />
-A <code>readme</code> file should contain information about what a
-certain directory contains, its purpose and who owns it/is the
-editor.</p></li>
-<li><p>Move to the sub-directory <code>Data/Raw</code> here you should
-have the four data files you moved from the course material
-directory.</p></li>
-</ol>
-<p>Two of these files are <code>fastq</code> files, they contain RNAseq
-reads from a bulk-RNA sequencing experiment using Arabidopsis thaliana
-(thale cress). The extension <code>_R1</code> and <code>_R2</code>
-denote that reads are paired-end (e.g. read 1 and read 2). The other two
-are <code>gff</code> files that contain gene annotations and other
-genomic features. We will first work with the file
-<code>GCF_genomicAnnotation.gff.gz</code> which contains info on the
-model organism Arabidopsis Thaliana.</p>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Expand the <code>GCF_genomicAnnotation.gff.gz</code> annotation
-file while making sure you keep a copy of the compressed version.<br />
-<strong>HINT:</strong> look into what flags/arguments need to be
-specified when decompressing).</p></li>
-<li><p>Try out the commands <code>less, cat, head, tail</code> on the
-expanded <code>.gff</code> file.</p></li>
+<li>Expand the <code>GCF_genomicAnnotation.gff.gz</code> annotation file
+while making sure you keep a copy of the compressed version.</li>
 </ol>
-<p>The file contains the fields (columns) shown below, and includes
-information on; annotation source, region, sequence start and end
-position, stand, as well as a column containing various information on
-the sequences, i.e. entry id, gene name, locus, ids, tags etc.</p>
-<table>
-<colgroup>
-<col width="14%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="12%" />
-<col width="10%" />
-<col width="26%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>NC ID</th>
-<th align="center">Source</th>
-<th align="center">Region</th>
-<th align="center">Start</th>
-<th align="center">End</th>
-<th align="center">Strand</th>
-<th align="right">Gene transcript etc.</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>NC_003070.9</td>
-<td align="center">RefSeq</td>
-<td align="center">exon</td>
-<td align="center">4706</td>
-<td align="center">5095</td>
-<td align="center">+</td>
-<td align="right">gene=ARV1;locus_tag</td>
-</tr>
-</tbody>
-</table>
-<p>Note how that the file header (first part of the file) is denoted by
-hastags.</p>
+<pre class="bash"><code>gunzip -k GCF_genomicAnnotation.gff.gz</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Rename the expanded <code>.gff</code> to
+<li>Rename the expanded <code>.gff</code> to
 <code>Annotation.gff</code>. Move the <code>Annotation.gff</code> to
-your <code>Scratch</code> directory.</p></li>
-<li><p>Look at the content of one of the two <code>fq.gz</code> files
-with RNA sequencing read, <strong>N.B.</strong> this time without
-expanding the file!</p></li>
+your <code>Scratch</code> directory.</li>
 </ol>
+<pre class="bash"><code>mv GCF_genomicAnnotation.gff Annotation.gff
+mv Annotation.gff Scratch</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Look at the content of one of the two <code>fq.gz</code> files with
+RNA sequencing read, <strong>N.B.</strong> this time without expanding
+the file!</li>
+</ol>
+<pre class="bash"><code>zless SRR4420293_R2.fastq.gz</code></pre>
+<p>Press <code>q</code> to leave <code>zless</code>.</p>
 <p> </p>
 </div>
 <div id="exercise-4-more-bash-commands---part-1-wc-sed-cut" class="section level2">
 <h2>Exercise 4: More Bash Commands - Part 1: wc, sed &amp; cut</h2>
-<p>You will now test out some of the new commands introduced in the
-slide show and the command line presentation.</p>
-<p>Go to your directory <code>Scratch</code> where you should have a
-copy of the unzipped <code>GCF_genomicAnnotation.gff.gz</code> file
-named <code>Annotation.gff</code>, which you made in exercise 3.5 above.
-For inspiration on how to solve the questions below have a look at
-<strong>slide 48</strong>.</p>
 <ol style="list-style-type: decimal">
-<li><p>Figure out how many, lines, words and characters the
-<code>Annotation.gff</code> file contains using
-<code>wc</code>.</p></li>
-<li><p>As we are not interested in the header lines, denoted by
-hastages, remove these from the <code>Annotation.gff</code>and name the
-new file <code>Annotation_tmp.gff</code>. To do this you can employ the
-command <code>sed</code>, see <strong><em>pseudo code</em></strong>
-below. You will need to figure out the line numbers of the first line
-and last line to remove. What do you think the <code>d</code> refers
-to?</p></li>
+<li>Figure out how many, lines, words and characters the
+<code>Annotation.gff</code> file contains using <code>wc</code>.</li>
 </ol>
-<pre class="bash"><code>sed &#39;[number first line],[number last line]d&#39; Annotation.gff &gt; Annotation_tmp.gff</code></pre>
-<p>Have a look at the <code>Annotation_tmp.gff</code>. Does it look
-correct now, i.e. no headers with hastags? And does it have number of
-lines you expect it to have?</p>
+<pre class="bash"><code>wc Annotation.gff</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>As we are not interested in the header lines, denoted by hastages,
+remove these from the <code>Annotation.gff</code>and name the new file
+<code>Annotation_tmp.gff</code>. To do this you can employ the command
+<code>sed</code>, see <strong><em>pseudo code</em></strong> below. You
+will need to figure out the line numbers of the first line and last line
+to remove. What do you think the <code>d</code> refers to?</li>
+</ol>
+<pre class="bash"><code>sed &#39;1,8d&#39; Annotation.gff &gt; Annotation_tmp.gff</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>Use the command <code>cut</code> to make a new file which contains
 only <code>fields 3,4,5</code> (i.e. columns with region, start and end)
 from the <code>Annotation_tmp.gff</code> and name it whatever you’d
-like. To be sure that <code>cut</code> uses the correct delimiter,
-supply it with the <code>-d</code> flag. <strong>Attention</strong>! The
-<em>tab</em> delimiter <code>&#39;\t&#39;</code> is a multi-character delimiter
-and needs to specified like so: <code>-d$&#39;\t&#39;</code>.<br />
+like. To do this you need to set the <em>tab</em> delimiter
+<code>&#39;\t&#39;</code>.<br />
 Check that the file looks correct.</li>
 </ol>
+<pre class="bash"><code>cut -d$&#39;\t&#39; -f 3-5 Annotation_tmp.gff &gt; cols345</code></pre>
 <p>We also would like to have the gene names. They are in field 7 in the
 <code>Annotation_tmp.gff</code>, but field 7 contains itself several
 entries ids, gene name, locus, tags etc. separated by a <code>;</code>.
@@ -619,17 +507,8 @@ First, we will cut out column 7 from <code>Annotation_tmp.gff</code> and
 name that temporary file something. Then, we cut the temporary file to
 get field 5</li>
 </ol>
-<p>Run the code provided below. Try to understand what happens in each
-line. Particularly:</p>
-<ul>
-<li>What do the flags <code>-d</code> and <code>-f</code> do?</li>
-<li>Why are we setting the -f flag to 5 not 7 (<em>HINT: field vs
-sub-field</em>)?</li>
-</ul>
-<pre class="bash"><code>cut -f 7 Annotation_tmp.gff &gt; col7.tmp
+<pre class="bash"><code>cut -d$&#39;\t&#39; -f 7 Annotation_tmp.gff &gt; col7.tmp
 cut -d &#39;;&#39; -f 5 col7.tmp &gt; gene_names</code></pre>
-<p>Check that the file looks correct after extraction, i.e. does it seem
-to the the field you are interested in?</p>
 <ol start="5" style="list-style-type: decimal">
 <li>We would like to remove the repetitive <code>gene=</code> in each
 line to just obtain the clean <strong>gene name</strong>. One way to get
@@ -640,190 +519,134 @@ shown as <strong><em>pseudo code</em></strong> below. The
 <code>[Replace with]</code>. The patterns are separated by slashes and
 the whole expression is encased in quotes <code>&#39;</code>.</li>
 </ol>
-<pre class="bash"><code>sed &#39;s/[pattern to match]/[Replace with]/g&#39; [input file] &gt; [output file]</code></pre>
-<p>For the pseudo code chunk figure out:</p>
-<ul>
-<li>What the input file should be?<br />
-</li>
-<li>Change <code>[pattern to match]</code> to the pattern you want to
-match and <code>[Replace with]</code> to what you want to replace with
-(<em>HINT: replace with empty/nothing</em>).<br />
-</li>
-<li>What does the <code>s</code> and <code>g</code> denote?<br />
-</li>
-<li>Run the command and save the output to whatever file name you’d
-like.</li>
-</ul>
+<pre class="bash"><code>sed &#39;s/gene=//g&#39; gene_names &gt; gene_names_clean</code></pre>
 <p> </p>
 </div>
 <div id="exercise-4-more-bash-commands---part-2-sort-paste-awk-grep" class="section level2">
 <h2>Exercise 4: More Bash Commands - Part 2: sort, paste, awk &amp;
 grep</h2>
 <ol start="6" style="list-style-type: decimal">
-<li><p>You should now have one file containing only field 3, 4 &amp; 5
+<li>You should now have one file containing only field 3, 4 &amp; 5
 (question 2.) and one containing only the sub-field with gene names from
 field 7 (question 5.).<br />
 Paste these two files together into a single file using the command
 <code>paste</code>, name this file <code>Annotation_Gene.gff</code>. You
 will need to use the flag <code>-d</code> to specify what kind of
 delimiter should be used to paste the fields together, you should use a
-tab-delimiter, denoted <code>&#39;\t&#39;</code>.</p></li>
-<li><p>Run and decipher the command below.</p></li>
+tab-delimiter, denoted <code>&#39;\t&#39;</code>.</li>
+</ol>
+<pre class="bash"><code>paste -d &#39;\t&#39; cols345 gene_names_clean &gt; Annotation_Gene.gff</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>Run and decipher the command below.</li>
 </ol>
 <pre class="bash"><code>awk -F &#39;\t&#39; &#39;OFS=&quot;\t&quot; {$5=$3-$2}{print}&#39; Annotation_Gene.gff &gt; Annotation_Gene_Len.gff</code></pre>
-<ul>
-<li>What is the output of the command?<br />
-</li>
-<li>What does the flag <code>-F</code> specify?</li>
-<li>What does <code>OFS=&quot;\t&quot;</code> mean? <em>HINT: Google
-this!</em></li>
-<li>What is going on inside the curly brackets?</li>
-</ul>
 <ol start="8" style="list-style-type: decimal">
 <li>Let’s have a look at the content of your final file.</li>
 </ol>
 <ul>
-<li>Are there any gene sequences with length 0 in the annotation file? -
-Try the command <code>sort</code> with flags <code>-k 5</code>,
-<code>-n</code> and <code>-t$&#39;\t&#39;</code> . Like <code>cut</code>
-<code>sort</code> needs some help with multi-field delimiters.</li>
+<li>Are there any gene sequences with length 0 in the annotation
+file?</li>
+</ul>
+<pre class="bash"><code>sort -t$&#39;\t&#39; -k 5 -n Annotation_Gene_Len.gff &gt; short_first
+head short_first #look at the resulting sorted file</code></pre>
+<ul>
 <li>What is the name of the gene with the longest sequence, annotated in
 your file? - Try the command <code>sort</code> with flags
-<code>-k 5 -nr</code><br />
-</li>
+<code>-k 5 -nr</code></li>
+</ul>
+<pre class="bash"><code>sort -t$&#39;\t&#39; -k 5 -nr Annotation_Gene_Len.gff &gt; long_first
+head long_first #look at the resulting sorted file</code></pre>
+<ul>
 <li>Does our organism of study, Arabidopsis Thaliana, have the
 <code>TERT</code> gene? - Try the command <code>grep</code>.</li>
+</ul>
+<pre class="bash"><code>grep &#39;TERT&#39; Annotation_Gene_Len.gff</code></pre>
+<ul>
 <li>All living organisms have polymerase genes, including Arabidopsis
-Thaliana. Look for <code>POL</code> with <code>grep</code>.</li>
+Thaliana. How many types of <code>POL</code> genes are annotated?</li>
+</ul>
+<pre class="bash"><code>grep &#39;POL&#39; Annotation_Gene_Len.gff</code></pre>
+<ul>
 <li>How many gene annotation lines in the file pertain to transfer RNA
 (<code>tRNA</code>)? - Try the command <code>grep</code> with flag
 <code>-c</code>.</li>
 </ul>
+<pre class="bash"><code>grep &#39;tRNA&#39; Annotation_Gene_Len.gff -c</code></pre>
 <ol start="9" style="list-style-type: decimal">
-<li>Your new file <code>Annotation_Gene_Len.gff</code> does not have any
-headers on each field. Make a new file called <code>header.gff</code>,
-use nano for this, copy the content below into the file and close/save
-it.</li>
+<li>Add the header</li>
 </ol>
-<pre class="bash"><code>Region    Start   End   GeneName    Length</code></pre>
-<p>Now, use the command <code>cat</code> to bind <code>header.gff</code>
-and <code>Annotation_Gene_Len.gff</code> together. Name the output
-<code>Annotation_[TodaysDate].gff</code></p>
-<p>When you have checked at the file looks correct, move the file to
-your <strong>Results</strong> directory - <strong>N.B</strong> go to the
-sub-directory and check that you have moved it correctly!. You can now
-remove (delete) all the temporary files in your <code>Scratch</code>
-directory. WELL DONE!</p>
+<pre class="bash"><code>#create the header with nano or other editor
+cat header.gff Annotation_Gene_Len.gff &gt; Annotation_21Nov2022.gff
+mv Annotation_21Nov2022.gff ../Results</code></pre>
 <p> </p>
 </div>
 <div id="exercise-5-redirection-pipes" class="section level2">
 <h2>Exercise 5: Redirection &amp; Pipes</h2>
-<ol style="list-style-type: decimal">
-<li>Copy (<code>cp</code>) the unzipped gff file for Arabidopsis
-Thaliana from your <code>Data/Raw</code> dir to the <code>Scratch</code>
-dir. It might be called <code>GCF_genomicAnnotation.gff</code> or
-<code>Annotation.gff</code> if you have renamed it in exercise 3. This
-is done by specifying the path to where the copy should go. Move to the
-<code>Scratch</code> directory.</li>
-</ol>
-<p>Lets try some piping (chaining) of commands.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>We would like to find out which types of genomic features
-(i.e. exon, rRNA, repeat) we have information on. To find out we will do
-the following:</li>
+<li>Find the types of genomic features.</li>
 </ol>
-<p>You will chain four commands with pipes (<code>|</code>), step by
-step. You will not make temporary files at any of the steps but instead
-use the pipe to re-direct the output of one step to become the input of
-the next step.</p>
-<p><strong>Tip:</strong> If you are unsure what the outputs and inputs
-are at each pipe it is a good idea to build the command step by step,
-i.e. the first time only do step 1 and look what happens, then you add
-step 2 and so forth until you have assembled your command. If you get
-tired of having the output fill up your screen you can always chain a
-<code>head</code> (i.e. <code>cut -f [colunm] [file] | head</code>)
-after the step to only see the first 10 lines of output.</p>
-<ul>
-<li>Step 1: Remove the header rows (those beginning with hastages) in
-the file, like you did in point 2, Exercise 4, above<br />
-</li>
-<li>Step 2: Extract (<code>cut</code>) the column that contains the
-<strong>genomic feature</strong> (exon, CDS, etc.).</li>
-<li>Step 3: Sort the extracted column with <code>sort</code><br />
-</li>
-<li>Step 4: Get the unique elements from this column with the command
-<code>uniq</code></li>
-</ul>
+<pre class="bash"><code>sed &#39;1,8d&#39; Annotation.gff | cut -f 3 -d$&#39;\t&#39; | sort | uniq</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Re-run the command line you used above, but this time redirect
-the output directly to the <code>Data/Generated</code> directory by
+<li>Re-run the command line you used above, but this time redirect the
+output directly to the <code>Data/Generated</code> directory by
 specifying the path and the name you would like the output file to have.
 Check the <code>Data/Generated</code> directory to check that you have
-correctly made the file.</p></li>
-<li><p>Using a single command line, figure out the gene name of the
-microRNA (miRNA) gene which has the smallest genomic starting
-coordinate. You will need to combine commands <code>cut</code>,
-<code>sort</code> and <code>grep</code> to archive this. miRNA gene
-names begin with <code>MIR</code>. Think about at which point you use
-<code>cut</code>. Remember, you want to find the line, i.e. microRNA
-with the smallest genomic starting coordinate, but your output should be
-the gene name, not the coordinate!</p></li>
-<li><p>You will now redo <strong>points 2-6 from Exercise 4 (parts 1
-&amp; 2) above</strong>. You should end up with a file containing the 4
-columns: <code>Region, Start, End and GeneName (only)</code>. To archive
-this, chain together commands from points 2-6. The goal of this is to
-reduce the number of intermediate files to as few as possible. For those
-who love a challenge, it is possible to get the output file in two
-command lines (i.e. only one intermediate file). We are not counting the
-unzipped but otherwise original gff file as an intermediate file here
-(though you could argue it is!) <strong>HINT:</strong> the commands do
-not need to be combined in the same order as in Exercise 4, in fact,
-they shouldn’t be.</p></li>
+correctly made the file.</li>
 </ol>
+<pre class="bash"><code>sed &#39;1,8d&#39; Annotation.gff | cut -f 3 -d$&#39;\t&#39; | sort | uniq &gt; ../Data/Generated/feature_types.txt</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>Using a single command line, figure out the gene name of the
+microRNA (miRNA) gene which has the smallest genomic starting
+coordinate.</li>
+</ol>
+<pre class="bash"><code>grep &#39;MIR&#39; Annotation.gff | sort -k 4 -n -t$&#39;\t&#39;| cut -f 7 -d$&#39;\t&#39; | cut -f 5 -d &#39;;&#39; | head</code></pre>
+<p>The microRNA (miRNA) gene which has the smallest genomic starting
+coordinate is <code>gene=MIR5642b</code> starting at <code>2805</code>.
+You can see the coordinate by omitting the two cut statements so you see
+the full line.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>You will now redo <strong>points 2-6 from Exercise 4 (parts 1 &amp;
+2) above</strong>. You should end up with a file containing the 4
+columns: <code>Region, Start, End and GeneName (only)</code>. To archive
+this, chain together commands from points 2-6.</li>
+</ol>
+<p>Assuming your starting file is
+<code>GCF_genomicAnnotation.gff.gz</code> unzipped into
+<code>Annotation.gff</code> this works:</p>
+<pre class="bash"><code>cut -d$&#39;\t&#39; -f 7 Annotation.gff | cut -d &#39;;&#39; -f 5 | sed &#39;s/gene=/&#39;&#39;/g&#39; &gt; geneName.gff 
+cut -f 3-5 Annotation.gff | paste -d &#39;\t&#39; - geneName.gff | sed &#39;1,8d&#39; | sed &#39;s/gene=//g&#39; &gt;  output.gff  </code></pre>
+<p>The solution proposed here is not the only valid solution, merely an
+example. If you have a different solution that works that’s fine
+too.</p>
 <p> </p>
 </div>
 <div id="exercise-6-part-1-shell-scripts" class="section level2">
 <h2>Exercise 6: Part 1: Shell Scripts</h2>
-<p>We will now save the commands from exercise 5.5 (or alternatively
-exercise 4 points 2-6) in a script so we don’t lose them and can easily
-re-run our analysis with a different gff file.</p>
-<p>We will use the <code>history</code> command to easily get a record
-of what we have done so far.</p>
-<p>First, let’s see how much is in your history:</p>
-<pre class="bash"><code>history | wc </code></pre>
-<p>If you have a lot of commands saved in your history you might only
-want to see the last 20 or so. This command will show you the last
-20:</p>
-<pre class="bash"><code>history | tail -n 20</code></pre>
-<ol style="list-style-type: decimal">
-<li>Create a new file, either with the command line or the editor of
-your choice, and name it <code>ex6.sh</code>. This is the file which
-will contain your script. A script is just a collection of commands that
-are executed one after another.</li>
-</ol>
-<p>2.Using your <code>history</code>, copy the commands you used to
-solve exercise 5.5 or exercise 4 2-6 into the file <code>ex6.sh</code>.
-The end result of the command should be a file containing the 4 columns:
-<code>Region, Start, End and GeneName</code>, as in exercise 5.5. Save
-the script.</p>
 <ol start="3" style="list-style-type: decimal">
-<li>Run <code>ex6.sh</code> by calling <code>bash</code>. Does it run
-without error? If not, correct what is wrong until it does. Check that
-it creates the correct files, i.e. they should look the same as when you
-manually executed the commands.</li>
+<li>Run <code>ex6.sh</code> by calling <code>bash</code>.</li>
 </ol>
-<pre class="bash"><code>bash -x ex6.sh</code></pre>
+<p>You might need to either change directory or point to the gff file
+with the full path since your script is probably not in the same
+directory as the file. In fact, it should be in the scripts
+directory!</p>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Add lines to your script <code>ex6.sh</code> that will remove the
-temporary files created. Check that the files are indeed removed, and no
-other files have been deleted by accident. If you did delete something
-you can just re-download the respective file from github.</p></li>
-<li><p>Now replace the name of the input file,
+<li>Add lines to your script <code>ex6.sh</code> that will remove the
+temporary files created.</li>
+</ol>
+<p>Add lines to the script that remove all temporary files you create.
+I.e. if you make a file called <code>geneName.gff</code>, add
+<code>rm geneName.gff</code> to the end of the script.</p>
+<ol start="5" style="list-style-type: decimal">
+<li>Now replace the name of the input file,
 <code>GCF_genomicAnnotation.gff.gz</code>, with an argument so that you
-can run your script on different input files. Test that this
-works.</p></li>
-<li><p>Run your script on <code>ecoli.gff.gz</code> by passing the file
-name as an argument.</p></li>
+can run your script on different input files. Test that this works.</li>
+</ol>
+<p>Replace the input file name with <code>$1</code> and supply the name
+of the file to run on when you call the script:</p>
+<pre class="bash"><code>bash -x ex6.sh Annotation.gff</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Run your script on <code>ecoli.gff.gz</code> by passing the file
+name as an argument.</li>
 </ol>
 </div>
 <div id="exercise-6-part-2-loops" class="section level2">
@@ -835,64 +658,15 @@ name as an argument.</p></li>
 <li>go to the data folder</li>
 <li>for each zipped file, i.e. each file ending with .gz:</li>
 <li>display the file name</li>
-<li>display the first 10 lines without unzipping the entire file. You
-could use the same solution as in Exercise 3.6, however that was likely
-the interactive viewing. To get the first ten lines printed, you can
-chain the unzipping command with <code>head</code>.</li>
+<li>display the first 10 lines without unzipping the entire file.</li>
 </ul>
-</div>
-<div id="exercise-7-software-installation-upkeep-more" class="section level2">
-<h2>Exercise 7: Software Installation, Upkeep &amp; More</h2>
-<p>In this exercise we will install first a package manager and then use
-this package manager to install a software.</p>
-<ol style="list-style-type: decimal">
-<li>Installer:</li>
-</ol>
-<ul>
-<li><strong>For OS X systems:</strong><br />
-Install <code>Homebrew</code> (N.B this may take some time), figure out
-how to do it here (is is one-liner in the command line): <a href="https://brew.sh/" class="uri">https://brew.sh/</a></li>
-<li><strong>For Ubuntu and Linux systems, Windows (WSL) systems &amp;
-MobaXterm users</strong>: You most likely already have
-<code>apt-get</code> installed. Figure out what version you have? HINT:
-<code>--version</code>.</li>
-</ul>
-<p>Now that you have installed a package manager you will use it to
-install a command line tool on your laptop. We will install
-<strong>FastQC</strong> (<a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="uri">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a>)
-which is a tool for quality control of DNA and RNA sequencing reads.</p>
-<ol start="2" style="list-style-type: decimal">
-<li>FastQC:</li>
-</ol>
-<ul>
-<li><strong>For OS X systems, Ubuntu/Linux systems &amp; Windows (WSL)
-systems:</strong><br />
-If you already have <code>fastqc</code> installed, then update it,
-otherwise install using the appropriate install command for your
-system.<br />
-</li>
-<li><strong>MobaXterm users</strong>:<br />
-You will need to install <code>perl</code> before you can use
-<code>fastqc</code>:
-<ul>
-<li>Use <code>apt-get</code> to install <code>perl</code>. Check it is
-installed with <code>--version</code>.</li>
-<li>Unfortunately <code>fastqc</code> is not available for mobaXterm
-with <code>apt-get</code>, so download <code>fastqc</code> here: <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip" class="uri">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip</a>.</li>
-</ul></li>
-</ul>
-<p>We will check that <code>fastqc</code> is correctly installed and
-works by running the tool on our two files (<code>_R1.fastq</code> and
-<code>_R2.fastq</code>) containing sequencing reads.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>Move to the <code>Data/Raw/</code>. Modify and use the command below
-to run <code>fastqc</code>. You should specify the path to the directory
-you want the output to go to, in this case
-<code>Data/Generated/</code>.</li>
-</ol>
-<p>Have a look at your output.</p>
-<p>Extra: Try using <code>open</code> to open a file (xlsx, docx, etc.)
-and an app (browser, Rstudio, etc.) via the command line.</p>
+<pre class="bash"><code>cd Data
+for file in *.gz
+do
+  echo $file
+  gunzip -k $file | head
+done
+</code></pre>
 </div>
 
 

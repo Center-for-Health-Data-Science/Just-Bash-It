@@ -2,10 +2,10 @@
 title: "![](BashFigure1.jpeg)"
 output:
   html_document
-  github_document:
-    toc: true
-    toc_depth: 2
-always_allow_html: TRUE
+  #github_document:
+  #  toc: true
+  #  toc_depth: 2
+#always_allow_html: TRUE
 author: "Center for Health Data Science, July 2022"
 ---
 
@@ -149,7 +149,7 @@ sed '[number first line],[number last line]d' Annotation.gff > Annotation_tmp.gf
 Have a look at the `Annotation_tmp.gff`. Does it look correct now, i.e. no headers with hastags? And does it have number of lines you expect it to have?   
 
 
-3. Use the command `cut` to make a new file which contains only `fields 3,4,5` (i.e. columns with region, start and end) from the `Annotation_tmp.gff` and name it whatever you'd like. To do this you need to set the *tab* delimiter `'$\t'`.   
+3. Use the command `cut` to make a new file which contains only `fields 3,4,5` (i.e. columns with region, start and end) from the `Annotation_tmp.gff` and name it whatever you'd like. To be sure that `cut` uses the correct delimiter, supply it with the `-d` flag. **Attention**! The *tab* delimiter `'\t'` is a multi-character delimiter and needs to specified like so: `-d$'\t'`.   
 Check that the file looks correct. 
 
 We also would like to have the gene names. They are in field 7  in the `Annotation_tmp.gff`, but field 7 contains itself several entries ids, gene name, locus, tags etc. separated by a `;`. We refer to such separating characters as `delimiters`. One could say that field 7 contains sub-fields delimited by `;`. 
@@ -204,10 +204,10 @@ awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_L
   * What is going on inside the curly brackets?
 
 8. Let's have a look at the content of your final file.
-  * Are there any gene sequences with length 0 in the annotation file? - Try the command `sort` with flags  `-k 5`
+  * Are there any gene sequences with length 0 in the annotation file? - Try the command `sort` with flags  `-k 5`, `-n` and `-t$'\t'` . Like `cut` `sort` needs some help with multi-field delimiters. 
   * What is the name of the gene with the longest sequence, annotated in your file? - Try the command `sort` with flags  `-k 5 -nr`   
   * Does our organism of study, Arabidopsis Thaliana, have the `TERT` gene? - Try the command `grep`.
-  * All living organisms have polymerase genes, including Arabidopsis Thaliana. How many types of `POL` genes are annotated?
+  * All living organisms have polymerase genes, including Arabidopsis Thaliana. Look for `POL` with `grep`.
   * How many gene annotation lines in the file pertain to transfer RNA (`tRNA`)? - Try the command `grep` with flag `-c`.
   
 
@@ -230,26 +230,29 @@ When you have checked at the file looks correct, move the file to your **Results
 
 ## Exercise 5: Redirection & Pipes
 
-1. Copy (`cp`) the `GCF_genomicAnnotation.gff` from your `Data/Raw` dir to the `Scratch` dir. This is done by specifying the path to where the copy should go. Move to the `Scratch` directory.   
+1. Copy (`cp`) the unzipped gff file for Arabidopsis Thaliana from your `Data/Raw` dir to the `Scratch` dir. It might be called `GCF_genomicAnnotation.gff` or `Annotation.gff` if you have renamed it in exercise 3. This is done by specifying the path to where the copy should go. Move to the `Scratch` directory.   
 
 Lets try some piping (chaining) of commands.
 
-2. You will chain four commands with pipes (`|`), step by step:   
-* Remove the header rows (those beginning with hastages) in the file, like you did in point 2, Exercise 4, above   
-* Extract (`cut`) the column that contains the **genomic feature** (exon, CDS, etc.). 
-* Sort the extracted column with `sort`   
-* Get the unique elements from this column with the command `uniq`   
+2. We would like to find out which types of genomic features (i.e. exon, rRNA, repeat) we have information on. To find out we will do the following: 
+
+You will chain four commands with pipes (`|`), step by step. You will not make temporary files at any of the steps but instead use the pipe to re-direct the output of one step to become the input of the next step. 
+
+**Tip:** If you are unsure what the outputs and inputs are at each pipe it is a good idea to build the command step by step, i.e. the first time only do step 1 and look what happens, then you add step 2 and so forth until you have assembled your command. If you get tired of having the output fill up your screen you can always chain a `head` (i.e. `cut -f [colunm] [file] | head`) after the step to only see the first 10 lines of output. 
+
+* Step 1: Remove the header rows (those beginning with hastages) in the file, like you did in point 2, Exercise 4, above   
+* Step 2: Extract (`cut`) the column that contains the **genomic feature** (exon, CDS, etc.). 
+* Step 3: Sort the extracted column with `sort`   
+* Step 4: Get the unique elements from this column with the command `uniq`   
 
 
 3. Re-run the command line you used above, but this time redirect the output directly to the `Data/Generated` directory by specifying the path and the name you would like the output file to have. Check the `Data/Generated` directory to check that you have correctly made the file.
 
 
-4. Using a single command line, figure out the name of the microRNA (miRNA) gene which has the smallest genomic starting coordinate. You will need to combine commands `cut`, `sort` and `grep` to archive this. **HINT**: miRNA gene names begin with `MIR`.  
+4. Using a single command line, figure out the gene name of the microRNA (miRNA) gene which has the smallest genomic starting coordinate. You will need to combine commands `cut`, `sort` and `grep` to archive this. miRNA gene names begin with `MIR`. Think about at which point you use `cut`. Remember, you want to find the line, i.e. microRNA with the smallest genomic starting coordinate, but your output should be the gene name, not the coordinate!  
 
 
-5. You will now redo **points 2-6 from Exercise 4 (parts 1 & 2) above**. You should end up with a file containing the 4 columns: `Region, Start, End and GeneName (only)`. To archive this, chain together commands from points 2-6.   
-**N.B:** You do NOT need to do everything in one command line, but try to reduce the number of intermediate files to as few as possible. It is possible to get the output file in two command lines (i.e. only one intermediate file). **HINT:** the commands do not need to be combined in the same order as in Exercise 4, in fact, they shouldn't be.
-
+5. You will now redo **points 2-6 from Exercise 4 (parts 1 & 2) above**. You should end up with a file containing the 4 columns: `Region, Start, End and GeneName (only)`. To archive this, chain together commands from points 2-6. The goal of this is to reduce the number of intermediate files to as few as possible. For those who love a challenge, it is possible to get the output file in two command lines (i.e. only one intermediate file). We are not counting the unzipped but otherwise original gff file as an intermediate file here (though you could argue it is!) **HINT:** the commands do not need to be combined in the same order as in Exercise 4, in fact, they shouldn't be.
 
 ```{bash, engine="sh", eval=FALSE, echo=FALSE}
 cut -d ';' -f 5 gAtemp.gff | sed 's/gene=/''/g' > geneName.gff 
@@ -263,7 +266,7 @@ cut -f 3-5 GCF_genomicAnnotation.gff | paste -d '\t' - geneName.gff | sed '1,8d'
 
 ## Exercise 6: Part 1: Shell Scripts 
 
-We will now save the commands from exercises 4 and 5 in a script so we don't lose them and can easily re-run our analysis with a different gff file. 
+We will now save the commands from exercise 5.5 (or alternatively exercise 4 points 2-6) in a script so we don't lose them and can easily re-run our analysis with a different gff file. 
 
 We will use the `history` command to easily get a record of what we have done so far.
 
@@ -279,17 +282,17 @@ If you have a lot of commands saved in your history you might only want to see t
 history | tail -n 20
 ```
 
-1. Create a new file, either with the command line or the editor of your choice, and name it `ex4.sh`. This is the file which will contain your script. A script is just a collection of commands that are executed one after another.
+1. Create a new file, either with the command line or the editor of your choice, and name it `ex6.sh`. This is the file which will contain your script. A script is just a collection of commands that are executed one after another.
 
-2. Using your `history`, copy the commands you used to solve exercise 4 into `ex4.sh`. Save it. 
+2.Using your `history`, copy the commands you used to solve exercise 5.5 or exercise 4 2-6 into the file `ex6.sh`. The end result of the command should be a file containing the 4 columns: `Region, Start, End and GeneName`, as in exercise 5.5. Save the script. 
 
-3. Run `ex4.sh` by calling `bash`. Does it run without error? If not, correct what is wrong until it does. Check that it creates the correct files, i.e. they should look the same as when you manually executed the commands. 
+3. Run `ex6.sh` by calling `bash`. Does it run without error? If not, correct what is wrong until it does. Check that it creates the correct files, i.e. they should look the same as when you manually executed the commands. 
 
 ```{bash, engine="sh", eval=FALSE}
-bash ex4.sh
+bash -x ex6.sh
 ```
 
-4. Add lines to your script `ex4.sh` that will remove the temporary files created. Check that the files are indeed removed, and no other files have been deleted by accident. If you did delete something you can just re-download the respective file from github. 
+4. Add lines to your script `ex6.sh` that will remove the temporary files created. Check that the files are indeed removed, and no other files have been deleted by accident. If you did delete something you can just re-download the respective file from github. 
 
 5. Now replace the name of the input file, `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run your script on different input files. Test that this works.
 
@@ -304,7 +307,7 @@ bash ex4.sh
 * go to the data folder
 * for each zipped file, i.e. each file ending with .gz:
 * display the file name
-* display the first 10 lines without unzipping the entire file like you did in Exercise 3, question 6.
+* display the first 10 lines without unzipping the entire file. You could use the same solution as in Exercise 3.6, however that was likely the interactive viewing. To get the first ten lines printed, you can chain the unzipping command with `head`.
 
 
 
