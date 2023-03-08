@@ -1,10 +1,12 @@
 # Just Bash It!
 
-This GitHub repository countains course materials for an introductory workshop to command line use and bash syntax for health researchers, with the running title: _Just Bash It!_
+This GitHub repository countains course materials for the introductory workshop to command line use and bash syntax for health researchers, with the running title: _Just Bash It!_
 
-The repo is maintained by Center for Health Data Science (HeaDS), Faculty of Health and Medical Sciences, University of Copenhagen.
+This two day workshop is targeted at biomedical and health researchers at the University of Copenhagen with no prior experience in bash command line use. It consists of a slideshow, hands-on presentations, code-along and accompanying exercises.    
 
-Please help us to improve the course by filling out our [feedback form](https://forms.office.com/r/nCsvsRFsAU)!
+The repo is created by Center for Health Data Science ([HeaDS](https://heads.ku.dk/)) who also hold the workshop in collaboration with the University Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.
+
+Workshop participants, please help us to improve the course by filling out our [feedback form](https://forms.office.com/r/nCsvsRFsAU)!
 
 ### Further reading
 
@@ -17,4 +19,4 @@ The internet holds a life-time's worth of advice on all things command line and 
 
 Contact:   
 Henrike Zschach, Data Scienctist, HeaDS, henrike.zschach@sund.ku.dk   
-Thilde Terkelsen, Data Scienctist, HeaDS, thilde.terkelsen@sund.ku.dk 
+Eleonora Nigro, Scientific coordinator, HeaDS. eleonora.nigro@sund.ku.dk
