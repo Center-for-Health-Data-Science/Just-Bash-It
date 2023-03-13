@@ -1,5 +1,5 @@
 ---
-title: "![](BashFigure1.jpeg)"
+title: "![](Figures/BashFigure1.jpeg)"
 output:
   html_document
   #github_document:
@@ -21,12 +21,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Exercises
 
 
-## Introduction
+## About this document
 
 This markdown document contains the exercises for the introductory workshop on command line use, entitled `Just Bash It`. 
-
-&nbsp;
-
 
 ## A note on pseudo code
 

@@ -1,5 +1,5 @@
 ---
-title: "![](BashFigure1.jpeg)"
+title: "![](Figures/BashFigure1.jpeg)"
 output:
   html_document
   #github_document:
@@ -27,29 +27,107 @@ This markdown document contains the code along for the introductory workshop on 
 
 &nbsp;
 
+## Getting started
 
-## A note on pseudo code
+### Windows
 
-Some exercises and explanations in this document contain what is called 'pseudo code'. Pseudo code is an abstracted way to write an idea of code. It will not necessarily run when executed, so **do not copy** pseudo code straight into the command line. Rather it explains the idea of how your code should be structured. We will explicitly let you know when a snippet is ***pseudo code***. 
+You should have installed git bash as detailed in the prep email. Open the terminal by writing 'git bash' into the windows search console and select the app. 
 
-Pseudo code can look like this:
+You should see something like this:
 
-```{bash, engine="sh", eval=FALSE}
-wc [your file]
-```
+![](Figures/terminal_open.PNG)
 
-In the above example square bracets mean you need to **replace** what is between them with the actual file, expression, ect you want to use. The square bracets themselves are not part of the code. For example, if you wanted to word count the readme file, you would replace `[your file]` with `README.md`:
-
+Go to where you have placed the unzipped git repo. If it is on your Desktop you would do:
 
 ```{bash, engine="sh", eval=FALSE}
-wc README.md
+cd Desktop
+cd Just-Bash-It
 ```
+
+You should see something like this:
+
+![](Figures/go_to_repo.PNG)
+
+Today we will work inside the workshop repo for the exercises and code-along. But you are of course free to explore the rest of your hard drive!
+
+### Mac
+
+Open the terminal with the launch pad (Cmd + space, then type terminal). 
+
+Then navigate to where you have placed the unzipped git repo. If it is on your Desktop you would do:
+
+```{bash, engine="sh", eval=FALSE}
+cd Desktop
+cd Just-Bash-It
+```
+
+It should look similar to the screenshot above in the Windows section, except that your terminal is probably white. 
+
+Today we will work inside the workshop repo for the exercises and code-along. But you are of course free to explore the rest of your hard drive!
+
+### Linux based systems
+
+Open the terminal either via the launch pad or by holding Ctrl+Alt+t. 
+
+Then navigate to where you have placed the unzipped git repo. If it is on your Desktop you would do:
+
+```{bash, engine="sh", eval=FALSE}
+cd Desktop
+cd Just-Bash-It
+```
+
+It should look similar to the screenshot above in the Windows section.
+
+Today we will work inside the workshop repo for the exercises and code-along. But you are of course free to explore the rest of your hard drive!
 
 ## Getting help
 
-Remember if you are not sure what a command does or what arguments (flags) a given command has, you can always use `man [name_of_command]` to see a manual of the command. If you are on mobaxterm, `man` returns the general help (called BusyBox) and here it might be more useful to try `[command] --help`, `[command] -h` or just `[command]` and press enter. You can also always google `man [command]` or `help [command]`. You can also ask us during the exercise session, we are here to help you :).
+There are different way of getting help:
+
+* On Mac and Linux based systems, you can use `man [name_of_command]` to see a manual of the command. Not all commands have a manual. 
+
+* On git bash (Windows), but also Mac and Linux, you can use `[name_of_command] --help` or `[name_of_command] -h` if the long option is not recognized. Not all commands have a help function.
+
+* googling the command or the error usually brings up good results
+
+* You can also ask us during the exercise session, we are here to help you :).
 
 There will be many error messages because things always go wrong and nobody knows or remembers how to do everything (including us!). It is very important that you apply step 1 of the error resolution procedure: Don't panic (we might need a citation here :P). The computer will generally tell you if you're doing something it doesn't understand or that is wrong.
+
+## Code-along 1: Navigating Files and Directories
+
+1. List the contents of the workshop repo. You should see something like this:
+
+![](Figures/list_repo.PNG)
+
+2. What happens if you add the flag `-l` (that's a letter l) to the `ls` command?
+
+```{bash, engine="sh", eval=FALSE}
+ls -l
+```
+
+We are going to work in the `Examples` folder. 
+
+3. Change directory to the `Examples` folder and list the contents.
+
+4. List the contents of the `Documents` folder?
+
+5. Change directory into the `Documents` folder and check what your current working directory is. It should say this (provided your Just Bash t folder is on your Desktop):
+
+```{bash, engine="sh", eval=FALSE}
+~/Desktop/Just-Bash-It/Examples/Documents
+```
+
+6. Change directory to the `Courses` folder. Are there any files inside? 
+
+7. What is the full path of the file inside the `Courses` folder? 
+
+8. Then go back the `Images` folder (Hint: This folder should have been listed under point 3). Can you do it using the `../` syntax?
+
+9. What is the relative path to the text file in the `Courses` folder from where you are right now? You can check your answer by using `ls [relative path to file]` and seeing whether it shows the file.
+
+Back to the slides!
+
 
 ## Exercise 1: Navigating Files and Directories
 
