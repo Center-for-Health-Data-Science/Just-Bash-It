@@ -18,16 +18,19 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ---
 
-## Code - along
+# Code - along
 
+&nbsp;
 
 ## Introduction
 
 This markdown document contains the code along for the introductory workshop on command line use, entitled `Just Bash It`. 
 
-&nbsp;
-
 ## Getting started
+
+If you have not done it yet, download the materials from the github repo https://github.com/Center-for-Health-Data-Science/Just-Bash-It by selecting the green Code button and then Download ZIP. We suggest that you put it into your Documents folder so you can easily navigate to it.
+
+You also need to unzip the folder. On most systems this should be possible with right clicking on the folder and selecting Extract. 
 
 ### Windows
 
@@ -37,10 +40,10 @@ You should see something like this:
 
 ![](Figures/terminal_open.PNG)
 
-Go to where you have placed the unzipped git repo. If it is on your Desktop you would do:
+Go to where you have placed the unzipped git repo. If it is on your Documents you would do:
 
 ```{bash, engine="sh", eval=FALSE}
-cd Desktop
+cd Documents
 cd Just-Bash-It
 ```
 
@@ -54,10 +57,10 @@ Today we will work inside the workshop repo for the exercises and code-along. Bu
 
 Open the terminal with the launch pad (Cmd + space, then type terminal). 
 
-Then navigate to where you have placed the unzipped git repo. If it is on your Desktop you would do:
+Then navigate to where you have placed the unzipped git repo. If it is on your Documents you would do:
 
 ```{bash, engine="sh", eval=FALSE}
-cd Desktop
+cd Documents
 cd Just-Bash-It
 ```
 
@@ -69,10 +72,10 @@ Today we will work inside the workshop repo for the exercises and code-along. Bu
 
 Open the terminal either via the launch pad or by holding Ctrl+Alt+t. 
 
-Then navigate to where you have placed the unzipped git repo. If it is on your Desktop you would do:
+Then navigate to where you have placed the unzipped git repo. If it is on your Documents you would do:
 
 ```{bash, engine="sh", eval=FALSE}
-cd Desktop
+cd Documents
 cd Just-Bash-It
 ```
 
@@ -88,7 +91,7 @@ There are different way of getting help:
 
 * On git bash (Windows), but also Mac and Linux, you can use `[name_of_command] --help` or `[name_of_command] -h` if the long option is not recognized. Not all commands have a help function.
 
-* googling the command or the error usually brings up good results
+* Googling the command or the error usually brings up good results
 
 * You can also ask us during the exercise session, we are here to help you :).
 
@@ -96,38 +99,79 @@ There will be many error messages because things always go wrong and nobody know
 
 ## Code-along 1: Navigating Files and Directories
 
-1. List the contents of the workshop repo. You should see something like this:
+1. List the contents of the top directory of the workshop, `Just-Bash-It`. You should see something like this:
 
 ![](Figures/list_repo.PNG)
 
-2. What happens if you add the flag `-l` (that's a letter l) to the `ls` command?
+* How many objects are there in the directory? 
+* Which are files and which are (sub) directories? How can you tell?
+
+2. Now, add the flag `-l` (that's the letter l) to the `ls` command. What changes?
 
 ```{bash, engine="sh", eval=FALSE}
 ls -l
 ```
 
-We are going to work in the `Examples` folder. 
+Search the web to get an explanation of the output. What do the individual fields show?
 
-3. Change directory to the `Examples` folder and list the contents.
+Use the help of ls `ls --help` (git bash) or `man ls` (on mac/linux) og search the internet to answer the following questions:
 
-4. List the contents of the `Documents` folder?
+* Which file inside `Just-Bash-It` was last updated?
+* Which file in `Just-Bash-It` is the largest?
+* Are there any hidden files (that you normally don't see with a simple `ls`)?
 
-5. Change directory into the `Documents` folder and check what your current working directory is. It should say this (provided your Just Bash t folder is on your Desktop):
+&nbsp;
+
+For the rest of this exercise we are going to work in the `Exercises` folder. 
+
+3. Change directory to the `Exercises` folder and list its contents.
+
+4. Now list the contents of the `Documents` folder without going into it.
+
+5. Change directory into the `Documents` folder (inside the `Just-Bash-It` folder) and check what your current working directory is. It should say this (provided your Just Bash It folder is on your Desktop):
 
 ```{bash, engine="sh", eval=FALSE}
-~/Desktop/Just-Bash-It/Examples/Documents
+~/Documents/Just-Bash-It/Examples/Documents
 ```
 
 6. Change directory to the `Courses` folder. Are there any files inside? 
 
 7. What is the full path of the file inside the `Courses` folder? 
 
-8. Then go back the `Images` folder (Hint: This folder should have been listed under point 3). Can you do it using the `../` syntax?
+8. Then go to the `Images` folder (Hint: This folder should have been listed under point 3). Can you do it using the `../` syntax?
 
-9. What is the relative path to the text file in the `Courses` folder from where you are right now? You can check your answer by using `ls [relative path to file]` and seeing whether it shows the file.
+9. What is your current working director? 
+
+10. What is the relative path to the text file in the `Courses` folder from where you are right now? You can check your answer by using `ls [relative path to file]` and seeing whether it shows the file.
+
+&nbsp;
 
 Back to the slides!
 
+
+## Code-along 2: File operations mv, cp and rm
+
+0. If you are not there already, go to the `Images` folder under `Exercises`. 
+
+1. There is a file named `.txt` in the `Images` folder. Those files are usually text files. It should not be there since it is not an image. Move the text file from the `Images` folder to the `Documents` folder. Confirm that it is in the right place and that it does not exist inside the `Images` folder anymore.
+
+2. Make a copy of the `mytextfile.txt` file (should now be in `Documents`) and name the copy whatever you'd like. 
+
+3. Move to the `Exercises` directory and make a new folder here called `TEMP`. Now move the copied text file you created in point 2 to the `TEMP` folder. Confirm that it is in the right location.
+
+4. Remove the whole `TEMP` directory including the file within it. Do you run into any problems with trying to do this?   
+You need a flag to remove a whole folder, try the manual help for the remove command `man rm` to figure out what flag this is.  
+
+
+
+--------------
+
+1. Read the help or man page for `ls`. Then, list once again the files and directories in the top directory `Just-Bash-It` and find out:
+
+* Which file was last updated?
+* Which file is the largest?
+
+If you cannot see the relevant infos like size and time stamp, use the `-l` option in combination with other options. 
 
 ## Exercise 1: Navigating Files and Directories
 

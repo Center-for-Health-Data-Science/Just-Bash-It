@@ -18,8 +18,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ---
 
-## Exercises
+# Exercises
 
+&nbsp;
 
 ## About this document
 
@@ -58,7 +59,7 @@ On your command line, go to where you have downloaded the course materials. If t
 
 3. Now, also list the content of its sub directories. 
 
-4. There is a file named `.txt` in the `images` folder. Those files are usually text files. It should not be there since it is not an image. Move the text file from the `images` folder to the `docs` folder. Confirm that it is in the right place.
+4. There is a file named `.txt` in the `Images` folder. Those files are usually text files. It should not be there since it is not an image. Move the text file from the `images` folder to the `docs` folder. Confirm that it is in the right place.
 
 5. Make a copy of the `mytextfile.txt` file (now in `docs`) and rename the copy to whatever you'd like. 
 
