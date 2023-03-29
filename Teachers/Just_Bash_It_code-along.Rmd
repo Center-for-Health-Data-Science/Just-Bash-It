@@ -144,24 +144,19 @@ For the rest of this exercise we are going to work in the `Exercises` folder.
 
 10. What is the relative path to the text file in the `Courses` folder from where you are right now? You can check your answer by using `ls [relative path to file]` and seeing whether it shows the file.
 
+
+11. There is a file named `.txt` in the `Images` folder. Those files are usually text files. It should not be there since it is not an image. Move the text file from the `Images` folder to the `Documents` folder. Confirm that it is in the right place and that it does not exist inside the `Images` folder anymore.
+
+12. Make a copy of the `mytextfile.txt` file (should now be in `Documents`) and name the copy whatever you'd like. 
+
+13. Move to the `Exercises` directory and make a new folder here called `TEMP`. Now move the copied text file you created in point 12 to the `TEMP` folder. Confirm that it is in the right location.
+
+14. Remove the whole `TEMP` directory including the file within it. Do you run into any problems with trying to do this?   
+You need a flag to remove a whole folder, try the manual help for the remove command `man rm` to figure out what flag this is.  
+
 &nbsp;
 
 Back to the slides!
-
-
-## Code-along 2: File operations mv, cp and rm
-
-0. If you are not there already, go to the `Images` folder under `Exercises`. 
-
-1. There is a file named `.txt` in the `Images` folder. Those files are usually text files. It should not be there since it is not an image. Move the text file from the `Images` folder to the `Documents` folder. Confirm that it is in the right place and that it does not exist inside the `Images` folder anymore.
-
-2. Make a copy of the `mytextfile.txt` file (should now be in `Documents`) and name the copy whatever you'd like. 
-
-3. Move to the `Exercises` directory and make a new folder here called `TEMP`. Now move the copied text file you created in point 2 to the `TEMP` folder. Confirm that it is in the right location.
-
-4. Remove the whole `TEMP` directory including the file within it. Do you run into any problems with trying to do this?   
-You need a flag to remove a whole folder, try the manual help for the remove command `man rm` to figure out what flag this is.  
-
 
 
 --------------
