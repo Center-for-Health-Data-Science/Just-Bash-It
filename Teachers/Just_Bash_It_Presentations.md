@@ -1,32 +1,24 @@
 ![](BashFigure1.jpeg)
 ================
-Center for Health Data Science, July 2022
+Center for Health Data Science, June 2023
 
-- <a href="#introduction" id="toc-introduction">Introduction</a>
-- <a href="#presentation-1-navigating-files-and-directories"
-  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
-  Navigating Files and Directories</a>
-- <a href="#presentation-2-project-organization"
-  id="toc-presentation-2-project-organization">Presentation 2: Project
-  Organization</a>
-- <a href="#presentation-3-working-with-files-and-directories"
-  id="toc-presentation-3-working-with-files-and-directories">Presentation
-  3: Working with Files and Directories</a>
-- <a href="#presentation-4-more-bash-commands---part-1-wc-cut-paste--sed"
-  id="toc-presentation-4-more-bash-commands---part-1-wc-cut-paste--sed">Presentation
-  4: More Bash Commands - Part 1: wc, cut, paste &amp; sed</a>
-- <a href="#presentation-4-more-bash-commands---part-1-sort-grep--awk"
-  id="toc-presentation-4-more-bash-commands---part-1-sort-grep--awk">Presentation
-  4: More Bash Commands - Part 1: sort, grep &amp; awk</a>
-- <a href="#presentation-5-redirection--pipes"
-  id="toc-presentation-5-redirection--pipes">Presentation 5: Redirection
-  &amp; Pipes</a>
-- <a href="#presentation-6-shell-scripts-and-loops"
-  id="toc-presentation-6-shell-scripts-and-loops">Presentation 6: Shell
-  Scripts and Loops</a>
-- <a href="#presentation-7-software-installation-upkeep--more"
-  id="toc-presentation-7-software-installation-upkeep--more">Presentation
-  7: Software Installation, Upkeep &amp; More</a>
+-   [Introduction](#introduction)
+-   [Presentation 1: Navigating Files and
+    Directories](#presentation-1-navigating-files-and-directories)
+-   [Presentation 2: Project
+    Organization](#presentation-2-project-organization)
+-   [Presentation 3: Working with Files and
+    Directories](#presentation-3-working-with-files-and-directories)
+-   [Presentation 4: More Bash Commands - Part 1: wc, cut, paste &
+    sed](#presentation-4-more-bash-commands---part-1-wc-cut-paste--sed)
+-   [Presentation 4: More Bash Commands - Part 1: sort, grep &
+    awk](#presentation-4-more-bash-commands---part-1-sort-grep--awk)
+-   [Presentation 5: Redirection &
+    Pipes](#presentation-5-redirection--pipes)
+-   [Presentation 6: Shell Scripts and
+    Loops](#presentation-6-shell-scripts-and-loops)
+-   [Presentation 7: Software Installation, Upkeep &
+    More](#presentation-7-software-installation-upkeep--more)
 
 ## Introduction
 
@@ -85,7 +77,6 @@ cd
 Help page for command
 
 ``` bash
-
 man ls
 
 ls --help

@@ -17,5 +17,5 @@ patient_ID,technique,hospital,conv_days,age,satisfaction
 549066,A,Herlev,30,74,4
 374793,A,Rigshospitalet,22,67,5
 403367,B,herlev,15,70,4
-299432,A,Herlev,14,68,5
+299432,A,Herlev,8,68,5
 241388,B,Herlev,22,65,2

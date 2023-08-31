@@ -81,9 +81,9 @@ rm -r TEMP
 
 &nbsp;
 
+## Exercise 2: File operations mv, cp and rm
 
-
-## Exercise 2: Project Organization
+## Exercise 3: Project Organization
 
 1. Make a structured `projects` directory. Really depends on your setup but will involve a lot of `mkdir` and possible `mkdir -p` if you want to create top and sub directories in one go.
 
@@ -112,8 +112,7 @@ chmod g+w Readme.txt
 
 &nbsp;
 
-
-## Exercise 3: Working with Files
+## Exercise 4: Viewing and editing files
 
 3. Expand the `GCF_genomicAnnotation.gff.gz` annotation file while making sure you keep a copy of the compressed version.  
 ```{bash, engine="sh", eval=FALSE}
@@ -135,7 +134,7 @@ Press `q` to leave `zless`.
 
 &nbsp;
 
-## Exercise 4:  More Bash Commands - Part 1: wc, sed & cut 
+## Exercise 5: Data Wrangling 1 
 
 1. Figure out how many, lines, words and characters the `Annotation.gff` file contains using `wc`.
 ```{bash, engine="sh", eval=FALSE}
@@ -171,8 +170,7 @@ sed 's/gene=//g' gene_names > gene_names_clean
 &nbsp;
 
 
-
-## Exercise 4:  More Bash Commands - Part 2: sort, paste, awk & grep 
+## Exercise 6: Data Wrangling 2
 
 
 6. You should now have one file containing only field 3, 4 & 5 (question 2.) and one containing only the sub-field with gene names from field 7 (question 5.).   
@@ -229,7 +227,7 @@ mv Annotation_21Nov2022.gff ../Results
 
 
 
-## Exercise 5: Redirection & Pipes
+## Exercise 7: Redirection & Pipes
 
 2. Find the types of genomic features. 
 
@@ -264,7 +262,7 @@ The solution proposed here is not the only valid solution, merely an example. If
 
 
 
-## Exercise 6: Part 1: Shell Scripts 
+## Exercise 8: Part 1: Shell Scripts 
 
 3. Run `ex6.sh` by calling `bash`.
 
@@ -286,7 +284,7 @@ bash -x ex6.sh Annotation.gff
 
 
 
-## Exercise 6: Part 2: Loops
+## Exercise 8: Part 2: Loops
 
 1. Make a short script with a for loop that does the following: 
 
