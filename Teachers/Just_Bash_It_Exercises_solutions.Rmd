@@ -6,7 +6,7 @@ output:
   #  toc: true
   #  toc_depth: 2
 #always_allow_html: TRUE
-author: "Center for Health Data Science, July 2022"
+author: "Center for Health Data Science, November 2023"
 ---
 
 
@@ -32,56 +32,39 @@ Also consult the presentations markdown to see the commands we have shown during
 ## Exercise 1: Navigating Files and Directories
 
 
-1. List the files and directories in the top directory `Just-Bash-It`.
-List with latest updated file shown on top:
-```{bash, engine="sh", eval=FALSE}
-ls -t
+2. Listing Files
+
+    List with latest updated file shown on top:
+    ```{bash, engine="sh", eval=FALSE}
+ls -lt
 ```
 
-List with largest file shown on top:
-```{bash, engine="sh", eval=FALSE}
-ls -S
+    List with largest file shown on top:
+    ```{bash, engine="sh", eval=FALSE}
+ls -lhS
 ```
 
-Also consult the presentations markdown for more options to `ls`.
-
-2. Go to the  `Examples` directory and list its contents.
-```{bash, engine="sh", eval=FALSE}
-cd Examples
-ls
+    List hidden files:
+    ```{bash, engine="sh", eval=FALSE}
+ls -a
 ```
 
-3. Now, also list the content of its sub directories. 
-```{bash, engine="sh", eval=FALSE}
-ls *
-```
-
-4. Move the `mytextfile.txt` file
-Depends on which your current working directory is. If you are in Examples/images it would be:
-```{bash, engine="sh", eval=FALSE}
-mv mytextfile.txt ../docs
-```
-
-5. Make a copy of `mytextfile.txt`
-```{bash, engine="sh", eval=FALSE}
-cp mytextfile.txt new_file.txt
-```
+The presentations markdown shows some more options to `ls`.
+For other tasks we refer to the slideshow. 
 
 
-6. Make a new folder called `TEMP`.
-```{bash, engine="sh", eval=FALSE}
-mkdir TEMP
-```
+## Exercise 2: File operations mv, cp and rm
 
-
-7. Remove the whole `TEMP` directory including the file within it.
+4. Remove the whole `TEMP` directory including the file within it.
 ```{bash, engine="sh", eval=FALSE}
 rm -r TEMP
 ```
 
+For other tasks we refer to the slideshow. 
+
 &nbsp;
 
-## Exercise 2: File operations mv, cp and rm
+
 
 ## Exercise 3: Project Organization
 
@@ -104,10 +87,9 @@ ls -l
 ```
 
 
-5. `Readme` file and change permissions
+5. Make `Readme` file
 ```{bash, engine="sh", eval=FALSE}
 touch Readme.txt
-chmod g+w Readme.txt
 ```
 
 &nbsp;
@@ -119,13 +101,12 @@ chmod g+w Readme.txt
 gunzip -k GCF_genomicAnnotation.gff.gz
 ```
 
-5. Rename the expanded `.gff` to `Annotation.gff`. Move the `Annotation.gff` to your `Scratch` directory.
+5. Get the head of `Annotation.gff` and save it to a new file.
 ```{bash, engine="sh", eval=FALSE}
-mv GCF_genomicAnnotation.gff Annotation.gff
-mv Annotation.gff Scratch
+head GCF_genomicAnnotation.gff > gcf_head.txt
 ```
 
-6. Look at the content of one of the two `fq.gz` files with RNA sequencing read, **N.B.** this time without expanding the file!
+7. Look at the content of one of the two `fq.gz` files with RNA sequencing read without expanding the file
 ```{bash, engine="sh", eval=FALSE}
 zless SRR4420293_R2.fastq.gz
 ```
@@ -135,6 +116,7 @@ Press `q` to leave `zless`.
 &nbsp;
 
 ## Exercise 5: Data Wrangling 1 
+
 
 1. Figure out how many, lines, words and characters the `Annotation.gff` file contains using `wc`.
 ```{bash, engine="sh", eval=FALSE}
@@ -173,49 +155,43 @@ sed 's/gene=//g' gene_names > gene_names_clean
 ## Exercise 6: Data Wrangling 2
 
 
-6. You should now have one file containing only field 3, 4 & 5 (question 2.) and one containing only the sub-field with gene names from field 7 (question 5.).   
-Paste these two files together into a single file using the command `paste`, name this file `Annotation_Gene.gff`. You will need to use the flag `-d` to specify what kind of delimiter should be used to paste the fields together, you should use a tab-delimiter, denoted `'\t'`.
+1. Pasting files together. 
 
 ```{bash, engine="sh", eval=FALSE}
-paste -d '\t' cols345 gene_names_clean > Annotation_Gene.gff
+paste -d '\t' cols.tmp gene_names_clean > Annotation_Gene.gff
 ```
 
-7. Run and decipher the command below.
+3. Let's have a look at the content of your final file.
 
-```{bash, engine="sh", eval=FALSE}
-awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
-```
-
-8. Let's have a look at the content of your final file.
-  * Are there any gene sequences with length 0 in the annotation file?
-```{bash, engine="sh", eval=FALSE}
+    * Are there any gene sequences with length 0 in the annotation file?
+    ```{bash, engine="sh", eval=FALSE}
 sort -t$'\t' -k 5 -n Annotation_Gene_Len.gff > short_first
 head short_first #look at the resulting sorted file
 ```
 
-  * What is the name of the gene with the longest sequence, annotated in your file? - Try the command `sort` with flags  `-k 5 -nr`  
-```{bash, engine="sh", eval=FALSE}
+    * What is the name of the gene with the longest sequence, annotated in your file? - Try the command `sort` with flags  `-k 5 -nr`  
+    ```{bash, engine="sh", eval=FALSE}
 sort -t$'\t' -k 5 -nr Annotation_Gene_Len.gff > long_first
 head long_first #look at the resulting sorted file
 ```
 
-  * Does our organism of study, Arabidopsis Thaliana, have the `TERT` gene? - Try the command `grep`.
-```{bash, engine="sh", eval=FALSE}  
+    * Does our organism of study, Arabidopsis Thaliana, have the `TERT` gene? - Try the command `grep`.
+    ```{bash, engine="sh", eval=FALSE}  
 grep 'TERT' Annotation_Gene_Len.gff
 ```
   
-  * All living organisms have polymerase genes, including Arabidopsis Thaliana. How many types of `POL` genes are annotated?
-```{bash, engine="sh", eval=FALSE}  
+    * All living organisms have polymerase genes, including Arabidopsis Thaliana. How many types of `POL` genes are annotated?
+    ```{bash, engine="sh", eval=FALSE}  
 grep 'POL' Annotation_Gene_Len.gff
 ```
 
-  * How many gene annotation lines in the file pertain to transfer RNA (`tRNA`)? - Try the command `grep` with flag `-c`.
-```{bash, engine="sh", eval=FALSE}  
+    * How many gene annotation lines in the file pertain to transfer RNA (`tRNA`)? - Try the command `grep` with flag `-c`.
+    ```{bash, engine="sh", eval=FALSE}  
 grep 'tRNA' Annotation_Gene_Len.gff -c
 ```
 
 
-9. Add the header
+4. Adding the header
 ```{bash, engine="sh", eval=FALSE}  
 #create the header with nano or other editor
 cat header.gff Annotation_Gene_Len.gff > Annotation_21Nov2022.gff
@@ -224,7 +200,6 @@ mv Annotation_21Nov2022.gff ../Results
 
 
 &nbsp;
-
 
 
 ## Exercise 7: Redirection & Pipes
@@ -248,7 +223,13 @@ grep 'MIR' Annotation.gff | sort -k 4 -n -t$'\t'| cut -f 7 -d$'\t' | cut -f 5 -d
  
 The microRNA (miRNA) gene which has the smallest genomic starting coordinate is `gene=MIR5642b` starting at `2805`. You can see the coordinate by omitting the two cut statements so you see the full line.  
 
-5. You will now redo **points 2-6 from Exercise 4 (parts 1 & 2) above**. You should end up with a file containing the 4 columns: `Region, Start, End and GeneName (only)`. To archive this, chain together commands from points 2-6. 
+5. View the last 20 commands from your history. You need tail to look at the end of the file. The first command would be at the top.
+
+```{bash, engine="sh", eval=FALSE}  
+history | tail -n 20
+```
+
+6. You will now redo **points 2-6 from Exercise 4 (parts 1 & 2) above**. You should end up with a file containing the 4 columns: `Region, Start, End and GeneName (only)`. To archive this, chain together commands from points 2-6. 
 
 Assuming your starting file is `GCF_genomicAnnotation.gff.gz` unzipped into `Annotation.gff` this works:
 ```{bash, engine="sh", eval=FALSE}
@@ -261,27 +242,33 @@ The solution proposed here is not the only valid solution, merely an example. If
 &nbsp;
 
 
+### here
 
 ## Exercise 8: Part 1: Shell Scripts 
 
-3. Run `ex6.sh` by calling `bash`.
-
-You might need to either change directory or point to the gff file with the full path since your script is probably not in the same directory as the file. In fact, it should be in the scripts directory!
-
-4. Add lines to your script `ex6.sh` that will remove the temporary files created. 
-
-Add lines to the script that remove all temporary files you create. I.e. if you make a file called `geneName.gff`, add `rm geneName.gff` to the end of the script. 
-
-5. Now replace the name of the input file, `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run your script on different input files. Test that this works.
-
-Replace the input file name with `$1` and supply the name of the file to run on when you call the script:
+A working script could look like this:
 
 ```{bash, engine="sh", eval=FALSE}
-bash -x ex6.sh Annotation.gff
+
+#assuming your project folder is 'my_project'  and the unzipped gff should be in the scratch folder
+gunzip $1 > ~/my_project/Scratch/unzipped.gff
+
+#change into the scratch folder. We will produce all our temporary files here
+cd ~/my_project/Scratch/
+
+cut -d$'\t' -f 7 unzipped.gff | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
+cut -f 3-5 unzipped.gff | paste -d '\t' - geneName.gff | sed '1,8d' | sed 's/gene=//g' > ../Data/Generated/output.gff
+
+rm geneName.gff
+rm unzipped.gff
+
 ```
 
-6. Run your script on `ecoli.gff.gz` by passing the file name as an argument.
 
+To run it
+```{bash, engine="sh", eval=FALSE}
+bash -x ex8.sh ~/my_project/Data/ecoli.gff.gz
+```
 
 
 ## Exercise 8: Part 2: Loops

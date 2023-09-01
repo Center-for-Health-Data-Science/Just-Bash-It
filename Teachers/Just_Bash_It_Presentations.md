@@ -5,20 +5,21 @@ Center for Health Data Science, June 2023
 -   [Introduction](#introduction)
 -   [Presentation 1: Navigating Files and
     Directories](#presentation-1-navigating-files-and-directories)
--   [Presentation 2: Project
-    Organization](#presentation-2-project-organization)
--   [Presentation 3: Working with Files and
-    Directories](#presentation-3-working-with-files-and-directories)
--   [Presentation 4: More Bash Commands - Part 1: wc, cut, paste &
-    sed](#presentation-4-more-bash-commands---part-1-wc-cut-paste--sed)
--   [Presentation 4: More Bash Commands - Part 1: sort, grep &
-    awk](#presentation-4-more-bash-commands---part-1-sort-grep--awk)
--   [Presentation 5: Redirection &
-    Pipes](#presentation-5-redirection--pipes)
--   [Presentation 6: Shell Scripts and
-    Loops](#presentation-6-shell-scripts-and-loops)
--   [Presentation 7: Software Installation, Upkeep &
-    More](#presentation-7-software-installation-upkeep--more)
+-   [Presentation 2: File Operations](#presentation-2-file-operations)
+-   [Presentation 3: Project
+    Organization](#presentation-3-project-organization)
+-   [Presentation 4: Viewing and Editing
+    Files](#presentation-4-viewing-and-editing-files)
+-   [Presentation 5: Data Wrangling 1: wc, cut, paste &
+    sed](#presentation-5-data-wrangling-1-wc-cut-paste--sed)
+-   [Presentation 6: Data Wrangling 2: sort, grep &
+    awk](#presentation-6-data-wrangling-2-sort-grep--awk)
+-   [Presentation 7: Redirection &
+    Pipes](#presentation-7-redirection--pipes)
+-   [Presentation 8: Shell Scripts and
+    Loops](#presentation-8-shell-scripts-and-loops)
+-   [Presentation 9: Software Installation, Upkeep &
+    More](#presentation-9-software-installation-upkeep--more)
 
 ## Introduction
 
@@ -38,8 +39,8 @@ Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.
 
 ## Presentation 1: Navigating Files and Directories
 
-In this section we introduce the directory tree and show how to move
-around, list files and directories and what paths are.
+In this section we introduce the directory tree and show how to list
+files and directories and what paths are.
 
 Generally, whenever a command is written on a slide, you should
 demonstrate it.
@@ -82,6 +83,19 @@ man ls
 ls --help
 ```
 
+Anatomy of a command:
+
+``` bash
+ls -lh
+ls -l h #doesn't work! Because it interprets 'h' as the file or directory to work on
+ls -l -h #this works again
+```
+
+## Presentation 2: File Operations
+
+In this presentation we show how to move, create and delete files and
+directories.
+
 Working with files: mv
 
 ``` bash
@@ -106,15 +120,7 @@ ls
 rm text_copy.txt
 ```
 
-Anatomy of a command:
-
-``` bash
-ls -lh
-ls -l h #doesn't work! Because it interprets 'h' as the file or directory to work on
-ls -l -h #this works again
-```
-
-## Presentation 2: Project Organization
+## Presentation 3: Project Organization
 
 In this section we show participants how to set up a good directory
 structure. Workshop teachers should have setup a directory structure
@@ -161,7 +167,7 @@ touch
 rm
 ```
 
-## Presentation 3: Working with Files and Directories
+## Presentation 4: Viewing and Editing Files
 
 1.  View the content of a file with different commands. Use a readme
     file from a github repo as an example.
@@ -211,7 +217,7 @@ tar -xvf docs.tar #now untar
 ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 ```
 
-## Presentation 4: More Bash Commands - Part 1: wc, cut, paste & sed
+## Presentation 5: Data Wrangling 1: wc, cut, paste & sed
 
 1.  Show word count (`wc`), lines and characters:
 
@@ -281,7 +287,7 @@ sed -n '/Herlev/p' patients.txt
 sed '/Herlev/s/A/C/g' patients.txt
 ```
 
-## Presentation 4: More Bash Commands - Part 1: sort, grep & awk
+## Presentation 6: Data Wrangling 2: sort, grep & awk
 
 4.  Show some options for `sort`:
 
@@ -291,8 +297,8 @@ sort patients.txt
 # Sort on field 4
 sort -t ',' -k4 patients.txt
 
-# Sort by field 2, than 3
-sort -t ',' -k2,3 patients.txt
+# Sort first by field 3, then field 2
+sort -t ',' -k3,3 -k2,2 patients.txt
 
 # Sort numerical 
 sort -t ',' -n -k4 patients.txt
@@ -355,7 +361,7 @@ awk -F ',' 'OFS=";" {print $3, $4, $2}' patients.txt
 awk  -F ',' '{if ($4 >15) {print}}' patients.txt
 ```
 
-## Presentation 5: Redirection & Pipes
+## Presentation 7: Redirection & Pipes
 
 1.  Chain the commands `sed` and `wc`. `sed` is used to remove the
     header line:
@@ -391,20 +397,20 @@ awk -F ',' '{print $5, $2, $3}' patients.txt | cat file1.txt -
 awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
 ```
 
-## Presentation 6: Shell Scripts and Loops
+## Presentation 8: Shell Scripts and Loops
 
 0.  Tell that file names are a convention that tells the system and user
     what kind of format to expect, but they do not carry supernatural
     wisdom. Whether a file with data is named .txt, .dat or .csv does
     not change the way we interact with it via the command line.
 
-1.  Show the commands on slide 58 one by one. Ask participants what each
+1.  Show the commands on slide 89 one by one. Ask participants what each
     of them does.
 
 ``` bash
-cut -f 3 -d ',' patients.dat | sort | uniq -c
-head -n 1 patients.dat > herlev.dat
-grep 'Herlev' patients.dat | sort -n -k 5 -t ',' >> herlev.dat
+cut -f 3 -d ',' patients.txt | sort | uniq -c
+head -n 1 patients.txt > herlev.dat
+grep 'Herlev' patients.txt | sort -n -k 5 -t ',' >> herlev.dat
 ```
 
 2.  Fix the spelling mistake where ‘herlev’ is written with a small H.
@@ -413,17 +419,17 @@ grep 'Herlev' patients.dat | sort -n -k 5 -t ',' >> herlev.dat
     `herlev.dat`.
 
 ``` bash
-cut -f 3 -d ',' patients.dat | sort | uniq -c
-head -n 1 patients.dat > herlev.dat
-grep 'Herlev' patients.dat | sort -n -k 5 -t ',' >> herlev.dat
+cut -f 3 -d ',' patients.txt | sort | uniq -c
+head -n 1 patients.txt > herlev.dat
+grep 'Herlev' patients.txt | sort -n -k 5 -t ',' >> herlev.dat
 ```
 
-4.  Slide 60: Create the `sort_this.sh` script and show how it works.
+4.  Slide 90: Create the `sort_this.sh` script and show how it works.
     Pass some different files to it.
 
-5.  Slide 60: Create `cut_col.sh` and show how it works.
+5.  Slide 90: Create `cut_col.sh` and show how it works.
 
-6.  Create a short script that implements the loop shown in slide 61:
+6.  Create a short script that implements the loop shown in slide 91:
 
 ``` bash
 for file in *.txt
@@ -433,7 +439,7 @@ do
 done  
 ```
 
-## Presentation 7: Software Installation, Upkeep & More
+## Presentation 9: Software Installation, Upkeep & More
 
 1.  Show activity monitor, task manager & top/htop/ps aux command.
 
