@@ -19,4 +19,4 @@ The internet holds a life-time's worth of advice on all things command line and 
 
 Contact:   
 Henrike Zschach, Data Scienctist, HeaDS, henrike.zschach@sund.ku.dk   
-Eleonora Nigro, Scientific coordinator, HeaDS. eleonora.nigro@sund.ku.dk
+Thilde Terkelsen, Special Consultant, Data Scientist, HeaDS, thilde.terkelsen@sund.ku.dk
