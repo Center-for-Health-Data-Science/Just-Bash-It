@@ -1,20 +1,33 @@
 ![](BashFigure1.jpeg)
 ================
-Center for Health Data Science, July 2022
+Center for Health Data Science, November 2023
 
--   [What is this document?](#what-is-this-document)
--   [Exercise 1: Navigating Files and
-    Directories](#exercise-1-navigating-files-and-directories)
--   [Exercise 2: Project Organization](#exercise-2-project-organization)
--   [Exercise 3: Working with Files](#exercise-3-working-with-files)
--   [Exercise 4: More Bash Commands - Part 1: wc, sed &
-    cut](#exercise-4-more-bash-commands---part-1-wc-sed--cut)
--   [Exercise 4: More Bash Commands - Part 2: sort, paste, awk &
-    grep](#exercise-4-more-bash-commands---part-2-sort-paste-awk--grep)
--   [Exercise 5: Redirection & Pipes](#exercise-5-redirection--pipes)
--   [Exercise 6: Part 1: Shell
-    Scripts](#exercise-6-part-1-shell-scripts)
--   [Exercise 6: Part 2: Loops](#exercise-6-part-2-loops)
+- <a href="#what-is-this-document" id="toc-what-is-this-document">What is
+  this document?</a>
+- <a href="#exercise-1-navigating-files-and-directories"
+  id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
+  Navigating Files and Directories</a>
+- <a href="#exercise-2-file-operations-mv-cp-and-rm"
+  id="toc-exercise-2-file-operations-mv-cp-and-rm">Exercise 2: File
+  operations mv, cp and rm</a>
+- <a href="#exercise-3-project-organization"
+  id="toc-exercise-3-project-organization">Exercise 3: Project
+  Organization</a>
+- <a href="#exercise-4-viewing-and-editing-files"
+  id="toc-exercise-4-viewing-and-editing-files">Exercise 4: Viewing and
+  editing files</a>
+- <a href="#exercise-5-data-wrangling-1"
+  id="toc-exercise-5-data-wrangling-1">Exercise 5: Data Wrangling 1</a>
+- <a href="#exercise-6-data-wrangling-2"
+  id="toc-exercise-6-data-wrangling-2">Exercise 6: Data Wrangling 2</a>
+- <a href="#exercise-7-redirection--pipes"
+  id="toc-exercise-7-redirection--pipes">Exercise 7: Redirection &amp;
+  Pipes</a>
+- <a href="#exercise-8-part-1-shell-scripts"
+  id="toc-exercise-8-part-1-shell-scripts">Exercise 8: Part 1: Shell
+  Scripts</a>
+- <a href="#exercise-8-part-2-loops"
+  id="toc-exercise-8-part-2-loops">Exercise 8: Part 2: Loops</a>
 
 ------------------------------------------------------------------------
 
@@ -32,62 +45,42 @@ shown during the course.
 
 ## Exercise 1: Navigating Files and Directories
 
-1.  List the files and directories in the top directory `Just-Bash-It`.
-    List with latest updated file shown on top:
+2.  Listing Files
+
+List with latest updated file shown on top:
 
 ``` bash
-ls -t
+ls -lt
 ```
 
 List with largest file shown on top:
 
 ``` bash
-ls -S
+ls -lhS
 ```
 
-Also consult the presentations markdown for more options to `ls`.
-
-2.  Go to the `Examples` directory and list its contents.
+List hidden files:
 
 ``` bash
-cd Examples
-ls
+ls -a
 ```
 
-3.  Now, also list the content of its sub directories.
+The presentations markdown shows some more options to `ls`. For other
+tasks we refer to the slideshow.
 
-``` bash
-ls *
-```
+## Exercise 2: File operations mv, cp and rm
 
-4.  Move the `mytextfile.txt` file Depends on which your current working
-    directory is. If you are in Examples/images it would be:
-
-``` bash
-mv mytextfile.txt ../docs
-```
-
-5.  Make a copy of `mytextfile.txt`
-
-``` bash
-cp mytextfile.txt new_file.txt
-```
-
-6.  Make a new folder called `TEMP`.
-
-``` bash
-mkdir TEMP
-```
-
-7.  Remove the whole `TEMP` directory including the file within it.
+4.  Remove the whole `TEMP` directory including the file within it.
 
 ``` bash
 rm -r TEMP
 ```
 
+For other tasks we refer to the slideshow.
+
  
 
-## Exercise 2: Project Organization
+## Exercise 3: Project Organization
 
 1.  Make a structured `projects` directory. Really depends on your setup
     but will involve a lot of `mkdir` and possible `mkdir -p` if you
@@ -112,16 +105,15 @@ du -h *
 ls -l
 ```
 
-5.  `Readme` file and change permissions
+5.  Make `Readme` file
 
 ``` bash
 touch Readme.txt
-chmod g+w Readme.txt
 ```
 
  
 
-## Exercise 3: Working with Files
+## Exercise 4: Viewing and editing files
 
 3.  Expand the `GCF_genomicAnnotation.gff.gz` annotation file while
     making sure you keep a copy of the compressed version.
@@ -130,16 +122,14 @@ chmod g+w Readme.txt
 gunzip -k GCF_genomicAnnotation.gff.gz
 ```
 
-5.  Rename the expanded `.gff` to `Annotation.gff`. Move the
-    `Annotation.gff` to your `Scratch` directory.
+5.  Get the head of `Annotation.gff` and save it to a new file.
 
 ``` bash
-mv GCF_genomicAnnotation.gff Annotation.gff
-mv Annotation.gff Scratch
+head GCF_genomicAnnotation.gff > gcf_head.txt
 ```
 
-6.  Look at the content of one of the two `fq.gz` files with RNA
-    sequencing read, **N.B.** this time without expanding the file!
+7.  Look at the content of one of the two `fq.gz` files with RNA
+    sequencing read without expanding the file
 
 ``` bash
 zless SRR4420293_R2.fastq.gz
@@ -149,7 +139,7 @@ Press `q` to leave `zless`.
 
  
 
-## Exercise 4: More Bash Commands - Part 1: wc, sed & cut
+## Exercise 5: Data Wrangling 1
 
 1.  Figure out how many, lines, words and characters the
     `Annotation.gff` file contains using `wc`.
@@ -210,66 +200,53 @@ sed 's/gene=//g' gene_names > gene_names_clean
 
  
 
-## Exercise 4: More Bash Commands - Part 2: sort, paste, awk & grep
+## Exercise 6: Data Wrangling 2
 
-6.  You should now have one file containing only field 3, 4 & 5
-    (question 2.) and one containing only the sub-field with gene names
-    from field 7 (question 5.).  
-    Paste these two files together into a single file using the command
-    `paste`, name this file `Annotation_Gene.gff`. You will need to use
-    the flag `-d` to specify what kind of delimiter should be used to
-    paste the fields together, you should use a tab-delimiter, denoted
-    `'\t'`.
+1.  Pasting files together.
 
 ``` bash
-paste -d '\t' cols345 gene_names_clean > Annotation_Gene.gff
+paste -d '\t' cols.tmp gene_names_clean > Annotation_Gene.gff
 ```
 
-7.  Run and decipher the command below.
+3.  Let’s have a look at the content of your final file.
 
-``` bash
-awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
-```
-
-8.  Let’s have a look at the content of your final file.
-
--   Are there any gene sequences with length 0 in the annotation file?
+- Are there any gene sequences with length 0 in the annotation file?
 
 ``` bash
 sort -t$'\t' -k 5 -n Annotation_Gene_Len.gff > short_first
 head short_first #look at the resulting sorted file
 ```
 
--   What is the name of the gene with the longest sequence, annotated in
-    your file? - Try the command `sort` with flags `-k 5 -nr`
+- What is the name of the gene with the longest sequence, annotated in
+  your file? - Try the command `sort` with flags `-k 5 -nr`
 
 ``` bash
 sort -t$'\t' -k 5 -nr Annotation_Gene_Len.gff > long_first
 head long_first #look at the resulting sorted file
 ```
 
--   Does our organism of study, Arabidopsis Thaliana, have the `TERT`
-    gene? - Try the command `grep`.
+- Does our organism of study, Arabidopsis Thaliana, have the `TERT`
+  gene? - Try the command `grep`.
 
 ``` bash
 grep 'TERT' Annotation_Gene_Len.gff
 ```
 
--   All living organisms have polymerase genes, including Arabidopsis
-    Thaliana. How many types of `POL` genes are annotated?
+- All living organisms have polymerase genes, including Arabidopsis
+  Thaliana. How many types of `POL` genes are annotated?
 
 ``` bash
 grep 'POL' Annotation_Gene_Len.gff
 ```
 
--   How many gene annotation lines in the file pertain to transfer RNA
-    (`tRNA`)? - Try the command `grep` with flag `-c`.
+- How many gene annotation lines in the file pertain to transfer RNA
+  (`tRNA`)? - Try the command `grep` with flag `-c`.
 
 ``` bash
 grep 'tRNA' Annotation_Gene_Len.gff -c
 ```
 
-9.  Add the header
+4.  Adding the header
 
 ``` bash
 #create the header with nano or other editor
@@ -279,7 +256,7 @@ mv Annotation_21Nov2022.gff ../Results
 
  
 
-## Exercise 5: Redirection & Pipes
+## Exercise 7: Redirection & Pipes
 
 2.  Find the types of genomic features.
 
@@ -309,7 +286,14 @@ The microRNA (miRNA) gene which has the smallest genomic starting
 coordinate is `gene=MIR5642b` starting at `2805`. You can see the
 coordinate by omitting the two cut statements so you see the full line.
 
-5.  You will now redo **points 2-6 from Exercise 4 (parts 1 & 2)
+5.  View the last 20 commands from your history. You need tail to look
+    at the end of the file. The first command would be at the top.
+
+``` bash
+history | tail -n 20
+```
+
+6.  You will now redo **points 2-6 from Exercise 4 (parts 1 & 2)
     above**. You should end up with a file containing the 4 columns:
     `Region, Start, End and GeneName (only)`. To archive this, chain
     together commands from points 2-6.
@@ -327,43 +311,41 @@ example. If you have a different solution that works that’s fine too.
 
  
 
-## Exercise 6: Part 1: Shell Scripts
+### here
 
-3.  Run `ex6.sh` by calling `bash`.
+## Exercise 8: Part 1: Shell Scripts
 
-You might need to either change directory or point to the gff file with
-the full path since your script is probably not in the same directory as
-the file. In fact, it should be in the scripts directory!
-
-4.  Add lines to your script `ex6.sh` that will remove the temporary
-    files created.
-
-Add lines to the script that remove all temporary files you create. I.e.
-if you make a file called `geneName.gff`, add `rm geneName.gff` to the
-end of the script.
-
-5.  Now replace the name of the input file,
-    `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run
-    your script on different input files. Test that this works.
-
-Replace the input file name with `$1` and supply the name of the file to
-run on when you call the script:
+A working script could look like this:
 
 ``` bash
-bash -x ex6.sh Annotation.gff
+
+#assuming your project folder is 'my_project'  and the unzipped gff should be in the scratch folder
+gunzip $1 > ~/my_project/Scratch/unzipped.gff
+
+#change into the scratch folder. We will produce all our temporary files here
+cd ~/my_project/Scratch/
+
+cut -d$'\t' -f 7 unzipped.gff | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
+cut -f 3-5 unzipped.gff | paste -d '\t' - geneName.gff | sed '1,8d' | sed 's/gene=//g' > ../Data/Generated/output.gff
+
+rm geneName.gff
+rm unzipped.gff
 ```
 
-6.  Run your script on `ecoli.gff.gz` by passing the file name as an
-    argument.
+To run it
 
-## Exercise 6: Part 2: Loops
+``` bash
+bash -x ex8.sh ~/my_project/Data/ecoli.gff.gz
+```
+
+## Exercise 8: Part 2: Loops
 
 1.  Make a short script with a for loop that does the following:
 
--   go to the data folder
--   for each zipped file, i.e. each file ending with .gz:
--   display the file name
--   display the first 10 lines without unzipping the entire file.
+- go to the data folder
+- for each zipped file, i.e. each file ending with .gz:
+- display the file name
+- display the first 10 lines without unzipping the entire file.
 
 ``` bash
 cd Data

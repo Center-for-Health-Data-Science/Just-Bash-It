@@ -1,12 +1,12 @@
 ---
 title: "![](BashFigure1.jpeg)"
 output:
-  #html_document
-  github_document:
-    toc: true
-    toc_depth: 2
-always_allow_html: TRUE
-author: "Center for Health Data Science, June 2023"
+  html_document
+  #github_document:
+    #toc: true
+    #toc_depth: 2
+#always_allow_html: TRUE
+author: "Center for Health Data Science, November 2023"
 ---
 
 
@@ -59,6 +59,12 @@ man ls
 
 ls --help
 
+```
+
+
+List recursively:
+```{bash,  eval=FALSE, engine="sh"}
+ls -R
 ```
 
 Anatomy of a command:

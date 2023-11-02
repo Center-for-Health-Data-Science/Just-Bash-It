@@ -1,25 +1,35 @@
 ![](BashFigure1.jpeg)
 ================
-Center for Health Data Science, June 2023
+Center for Health Data Science, November 2023
 
--   [Introduction](#introduction)
--   [Presentation 1: Navigating Files and
-    Directories](#presentation-1-navigating-files-and-directories)
--   [Presentation 2: File Operations](#presentation-2-file-operations)
--   [Presentation 3: Project
-    Organization](#presentation-3-project-organization)
--   [Presentation 4: Viewing and Editing
-    Files](#presentation-4-viewing-and-editing-files)
--   [Presentation 5: Data Wrangling 1: wc, cut, paste &
-    sed](#presentation-5-data-wrangling-1-wc-cut-paste--sed)
--   [Presentation 6: Data Wrangling 2: sort, grep &
-    awk](#presentation-6-data-wrangling-2-sort-grep--awk)
--   [Presentation 7: Redirection &
-    Pipes](#presentation-7-redirection--pipes)
--   [Presentation 8: Shell Scripts and
-    Loops](#presentation-8-shell-scripts-and-loops)
--   [Presentation 9: Software Installation, Upkeep &
-    More](#presentation-9-software-installation-upkeep--more)
+- <a href="#introduction" id="toc-introduction">Introduction</a>
+- <a href="#presentation-1-navigating-files-and-directories"
+  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
+  Navigating Files and Directories</a>
+- <a href="#presentation-2-file-operations"
+  id="toc-presentation-2-file-operations">Presentation 2: File
+  Operations</a>
+- <a href="#presentation-3-project-organization"
+  id="toc-presentation-3-project-organization">Presentation 3: Project
+  Organization</a>
+- <a href="#presentation-4-viewing-and-editing-files"
+  id="toc-presentation-4-viewing-and-editing-files">Presentation 4:
+  Viewing and Editing Files</a>
+- <a href="#presentation-5-data-wrangling-1-wc-cut-paste--sed"
+  id="toc-presentation-5-data-wrangling-1-wc-cut-paste--sed">Presentation
+  5: Data Wrangling 1: wc, cut, paste &amp; sed</a>
+- <a href="#presentation-6-data-wrangling-2-sort-grep--awk"
+  id="toc-presentation-6-data-wrangling-2-sort-grep--awk">Presentation 6:
+  Data Wrangling 2: sort, grep &amp; awk</a>
+- <a href="#presentation-7-redirection--pipes"
+  id="toc-presentation-7-redirection--pipes">Presentation 7: Redirection
+  &amp; Pipes</a>
+- <a href="#presentation-8-shell-scripts-and-loops"
+  id="toc-presentation-8-shell-scripts-and-loops">Presentation 8: Shell
+  Scripts and Loops</a>
+- <a href="#presentation-9-software-installation-upkeep--more"
+  id="toc-presentation-9-software-installation-upkeep--more">Presentation
+  9: Software Installation, Upkeep &amp; More</a>
 
 ## Introduction
 
@@ -78,9 +88,16 @@ cd
 Help page for command
 
 ``` bash
+
 man ls
 
 ls --help
+```
+
+List recursively:
+
+``` bash
+ls -R
 ```
 
 Anatomy of a command:

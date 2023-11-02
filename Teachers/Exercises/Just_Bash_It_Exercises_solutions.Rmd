@@ -34,18 +34,18 @@ Also consult the presentations markdown to see the commands we have shown during
 
 2. Listing Files
 
-    List with latest updated file shown on top:
-    ```{bash, engine="sh", eval=FALSE}
+List with latest updated file shown on top:
+```{bash, engine="sh", eval=FALSE}
 ls -lt
 ```
 
-    List with largest file shown on top:
-    ```{bash, engine="sh", eval=FALSE}
+List with largest file shown on top:
+```{bash, engine="sh", eval=FALSE}
 ls -lhS
 ```
 
-    List hidden files:
-    ```{bash, engine="sh", eval=FALSE}
+  List hidden files:
+```{bash, engine="sh", eval=FALSE}
 ls -a
 ```
 
@@ -161,32 +161,32 @@ sed 's/gene=//g' gene_names > gene_names_clean
 paste -d '\t' cols.tmp gene_names_clean > Annotation_Gene.gff
 ```
 
-3. Let's have a look at the content of your final file.
+3. Let's have a look at the content of your final file.   
 
-    * Are there any gene sequences with length 0 in the annotation file?
-    ```{bash, engine="sh", eval=FALSE}
+  * Are there any gene sequences with length 0 in the annotation file?
+```{bash, engine="sh", eval=FALSE}
 sort -t$'\t' -k 5 -n Annotation_Gene_Len.gff > short_first
 head short_first #look at the resulting sorted file
 ```
 
-    * What is the name of the gene with the longest sequence, annotated in your file? - Try the command `sort` with flags  `-k 5 -nr`  
-    ```{bash, engine="sh", eval=FALSE}
+  * What is the name of the gene with the longest sequence, annotated in your file? - Try the command `sort` with flags  `-k 5 -nr`  
+```{bash, engine="sh", eval=FALSE}
 sort -t$'\t' -k 5 -nr Annotation_Gene_Len.gff > long_first
 head long_first #look at the resulting sorted file
 ```
 
-    * Does our organism of study, Arabidopsis Thaliana, have the `TERT` gene? - Try the command `grep`.
-    ```{bash, engine="sh", eval=FALSE}  
+  * Does our organism of study, Arabidopsis Thaliana, have the `TERT` gene? - Try the command `grep`.
+```{bash, engine="sh", eval=FALSE}  
 grep 'TERT' Annotation_Gene_Len.gff
 ```
   
-    * All living organisms have polymerase genes, including Arabidopsis Thaliana. How many types of `POL` genes are annotated?
-    ```{bash, engine="sh", eval=FALSE}  
+  * All living organisms have polymerase genes, including Arabidopsis Thaliana. How many types of `POL` genes are annotated?
+```{bash, engine="sh", eval=FALSE}  
 grep 'POL' Annotation_Gene_Len.gff
 ```
 
-    * How many gene annotation lines in the file pertain to transfer RNA (`tRNA`)? - Try the command `grep` with flag `-c`.
-    ```{bash, engine="sh", eval=FALSE}  
+  * How many gene annotation lines in the file pertain to transfer RNA (`tRNA`)? - Try the command `grep` with flag `-c`.
+```{bash, engine="sh", eval=FALSE}  
 grep 'tRNA' Annotation_Gene_Len.gff -c
 ```
 
