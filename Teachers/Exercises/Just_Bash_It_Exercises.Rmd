@@ -432,7 +432,7 @@ We will now save the commands from exercise 7.6 in a script so we don't lose the
 3. Run `ex8.sh` by calling `bash`. Does it run without error? If not, correct what is wrong until it does. Check that it creates the correct files, i.e. they should look the same as when you manually executed the commands. 
 
 ```{bash, engine="sh", eval=FALSE}
-bash -x ex6.sh
+bash -x ex8.sh
 ```
 
 4. Add lines to your script `ex8.sh` that will remove the temporary files created. Check that these files are indeed removed, and no other files have been deleted by accident. If you did end up deleting something you still need can just re-download the respective file from github. 

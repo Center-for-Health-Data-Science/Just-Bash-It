@@ -266,13 +266,6 @@ The solution proposed here is not the only valid solution, merely an example. If
 &nbsp;
 
 
-### here
-
----   
-
-&nbsp;
-
-
 ## Exercise 8: Part 1: Shell Scripts 
 
 A working script could look like this:
@@ -280,19 +273,23 @@ A working script could look like this:
 ```{bash, engine="sh", eval=FALSE}
 
 #assuming your project folder is 'my_project'  and the unzipped gff should be in the scratch folder
-gunzip $1 > ~/my_project/Scratch/unzipped.gff
+gunzip -c $1 > ~/my_project/Scratch/unzipped.gff
 
 #change into the scratch folder. We will produce all our temporary files here
 cd ~/my_project/Scratch/
 
 sed '1,8d' unzipped.gff | cut -d$'\t' -f 7 | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
-sed '1,8d' unzipped.gff | cut -f 3-5 | paste -d '\t' - geneName.gff >  output.gff
+sed '1,8d' unzipped.gff | cut -f 3-5 | paste -d '\t' - geneName.gff >  ~/my_project/Data/output.gff
 
 rm geneName.gff
 rm unzipped.gff
 
+echo 'Done!'
+
 ```
 
+
+We have also uploaded it as a file, ex8.sh. 
 
 To run it
 ```{bash, engine="sh", eval=FALSE}
