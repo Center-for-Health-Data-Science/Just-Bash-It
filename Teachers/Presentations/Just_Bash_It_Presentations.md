@@ -47,6 +47,10 @@ Data Science (HeaDS) at the Faculty of Health and Medical Sciences
 ([HeaDS](https://heads.ku.dk/)), in collaboration with the University
 Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.
 
+------------------------------------------------------------------------
+
+ 
+
 ## Presentation 1: Navigating Files and Directories
 
 In this section we introduce the directory tree and show how to list
@@ -108,6 +112,10 @@ ls -l h #doesn't work! Because it interprets 'h' as the file or directory to wor
 ls -l -h #this works again
 ```
 
+------------------------------------------------------------------------
+
+ 
+
 ## Presentation 2: File Operations
 
 In this presentation we show how to move, create and delete files and
@@ -136,6 +144,10 @@ cp my_text_file.txt text_copy.txt
 ls
 rm text_copy.txt
 ```
+
+------------------------------------------------------------------------
+
+ 
 
 ## Presentation 3: Project Organization
 
@@ -183,6 +195,10 @@ mkdir
 touch
 rm
 ```
+
+------------------------------------------------------------------------
+
+ 
 
 ## Presentation 4: Viewing and Editing Files
 
@@ -233,6 +249,10 @@ tar -tf docs.tar #show content of the archive but don't untar it
 tar -xvf docs.tar #now untar
 ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 ```
+
+------------------------------------------------------------------------
+
+ 
 
 ## Presentation 5: Data Wrangling 1: wc, cut, paste & sed
 
@@ -303,6 +323,10 @@ sed -n '/Herlev/p' patients.txt
 # only replace A with C for lines containing Herlev
 sed '/Herlev/s/A/C/g' patients.txt
 ```
+
+------------------------------------------------------------------------
+
+ 
 
 ## Presentation 6: Data Wrangling 2: sort, grep & awk
 
@@ -378,6 +402,10 @@ awk -F ',' 'OFS=";" {print $3, $4, $2}' patients.txt
 awk  -F ',' '{if ($4 >15) {print}}' patients.txt
 ```
 
+------------------------------------------------------------------------
+
+ 
+
 ## Presentation 7: Redirection & Pipes
 
 1.  Chain the commands `sed` and `wc`. `sed` is used to remove the
@@ -413,6 +441,10 @@ awk -F ',' 'OFS="\t" {print $4, $2, $3}' patients.txt | sort  -k1n -k3
 awk -F ',' '{print $5, $2, $3}' patients.txt | cat file1.txt -
 awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
 ```
+
+------------------------------------------------------------------------
+
+ 
 
 ## Presentation 8: Shell Scripts and Loops
 
@@ -455,6 +487,10 @@ do
   wc $file
 done  
 ```
+
+------------------------------------------------------------------------
+
+ 
 
 ## Presentation 9: Software Installation, Upkeep & More
 

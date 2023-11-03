@@ -18,6 +18,10 @@ Each section in the slides-show is followed by a **cheat sheet** containing the 
 The `Just Bash It` workshop is developed and hosted by Center for Health Data Science (HeaDS) at the Faculty of Health and Medical Sciences ([HeaDS](https://heads.ku.dk/)), in collaboration with the University Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.   
 
 
+---   
+
+&nbsp;
+
 
 ## Presentation 1: Navigating Files and Directories
 
@@ -76,6 +80,10 @@ ls -l -h #this works again
 ```
 
 
+---   
+
+&nbsp;
+
 ## Presentation 2: File Operations
 
 In this presentation we show how to move, create and delete files and directories.
@@ -104,6 +112,9 @@ ls
 rm text_copy.txt
 ```
 
+---   
+
+&nbsp;
 
 ## Presentation 3: Project Organization
 
@@ -139,7 +150,6 @@ chmod g-w patients.txt
 ```
 
 
-
 4. Make a folder and a file, show `mkdir` and`touch`. Also make a mistake and reiterate `rm -r`.
 
 ```{bash, eval=FALSE, engine="sh"}
@@ -148,6 +158,9 @@ touch
 rm
 ```
 
+---   
+
+&nbsp;
 
 
 ## Presentation 4: Viewing and Editing Files
@@ -196,7 +209,9 @@ ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 
 ```
 
+---   
 
+&nbsp;
 
 ## Presentation 5: Data Wrangling 1: wc, cut, paste & sed
 
@@ -265,7 +280,9 @@ sed -n '/Herlev/p' patients.txt
 sed '/Herlev/s/A/C/g' patients.txt
 ```
 
+---   
 
+&nbsp;
 
 ## Presentation 6: Data Wrangling 2: sort, grep & awk 
 
@@ -341,7 +358,9 @@ awk  -F ',' '{if ($4 >15) {print}}' patients.txt
 ```
 
 
+---   
 
+&nbsp;
 
 ## Presentation 7: Redirection & Pipes
 
@@ -377,7 +396,9 @@ awk -F ',' '{print $5, $2, $3}' patients.txt | cat - file1.txt
 ```
 
 
+---   
 
+&nbsp;
 
 ## Presentation 8: Shell Scripts and Loops
 
@@ -415,6 +436,9 @@ do
 done  
 ```
 
+---   
+
+&nbsp;
 
 ## Presentation 9: Software Installation, Upkeep & More
 

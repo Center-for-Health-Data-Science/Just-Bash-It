@@ -369,6 +369,8 @@ look at and recall bash commands used in a given session.</p>
 Center for Health Data Science (HeaDS) at the Faculty of Health and
 Medical Sciences (<a href="https://heads.ku.dk/">HeaDS</a>), in
 collaboration with the University Library (<a href="https://kub.kb.dk/datalab">KUB</a>) Data Lab.</p>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-1-navigating-files-and-directories" class="section level2">
 <h2>Presentation 1: Navigating Files and Directories</h2>
@@ -403,6 +405,8 @@ ls --help
 <pre class="bash"><code>ls -lh
 ls -l h #doesn&#39;t work! Because it interprets &#39;h&#39; as the file or directory to work on
 ls -l -h #this works again</code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-2-file-operations" class="section level2">
 <h2>Presentation 2: File Operations</h2>
@@ -424,6 +428,8 @@ ls</code></pre>
 <pre class="bash"><code>cp my_text_file.txt text_copy.txt
 ls
 rm text_copy.txt</code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-3-project-organization" class="section level2">
 <h2>Presentation 3: Project Organization</h2>
@@ -461,6 +467,8 @@ and<code>touch</code>. Also make a mistake and reiterate
 <pre class="bash"><code>mkdir
 touch
 rm</code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-4-viewing-and-editing-files" class="section level2">
 <h2>Presentation 4: Viewing and Editing Files</h2>
@@ -505,6 +513,8 @@ tar -tf docs.tar #show content of the archive but don&#39;t untar it
 tar -xvf docs.tar #now untar
 ls #show the docs dir and its files have appeared in the Just-Bash-It dir
 </code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-5-data-wrangling-1-wc-cut-paste-sed" class="section level2">
 <h2>Presentation 5: Data Wrangling 1: wc, cut, paste &amp; sed</h2>
@@ -557,6 +567,8 @@ sed -n &#39;/Herlev/p&#39; patients.txt
 
 # only replace A with C for lines containing Herlev
 sed &#39;/Herlev/s/A/C/g&#39; patients.txt</code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-6-data-wrangling-2-sort-grep-awk" class="section level2">
 <h2>Presentation 6: Data Wrangling 2: sort, grep &amp; awk</h2>
@@ -626,6 +638,8 @@ awk -F &#39;,&#39; &#39;OFS=&quot;;&quot; {print $3, $4, $2}&#39; patients.txt
 
 # Conditional statement with awk
 awk  -F &#39;,&#39; &#39;{if ($4 &gt;15) {print}}&#39; patients.txt</code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-7-redirection-pipes" class="section level2">
 <h2>Presentation 7: Redirection &amp; Pipes</h2>
@@ -652,6 +666,8 @@ how the dash <code>-</code> is used to specify input file again.</li>
 </ol>
 <pre class="bash"><code>awk -F &#39;,&#39; &#39;{print $5, $2, $3}&#39; patients.txt | cat file1.txt -
 awk -F &#39;,&#39; &#39;{print $5, $2, $3}&#39; patients.txt | cat - file1.txt</code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-8-shell-scripts-and-loops" class="section level2">
 <h2>Presentation 8: Shell Scripts and Loops</h2>
@@ -688,6 +704,8 @@ do
   echo $file
   wc $file
 done  </code></pre>
+<hr />
+<p> </p>
 </div>
 <div id="presentation-9-software-installation-upkeep-more" class="section level2">
 <h2>Presentation 9: Software Installation, Upkeep &amp; More</h2>
