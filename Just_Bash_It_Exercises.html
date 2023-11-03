@@ -904,7 +904,7 @@ same order as in Exercise 5, in fact, they should not.</p>
 <p>We will now save the commands from exercise 7.6 in a script so we
 don’t lose them and can easily re-run our analysis with a different gff
 file.</p>
-<ol style="list-style-type: decimal">
+<ol start="2" style="list-style-type: decimal">
 <li><p>Create a new file, either directly on the commandline with
 <code>touch</code> or with the editor of your choice, and name it
 <code>ex8.sh</code>. This is the file which will contain your
@@ -927,10 +927,31 @@ something you still need can just re-download the respective file from
 github.</p></li>
 <li><p>Now replace the name of the input file,
 <code>GCF_genomicAnnotation.gff.gz</code>, with an argument so that you
-can run your script on different input files. Test that this
-works.</p></li>
-<li><p>Run your script on <code>ecoli.gff.gz</code> by passing the file
-name as an argument.</p></li>
+can run your script on different input files. In order to make this work
+we need to start from a <strong>zipped file</strong>, so we can apply
+this script to other gff files without having to manually unzip them
+first. So the first task is to find out how to unzip a gz file and
+redirect the output into a new file, so we will both leave the original
+file (i.e. <code>ecoli.gff.gz</code>) and control the name of the
+unzipped file. We do not want the unzipped file to be named
+<code>ecoli.gff</code> because then our script will only work on that
+particular file! To do this, look at the help for gzip and figure out
+which argument you need. A hint, we are trying to write to standard out
+and redirect that output into a file of our choice.</p></li>
+</ol>
+<pre class="bash"><code>gunzip -h </code></pre>
+<p>With this, write up a command that takes <code>ecoli.gff.gz</code>
+(or any other .gz file) and creates an unzipped file
+<code>unzipped.gff</code> while also leaving the original
+<code>ecoli.gff.gz</code> in place. This will be the first command in
+your new script script.</p>
+<ol start="6" style="list-style-type: decimal">
+<li>Run your script on <code>ecoli.gff.gz</code> by passing the file
+name as an argument. Test until it works. Remember to use
+<code>-x</code> to see the commands the script executes displayed. For
+debugging it helps to leave the temporary files so you can go back and
+check them, so you might want to command out the lines you added in
+4.</li>
 </ol>
 <hr />
 <p> </p>

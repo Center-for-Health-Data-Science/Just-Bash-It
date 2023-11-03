@@ -263,6 +263,8 @@ sed '1,8d' Annotation.gff| cut -f 3-5 | paste -d '\t' - geneName.gff >  output.g
 
 The solution proposed here is not the only valid solution, merely an example. If you have a different solution that works that's fine too.
 
+---   
+
 &nbsp;
 
 

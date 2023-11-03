@@ -425,7 +425,7 @@ There are many ways of achieving this. For those who like a challenge, it is pos
 
 We will now save the commands from exercise 7.6 in a script so we don't lose them and can easily re-run our analysis with a different gff file. 
 
-1. Create a new file, either directly on the commandline with `touch` or with the editor of your choice, and name it `ex8.sh`. This is the file which will contain your script.
+2. Create a new file, either directly on the commandline with `touch` or with the editor of your choice, and name it `ex8.sh`. This is the file which will contain your script.
 
 2. Using your `history`, find the commands you used to solve exercise 7.6 and copy them into the file `ex8.sh`. Save the script. If you use `echo` for this, view the script file to verify that it looks as expected. 
 
@@ -437,9 +437,16 @@ bash -x ex8.sh
 
 4. Add lines to your script `ex8.sh` that will remove the temporary files created. Check that these files are indeed removed, and no other files have been deleted by accident. If you did end up deleting something you still need can just re-download the respective file from github. 
 
-5. Now replace the name of the input file, `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run your script on different input files. Test that this works.
+5. Now replace the name of the input file, `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run your script on different input files. In order to make this work we need to start from a **zipped file**, so we can apply this script to other gff files without having to manually unzip them first. So the first task is to find out how to unzip a gz file and redirect the output into a new file, so we will both leave the original file (i.e. `ecoli.gff.gz`) and control the name of the unzipped file. We do not want the unzipped file to be named `ecoli.gff` because then our script will only work on that particular file! To do this, look at the help for gzip and figure out which argument you need. A hint, we are trying to write to standard out and redirect that output into a file of our choice.
 
-6. Run your script on `ecoli.gff.gz` by passing the file name as an argument.
+
+```{bash, engine="sh", eval=FALSE}
+gunzip -h 
+```
+
+With this, write up a command that takes `ecoli.gff.gz` (or any other .gz file) and creates an unzipped file `unzipped.gff` while also leaving the original `ecoli.gff.gz` in place. This will be the first command in your new script script.
+
+6. Run your script on `ecoli.gff.gz` by passing the file name as an argument. Test until it works. Remember to use `-x` to see the commands the script executes displayed. For debugging it helps to leave the temporary files so you can go back and check them, so you might want to command out the lines you added in 4. 
 
 
 ---   
