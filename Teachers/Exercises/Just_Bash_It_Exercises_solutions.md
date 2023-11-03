@@ -1,4 +1,4 @@
-![](BashFigure1.jpeg)
+![Just Bash It](Figures/BashFigure1.jpeg "fig:")
 ================
 Center for Health Data Science, November 2023
 
@@ -68,6 +68,10 @@ ls -a
 The presentations markdown shows some more options to `ls`. For other
 tasks we refer to the slideshow.
 
+------------------------------------------------------------------------
+
+ 
+
 ## Exercise 2: File operations mv, cp and rm
 
 4.  Remove the whole `TEMP` directory including the file within it.
@@ -77,6 +81,10 @@ rm -r TEMP
 ```
 
 For other tasks we refer to the slideshow.
+
+ 
+
+------------------------------------------------------------------------
 
  
 
@@ -111,6 +119,8 @@ ls -l
 touch Readme.txt
 ```
 
+------------------------------------------------------------------------
+
  
 
 ## Exercise 4: Viewing and editing files
@@ -136,6 +146,8 @@ zless SRR4420293_R2.fastq.gz
 ```
 
 Press `q` to leave `zless`.
+
+------------------------------------------------------------------------
 
  
 
@@ -198,6 +210,8 @@ cut -d ';' -f 5 col7.tmp > gene_names
 sed 's/gene=//g' gene_names > gene_names_clean
 ```
 
+------------------------------------------------------------------------
+
  
 
 ## Exercise 6: Data Wrangling 2
@@ -246,6 +260,10 @@ grep 'POL' Annotation_Gene_Len.gff
 grep 'tRNA' Annotation_Gene_Len.gff -c
 ```
 
+------------------------------------------------------------------------
+
+ 
+
 4.  Adding the header
 
 ``` bash
@@ -253,6 +271,8 @@ grep 'tRNA' Annotation_Gene_Len.gff -c
 cat header.gff Annotation_Gene_Len.gff > Annotation_21Nov2022.gff
 mv Annotation_21Nov2022.gff ../Results
 ```
+
+------------------------------------------------------------------------
 
  
 
@@ -293,8 +313,8 @@ coordinate by omitting the two cut statements so you see the full line.
 history | tail -n 20
 ```
 
-6.  You will now redo **points 2-6 from Exercise 4 (parts 1 & 2)
-    above**. You should end up with a file containing the 4 columns:
+6.  Redo **points 2-6 from Exercise 4 (parts 1 & 2) above**. You should
+    end up with a file containing the 4 columns:
     `Region, Start, End and GeneName (only)`. To archive this, chain
     together commands from points 2-6.
 
@@ -302,8 +322,9 @@ Assuming your starting file is `GCF_genomicAnnotation.gff.gz` unzipped
 into `Annotation.gff` this works:
 
 ``` bash
-cut -d$'\t' -f 7 Annotation.gff | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
-cut -f 3-5 Annotation.gff | paste -d '\t' - geneName.gff | sed '1,8d' | sed 's/gene=//g' >  output.gff  
+
+sed '1,8d' Annotation.gff | cut -d$'\t' -f 7 | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
+sed '1,8d' Annotation.gff| cut -f 3-5 | paste -d '\t' - geneName.gff >  output.gff
 ```
 
 The solution proposed here is not the only valid solution, merely an
@@ -312,6 +333,10 @@ example. If you have a different solution that works that’s fine too.
  
 
 ### here
+
+------------------------------------------------------------------------
+
+ 
 
 ## Exercise 8: Part 1: Shell Scripts
 
@@ -325,8 +350,8 @@ gunzip $1 > ~/my_project/Scratch/unzipped.gff
 #change into the scratch folder. We will produce all our temporary files here
 cd ~/my_project/Scratch/
 
-cut -d$'\t' -f 7 unzipped.gff | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
-cut -f 3-5 unzipped.gff | paste -d '\t' - geneName.gff | sed '1,8d' | sed 's/gene=//g' > ../Data/Generated/output.gff
+sed '1,8d' unzipped.gff | cut -d$'\t' -f 7 | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
+sed '1,8d' unzipped.gff | cut -f 3-5 | paste -d '\t' - geneName.gff >  output.gff
 
 rm geneName.gff
 rm unzipped.gff
@@ -338,14 +363,18 @@ To run it
 bash -x ex8.sh ~/my_project/Data/ecoli.gff.gz
 ```
 
+------------------------------------------------------------------------
+
+ 
+
 ## Exercise 8: Part 2: Loops
 
 1.  Make a short script with a for loop that does the following:
 
-- go to the data folder
-- for each zipped file, i.e. each file ending with .gz:
-- display the file name
-- display the first 10 lines without unzipping the entire file.
+- Go to the `Data` folder
+- For each zipped file, i.e. each file ending with .gz:
+- Display the file name
+- Display the first 10 lines without unzipping the entire file.
 
 ``` bash
 cd Data

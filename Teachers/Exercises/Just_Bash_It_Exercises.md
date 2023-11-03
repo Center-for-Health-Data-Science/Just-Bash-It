@@ -250,14 +250,14 @@ folder.
 0.  If you are not there already, go to the `Pictures` folder under
     `Files`.
 
-1.  There is a file named `.txt` in the `Pictures` folder. Those files
-    are usually text files. It should not be there since it is not an
-    image. Move the text file from the `Pictures` folder to the
-    `Documents` folder. Confirm that it is in the right place and that
-    it does not exist inside the `Pictures` folder anymore.
+1.  There is a file named `.txt` in the `Pictures` folder. It should not
+    be there since it is not an image. Move the text file from the
+    `Pictures` folder to the `Documents` folder. Confirm that it is in
+    the right place and that it does not exist inside the `Pictures`
+    folder anymore.
 
 2.  Make a copy of the `mytextfile.txt` file (should now be in
-    `Documents`) and name the copy whatever you’d like.
+    `Documents`) and name the it whatever you’d like.
 
 3.  Move one up to the `Files` directory and make a new folder here
     called `TEMP`. Now move the copied text file you created in point 2
@@ -277,26 +277,25 @@ folder.
 Let’s get structured!
 
 1.  Make a `projects` directory where you would like it on your
-    computer, for example on the Desktop or in your Documents. Inside
-    the `projects` directory, create a directory for this course. You
-    could name it i.e. **Just_Bash_It, Intro_to_command_line,
+    computer, for example on the Desktop or in your Documents.  
+    Inside the `projects` directory, create a directory for this course.
+    You could name it i.e. **Just_Bash_It, Intro_to_command_line,
     First_Project, etc.**. Then inside that directory, create all the
     sub-directories shown on **slide 46** in the slideshow.
 
 2.  Using the command-line, navigate back to where you have the course
     repo `Just-Bash-it`. Inside the `Files` directory there is a `Data`
     directory with the files we are going to use for the rest of the
-    course. There are four compressed files, all with the extension
-    `.gz` and the `patients.txt` file which we will use for
-    demonstrations during the data wrangling lectures. Move the
-    compressed files to the project directory you have made in point 1
-    and place them in the correct sub-directory.
+    course. Move the compressed files (those with extension `.gz`) to
+    the project directory you have made in **point 1** and place them in
+    the correct sub-directory.
 
 3.  How large (in bytes and disk space) are the data files you moved
     from the course materials?
 
 4.  Check the permissions of the data files. Do you have permission to
-    `read`, `write` and `execute` them?
+    `read`, `write` and `execute` them? If you do not have permission to
+    execute the files, what is the reason for this?
 
 5.  Make a new file called `Readme.txt` inside the directory you made
     under point 1.
@@ -399,33 +398,28 @@ is correct. That means it should not contain any of the lines starting
 with a hash tag but all the other lines in `Annotation.gff`. If it is
 not correct try again until you have the correct file.
 
-3.  For further analysis, we now want to cut out only the columns
-    describing the *Region*, *Start* and *Stop* of the genetic element.
-    We will do this by using `cut` on `Annotation_tmp.gff` and
-    redirecting the output into a new file called `cols.tmp`.
+3.  For further analysis, we want to cut out only the columns describing
+    the *Region*, *Start* and *Stop* of the genetic element. You will do
+    this by using `cut` on `Annotation_tmp.gff` and redirecting the
+    output into a new file called `GenomicRegion.tmp`.
 
-First, identify the numbers of the columns we want. We start counting
-from 1 (unintuitive, we know).
+**HINT1:** First, identify the numbers of the columns we want.  
+**HINT2:** A challenge is that the annotation file is separated by *tab*
+delimiter, which in unix is `\t`. To make `cut` accept it, we need to
+put`$` in front of it like so: `-d$'\t'` (there are no spaces here!).
+Don’t ask, it’s a long story… Check that your output file looks correct.
 
-A special challenge is that the annotation file is separated by *tab*
-which in unix is `\t`, a multi-character delimiter. In order to make
-`cut` accept it, we need to put a `$` in front of it like so: `-d$'\t'`
-(there are no spaces here!). Don’t ask, it’s a long story. On some
-systems, tab is the default delimiter to `cut` so you might be able to
-omit specifying it.
+Next, we would like to extract the gene names. They are in field/col 7
+in the `Annotation_tmp.gff`, but field 7 contains itself several entries
+like ID, gene name, locus tags etc. separated by a `;`, i.e. field 7
+contains sub-fields delimited by `;`.
 
-Check that your output file looks correct.
-
-4.  We also would like to have the gene names. They are in field/column
-    7 in the `Annotation_tmp.gff`, but field 7 contains itself several
-    entries like ID, gene name, locus tags etc. separated by a `;`. One
-    could say that field 7 contains sub-fields delimited by `;`.
-
-We want to get the sub field starting with `gene=` since this is the
-gene name. To extract this information we will use cut twice. First, we
-will cut out column 7 from `Annotation_tmp.gff` and name that temporary
-file `col7.tmp`. Then, we cut `col7.tmp` again to get the gene name and
-put it into `gene_names.txt`.
+4.  Extract the gene name by using `cut` twice. First, cut out column 7
+    from `Annotation_tmp.gff` and name that temporary file `col7.tmp`.
+    Then, cut `col7.tmp` again to get the gene name and put it into
+    `gene_names.txt`.  
+    **HINT:** We want the sub-field starting with `gene=` (this is where
+    we find the genename).
 
 Check that your output file looks correct. It should look like this:  
 ![](Figures/gene_names.PNG)
@@ -454,8 +448,8 @@ For the pseudo code chunk figure out:
   `[Replace with]` to what you want to replace with (*HINT: replace with
   empty/nothing*).  
 - What does the `s` and `g` denote?  
-- Run the command and save the output to whatever file name you’d
-  like.  
+- Run the command and save the output to the a file and call it
+  `gene_names_clean.txt`: .  
   Verify that your output looks correct, i.e. the `gene=` part is gone
   but the gene names are still complete. It should look like this:
 
@@ -467,14 +461,15 @@ For the pseudo code chunk figure out:
 
 ## Exercise 6: Data Wrangling 2
 
-1.  You should now have one file `cols.tmp` containing only field 3, 4 &
-    5 from exercise 5.3 and one containing gene names from exercise 5.5.
+1.  You should now have one file `GenomicRegion.tmp` containing only
+    field 3, 4 & 5 from exercise 5.3 and one `gene_names_clean.txt`
+    containing gene names from exercise 5.5.
 
 Paste these two files together into a single file using the command
 `paste`. Name this file `Annotation_Gene.gff`. The new file should be
-tab separated, just like the cols.tmp file. To do so, use the flag `-d`
-to specify what kind of delimiter should be used to paste the fields
-together. Tab is `'\t'`.
+tab separated, just like the `GenomicRegion.tmp` file. To do so, use the
+delimiter flag to specify what kind of delimiter should be used to paste
+the fields together (tab is `\t`).
 
 2.  Run and decipher the command below.
 
@@ -496,10 +491,10 @@ awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_L
   your file? - Try the command `sort` with flags `-k 5 -nr`.  
 - Does our organism of study, Arabidopsis Thaliana, have the `TERT`
   gene? - Try the command `grep`.  
-- All living organisms have polymerase genes, including Arabidopsis
-  Thaliana. Look for `POL` with `grep`.  
+- All living organisms have polymerase genes (`POL` genes), check that
+  Arabidopsis Thaliana also has one.
 - How many gene annotation lines in the file pertain to transfer RNA
-  (`tRNA`)? - Try the command `grep` with flag `-c`.
+  (`tRNA`)? Use `grep` and find the correct flag for counting.
 
  
 
@@ -535,10 +530,10 @@ temporary files in your `Scratch` directory. WELL DONE!
 
 Lets try some piping (chaining) of commands.
 
-2.  Starting from the unzipped gff file we just copied, we would now
-    like to find out which types of genomic features (i.e. exon, rRNA,
-    repeat) we have information on by chaining 4 commands together with
-    the pipe operator `|`.
+2.  Starting from the unzipped gff file we just copied,find out which
+    types of genomic features (i.e. exon, rRNA, repeat) we have
+    information on by chaining 4 commands together with the pipe
+    operator `|`.
 
 <!-- When using a pipe, the output from the first command becomes the input to the second command. This enables us to do operations with less intermediate files. -->
 
@@ -554,8 +549,8 @@ command.
 **The 4 steps** you need to perform are:  
 \* Step 1: Remove the header rows (those beginning with hastages) in the
 file, like you did in point 2, Exercise 4, above.  
-\* Step 2: Extract (`cut`) the column that contains the **genomic
-feature** (exon, CDS, etc.).  
+\* Step 2: Extract (`cut`) the column that contains the **Region**
+(exon, CDS, etc.).  
 \* Step 3: Sort the extracted column with `sort`.  
 \* Step 4: Get the unique elements from this column with the command
 `uniq`.
@@ -569,12 +564,12 @@ feature** (exon, CDS, etc.).
     file.
 
 4.  Using a single command line, figure out the gene name of the
-    microRNA (miRNA) gene in Annotation.gff (so not the new file you
-    just made!) which has the smallest genomic starting coordinate.
+    microRNA (miRNA) gene in `Annotation.gff` (NOT the new file you just
+    made!) which has the smallest genomic starting coordinate.
 
-**HINT1:** You will need to combine commands `cut`, `sort` and `grep` to
-archive this. miRNA gene names begin with `MIR` (you can of course use
-the same command multiple times if needed).  
+**HINT1:** You will need to combine commands `cut`, `sort` and `grep`
+(more than once if needed) to archive this. miRNA gene names begin with
+`MIR`.  
 **HINT2:** Remember, you want to find the line describing the microRNA
 with the smallest genomic starting coordinate, but your final output
 should be the gene name, not the coordinate!
@@ -597,15 +592,16 @@ If you have a lot of commands saved in your history you might only want
 to see the last 20 or so. Can you show the last 20 commands using a
 pipe?
 
-6.  Finally, let’s redo points 2-5 from Exercise 5 and point 1 from
-    Exercise 6, this time using pipes to reduce the number of
-    intermediate files. You should end up with a file containing these 4
-    columns: `Region, Start, End and GeneName (only)`. Use your
-    `history` if you can’t remember the commands you used.
+6.  Finally, let’s **redo points 2-5 from Exercise 5 and point 1 from
+    Exercise 6**, starting from the `Annotation.gff` file, BUT this time
+    using pipes to reduce the number of intermediate files. You should
+    end up with a file containing these 4 columns:
+    `Region, Start, End and gene name (only)`. Use your `history` if you
+    can’t remember the commands you used.
 
-There are manyways of achieving this. For those who like a challenge, it
-is possible to get to the final output file in two command lines
-(i.e. only one intermediate file) starting from the unzipped gff file.  
+There are many ways of achieving this. For those who like a challenge,
+it is possible to get to the final output file in two command lines
+(i.e. only one intermediate file).  
 **HINT:** The commands do not need to be combined in the same order as
 in Exercise 5, in fact, they should not.
 

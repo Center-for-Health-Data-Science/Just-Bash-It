@@ -532,13 +532,13 @@ whether it shows the file.</p></li>
 <li><p>If you are not there already, go to the <code>Pictures</code>
 folder under <code>Files</code>.</p></li>
 <li><p>There is a file named <code>.txt</code> in the
-<code>Pictures</code> folder. Those files are usually text files. It
-should not be there since it is not an image. Move the text file from
-the <code>Pictures</code> folder to the <code>Documents</code> folder.
-Confirm that it is in the right place and that it does not exist inside
-the <code>Pictures</code> folder anymore.</p></li>
+<code>Pictures</code> folder. It should not be there since it is not an
+image. Move the text file from the <code>Pictures</code> folder to the
+<code>Documents</code> folder. Confirm that it is in the right place and
+that it does not exist inside the <code>Pictures</code> folder
+anymore.</p></li>
 <li><p>Make a copy of the <code>mytextfile.txt</code> file (should now
-be in <code>Documents</code>) and name the copy whatever you’d
+be in <code>Documents</code>) and name the it whatever you’d
 like.</p></li>
 <li><p>Move one up to the <code>Files</code> directory and make a new
 folder here called <code>TEMP</code>. Now move the copied text file you
@@ -557,26 +557,25 @@ You need a flag to remove a whole folder. Try the help
 <p>Let’s get structured!</p>
 <ol style="list-style-type: decimal">
 <li><p>Make a <code>projects</code> directory where you would like it on
-your computer, for example on the Desktop or in your Documents. Inside
-the <code>projects</code> directory, create a directory for this course.
-You could name it i.e. <strong>Just_Bash_It, Intro_to_command_line,
-First_Project, etc.</strong>. Then inside that directory, create all the
-sub-directories shown on <strong>slide 46</strong> in the
-slideshow.</p></li>
+your computer, for example on the Desktop or in your Documents.<br />
+Inside the <code>projects</code> directory, create a directory for this
+course. You could name it i.e. <strong>Just_Bash_It,
+Intro_to_command_line, First_Project, etc.</strong>. Then inside that
+directory, create all the sub-directories shown on <strong>slide
+46</strong> in the slideshow.</p></li>
 <li><p>Using the command-line, navigate back to where you have the
 course repo <code>Just-Bash-it</code>. Inside the <code>Files</code>
 directory there is a <code>Data</code> directory with the files we are
-going to use for the rest of the course. There are four compressed
-files, all with the extension <code>.gz</code> and the
-<code>patients.txt</code> file which we will use for demonstrations
-during the data wrangling lectures. Move the compressed files to the
-project directory you have made in point 1 and place them in the correct
+going to use for the rest of the course. Move the compressed files
+(those with extension <code>.gz</code>) to the project directory you
+have made in <strong>point 1</strong> and place them in the correct
 sub-directory.</p></li>
 <li><p>How large (in bytes and disk space) are the data files you moved
 from the course materials?</p></li>
 <li><p>Check the permissions of the data files. Do you have permission
-to <code>read</code>, <code>write</code> and <code>execute</code>
-them?</p></li>
+to <code>read</code>, <code>write</code> and <code>execute</code> them?
+If you do not have permission to execute the files, what is the reason
+for this?</p></li>
 <li><p>Make a new file called <code>Readme.txt</code> inside the
 directory you made under point 1.</p></li>
 </ol>
@@ -676,35 +675,34 @@ the lines starting with a hash tag but all the other lines in
 <code>Annotation.gff</code>. If it is not correct try again until you
 have the correct file.</p>
 <ol start="3" style="list-style-type: decimal">
-<li>For further analysis, we now want to cut out only the columns
-describing the <em>Region</em>, <em>Start</em> and <em>Stop</em> of the
-genetic element. We will do this by using <code>cut</code> on
+<li>For further analysis, we want to cut out only the columns describing
+the <em>Region</em>, <em>Start</em> and <em>Stop</em> of the genetic
+element. You will do this by using <code>cut</code> on
 <code>Annotation_tmp.gff</code> and redirecting the output into a new
-file called <code>cols.tmp</code>.</li>
+file called <code>GenomicRegion.tmp</code>.</li>
 </ol>
-<p>First, identify the numbers of the columns we want. We start counting
-from 1 (unintuitive, we know).</p>
-<p>A special challenge is that the annotation file is separated by
-<em>tab</em> which in unix is <code>\t</code>, a multi-character
-delimiter. In order to make <code>cut</code> accept it, we need to put a
-<code>$</code> in front of it like so: <code>-d$&#39;\t&#39;</code> (there are
-no spaces here!). Don’t ask, it’s a long story. On some systems, tab is
-the default delimiter to <code>cut</code> so you might be able to omit
-specifying it.</p>
-<p>Check that your output file looks correct.</p>
-<ol start="4" style="list-style-type: decimal">
-<li>We also would like to have the gene names. They are in field/column
+<p><strong>HINT1:</strong> First, identify the numbers of the columns we
+want.<br />
+<strong>HINT2:</strong> A challenge is that the annotation file is
+separated by <em>tab</em> delimiter, which in unix is <code>\t</code>.
+To make <code>cut</code> accept it, we need to put<code>$</code> in
+front of it like so: <code>-d$&#39;\t&#39;</code> (there are no spaces here!).
+Don’t ask, it’s a long story… Check that your output file looks
+correct.</p>
+<p>Next, we would like to extract the gene names. They are in field/col
 7 in the <code>Annotation_tmp.gff</code>, but field 7 contains itself
 several entries like ID, gene name, locus tags etc. separated by a
-<code>;</code>. One could say that field 7 contains sub-fields delimited
-by <code>;</code>.</li>
+<code>;</code>, i.e. field 7 contains sub-fields delimited by
+<code>;</code>.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Extract the gene name by using <code>cut</code> twice. First, cut
+out column 7 from <code>Annotation_tmp.gff</code> and name that
+temporary file <code>col7.tmp</code>. Then, cut <code>col7.tmp</code>
+again to get the gene name and put it into
+<code>gene_names.txt</code>.<br />
+<strong>HINT:</strong> We want the sub-field starting with
+<code>gene=</code> (this is where we find the genename).</li>
 </ol>
-<p>We want to get the sub field starting with <code>gene=</code> since
-this is the gene name. To extract this information we will use cut
-twice. First, we will cut out column 7 from
-<code>Annotation_tmp.gff</code> and name that temporary file
-<code>col7.tmp</code>. Then, we cut <code>col7.tmp</code> again to get
-the gene name and put it into <code>gene_names.txt</code>.</p>
 <p>Check that your output file looks correct. It should look like
 this:<br />
 <img src="data:image/png;base64,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" /></p>
@@ -734,8 +732,8 @@ match and <code>[Replace with]</code> to what you want to replace with
 </li>
 <li>What does the <code>s</code> and <code>g</code> denote?<br />
 </li>
-<li>Run the command and save the output to whatever file name you’d
-like.<br />
+<li>Run the command and save the output to the a file and call it
+<code>gene_names_clean.txt</code>: .<br />
 Verify that your output looks correct, i.e. the <code>gene=</code> part
 is gone but the gene names are still complete. It should look like
 this:</li>
@@ -747,15 +745,17 @@ this:</li>
 <div id="exercise-6-data-wrangling-2" class="section level2">
 <h2>Exercise 6: Data Wrangling 2</h2>
 <ol style="list-style-type: decimal">
-<li>You should now have one file <code>cols.tmp</code> containing only
-field 3, 4 &amp; 5 from exercise 5.3 and one containing gene names from
-exercise 5.5.</li>
+<li>You should now have one file <code>GenomicRegion.tmp</code>
+containing only field 3, 4 &amp; 5 from exercise 5.3 and one
+<code>gene_names_clean.txt</code> containing gene names from exercise
+5.5.</li>
 </ol>
 <p>Paste these two files together into a single file using the command
 <code>paste</code>. Name this file <code>Annotation_Gene.gff</code>. The
-new file should be tab separated, just like the cols.tmp file. To do so,
-use the flag <code>-d</code> to specify what kind of delimiter should be
-used to paste the fields together. Tab is <code>&#39;\t&#39;</code>.</p>
+new file should be tab separated, just like the
+<code>GenomicRegion.tmp</code> file. To do so, use the delimiter flag to
+specify what kind of delimiter should be used to paste the fields
+together (tab is <code>\t</code>).</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Run and decipher the command below.</li>
 </ol>
@@ -786,12 +786,11 @@ your file? - Try the command <code>sort</code> with flags
 <li>Does our organism of study, Arabidopsis Thaliana, have the
 <code>TERT</code> gene? - Try the command <code>grep</code>.<br />
 </li>
-<li>All living organisms have polymerase genes, including Arabidopsis
-Thaliana. Look for <code>POL</code> with <code>grep</code>.<br />
-</li>
+<li>All living organisms have polymerase genes (<code>POL</code> genes),
+check that Arabidopsis Thaliana also has one.</li>
 <li>How many gene annotation lines in the file pertain to transfer RNA
-(<code>tRNA</code>)? - Try the command <code>grep</code> with flag
-<code>-c</code>.</li>
+(<code>tRNA</code>)? Use <code>grep</code> and find the correct flag for
+counting.</li>
 </ul>
 <p> </p>
 <ol start="4" style="list-style-type: decimal">
@@ -825,10 +824,10 @@ move to the <code>Scratch</code> directory.</li>
 </ol>
 <p>Lets try some piping (chaining) of commands.</p>
 <ol start="2" style="list-style-type: decimal">
-<li>Starting from the unzipped gff file we just copied, we would now
-like to find out which types of genomic features (i.e. exon, rRNA,
-repeat) we have information on by chaining 4 commands together with the
-pipe operator <code>|</code>.</li>
+<li>Starting from the unzipped gff file we just copied,find out which
+types of genomic features (i.e. exon, rRNA, repeat) we have information
+on by chaining 4 commands together with the pipe operator
+<code>|</code>.</li>
 </ol>
 <!-- When using a pipe, the output from the first command becomes the input to the second command. This enables us to do operations with less intermediate files. -->
 <p><strong>Tip:</strong> When testing chained commands you can be unsure
@@ -842,7 +841,7 @@ your command.</p>
 * Step 1: Remove the header rows (those beginning with hastages) in the
 file, like you did in point 2, Exercise 4, above.<br />
 * Step 2: Extract (<code>cut</code>) the column that contains the
-<strong>genomic feature</strong> (exon, CDS, etc.).<br />
+<strong>Region</strong> (exon, CDS, etc.).<br />
 * Step 3: Sort the extracted column with <code>sort</code>.<br />
 * Step 4: Get the unique elements from this column with the command
 <code>uniq</code>.</p>
@@ -854,13 +853,14 @@ specifying the path and the name you would like the output file to have.
 Check the <code>Data/Generated</code> directory to check that you have
 correctly made the file.</p></li>
 <li><p>Using a single command line, figure out the gene name of the
-microRNA (miRNA) gene in Annotation.gff (so not the new file you just
-made!) which has the smallest genomic starting coordinate.</p></li>
+microRNA (miRNA) gene in <code>Annotation.gff</code> (NOT the new file
+you just made!) which has the smallest genomic starting
+coordinate.</p></li>
 </ol>
 <p><strong>HINT1:</strong> You will need to combine commands
-<code>cut</code>, <code>sort</code> and <code>grep</code> to archive
-this. miRNA gene names begin with <code>MIR</code> (you can of course
-use the same command multiple times if needed).<br />
+<code>cut</code>, <code>sort</code> and <code>grep</code> (more than
+once if needed) to archive this. miRNA gene names begin with
+<code>MIR</code>.<br />
 <strong>HINT2:</strong> Remember, you want to find the line describing
 the microRNA with the smallest genomic starting coordinate, but your
 final output should be the gene name, not the coordinate!</p>
@@ -878,16 +878,16 @@ command tell you?</p>
 want to see the last 20 or so. Can you show the last 20 commands using a
 pipe?</p>
 <ol start="6" style="list-style-type: decimal">
-<li>Finally, let’s redo points 2-5 from Exercise 5 and point 1 from
-Exercise 6, this time using pipes to reduce the number of intermediate
+<li>Finally, let’s <strong>redo points 2-5 from Exercise 5 and point 1
+from Exercise 6</strong>, starting from the <code>Annotation.gff</code>
+file, BUT this time using pipes to reduce the number of intermediate
 files. You should end up with a file containing these 4 columns:
-<code>Region, Start, End and GeneName (only)</code>. Use your
+<code>Region, Start, End and gene name (only)</code>. Use your
 <code>history</code> if you can’t remember the commands you used.</li>
 </ol>
-<p>There are manyways of achieving this. For those who like a challenge,
-it is possible to get to the final output file in two command lines
-(i.e. only one intermediate file) starting from the unzipped gff
-file.<br />
+<p>There are many ways of achieving this. For those who like a
+challenge, it is possible to get to the final output file in two command
+lines (i.e. only one intermediate file).<br />
 <strong>HINT:</strong> The commands do not need to be combined in the
 same order as in Exercise 5, in fact, they should not.</p>
 <hr />
