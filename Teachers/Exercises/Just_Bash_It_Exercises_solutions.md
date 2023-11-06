@@ -1,33 +1,22 @@
-![Just Bash It](Figures/BashFigure1.jpeg "fig:")
+![Just Bash It](Figures/BashFigure1.jpeg)
 ================
 Center for Health Data Science, November 2023
 
-- <a href="#what-is-this-document" id="toc-what-is-this-document">What is
-  this document?</a>
-- <a href="#exercise-1-navigating-files-and-directories"
-  id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
-  Navigating Files and Directories</a>
-- <a href="#exercise-2-file-operations-mv-cp-and-rm"
-  id="toc-exercise-2-file-operations-mv-cp-and-rm">Exercise 2: File
-  operations mv, cp and rm</a>
-- <a href="#exercise-3-project-organization"
-  id="toc-exercise-3-project-organization">Exercise 3: Project
-  Organization</a>
-- <a href="#exercise-4-viewing-and-editing-files"
-  id="toc-exercise-4-viewing-and-editing-files">Exercise 4: Viewing and
-  editing files</a>
-- <a href="#exercise-5-data-wrangling-1"
-  id="toc-exercise-5-data-wrangling-1">Exercise 5: Data Wrangling 1</a>
-- <a href="#exercise-6-data-wrangling-2"
-  id="toc-exercise-6-data-wrangling-2">Exercise 6: Data Wrangling 2</a>
-- <a href="#exercise-7-redirection--pipes"
-  id="toc-exercise-7-redirection--pipes">Exercise 7: Redirection &amp;
-  Pipes</a>
-- <a href="#exercise-8-part-1-shell-scripts"
-  id="toc-exercise-8-part-1-shell-scripts">Exercise 8: Part 1: Shell
-  Scripts</a>
-- <a href="#exercise-8-part-2-loops"
-  id="toc-exercise-8-part-2-loops">Exercise 8: Part 2: Loops</a>
+- [What is this document?](#what-is-this-document)
+- [Exercise 1: Navigating Files and
+  Directories](#exercise-1-navigating-files-and-directories)
+- [Exercise 2: File operations mv, cp and
+  rm](#exercise-2-file-operations-mv-cp-and-rm)
+- [Exercise 3: Project Organization](#exercise-3-project-organization)
+- [Exercise 4: Viewing and editing
+  files](#exercise-4-viewing-and-editing-files)
+- [Exercise 5: Data Wrangling 1](#exercise-5-data-wrangling-1)
+- [Exercise 6: Data Wrangling 2](#exercise-6-data-wrangling-2)
+- [Exercise 7: Redirection & Pipes](#exercise-7-redirection--pipes)
+- [Exercise 8: Part 1: Shell Scripts](#exercise-8-part-1-shell-scripts)
+- [Exercise 8: Part 2: Loops](#exercise-8-part-2-loops)
+- [Exercise 9: Software Installation, Upkeep &
+  More](#exercise-9-software-installation-upkeep--more)
 
 ------------------------------------------------------------------------
 
@@ -330,10 +319,6 @@ sed '1,8d' Annotation.gff| cut -f 3-5 | paste -d '\t' - geneName.gff >  output.g
 The solution proposed here is not the only valid solution, merely an
 example. If you have a different solution that works that’s fine too.
 
- 
-
-### here
-
 ------------------------------------------------------------------------
 
  
@@ -345,17 +330,21 @@ A working script could look like this:
 ``` bash
 
 #assuming your project folder is 'my_project'  and the unzipped gff should be in the scratch folder
-gunzip $1 > ~/my_project/Scratch/unzipped.gff
+gunzip -c $1 > ~/my_project/Scratch/unzipped.gff
 
 #change into the scratch folder. We will produce all our temporary files here
 cd ~/my_project/Scratch/
 
 sed '1,8d' unzipped.gff | cut -d$'\t' -f 7 | cut -d ';' -f 5 | sed 's/gene=/''/g' > geneName.gff 
-sed '1,8d' unzipped.gff | cut -f 3-5 | paste -d '\t' - geneName.gff >  output.gff
+sed '1,8d' unzipped.gff | cut -f 3-5 | paste -d '\t' - geneName.gff >  ~/my_project/Data/output.gff
 
 rm geneName.gff
 rm unzipped.gff
+
+echo 'Done!'
 ```
+
+We have also uploaded it as a file, ex8.sh.
 
 To run it
 
@@ -383,4 +372,51 @@ do
   echo $file
   gunzip -k $file | head
 done
+```
+
+------------------------------------------------------------------------
+
+ 
+
+## Exercise 9: Software Installation, Upkeep & More
+
+Launch Firefox:
+
+``` bash
+open -a Firefox
+
+or 
+
+start Firefox
+```
+
+Find process and `kill` it:
+
+``` bash
+ps aux | grep Firefox
+
+# Kill application
+kill [pid]
+```
+
+Install `fastqc`:
+
+``` bash
+brew install fastqc
+
+or 
+
+apt-get fastqc
+```
+
+Move fastq files:
+
+``` bash
+mv *.fastq.gz 
+```
+
+Run `fastqc`:
+
+``` bash
+fastqc SRR4420293_R1.fastq.gz SRR4420293_R2.fastq.gz -o [~/mypath]/Results
 ```

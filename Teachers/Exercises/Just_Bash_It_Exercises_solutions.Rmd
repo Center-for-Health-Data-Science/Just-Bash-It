@@ -323,3 +323,48 @@ done
 ```
 
 
+
+---   
+
+&nbsp;
+
+## Exercise 9: Software Installation, Upkeep & More 
+
+Launch Firefox:
+```{bash, engine="sh", eval=FALSE}
+open -a Firefox
+
+or 
+
+start Firefox
+```
+
+Find process and `kill` it:
+```{bash, engine="sh", eval=FALSE}
+ps aux | grep Firefox
+
+# Kill application
+kill [pid]
+```
+
+
+Install `fastqc`:
+
+```{bash, engine="sh", eval=FALSE}
+brew install fastqc
+
+or 
+
+apt-get fastqc
+```
+
+Move fastq files:
+```{bash, engine="sh", eval=FALSE}
+mv *.fastq.gz 
+```
+
+Run `fastqc`:
+```{bash, engine="sh", eval=FALSE}
+fastqc SRR4420293_R1.fastq.gz SRR4420293_R2.fastq.gz -o [~/mypath]/Results
+```
+

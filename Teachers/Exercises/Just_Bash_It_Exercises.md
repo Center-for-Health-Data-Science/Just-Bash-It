@@ -1,41 +1,27 @@
-![Just Bash It](Figures/BashFigure1.jpeg "fig:")
+![Just Bash It](Figures/BashFigure1.jpeg)
 ================
 Center for Health Data Science, November 2023
 
-- <a href="#exercises" id="toc-exercises">Exercises</a>
-  - <a href="#about-this-document" id="toc-about-this-document">About this
-    document</a>
-  - <a href="#getting-started" id="toc-getting-started">Getting started</a>
-  - <a href="#a-note-on-pseudo-code" id="toc-a-note-on-pseudo-code">A note
-    on pseudo code</a>
-  - <a href="#getting-help" id="toc-getting-help">Getting help</a>
-  - <a href="#exercise-1-navigating-files-and-directories"
-    id="toc-exercise-1-navigating-files-and-directories">Exercise 1:
-    Navigating Files and Directories</a>
-  - <a href="#exercise-2-file-operations-mv-cp-and-rm"
-    id="toc-exercise-2-file-operations-mv-cp-and-rm">Exercise 2: File
-    operations mv, cp and rm</a>
-  - <a href="#exercise-3-project-organization"
-    id="toc-exercise-3-project-organization">Exercise 3: Project
-    organization</a>
-  - <a href="#exercise-4-viewing-and-editing-files"
-    id="toc-exercise-4-viewing-and-editing-files">Exercise 4: Viewing and
-    editing files</a>
-  - <a href="#exercise-5-data-wrangling-1"
-    id="toc-exercise-5-data-wrangling-1">Exercise 5: Data Wrangling 1</a>
-  - <a href="#exercise-6-data-wrangling-2"
-    id="toc-exercise-6-data-wrangling-2">Exercise 6: Data Wrangling 2</a>
-  - <a href="#exercise-7-redirection--pipes"
-    id="toc-exercise-7-redirection--pipes">Exercise 7: Redirection &amp;
-    Pipes</a>
-  - <a href="#exercise-8-part-1-shell-scripts"
-    id="toc-exercise-8-part-1-shell-scripts">Exercise 8: Part 1: Shell
-    Scripts</a>
-  - <a href="#exercise-8-part-2-loops"
-    id="toc-exercise-8-part-2-loops">Exercise 8: Part 2: Loops</a>
-  - <a href="#exercise-9-software-installation-upkeep--more"
-    id="toc-exercise-9-software-installation-upkeep--more">Exercise 9:
-    Software Installation, Upkeep &amp; More</a>
+- [Exercises](#exercises)
+  - [About this document](#about-this-document)
+  - [Getting started](#getting-started)
+  - [A note on pseudo code](#a-note-on-pseudo-code)
+  - [Getting help](#getting-help)
+  - [Exercise 1: Navigating Files and
+    Directories](#exercise-1-navigating-files-and-directories)
+  - [Exercise 2: File operations mv, cp and
+    rm](#exercise-2-file-operations-mv-cp-and-rm)
+  - [Exercise 3: Project organization](#exercise-3-project-organization)
+  - [Exercise 4: Viewing and editing
+    files](#exercise-4-viewing-and-editing-files)
+  - [Exercise 5: Data Wrangling 1](#exercise-5-data-wrangling-1)
+  - [Exercise 6: Data Wrangling 2](#exercise-6-data-wrangling-2)
+  - [Exercise 7: Redirection & Pipes](#exercise-7-redirection--pipes)
+  - [Exercise 8: Part 1: Shell
+    Scripts](#exercise-8-part-1-shell-scripts)
+  - [Exercise 8: Part 2: Loops](#exercise-8-part-2-loops)
+  - [Exercise 9: Software Installation, Upkeep &
+    More](#exercise-9-software-installation-upkeep--more)
 
 ------------------------------------------------------------------------
 
@@ -614,22 +600,22 @@ in Exercise 5, in fact, they should not.
 We will now save the commands from exercise 7.6 in a script so we don’t
 lose them and can easily re-run our analysis with a different gff file.
 
-1.  Create a new file, either directly on the commandline with `touch`
+2.  Create a new file, either directly on the commandline with `touch`
     or with the editor of your choice, and name it `ex8.sh`. This is the
     file which will contain your script.
 
-2.  Using your `history`, find the commands you used to solve exercise
+3.  Using your `history`, find the commands you used to solve exercise
     7.6 and copy them into the file `ex8.sh`. Save the script. If you
     use `echo` for this, view the script file to verify that it looks as
     expected.
 
-3.  Run `ex8.sh` by calling `bash`. Does it run without error? If not,
+4.  Run `ex8.sh` by calling `bash`. Does it run without error? If not,
     correct what is wrong until it does. Check that it creates the
     correct files, i.e. they should look the same as when you manually
     executed the commands.
 
 ``` bash
-bash -x ex6.sh
+bash -x ex8.sh
 ```
 
 4.  Add lines to your script `ex8.sh` that will remove the temporary
@@ -640,10 +626,32 @@ bash -x ex6.sh
 
 5.  Now replace the name of the input file,
     `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run
-    your script on different input files. Test that this works.
+    your script on different input files. In order to make this work we
+    need to start from a **zipped file**, so we can apply this script to
+    other gff files without having to manually unzip them first. So the
+    first task is to find out how to unzip a gz file and redirect the
+    output into a new file, so we will both leave the original file
+    (i.e. `ecoli.gff.gz`) and control the name of the unzipped file. We
+    do not want the unzipped file to be named `ecoli.gff` because then
+    our script will only work on that particular file! To do this, look
+    at the help for gzip and figure out which argument you need. A hint,
+    we are trying to write to standard out and redirect that output into
+    a file of our choice.
+
+``` bash
+gunzip -h 
+```
+
+With this, write up a command that takes `ecoli.gff.gz` (or any other
+.gz file) and creates an unzipped file `unzipped.gff` while also leaving
+the original `ecoli.gff.gz` in place. This will be the first command in
+your new script script.
 
 6.  Run your script on `ecoli.gff.gz` by passing the file name as an
-    argument.
+    argument. Test until it works. Remember to use `-x` to see the
+    commands the script executes displayed. For debugging it helps to
+    leave the temporary files so you can go back and check them, so you
+    might want to command out the lines you added in 4.
 
 ------------------------------------------------------------------------
 
@@ -662,6 +670,141 @@ bash -x ex6.sh
     lines printed to stdout, you can instead use the unzipping command
     with a certain flag and pipe it to `head`.
 
+------------------------------------------------------------------------
+
+ 
+
 ## Exercise 9: Software Installation, Upkeep & More
 
-To be determined.
+1.  Try out the command below, what does it show you? What does `aux`
+    specify?  
+    **HINT:** Remember you can use commands like `man` and `head` to
+    help you understand what is going on.  
+    **N.B:** For Windows users git bash will only show you the processes
+    related to running git bash itself, not so fun, but try the command
+    anyways.
+
+``` bash
+ps aux
+```
+
+2.  Using the command `open` (OS X and Ubuntu) or `start` (gitbash) to
+    launch a text editor (notepad, Notes, Evernote, etc.) and/or an
+    internet browser (i.e. a Firefox, Safari, etc.) though the
+    terminal.  
+    **HINT:** Make sure yo spell the application name correctly,
+    i.e. capital letters, spaces, etc.
+
+3.  Now, kill the application you just opened. You will have to combine
+    the commands `ps aux` and `grep` to get the `process id (pid)` for
+    the application.
+
+``` bash
+kill [pid]
+```
+
+ 
+
+You will now install and run a software thought the command line. The
+software we will be installed is
+[fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).
+This software is made for quality control of DNA/RNA sequencing data.
+The software produces a report with different statistics of read quality
+and bias checks.
+
+The steps here are different for each operating system, and easiest for
+ubuntu/linux users:
+
+ 
+
+2.  Install the `fastqc` software:
+
+ 
+
+**OS X (mac) Users:**  
+First, Check if `homebrew` is installed:
+
+``` bash
+brew --version
+```
+
+**IF `homebrew` is not** installed then install it:
+
+``` bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+**N.B** This may take a while.  
+Check `homebrew` was installed correctly by running the `brew --version`
+as shown above.
+
+Install `fastqc`
+
+``` bash
+brew install fastqc
+```
+
+ 
+
+**Ubuntu/Linux Users:**  
+First, Check that `apt-get` is installed (it should be by default):
+
+``` bash
+apt-get --version
+```
+
+**IF `apt-get` is not** installed then install it:
+
+``` bash
+BLA
+```
+
+**N.B** This may take a while.  
+Check `apt-get` was installed correctly by running the
+`apt-get --version` as shown above.
+
+Install `fastqc`
+
+``` bash
+BLA
+```
+
+ 
+
+**Windows Users:** BLA
+
+ 
+
+We are now ready to run `fastqc`. In the `Data/Raw` folder you have
+two`fastq` files, they contain RNAseq reads from a bulk-RNA sequencing
+experiment using Arabidopsis thaliana (thale cress). The extension `_R1`
+and `_R2` denote that reads are paired-end (e.g. read 1 and read 2).
+
+3.  Move the two `fastq` files to your `Scratch` folder using one
+    command line (i.e. both files at once).
+
+4.  Go to your `Scratch` folder and run `fastqc` on the files (both at
+    once), you will have to google how.  
+    Importantly, send the output of `fastqc` (an html report) directly
+    to the `Results` folder.  
+    **HINT:** Have a look at the `fastqc --help` to figure out which
+    flag you will need.
+
+5.  Go to your `Results` folder and open the .html report produced by
+    `fastqc`. You can do this using the command `open or start`
+    (depending on your system), name of your internet browser, followed
+    by the name of the html report. See examples below.
+
+OS X users:
+
+``` bash
+# OS X (Mac) users:
+open -a Firefox [report.html]
+open -a "Google Chrome" [report.html]
+
+# Ubuntu/Linum users:
+BLA
+
+# gitbash (Windows) users:
+BLA
+```
