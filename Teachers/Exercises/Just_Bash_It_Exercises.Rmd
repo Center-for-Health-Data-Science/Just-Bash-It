@@ -472,7 +472,7 @@ With this, write up a command that takes `ecoli.gff.gz` (or any other .gz file) 
 ## Exercise 9: Software Installation, Upkeep & More 
 
 1. Try out the command below, what does it show you? What does `aux` specify?   
-**HINT:** Remember you can use commands like `man` and `head` to help you understand what is going on.   
+**HINT:** Remember you can use commands like `man` and the option `-help` to help you understand what is going on. 
 **N.B:** For Windows users git bash will only show you the processes related to running git bash itself, not so fun, but try the command anyways.
 
 ```{bash, engine="sh", eval=FALSE}
@@ -483,23 +483,20 @@ ps aux
 **HINT:** Make sure yo spell the application name correctly, i.e. capital letters, spaces, etc.
 
 
-3. Now, kill the application you just opened. You will have to combine the commands `ps aux` and `grep` to get the `process id (pid)` for the application. What does the `-9` mean?
+3. If you have a Mac of linux OS, you can now kill the application you just opened by using the command line. You will have to combine the commands `ps aux` and `grep` to get the `process id (pid)` for the application. What does the `-9` mean? On gitbash this is not possible, so just proceed to the next point.
 
 
 ```{bash, engine="sh", eval=FALSE}
 kill -9 [pid]
 ```
 
+4. Install the  `fastqc` software: 
 
 &nbsp;
 
-You will now install and run a software thought the command line. The software we will be installed is [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). This software is made for quality control of DNA/RNA sequencing data. The software produces a report with different statistics of read quality and bias checks.
+In the second part of the exercise we will now install and run a software thought the command line. The software is [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). It is made for quality control of DNA/RNA sequencing data. The software produces a report with different statistics of read quality and bias checks.
 
 The steps here are different for each operating system, and easiest for ubuntu/linux users:
-
-&nbsp;
-
-2. Install the  `fastqc` software: 
 
 &nbsp;
 
@@ -522,28 +519,45 @@ brew install fastqc
 
 &nbsp;
 
-**Ubuntu/Linux Users:**   
-First, Check that `apt-get` is installed (it should be by default):   
+**Ubuntu Users:**   
+
+On Ubuntu we generally use `apt-get` to install software. 
+
+First, update apt database (you might need sudo): 
 ```{bash, engine="sh", eval=FALSE}
-apt-get --version
+apt-get update
 ```
 
-**IF `apt-get` is not** installed then install it:   
+Install `fastqc` (you might need sudo):
 ```{bash, engine="sh", eval=FALSE}
-BLA
+apt-get -y install fastqc
 ```
-**N.B** This may take a while.   
-Check `apt-get` was installed correctly by running the `apt-get --version` as shown above.
 
-Install `fastqc`
-```{bash, engine="sh", eval=FALSE}
-BLA
-```
+If you have linux distribution that doesn't have `apt-get` either google how to install things or download the java app of fastqc (see Windows) and run it with java.
 
 &nbsp;
 
 **Windows Users:**
-BLA   
+
+On windows, we will use java to execute the fastqc executable (which is written in java).
+Check whether you have java:
+
+```{bash, engine="sh", eval=FALSE}
+java -version
+```
+
+If you do not have java, download and install it:
+https://www.java.com/en/download/windows_manual.jsp
+
+Next, download fastqc from here: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ . Unzip the folder, either with the command line or by right clicking on it and put the content where you want them to be. 
+
+Now you can navigate to where the executable is and see whether you are allowed to run it. For me it looks like this:
+
+![](Figures/install_fastqc.PNG)
+
+You can also run fastqc from any other directory by providing the fullpath to the executable (which you now have because you just checked it):
+
+![](Figures/run_fastqc.PNG)
 
 &nbsp;
 
@@ -557,17 +571,16 @@ Importantly, send the output of `fastqc` (an html report) directly to the `Resul
 
 5. Go to your `Results` folder and open the .html report produced by `fastqc`. You can do this using the command `open or start` (depending on your system),  name of your internet browser, followed by the name of the html report. See examples below.
 
-OS X users:
 ```{bash, engine="sh", eval=FALSE}
 # OS X (Mac) users:
 open -a Firefox [report.html]
 open -a "Google Chrome" [report.html]
 
-# Ubuntu/Linum users:
-BLA
+# Ubuntu/Linux users:
+open [report.html]
 
 # gitbash (Windows) users:
-BLA
+start [report.html]
 
 ```
 

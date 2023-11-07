@@ -368,3 +368,8 @@ Run `fastqc`:
 fastqc SRR4420293_R1.fastq.gz SRR4420293_R2.fastq.gz -o [~/mypath]/Results
 ```
 
+If you to provide the fullpath you can do it like so:
+```{bash, engine="sh", eval=FALSE}
+~/Downloads/fastqc_v0.12.1/FastQC/fastqc SRR4420293_R1.fastq.gz SRR4420293_R2.fastq.gz -o [~/mypath]/Results
+```
+

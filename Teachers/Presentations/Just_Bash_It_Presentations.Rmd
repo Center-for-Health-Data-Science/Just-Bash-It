@@ -27,6 +27,8 @@ The `Just Bash It` workshop is developed and hosted by Center for Health Data Sc
 
 In this section we introduce the directory tree and show how to list files and directories and what paths are.
 
+First, show how to copy and paste text on your terminal. Perhaps we should show it both in Mac and Windows because you do it differently in both.
+
 Generally, whenever a command is written on a slide, you should demonstrate it. 
 
 ```{bash, eval=FALSE, engine="sh"}
