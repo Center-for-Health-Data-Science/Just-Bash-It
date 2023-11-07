@@ -483,11 +483,11 @@ ps aux
 **HINT:** Make sure yo spell the application name correctly, i.e. capital letters, spaces, etc.
 
 
-3. Now, kill the application you just opened. You will have to combine the commands `ps aux` and `grep` to get the `process id (pid)` for the application. 
+3. Now, kill the application you just opened. You will have to combine the commands `ps aux` and `grep` to get the `process id (pid)` for the application. What does the `-9` mean?
 
 
 ```{bash, engine="sh", eval=FALSE}
-kill [pid]
+kill -9 [pid]
 ```
 
 

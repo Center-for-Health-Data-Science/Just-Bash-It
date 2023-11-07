@@ -344,7 +344,7 @@ Find process and `kill` it:
 ps aux | grep Firefox
 
 # Kill application
-kill [pid]
+kill -9 [pid]
 ```
 
 

@@ -445,7 +445,11 @@ done
 
 1. Show activity monitor, task manager & top/htop/ps aux command.
 ```{bash, eval=FALSE, engine="sh"}
+
+top
+
 man top
+
 # man top
 ps aux
 
@@ -456,14 +460,16 @@ kill -9 'pid'
 
 ```
 
-2. Show how to use either `brew` or `apt-get` to update a software, could be python or similar. N.B something that does not take forever.
+2. Use open to open a file (.docx or similar) and an application (Browser)
 
-3. Use open to open a file (docx or similar) and an application (Browser)
+3. Show hidden configuration files, both those which should not / cannot be edited without `sudo` rights and those which are local and can be edited.
 
-4. Show hidden configuration files, both those which should not / cannot be edited without sudo rights and those which are local and can be edited.
+4. Change the command line prompt by editing the appropriate configuration file (either the .bashrc or the .zshrc). 
 
-5. Change the command line prompt by editing the appropriate configuration file (either the .bashrc or the .zshrc).
+5. Add an alias to you your configuration file (either the .bashrc or the .zshrc). 
 
 ```{bash, eval=FALSE, engine="sh"}
 PS1='%n~$ '
+
+alias diskspace="du -ha | sort -n -r | head -n10"
 ```
