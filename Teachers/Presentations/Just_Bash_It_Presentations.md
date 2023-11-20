@@ -2,34 +2,24 @@
 ================
 Center for Health Data Science, November 2023
 
-- <a href="#introduction" id="toc-introduction">Introduction</a>
-- <a href="#presentation-1-navigating-files-and-directories"
-  id="toc-presentation-1-navigating-files-and-directories">Presentation 1:
-  Navigating Files and Directories</a>
-- <a href="#presentation-2-file-operations"
-  id="toc-presentation-2-file-operations">Presentation 2: File
-  Operations</a>
-- <a href="#presentation-3-project-organization"
-  id="toc-presentation-3-project-organization">Presentation 3: Project
-  Organization</a>
-- <a href="#presentation-4-viewing-and-editing-files"
-  id="toc-presentation-4-viewing-and-editing-files">Presentation 4:
-  Viewing and Editing Files</a>
-- <a href="#presentation-5-data-wrangling-1-wc-cut-paste--sed"
-  id="toc-presentation-5-data-wrangling-1-wc-cut-paste--sed">Presentation
-  5: Data Wrangling 1: wc, cut, paste &amp; sed</a>
-- <a href="#presentation-6-data-wrangling-2-sort-grep--awk"
-  id="toc-presentation-6-data-wrangling-2-sort-grep--awk">Presentation 6:
-  Data Wrangling 2: sort, grep &amp; awk</a>
-- <a href="#presentation-7-redirection--pipes"
-  id="toc-presentation-7-redirection--pipes">Presentation 7: Redirection
-  &amp; Pipes</a>
-- <a href="#presentation-8-shell-scripts-and-loops"
-  id="toc-presentation-8-shell-scripts-and-loops">Presentation 8: Shell
-  Scripts and Loops</a>
-- <a href="#presentation-9-software-installation-upkeep--more"
-  id="toc-presentation-9-software-installation-upkeep--more">Presentation
-  9: Software Installation, Upkeep &amp; More</a>
+- [Introduction](#introduction)
+- [Presentation 1: Navigating Files and
+  Directories](#presentation-1-navigating-files-and-directories)
+- [Presentation 2: File Operations](#presentation-2-file-operations)
+- [Presentation 3: Project
+  Organization](#presentation-3-project-organization)
+- [Presentation 4: Viewing and Editing
+  Files](#presentation-4-viewing-and-editing-files)
+- [Presentation 5: Data Wrangling 1: wc, cut, paste &
+  sed](#presentation-5-data-wrangling-1-wc-cut-paste--sed)
+- [Presentation 6: Data Wrangling 2: sort, grep &
+  awk](#presentation-6-data-wrangling-2-sort-grep--awk)
+- [Presentation 7: Redirection &
+  Pipes](#presentation-7-redirection--pipes)
+- [Presentation 8: Shell Scripts and
+  Loops](#presentation-8-shell-scripts-and-loops)
+- [Presentation 9: Software Installation, Upkeep &
+  More](#presentation-9-software-installation-upkeep--more)
 
 ## Introduction
 
@@ -55,6 +45,10 @@ Library ([KUB](https://kub.kb.dk/datalab)) Data Lab.
 
 In this section we introduce the directory tree and show how to list
 files and directories and what paths are.
+
+First, show how to copy and paste text on your terminal. Perhaps we
+should show it both in Mac and Windows because you do it differently in
+both.
 
 Generally, whenever a command is written on a slide, you should
 demonstrate it.
@@ -124,15 +118,15 @@ directories.
 Working with files: mv
 
 ``` bash
-cd Just-Bash-It/Examples
+cd Just-Bash-It/Files
 ls *
 cd images
 pwd
-mv mytextfile.txt ../docs 
+mv mytextfile.txt ../Documents 
 ls
 cd ../
 ls *
-cd docs/
+cd Documents/
 mv mytextfile.txt my_text_file.tx
 ls
 ```
@@ -164,15 +158,24 @@ pwd
 ls
 ```
 
-2.  Go to the `Examples` folder and use `ls` and `du` options to show
-    file sizes.
+2.  Make a folder and a file, show `mkdir` and`touch`. Also make a
+    mistake and reiterate `rm -r`.
+
+``` bash
+mkdir
+touch
+rm
+```
+
+3.  Go to the `Files` folder and use `ls` and `du` options to show file
+    sizes.
 
 ``` bash
 du -hA (apparent disk size)
 du -hAa (apparent disk size)
 ```
 
-3.  Check & change permissions
+4.  Check & change permissions
 
 ``` bash
 ls -al
@@ -187,15 +190,6 @@ chmod g+w patients.txt
 chmod g-w patients.txt
 ```
 
-4.  Make a folder and a file, show `mkdir` and`touch`. Also make a
-    mistake and reiterate `rm -r`.
-
-``` bash
-mkdir
-touch
-rm
-```
-
 ------------------------------------------------------------------------
 
  
@@ -206,11 +200,10 @@ rm
     file from a github repo as an example.
 
 ``` bash
-cat patients.txt
+less patients.txt
 
-less
-head -n
-tail -n
+head  patients.txt -5
+tail patients.txt -7
 ```
 
 2.  Show how commands above can be used to copy content or part of it to
@@ -238,16 +231,25 @@ gunzip patients.gz
 unzip patients.zip
 ```
 
+``` bash
+# Try cat on long file:
+gunzip ecoli.gff.gz
+cat ecoli.gff
+less ecoli.gff
+head ecoli.gff
+gzip -k ecoli.gff
+```
+
 5.  creating a tar archive
 
 ``` bash
-cd Examples
-tar -cvf docs.tar docs
+cd Files
+tar -cvf Documents.tar Documents
 ls #show the tar ball has appeared
-mv docs.tar ../ #move it one up
-tar -tf docs.tar #show content of the archive but don't untar it
-tar -xvf docs.tar #now untar
-ls #show the docs dir and its files have appeared in the Just-Bash-It dir
+mv Documents.tar ../ #move it one up
+tar -tf Documents.tar #show content of the archive but don't untar it
+tar -xvf Documents.tar #now untar
+ls #show the Documents dir and its files have appeared in the Just-Bash-It dir
 ```
 
 ------------------------------------------------------------------------
@@ -371,7 +373,7 @@ grep '40' patients.txt
 grep '^40' patients.txt
 
 
-# all rows that end on 5
+# all rows that end on 3
 grep ',3$' patients.txt
 grep '[0-9]*,[0-9]*,3' patients.txt
 
@@ -497,7 +499,11 @@ done
 1.  Show activity monitor, task manager & top/htop/ps aux command.
 
 ``` bash
+
+top
+
 man top
+
 # man top
 ps aux
 
@@ -507,20 +513,21 @@ ps aux | grep rstudio
 kill -9 'pid'
 ```
 
-2.  Show how to use either `brew` or `apt-get` to update a software,
-    could be python or similar. N.B something that does not take
-    forever.
-
-3.  Use open to open a file (docx or similar) and an application
+2.  Use open to open a file (.docx or similar) and an application
     (Browser)
 
-4.  Show hidden configuration files, both those which should not /
-    cannot be edited without sudo rights and those which are local and
+3.  Show hidden configuration files, both those which should not /
+    cannot be edited without `sudo` rights and those which are local and
     can be edited.
 
-5.  Change the command line prompt by editing the appropriate
+4.  Change the command line prompt by editing the appropriate
     configuration file (either the .bashrc or the .zshrc).
+
+5.  Add an alias to you your configuration file (either the .bashrc or
+    the .zshrc).
 
 ``` bash
 PS1='%n~$ '
+
+alias diskspace="du -ha | sort -n -r | head -n10"
 ```

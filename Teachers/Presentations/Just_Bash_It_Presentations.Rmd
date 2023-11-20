@@ -93,15 +93,15 @@ In this presentation we show how to move, create and delete files and directorie
 Working with files: mv 
 
 ```{bash,  eval=FALSE, engine="sh"}
-cd Just-Bash-It/Examples
+cd Just-Bash-It/Files
 ls *
 cd images
 pwd
-mv mytextfile.txt ../docs 
+mv mytextfile.txt ../Documents 
 ls
 cd ../
 ls *
-cd docs/
+cd Documents/
 mv mytextfile.txt my_text_file.tx
 ls
 ```
@@ -122,6 +122,8 @@ rm text_copy.txt
 
 In this section we show participants how to set up a good directory structure. Workshop teachers should have setup a directory structure like the one shown on slide 15.
 
+
+
 1. Under home/user/(Desktop | Documents) show the directory `projects` which contains the project at hand. Reiterate commands `cd`, `pwd` and `ls`.
 
 ```{bash, eval=FALSE, engine="sh"}
@@ -129,7 +131,16 @@ pwd
 ls
 ```
 
-2. Go to the `Examples` folder and use `ls` and `du` options to show file sizes. 
+2. Make a folder and a file, show `mkdir` and`touch`. Also make a mistake and reiterate `rm -r`.
+
+```{bash, eval=FALSE, engine="sh"}
+mkdir
+touch
+rm
+```
+
+
+3. Go to the `Files` folder and use `ls` and `du` options to show file sizes. 
 
 ```{bash, eval=FALSE, engine="sh"}
 du -hA (apparent disk size)
@@ -137,7 +148,7 @@ du -hAa (apparent disk size)
 
 ```
 
-3. Check & change permissions
+4. Check & change permissions
 ```{bash, eval=FALSE, engine="sh"}
 ls -al
 ls -al *
@@ -152,13 +163,7 @@ chmod g-w patients.txt
 ```
 
 
-4. Make a folder and a file, show `mkdir` and`touch`. Also make a mistake and reiterate `rm -r`.
 
-```{bash, eval=FALSE, engine="sh"}
-mkdir
-touch
-rm
-```
 
 ---   
 
@@ -170,11 +175,10 @@ rm
 1. View the content of a file with different commands. Use a readme file from a github repo as an example. 
 
 ```{bash, eval=FALSE, engine="sh"}
-cat patients.txt
+less patients.txt
 
-less
-head -n
-tail -n
+head  patients.txt -5
+tail patients.txt -7
 ```
 
 2. Show how commands above can be used to copy content or part of it to a new file.
@@ -198,16 +202,25 @@ gunzip patients.gz
 unzip patients.zip
 ```
 
+```{bash, eval=FALSE, engine="sh"}
+# Try cat on long file:
+gunzip ecoli.gff.gz
+cat ecoli.gff
+less ecoli.gff
+head ecoli.gff
+gzip -k ecoli.gff
+```
+
 5. creating a tar archive
 
 ```{bash, eval=FALSE, engine="sh"}
-cd Examples
-tar -cvf docs.tar docs
+cd Files
+tar -cvf Documents.tar Documents
 ls #show the tar ball has appeared
-mv docs.tar ../ #move it one up
-tar -tf docs.tar #show content of the archive but don't untar it
-tar -xvf docs.tar #now untar
-ls #show the docs dir and its files have appeared in the Just-Bash-It dir
+mv Documents.tar ../ #move it one up
+tar -tf Documents.tar #show content of the archive but don't untar it
+tar -xvf Documents.tar #now untar
+ls #show the Documents dir and its files have appeared in the Just-Bash-It dir
 
 ```
 
@@ -328,7 +341,7 @@ grep '40' patients.txt
 grep '^40' patients.txt
 
 
-# all rows that end on 5
+# all rows that end on 3
 grep ',3$' patients.txt
 grep '[0-9]*,[0-9]*,3' patients.txt
 
