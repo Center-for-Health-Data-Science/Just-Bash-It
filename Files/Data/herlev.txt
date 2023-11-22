@@ -1,1 +1,0 @@
-patient_ID,technique,hospital,conv_days,age,satisfaction
