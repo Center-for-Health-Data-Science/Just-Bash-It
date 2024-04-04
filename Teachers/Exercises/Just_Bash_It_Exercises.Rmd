@@ -144,13 +144,13 @@ ls -l
 ```
 
 Search the web to get an explanation of the output. What do the individual fields show?   
-Use the help of ls `ls --help` (git bash) or `man ls` (on mac/linux) to answer the following questions:
+Use the help of ls `ls --help` (git bash) or `man ls` (on mac/linux) as well as what you learned in the lecture to answer the following questions:
 
-  * Which file inside `Just-Bash-It` was last updated?
+  * Which listed items are files and which are directories?
   * Which file in `Just-Bash-It` is the largest?
   * Are there any hidden files (that you normally don't see with a simple `ls`)?   
   
-  If you cannot see the relevant infos like size and time stamp, use the `-l` option in combination with other options. 
+  If you cannot see the relevant infos like size, use the `-l` option in combination with other options found in the help (or by googling). 
 
 &nbsp;
 
@@ -228,16 +228,16 @@ A `readme` file should contain information about what a certain directory contai
 
 2. Move to the sub-directory `Data/Raw` here you should have the four data files you moved from the course material directory.   
 
-Two of these files are `fastq` files, they contain RNAseq reads from a bulk-RNA sequencing experiment using Arabidopsis thaliana (thale cress). The extension `_R1` and `_R2` denote that reads are paired-end (e.g. read 1 and read 2). The other two are `gff` files that contain gene annotations and other genomic features. We will first work with the file `GCF_genomicAnnotation.gff.gz` which contains info on the model organism Arabidopsis Thaliana.
+    Two of these files are `fastq` files, they contain RNAseq reads from a bulk-RNA sequencing experiment using Arabidopsis thaliana (thale cress). The extension `_R1` and `_R2` denote that reads are paired-end (e.g. read 1 and read 2). The other two are `gff` files that contain gene annotations and other genomic features. We will first work with the file `GCF_genomicAnnotation.gff.gz` which contains info on the model organism Arabidopsis Thaliana.
 
 3. Uncompress the `GCF_genomicAnnotation.gff.gz` annotation file while making sure you keep a copy of the compressed version.   
 **HINT:** look into what flags/arguments need to be specified when decompressing). 
 
 4. Try out the commands `less, cat, head, tail` on the expanded `.gff` file and study its content.   
 
-You will notice that the file is made of two parts: A header part that contains information about the file and a data part that contains data in columns separated by whitespace. Lines that are part of the header start with a hash tag. The hash tag is generally the comment character, indicating that a line is not data.   
+    You will notice that the file is made of two parts: A header part that contains information about the file and a data part that contains data in columns separated by whitespace. Lines that are part of the header start with a hash tag. The hash tag is generally the comment character, indicating that a line is not data.   
 
-The data section of the file contains the fields (columns) shown below, and includes information on; annotation source, region, sequence start and end position, stand, as well as a column containing various information on the sequences, i.e. entry id, gene name, locus, ids, tags etc.  
+    The data section of the file contains the fields (columns) shown below, and includes information on; annotation source, region, sequence start and end position, stand, as well as a column containing various information on the sequences, i.e. entry id, gene name, locus, ids, tags etc.  
 
 
     | NC ID       | Source   | Region   | Start    | End      | Strand  | Gene transcript etc. |
@@ -267,21 +267,20 @@ Go to your directory `Scratch` where you should have a copy of the unzipped `GCF
 
 2. In Exercise 4 we established that the file is composed of a header part and a data part. We would like to remove the header, denoted by hash tags, for further processing and save the resulting file into a new file called `Annotation_tmp.gff` (so we still have `Annotation.gff` containing the header and the new file without it).   
 
-We can do this in many ways but here we will chose to use the stream editor `sed` and omit the header lines by their line number.   
+    We can do this in many ways but here we will chose to use the stream editor `sed` and omit the header lines by their line number.   
 
-Have a look at the ***pseudo code*** below:
+    Have a look at the ***pseudo code*** below:
     
-```{bash, engine="sh", eval=FALSE}
-sed '[number first line],[number last line]d' Annotation.gff > Annotation_tmp.gff
-```
+    ```{bash, engine="sh", eval=FALSE}
+    sed '[number first line],[number last line]d' Annotation.gff > Annotation_tmp.gff
+    ```
 
-You need to find the numbers and run the command. What do you think the `d` refers to?   
+    You need to find the numbers and run the command. What do you think the `d` refers to?   
 
-Have a look at the resulting `Annotation_tmp.gff` and verify whether it is correct. That means it should not contain any of the lines starting with a hash tag but all the other lines in `Annotation.gff`. If it is not correct try again until you have the correct file. 
+    Have a look at the resulting `Annotation_tmp.gff` and verify whether it is correct. That means it should not contain any of the lines starting with a hash tag but all the other lines in `Annotation.gff`. If it is not correct try again until you have the correct file. 
 
 
 3. For further analysis, we want to cut out only the columns describing the *Region*, *Start* and *Stop* of the genetic element. You will do this by using `cut` on `Annotation_tmp.gff` and redirecting the output into a new file called `GenomicRegion.tmp`.   
-
 **HINT1:** First, identify the numbers of the columns we want.   
 **HINT2:** A challenge is that the annotation file is separated by *tab* delimiter, which in unix is `\t`. To make `cut` accept it, we need to put`$` in front of it like so: `-d$'\t'` (there are no spaces here!). Don't ask, it's a long story... Check that your output file looks correct.   
 
@@ -295,12 +294,12 @@ Check that your output file looks correct. It should look like this:
 ![](Figures/gene_names.PNG)
 
 5. We would now like to remove the `gene=` in each line to just obtain the clean **gene name** by itself. One way to get this is to do a search and replace with `sed `.   
-The syntax is shown as ***pseudo code*** below.   
-The `sed ` command requires you to specify what pattern to match `[pattern to match]` and what pattern to replace it with `[Replace with]`. The patterns are separated by slashes and the whole expression is encased in quotes `'`.   
 
-**Note:** When using `sed` the input and output file cannot be the same, i.e. you cannot overwrite the input file in one command. But you could of course rename the output file to be the input file later with `mv`. 
+    The syntax is shown as ***pseudo code*** below. The `sed ` command requires you to specify what pattern to match `[pattern to match]` and what pattern to replace it with `[Replace with]`. The patterns are separated by slashes and the whole expression is encased in quotes `'`.   
 
-```{bash, engine="sh", eval=FALSE}
+    **Note:** When using `sed` the input and output file cannot be the same, i.e. you cannot overwrite the input file in one command. But you could of course rename the output file to be the input file later with `mv`. 
+
+    ```{bash, engine="sh", eval=FALSE}
 sed 's/[pattern to match]/[Replace with]/g' [input file] > [output file]
 ```
 
@@ -310,7 +309,8 @@ For the pseudo code chunk figure out:
   * Change `[pattern to match]` to the pattern you want to match and `[Replace with]` to what you want to replace with (*HINT: replace with empty/nothing*).   
   * What does the `s` and `g` denote?   
   * Run the command and save the output to the a file and call it `gene_names_clean.txt`: .   
-  Verify that your output looks correct, i.e. the `gene=` part is gone but the gene names are still complete. It should look like this:   
+
+Verify that your output looks correct, i.e. the `gene=` part is gone but the gene names are still complete. It should look like this:   
   
   ![](Figures/no_gene_name.PNG)
 
@@ -322,13 +322,13 @@ For the pseudo code chunk figure out:
 
 ## Exercise 6: Data Wrangling 2
 
-1. You should now have one file `GenomicRegion.tmp` containing only field 3, 4 & 5 from exercise 5.3 and one `gene_names_clean.txt` containing gene names from exercise 5.5.   
+You should now have one file `GenomicRegion.tmp` containing only field 3, 4 & 5 from exercise 5.3 and one `gene_names_clean.txt` containing gene names from exercise 5.5.   
 
-Paste these two files together into a single file using the command `paste`. Name this file `Annotation_Gene.gff`. The new file should be tab separated, just like the `GenomicRegion.tmp` file. To do so, use the delimiter flag to specify what kind of delimiter should be used to paste the fields together (tab is `\t`). 
+1. Paste these two files together into a single file using the command `paste`. Name this file `Annotation_Gene.gff`. The new file should be tab separated, just like the `GenomicRegion.tmp` file. To do so, use the delimiter flag to specify what kind of delimiter should be used to paste the fields together (tab is `\t`). 
 
 2. Run and decipher the command below.
 
-```{bash, engine="sh", eval=FALSE}
+    ```{bash, engine="sh", eval=FALSE}
 awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
 ```
 
@@ -347,16 +347,15 @@ awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_L
   * All living organisms have polymerase genes (`POL` genes), check that Arabidopsis Thaliana also has one.
   * How many gene annotation lines in the file pertain to transfer RNA (`tRNA`)? Use `grep` and find the correct flag for counting.
 
+Your new file `Annotation_Gene_Len.gff` does not have a header line explaining what the different columns are. 
 
-&nbsp;          
+4. Using an editor, i.e nano, make a new file called `header.gff` with these column names:   
 
-4. Your new file `Annotation_Gene_Len.gff` does not have a header line explaining what the different columns are. Using an editor, i.e nano, make a new file called `header.gff` with these column names:   
-
-```{bash, engine="sh", eval=FALSE}
+    ```{bash, engine="sh", eval=FALSE}
 Region    Start   End   GeneName    Length
 ```
 
-The column headers should be separated by tab, just like the data columns.   
+    The column headers should be separated by tab, just like the data columns.   
 Now, use the command `cat` to put `header.gff` and `Annotation_Gene_Len.gff` together. Name the output `Annotation_[TodaysDate].gff`.   
 
 When you have checked at the file looks correct, move the file to your **Results** directory - **N.B** go to the sub-directory and check that you have moved it correctly!. You can now remove (delete) all the temporary files in your `Scratch` directory. WELL DONE!
@@ -372,48 +371,46 @@ When you have checked at the file looks correct, move the file to your **Results
 
 1. Copy (`cp`) the unzipped gff file for Arabidopsis Thaliana from your `Data/Raw` dir to the `Scratch` dir. It might be called `GCF_genomicAnnotation.gff` or `Annotation.gff` if you have renamed it in exercise 4. Then move to the `Scratch` directory.   
 
-Lets try some piping (chaining) of commands.
+    Lets try some piping (chaining) of commands.
 
 2. Starting from the unzipped gff file we just copied,find out which types of genomic features (i.e. exon, rRNA, repeat) we have information on by chaining 4 commands together with the pipe operator `|`.   
 
-<!-- When using a pipe, the output from the first command becomes the input to the second command. This enables us to do operations with less intermediate files. -->   
+    When using a pipe, the output from the first command becomes the input to the second command. This enables us to do operations with less intermediate files.
 
-**Tip:** When testing chained commands you can be unsure what the outputs and inputs are at each pipe, or if a command has produced the expected output that you want to pass on. It is therefore a good idea to build the command step by step. You can execute step 1, check the output, then add step 2 and so forth until you have assembled your command. 
-
-<!-- If you get tired of having the output fill up your screen you can always chain a `head` (i.e. `cut -f [colunm] [file] | head`) after the step to only see the first 10 lines of output. --> 
+    **Tip:** When testing chained commands you can be unsure what the outputs and inputs are at each pipe, or if a command has produced the expected output that you want to pass on. It is therefore a good idea to build the command step by step. You can execute step 1, check the output, then add step 2 and so forth until you have assembled your command. If you get tired of having the output fill up your screen you can always chain a `head` (i.e. `cut -f [colunm] [file] | head`) after the step to only see the first 10 lines of output.
     
-**The 4 steps** you need to perform are:   
-  * Step 1: Remove the header rows (those beginning with hastages) in the file, like you did in point 2, Exercise 4, above.   
-  * Step 2: Extract (`cut`) the column that contains the **Region**  (exon, CDS, etc.).   
-  * Step 3: Sort the extracted column with `sort`.   
-  * Step 4: Get the unique elements from this column with the command `uniq`.  
+    **The 4 steps** you need to perform are:   
+    * Step 1: Remove the header rows (those beginning with hastages) in the file, like you did in point 2, Exercise 4, above.   
+    * Step 2: Extract (`cut`) the column that contains the **Region**  (exon, CDS, etc.). 
+    * Step 3: Sort the extracted column with `sort`.   
+    * Step 4: Get the unique elements from this column with the command `uniq`.  
 
 <br/>
 
 3. Re-run the command line you used above, but this time redirect the output directly to the `Data/Generated` directory by specifying the path and the name you would like the output file to have. Check the `Data/Generated` directory to check that you have correctly made the file.
 
 
-4. Using a single command line, figure out the gene name of the microRNA (miRNA) gene in `Annotation.gff` (NOT the new file you just made!) which has the smallest genomic starting coordinate.   
+4. Using a single command line, figure out the gene name of the microRNA (miRNA) gene in `Annotation.gff` (NOT the new file you just made!) which has the smallest genomic starting coordinate. 
 
-**HINT1:** You will need to combine commands `cut`, `sort` and `grep` (more than once if needed) to archive this. miRNA gene names begin with `MIR`.  
-**HINT2:** Remember, you want to find the line describing the microRNA with the smallest genomic starting coordinate, but your final output should be the gene name, not the coordinate!  
+    **HINT1:** You will need to combine commands `cut`, `sort` and `grep` (more than once if needed) to archive this. miRNA gene names begin with `MIR`.  
+    **HINT2:** Remember, you want to find the line describing the microRNA with the smallest genomic starting coordinate, but your final output should be the gene name, not the coordinate!  
 
 5. Intermezzo: Working with your `history`.   
 
-You have probably tried many commands in the last exercises and it can be difficult to remember what has worked or how exactly the syntax was. Luckily, all commands you have typed into your terminal are saved in the `history`!   
+    You have probably tried many commands in the last exercises and it can be difficult to remember what has worked or how exactly the syntax was. Luckily, all commands you have typed into your terminal are saved in the `history`!   
 
-First, let's see how much is in your history. What does the below command tell you?
+    First, let's see how much is in your history. What does the below command tell you?
 
-```{bash, engine="sh", eval=FALSE}
+    ```{bash, engine="sh", eval=FALSE}
 history | wc 
 ```
 
-If you have a lot of commands saved in your history you might only want to see the last 20 or so. Can you show the last 20 commands using a pipe?
+    If you have a lot of commands saved in your history you might only want to see the last 20 or so. Can you show the last 20 commands using a pipe?
 
 6. Finally, let's **redo points 2-5 from Exercise 5 and point 1 from Exercise 6**, starting from the `Annotation.gff` file, BUT this time using pipes to reduce the number of intermediate files. You should end up with a file containing these 4 columns: `Region, Start, End and gene name (only)`. Use your `history` if you can't remember the commands you used.   
 
-There are many ways of achieving this. For those who like a challenge, it is possible to get to the final output file in two command lines (i.e. only one intermediate file).   
-**HINT:** The commands do not need to be combined in the same order as in Exercise 5, in fact, they should not.
+    There are many ways of achieving this. For those who like a challenge, it is possible to get to the final output file in two command lines (i.e. only one intermediate file) by using `-` to read input from stdin (instead of specifying the name of the input file).   
+    **HINT:** The commands do not need to be combined in the same order as in Exercise 5, in fact, they should not.
     
 
 ---   
@@ -431,7 +428,7 @@ We will now save the commands from exercise 7.6 in a script so we don't lose the
 
 3. Run `ex8.sh` by calling `bash`. Does it run without error? If not, correct what is wrong until it does. Check that it creates the correct files, i.e. they should look the same as when you manually executed the commands. 
 
-```{bash, engine="sh", eval=FALSE}
+    ```{bash, engine="sh", eval=FALSE}
 bash -x ex8.sh
 ```
 
@@ -440,11 +437,11 @@ bash -x ex8.sh
 5. Now replace the name of the input file, `GCF_genomicAnnotation.gff.gz`, with an argument so that you can run your script on different input files. In order to make this work we need to start from a **zipped file**, so we can apply this script to other gff files without having to manually unzip them first. So the first task is to find out how to unzip a gz file and redirect the output into a new file, so we will both leave the original file (i.e. `ecoli.gff.gz`) and control the name of the unzipped file. We do not want the unzipped file to be named `ecoli.gff` because then our script will only work on that particular file! To do this, look at the help for gzip and figure out which argument you need. A hint, we are trying to write to standard out and redirect that output into a file of our choice.
 
 
-```{bash, engine="sh", eval=FALSE}
+    ```{bash, engine="sh", eval=FALSE}
 gunzip -h 
 ```
 
-With this, write up a command that takes `ecoli.gff.gz` (or any other .gz file) and creates an unzipped file `unzipped.gff` while also leaving the original `ecoli.gff.gz` in place. This will be the first command in your new script script.
+    With this, write up a command that takes `ecoli.gff.gz` (or any other .gz file) and creates an unzipped file `unzipped.gff` while also leaving the original `ecoli.gff.gz` in place. This will be the first command in your new script script.
 
 6. Run your script on `ecoli.gff.gz` by passing the file name as an argument. Test until it works. Remember to use `-x` to see the commands the script executes displayed. For debugging it helps to leave the temporary files so you can go back and check them, so you might want to command out the lines you added in 4. 
 
