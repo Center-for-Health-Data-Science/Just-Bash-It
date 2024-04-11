@@ -162,12 +162,12 @@ sed '1,8d' Annotation.gff > Annotation_tmp.gff
 
 3.  Use the command `cut` to make a new file which contains only
     `fields 3,4,5` (i.e. columns with region, start and end) from the
-    `Annotation_tmp.gff` and name it whatever you’d like. To do this you
+    `Annotation_tmp.gff` and name `GenomicRegion.tmp`. To do this you
     need to set the *tab* delimiter `'\t'`.  
     Check that the file looks correct.
 
 ``` bash
-cut -d$'\t' -f 3-5 Annotation_tmp.gff > cols345
+cut -d$'\t' -f 3-5 Annotation_tmp.gff > GenomicRegion.tmp
 ```
 
 We also would like to have the gene names. They are in field 7 in the
@@ -184,7 +184,7 @@ contains sub-fields delimited by `;`.
 
 ``` bash
 cut -d$'\t' -f 7 Annotation_tmp.gff > col7.tmp
-cut -d ';' -f 5 col7.tmp > gene_names
+cut -d ';' -f 5 col7.tmp > gene_names.txt
 ```
 
 5.  We would like to remove the repetitive `gene=` in each line to just
@@ -196,7 +196,7 @@ cut -d ';' -f 5 col7.tmp > gene_names
     whole expression is encased in quotes `'`.
 
 ``` bash
-sed 's/gene=//g' gene_names > gene_names_clean
+sed 's/gene=//g' gene_names.txt > gene_names_clean.txt
 ```
 
 ------------------------------------------------------------------------
@@ -208,12 +208,19 @@ sed 's/gene=//g' gene_names > gene_names_clean
 1.  Pasting files together.
 
 ``` bash
-paste -d '\t' cols.tmp gene_names_clean > Annotation_Gene.gff
+paste -d '\t' GenomicRegion.tmp gene_names_clean.txt > Annotation_Gene.gff
 ```
 
-3.  Let’s have a look at the content of your final file.
+Let’s have a look at the content of your final file.
 
-- Are there any gene sequences with length 0 in the annotation file?
+2.  Run command below to get calculate the length of gene sequences
+    based on chromosome start and end positions:
+
+``` bash
+awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
+```
+
+3.  - Are there any gene sequences with length 0 in the annotation file?
 
 ``` bash
 sort -t$'\t' -k 5 -n Annotation_Gene_Len.gff > short_first
@@ -396,7 +403,7 @@ Find process and `kill` it:
 ps aux | grep Firefox
 
 # Kill application
-kill [pid]
+kill -9 [pid]
 ```
 
 Install `fastqc`:
@@ -419,4 +426,10 @@ Run `fastqc`:
 
 ``` bash
 fastqc SRR4420293_R1.fastq.gz SRR4420293_R2.fastq.gz -o [~/mypath]/Results
+```
+
+If you to provide the fullpath you can do it like so:
+
+``` bash
+~/Downloads/fastqc_v0.12.1/FastQC/fastqc SRR4420293_R1.fastq.gz SRR4420293_R2.fastq.gz -o [~/mypath]/Results
 ```
