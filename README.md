@@ -1,6 +1,6 @@
 # Just Bash It!
 
-This GitHub repository countains course materials for the introductory workshop to command line use and bash syntax for health researchers, with the running title: _Just Bash It!_
+This GitHub repository contains course materials for the introductory workshop to command line use and bash syntax for health researchers, with the running title: _Just Bash It!_
 
 This two day workshop is targeted at biomedical and health researchers at the University of Copenhagen with no prior experience in bash command line use. It consists of a slideshow, hands-on presentations, code-along and accompanying exercises.    
 
