@@ -139,18 +139,18 @@ There will be many error messages because things always go wrong and nobody know
 
 2. Now, add the flag `-l` (that's the small letter L) to the `ls` command. What changes?
 
-```{bash, engine="sh", eval=FALSE}
-ls -l
-```
+    ```{bash, engine="sh", eval=FALSE}
+    ls -l
+    ```
 
-Search the web to get an explanation of the output. What do the individual fields show?   
-Use the help of ls `ls --help` (git bash) or `man ls` (on mac/linux) as well as what you learned in the lecture to answer the following questions:
+    Search the web to get an explanation of the output. What do the individual fields show?   
+    Use the help of ls `ls --help` (git bash) or `man ls` (on mac/linux) as well as what you learned in the lecture to answer the following questions:
 
   * Which listed items are files and which are directories?
   * Which file in `Just-Bash-It` is the largest?
   * Are there any hidden files (that you normally don't see with a simple `ls`)?   
   
-  If you cannot see the relevant infos like size, use the `-l` option in combination with other options found in the help (or by googling). 
+    If you cannot see the relevant infos like size, use the `-l` option in combination with other options found in the help (or by googling). 
 
 &nbsp;
 
@@ -237,7 +237,7 @@ A `readme` file should contain information about what a certain directory contai
 
     You will notice that the file is made of two parts: A header part that contains information about the file and a data part that contains data in columns separated by whitespace. Lines that are part of the header start with a hash tag. The hash tag is generally the comment character, indicating that a line is not data.   
 
-    The data section of the file contains the fields (columns) shown below, and includes information on; annotation source, region, sequence start and end position, stand, as well as a column containing various information on the sequences, i.e. entry id, gene name, locus, ids, tags etc.  
+    The data section of the file contains the fields (columns) shown below, and includes information on: annotation source, region, sequence start and end position, stand, as well as a column containing various information on the sequences, i.e. entry id, gene name, locus, ids, tags etc.  
 
 
     | NC ID       | Source   | Region   | Start    | End      | Strand  | Gene transcript etc. |
@@ -280,14 +280,13 @@ Go to your directory `Scratch` where you should have a copy of the unzipped `GCF
     Have a look at the resulting `Annotation_tmp.gff` and verify whether it is correct. That means it should not contain any of the lines starting with a hash tag but all the other lines in `Annotation.gff`. If it is not correct try again until you have the correct file. 
 
 
-3. For further analysis, we want to cut out only the columns describing the *Region*, *Start* and *Stop* of the genetic element. You will do this by using `cut` on `Annotation_tmp.gff` and redirecting the output into a new file called `GenomicRegion.tmp`.   
-**HINT1:** First, identify the numbers of the columns we want.   
-**HINT2:** A challenge is that the annotation file is separated by *tab* delimiter, which in unix is `\t`. To make `cut` accept it, we need to put`$` in front of it like so: `-d$'\t'` (there are no spaces here!). Don't ask, it's a long story... Check that your output file looks correct.   
+3. For further analysis, we want to cut out only the columns that have the information on the *Region*, *Start* and *End* of the genetic element. You will do this by using `cut` on `Annotation_tmp.gff` and redirecting the output into a new file called `GenomicRegion.tmp`.   
+**HINT1:** First, identify the position (1,2,3,ect) of the columns we want.   
+**HINT2:** A challenge you might encounter is that the annotation file is separated by the *tab* delimiter, which in unix is written as: `\t`. For some systems, `cut` without a specified delimiter will work fine. *If* we need to specify the delimiter as `\t` (instead of say space) we need to put a `$` in front of it like so: `-d$'\t'` (there are no spaces here!). Don't ask, it's a long story... Check that your output file looks correct.   
 
-Next, we would like to extract the gene names. They are in field/col 7 in the `Annotation_tmp.gff`, but field 7 contains itself several entries like ID, gene name, locus tags etc. separated by a `;`, i.e. field 7 contains sub-fields delimited by `;`.   
+Next, we would like to extract the gene names. They are in field/column 7 in the `Annotation_tmp.gff`, but field 7 contains itself several entries like ID, gene name, locus tags etc. separated by a `;`. I.e. field 7 contains sub-fields delimited by `;`.   
 
-4. Extract the gene name by using `cut` twice. First, cut out column 7 from `Annotation_tmp.gff` and name that temporary file `col7.tmp`. Then, cut `col7.tmp` again to get the gene name and put it into `gene_names.txt`.   
-**HINT:** We want the sub-field starting with `gene=` (this is where we find the genename).   
+4. Extract the gene name by using `cut` twice. First, cut out column 7 from `Annotation_tmp.gff` and name that temporary file `col7.tmp`. Inspect `col7.tmp` for example with `head` and count which of the subfields you want to extract. We want the sub-field starting with `gene=`. Some lines in the gff file do not have the `gene=` field because they are other genomic features. But since this is just an exercise, we will be content with cutting based on the field's position. When you have found it, cut `col7.tmp` and put the result into `gene_names.txt`.   
 
 
 Check that your output file looks correct. It should look like this:   
@@ -300,17 +299,17 @@ Check that your output file looks correct. It should look like this:
     **Note:** When using `sed` the input and output file cannot be the same, i.e. you cannot overwrite the input file in one command. But you could of course rename the output file to be the input file later with `mv`. 
 
     ```{bash, engine="sh", eval=FALSE}
-sed 's/[pattern to match]/[Replace with]/g' [input file] > [output file]
-```
+    sed 's/[pattern to match]/[Replace with]/g' [input file] > [output file]
+    ```
 
-For the pseudo code chunk figure out:   
+    For the pseudo code chunk figure out:   
 
   * What the input file should be?   
   * Change `[pattern to match]` to the pattern you want to match and `[Replace with]` to what you want to replace with (*HINT: replace with empty/nothing*).   
   * What does the `s` and `g` denote?   
   * Run the command and save the output to the a file and call it `gene_names_clean.txt`: .   
 
-Verify that your output looks correct, i.e. the `gene=` part is gone but the gene names are still complete. It should look like this:   
+    Verify that your output looks correct, i.e. the `gene=` part is gone but the gene names are still complete. It should look like this:   
   
   ![](Figures/no_gene_name.PNG)
 
@@ -329,8 +328,8 @@ You should now have one file `GenomicRegion.tmp` containing only field 3, 4 & 5 
 2. Run and decipher the command below.
 
     ```{bash, engine="sh", eval=FALSE}
-awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
-```
+    awk -F '\t' 'OFS="\t" {$5=$3-$2}{print}' Annotation_Gene.gff > Annotation_Gene_Len.gff
+    ```
 
 
 * What is the output of the command?   
@@ -352,10 +351,11 @@ Your new file `Annotation_Gene_Len.gff` does not have a header line explaining w
 4. Using an editor, i.e nano, make a new file called `header.gff` with these column names:   
 
     ```{bash, engine="sh", eval=FALSE}
-Region    Start   End   GeneName    Length
-```
+    Region    Start   End   GeneName    Length
+    ```
 
     The column headers should be separated by tab, just like the data columns.   
+
 Now, use the command `cat` to put `header.gff` and `Annotation_Gene_Len.gff` together. Name the output `Annotation_[TodaysDate].gff`.   
 
 When you have checked at the file looks correct, move the file to your **Results** directory - **N.B** go to the sub-directory and check that you have moved it correctly!. You can now remove (delete) all the temporary files in your `Scratch` directory. WELL DONE!
@@ -401,9 +401,11 @@ When you have checked at the file looks correct, move the file to your **Results
 
     First, let's see how much is in your history. What does the below command tell you?
 
+
     ```{bash, engine="sh", eval=FALSE}
-history | wc 
-```
+    history | wc 
+    ```
+
 
     If you have a lot of commands saved in your history you might only want to see the last 20 or so. Can you show the last 20 commands using a pipe?
 
@@ -429,8 +431,8 @@ We will now save the commands from exercise 7.6 in a script so we don't lose the
 3. Run `ex8.sh` by calling `bash`. Does it run without error? If not, correct what is wrong until it does. Check that it creates the correct files, i.e. they should look the same as when you manually executed the commands. 
 
     ```{bash, engine="sh", eval=FALSE}
-bash -x ex8.sh
-```
+    bash -x ex8.sh
+    ```
 
 4. Add lines to your script `ex8.sh` that will remove the temporary files created. Check that these files are indeed removed, and no other files have been deleted by accident. If you did end up deleting something you still need can just re-download the respective file from github. 
 
@@ -438,8 +440,8 @@ bash -x ex8.sh
 
 
     ```{bash, engine="sh", eval=FALSE}
-gunzip -h 
-```
+    gunzip -h 
+    ```
 
     With this, write up a command that takes `ecoli.gff.gz` (or any other .gz file) and creates an unzipped file `unzipped.gff` while also leaving the original `ecoli.gff.gz` in place. This will be the first command in your new script script.
 
@@ -472,9 +474,9 @@ gunzip -h
 **HINT:** Remember you can use commands like `man` and the option `-help` to help you understand what is going on. 
 **N.B:** For Windows users git bash will only show you the processes related to running git bash itself, not so fun, but try the command anyways.
 
-```{bash, engine="sh", eval=FALSE}
-ps aux
-```
+    ```{bash, engine="sh", eval=FALSE}
+    ps aux
+    ```
 
 2. Using the command `open` (OS X and Ubuntu) or `start` (gitbash) to launch a text editor (notepad, Notes, Evernote, etc.) and/or an internet browser (i.e. a Firefox, Safari, etc.) though the terminal.   
 **HINT:** Make sure yo spell the application name correctly, i.e. capital letters, spaces, etc.
@@ -483,9 +485,9 @@ ps aux
 3. If you have a Mac of linux OS, you can now kill the application you just opened by using the command line. You will have to combine the commands `ps aux` and `grep` to get the `process id (pid)` for the application. What does the `-9` mean? On gitbash this is not possible, so just proceed to the next point.
 
 
-```{bash, engine="sh", eval=FALSE}
-kill -9 [pid]
-```
+    ```{bash, engine="sh", eval=FALSE}
+    kill -9 [pid]
+    ```
 
 4. Install the  `fastqc` software: 
 
