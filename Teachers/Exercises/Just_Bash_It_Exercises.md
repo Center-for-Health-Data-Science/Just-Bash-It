@@ -267,7 +267,7 @@ Let’s get structured!
     Inside the `projects` directory, create a directory for this course.
     You could name it i.e. **Just_Bash_It, Intro_to_command_line,
     First_Project, etc.**. Then inside that directory, create all the
-    sub-directories shown on **slide 46** in the slideshow.
+    sub-directories shown on **slide 43** in the slideshow.
 
 2.  Using the command-line, navigate back to where you have the course
     repo `Just-Bash-it`. Inside the `Files` directory there is a `Data`
@@ -356,7 +356,7 @@ Go to your directory `Scratch` where you should have a copy of the
 unzipped `GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`,
 which you made in exercise 3.5 above. We will now do some data wrangling
 operations on the file. You can find all necessary commands on **slide
-64** in the presentation (if they aren’t named in the question).
+63** in the presentation (if they aren’t named in the question).
 
 1.  Figure out how many, lines, words and characters the
     `Annotation.gff` file contains using `wc`.

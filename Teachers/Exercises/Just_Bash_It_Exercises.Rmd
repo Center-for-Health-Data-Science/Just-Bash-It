@@ -204,7 +204,7 @@ You need a flag to remove a whole folder. Try the help `rm --help` to figure out
 Let's get structured!   
 
 1. Make a `projects` directory where you would like it on your computer, for example on the Desktop or in your Documents.   
-Inside the `projects` directory, create a directory for this course. You could name it i.e. **Just_Bash_It, Intro_to_command_line, First_Project, etc.**. Then inside that directory, create all the sub-directories shown on **slide 46** in the slideshow. 
+Inside the `projects` directory, create a directory for this course. You could name it i.e. **Just_Bash_It, Intro_to_command_line, First_Project, etc.**. Then inside that directory, create all the sub-directories shown on **slide 43** in the slideshow. 
 
 2. Using the command-line, navigate back to where you have the course repo `Just-Bash-it`. Inside the `Files` directory there is a `Data` directory with the files we are going to use for the rest of the course. Move the compressed files (those with extension `.gz`) to the project directory you have made in **point 1** and place them in the correct sub-directory.
 
@@ -261,7 +261,7 @@ A `readme` file should contain information about what a certain directory contai
 
 You will now test out some of the new commands introduced in the slide show and the command line presentation.   
 
-Go to your directory `Scratch` where you should have a copy of the unzipped `GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`, which you made in exercise 3.5 above. We will now do some data wrangling operations on the file. You can find all necessary commands on **slide 64** in the presentation (if they aren't named in the question). 
+Go to your directory `Scratch` where you should have a copy of the unzipped `GCF_genomicAnnotation.gff.gz` file named `Annotation.gff`, which you made in exercise 3.5 above. We will now do some data wrangling operations on the file. You can find all necessary commands on **slide 63** in the presentation (if they aren't named in the question). 
 
 1. Figure out how many, lines, words and characters the `Annotation.gff` file contains using `wc`.
 
