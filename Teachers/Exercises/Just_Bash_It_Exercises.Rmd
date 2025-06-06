@@ -1,11 +1,12 @@
 ---
 title: "![Just Bash It](Figures/BashFigure1.jpeg)"
 output:
-  html_document
-  #github_document:
-  #  toc: true
-  #  toc_depth: 2
-#always_allow_html: TRUE
+  html_document:
+    self-contained: true
+    toc: true
+    toc_depth: 2
+    toc_float: true
+#    toc_collapsed: true
 author: "Center for Health Data Science, November 2023"
 ---
 
@@ -19,10 +20,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ---
 
 # Exercises
-
-&nbsp;
-
-## About this document
 
 This markdown document contains the exercises for the introductory workshop on command line use, entitled `Just Bash It`. 
 
@@ -107,7 +104,7 @@ wc README.md
 
 ## Getting help
 
-There are different way of getting help:
+There are different ways of getting help:
 
 * On Mac and Linux based systems, you can use `man [name_of_command]` to see a manual of the command. Not all commands have a manual. 
 
@@ -164,7 +161,12 @@ For the rest of this exercise we are going to work in the `Files` folder.
 
 6. Change directory to the `Courses` folder. Are there any files inside? 
 
-7. What is the full path of the file inside the `Courses` folder? 
+7. What is the full path of the file inside the `Courses` folder? You can test your answer with 
+
+    ```{bash, engine="sh", eval=FALSE}
+    ls [path]
+    ```
+
 
 8. From here, go to the `Pictures` folder (Hint: This folder should have been listed under point 3). Can you do it using the `../` syntax?
 
@@ -479,17 +481,15 @@ We will now save the commands from exercise 7.6 in a script so we don't lose the
     ```
 
 2. Using the command `open` (OS X and Ubuntu) or `start` (gitbash) to launch a text editor (notepad, Notes, Evernote, etc.) and/or an internet browser (i.e. a Firefox, Safari, etc.) though the terminal.   
-**HINT:** Make sure yo spell the application name correctly, i.e. capital letters, spaces, etc.
+**HINT:** Make sure you spell the application name correctly, i.e. capital letters, spaces, etc.
 
 
-3. If you have a Mac of linux OS, you can now kill the application you just opened by using the command line. You will have to combine the commands `ps aux` and `grep` to get the `process id (pid)` for the application. What does the `-9` mean? On gitbash this is not possible, so just proceed to the next point.
+3. If you have a Mac or linux OS, you can now kill the application you just opened by using the command line. You will have to combine the commands `ps aux` and `grep` to get the `process id (pid)` for the application. What does the `-9` mean? On gitbash this is not possible, so just proceed to the next point.
 
 
     ```{bash, engine="sh", eval=FALSE}
     kill -9 [pid]
     ```
-
-4. Install the  `fastqc` software: 
 
 &nbsp;
 
@@ -547,6 +547,7 @@ java -version
 
 If you do not have java, download and install it:
 https://www.java.com/en/download/windows_manual.jsp
+I have used the Windows Offline 64-bit. 
 
 Next, download fastqc from here: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/ . Unzip the folder, either with the command line or by right clicking on it and put the content where you want them to be. 
 
@@ -554,7 +555,7 @@ Now you can navigate to where the executable is and see whether you are allowed 
 
 ![](Figures/install_fastqc.PNG)
 
-You can also run fastqc from any other directory by providing the fullpath to the executable (which you now have because you just checked it):
+You can also run fastqc from any other directory by providing the full path to the executable (which you now have because you just checked it):
 
 ![](Figures/run_fastqc.PNG)
 
@@ -582,4 +583,80 @@ open [report.html]
 start [report.html]
 
 ```
+
+---  
+
+&nbsp;
+
+
+## Exercise 10: Computing on HPCs 
+
+For exercise 10, you will log in to our small teaching server. Emphasis on small, it only has 8 cores so some waiting time may occur for executing commands. 
+
+Part 1: Discovering the server
+
+1. Log in to the server. You should have been given a number. This number + `stud` is the account you should use. All student account have the same password, `pass1234`. We log in with ssh:
+
+    ```{bash, eval = F}
+    ssh stud[number]@157.180.86.52
+    ```
+
+    You may be asked whether you want to continue to this server which is not in your known hosts. Select Yes. Provide the password. 
+
+    You will know you have successfully logged in if your prompt has changed to `stud[number]@bash-teaching`. 
+    
+    ![](Figures/ssh_in.png)
+
+2. Take a moment to look around and locate where folders are. You have a home directory, which is the place where you landed directly after logging in. Check its path (`pwd`). Locate the project directory (`/project`) and check which directories it contains. 
+
+3. Use `module avail` to display the software available in environment modules. 
+
+4. Invoke the aligner tool bwa with:
+
+    ```{bash, eval = F}
+    bwa
+    ```
+
+    What happens?
+
+5. Load the bwa module `module load bwa` and invoke bwa again.
+
+6. Confirm which modules are loaded with `module list`.
+
+7. Unload the module with `module unload`.
+
+8. Check the server load with `htop` (press q to quit).
+
+&nbsp;
+
+Part 2: Running a small bioinformatics job
+
+We will now submit a job to slurm. We will map reads of *Arabidopsis thaliana* to the reference genome, then sort the alignment file and get a report on mapping success with `flagstat`. We provide the script for you so there will not be an issue with the commands.
+
+9. First, change into the project directory for *Arabidopsis thaliana* (`a_thal`). You should see a `results` directory. Inside there, create a directory with your own name. You will put your results into that directory so you don't overwrite each others results.
+
+
+10. Locate the job script in the folder `/home/boss/scripts/`. Copy the script to your OWN home folder. View it to see the different steps. Then using nano or a text editor of your choice, open the job script and change the name of the job to YOUR name so it will be easier to track. Also, everywhere it says `[YOU]` change that to the name of your folder (that you just created).  
+
+10. When you are ready submit the script to the queue with 
+
+    ```{bash, eval = F}
+    sbatch job.sh
+    ```
+
+11. Use the `squeue` command to check whether your job is running. If the state (`ST`) is `PD` the resource allocation is pending. If it is `R` the job is running and if it is `ST` the job has stopped/finished. `squeue` is not interactive, so you can check several times to to see if your status has changed after a while. Have another look at server load with `htop`. You will probably see many of the CPUs busy if jobs are running. 
+
+12. After your job has finished you will have a file named `slurm-[jobid].out` in the folder from which you started the job. You can have a look at it, it shows information from the mapping. Go to your folder in the project results and confirm whether all results were made. You should have 3 files:
+
+    ```{bash, eval = F}
+    ls
+    aln-pe.sam  flagstat.txt  sorted.bam
+    ```
+
+    If not, perhaps something has gone wrong during the executing of the job. There should be info about it in the `slurm` file. 
+
+
+
+
+
 
